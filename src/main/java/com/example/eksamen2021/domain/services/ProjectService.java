@@ -1,13 +1,17 @@
 package com.example.eksamen2021.domain.services;
 
+import com.example.eksamen2021.domain.models.Project;
+import com.example.eksamen2021.domain.models.User;
+import com.example.eksamen2021.repositories.ProjectRepository;
+
 import java.util.List;
 
 public class ProjectService {
-  private WishRepository wishRepository = new WishRepository();
+  private ProjectRepository projectRepository = new ProjectRepository();
 
-  public String addWish(Wish wish, User user) {
-    int addWishSuccess = wishRepository.addWish(wish, user);
-    if (addWishSuccess == 1) {
+  public String addProject(Project project, User user) {
+    int addProjectSuccess = projectRepository.addProject(project, user);
+    if (addProjectSuccess == 1) {
       return "redirect:/show";
     } else {
       System.out.println("sut :c");
@@ -15,8 +19,8 @@ public class ProjectService {
     }
   }
 
-  public List<Wish> showAll(int id) {
-    return wishRepository.showAll(id);
+  public List<Project> showAll(int id) {
+    return projectRepository.showAll(id);
   }
 
 }

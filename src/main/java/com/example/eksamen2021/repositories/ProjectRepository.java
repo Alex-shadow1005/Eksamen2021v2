@@ -1,5 +1,8 @@
 package com.example.eksamen2021.repositories;
 
+import com.example.eksamen2021.domain.models.Project;
+import com.example.eksamen2021.domain.models.User;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -10,7 +13,7 @@ import java.util.List;
 public class ProjectRepository {
 
   //TILFØJER ET ØNSKE TIL BRUGERENS ØNSKELISTE
-  public int addWish(Wish wish, User user) {
+  public int addProject(Project project, User user) {
     String mySql;
     PreparedStatement ps;
     int h = 0;
@@ -19,17 +22,16 @@ public class ProjectRepository {
       //1. Get a connection to database
       Connection con = DBManager.getConnection();
       //2. Prepare statement
-      mySql = "INSERT INTO wishwishwish.wishes (user_id, wish_name, wish_description, wish_price) VALUES (?, ?, ?, ?)";
+      mySql = "INSERT INTO wishwishwish.wishes (user_id, project_name, project_description) VALUES (?, ?, ?)";
 
       ps = con.prepareStatement(mySql);
       //3. Set the parameters
       ps.setInt(1, user.getUser_id());
-      ps.setString(2, wish.getWishName());
-      ps.setString(3, wish.getWishDescription());
-      ps.setInt(4, wish.getWishPrice());
+      ps.setString(2, project.getWishName());
+      ps.setString(3, project.getWishDescription());
       //4. Execute SQL query
       h = ps.executeUpdate();
-      System.out.println("Wish added");
+      System.out.println("Project added");
       //5. Display the result set
     } catch (SQLException err) {
       System.out.println("Fejl i count err=" + err.getMessage());
@@ -38,18 +40,18 @@ public class ProjectRepository {
   }
 
   //VISER ALLE ØNSKERNE PÅ BRUGERENS ØNSKELISTE
-  public List<Wish> showAll(int id) {
-    ArrayList<Wish> wishes = new ArrayList<>();
+  public List<Project> showAll(int id) {
+    ArrayList<Project> projects = new ArrayList<>();
     try {
       Connection con = DBManager.getConnection();
-      String SQL = "SELECT * FROM wishwishwish.wishes WHERE user_id = ?";
+      String SQL = "SELECT * FROM wishwishwish.wishes WHERE user_id = ?"; // Do this line when we know database name and stuff
 
       PreparedStatement ps = con.prepareStatement(SQL);
       ps.setInt(1, id);
       ResultSet rs = ps.executeQuery();
 
       while (rs.next()) {
-        wishes.add(new Wish(
+        projects.add(new Project(
             rs.getInt(2),
             rs.getString(4),
             rs.getString(5),
@@ -59,6 +61,6 @@ public class ProjectRepository {
     } catch (SQLException ex) {
       System.out.println(ex.getMessage());
     }
-    return wishes;
+    return projects;
   }
 }
