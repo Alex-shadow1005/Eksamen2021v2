@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 public class UserController {
 private UserService userService = new UserService;
+  public static User session;
+
   @PostMapping("/createUser")
   public String createUser(@ModelAttribute User user, Model model) { //Jens' version af createUser
     model.addAttribute("user", user);

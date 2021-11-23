@@ -1,6 +1,9 @@
 package com.example.eksamen2021.domain.services;
 
+import com.example.eksamen2021.repositories.UserRepository;
+
 public class UserService {
+  UserRepository userRepository = new UserRepository();
   public String createUser(User user) {
     int createUserSuccess = userRepository.newUser(user);
     if (createUserSuccess == 1)
