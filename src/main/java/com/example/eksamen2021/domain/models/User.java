@@ -13,9 +13,6 @@ public class User {
       this.password = password;
     }
 
-    public User() {
-    }
-
     public String getEmail() {
       return email.toLowerCase();
     }
@@ -59,4 +56,4 @@ public class User {
     this.passwordRepeat = passwordRepeat;
   }
  */
-}
+
