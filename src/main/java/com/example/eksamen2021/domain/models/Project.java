@@ -7,24 +7,24 @@ public class Project {
   private int wishPrice;
 
 
-  public Wish(int wishID, String wishName, String wishDescription, int wishPrice) {
+  public Project(int wishID, String wishName, String wishDescription, int wishPrice) {
     this.wishID = wishID;
     this.wishName = wishName;
     this.wishDescription = wishDescription;
     this.wishPrice = wishPrice;
   }
 
-  public Wish(String wishName, String wishDescription, int wishPrice) {
+  public Project(String wishName, String wishDescription, int wishPrice) {
     this.wishName = wishName;
     this.wishDescription = wishDescription;
     this.wishPrice = wishPrice;
   }
 
-  public Wish() {
+  public Project() {
   }
 
 
-  public Wish(int user_id, int wish_id, int wishlist_id, String wishName, String wishDescription, int wishPrice) {
+  public Project(int user_id, int wish_id, int wishlist_id, String wishName, String wishDescription, int wishPrice) {
   }
 
 

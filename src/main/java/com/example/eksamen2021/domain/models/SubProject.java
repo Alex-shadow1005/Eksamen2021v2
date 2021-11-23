@@ -1,16 +1,16 @@
 package com.example.eksamen2021.domain.models;
 
-public class ProjectList {
+public class SubProject {
 
   private User user;
   private String wishlistName;
 
-  public Wishlist(String wishlistName, User user) {
+  public SubProject(String wishlistName, User user) {
     this.wishlistName = wishlistName;
     this.user = user;
   }
 
-  public Wishlist() {
+  public SubProject() {
   }
 
   public String getWishlistName() {
