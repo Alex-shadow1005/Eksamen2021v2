@@ -10,13 +10,4 @@ public class UserService {
   public User loginUser(User user) { //modtager information (email, password) fra PostController /login -> PostRepository /validateUser
     return userRepository.validateUser(user);
   }
-
-  public String createUser(User user) {
-    int createUserSuccess = userRepository.newUser(user);
-    if (createUserSuccess == 1)
-      return "redirect:/login";//end pont = yes
-    else
-      System.out.println("err");
-    return "redirect:/login";
-  }
 }

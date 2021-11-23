@@ -1,5 +1,7 @@
 package com.example.eksamen2021.repositories;
 
+import com.example.eksamen2021.domain.models.User;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
