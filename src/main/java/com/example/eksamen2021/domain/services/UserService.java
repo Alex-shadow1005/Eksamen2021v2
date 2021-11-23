@@ -14,5 +14,9 @@ public class UserService {
     else
       System.out.println("err");
     return "redirect:/login";
+
+    public User loginUser(User user){ //modtager information (email, password) fra PostController /login -> PostRepository /validateUser
+      return userRepository.validateUser(user);
+    }
   }
 }
