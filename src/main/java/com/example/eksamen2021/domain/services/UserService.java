@@ -12,11 +12,11 @@ public class UserService {
     if (createUserSuccess == 1)
       return "redirect:/login";//end pont = yes
     else
-      System.out.println("err");
+      System.out.println("errr");
     return "redirect:/login";
+  }
 
     public User loginUser(User user){ //modtager information (email, password) fra PostController /login -> PostRepository /validateUser
       return userRepository.validateUser(user);
     }
-  }
 }
