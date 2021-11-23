@@ -14,6 +14,8 @@ public class UserController {
   private UserService userService = new UserService();
   public static User session;
 
+ // Denne metode tager oplysninger, som brugeren har indtastet om en ny kunde.
+ // Objektet bruges til at gemme oplysninger om kunden i databasen.
   //OBS! Ænder createUser til newUser newUser23-11-2021 kl.10:26
   @PostMapping("/newUser")
   public String createUser(@ModelAttribute User user, Model model) { //Jens' version af createUser
@@ -37,5 +39,4 @@ public class UserController {
     }
     return "redirect:/show/" + session.getUser_id();
   }
-
 }

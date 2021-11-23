@@ -44,5 +44,4 @@ public class ProjectController {
     projectService.addProject(project, user);
     return "redirect:/show/" + UserController.session.getUser_id();
   }
-
 }
