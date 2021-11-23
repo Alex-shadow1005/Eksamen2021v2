@@ -14,32 +14,32 @@ public class ProjectController {
 
 
   @GetMapping("/add-project")
-  public String addWish(@ModelAttribute Wish wish, Model model) {
-    model.addAttribute("wish", wish);
+  public String addWish(@ModelAttribute Project project, Model model) {
+    model.addAttribute("project", project);
     model.addAttribute("sessionID", UserController.session.getUser_id());
-    System.out.println(wish.getWishName() + wish.getWishDescription() + wish.getWishPrice());
+    System.out.println(project.getProjectName() + project.getProjectDescription() + project.getProjectPrice());
     return "addwish";
   }
 
   @GetMapping("/show/{id}")
   public String showWishes(@PathVariable("id") int id, Model model) {
-    List<Wish> wishes = projectService.showAll(id);
+    List<Project> wishes = projectService.showAll(id);
     model.addAttribute("wishes", wishes);
     return "show-wishes2";
   }
 
   @PostMapping("/save")
-  public String saveWish(@ModelAttribute Wish wish, User user) {
+  public String saveWish(@ModelAttribute Project wish, User user) {
     projectService.addWish(wish, user);
     return "redirect:/show-wishes";
   }
 
   @PostMapping("/addwish")
-  public String addWishPost(@ModelAttribute Wish wish, User user, Model model) {
-    model.addAttribute("wish", wish);
+  public String addWishPost(@ModelAttribute Project wish, User user, Model model) {
+    model.addAttribute("project", project);
     //System.out.println(wish.getWishName() + wish.getWishDescription() + wish.getWishPrice());
     user.setUser_id(UserController.session.getUser_id());
-    projectService.addWish(wish, user);
+    projectService.addWish(project, user);
     return "redirect:/show/" + UserController.session.getUser_id();
   }
 
