@@ -1,5 +1,7 @@
 package com.example.eksamen2021.controllers;
 
+import com.example.eksamen2021.domain.models.Project;
+import com.example.eksamen2021.domain.models.User;
 import com.example.eksamen2021.domain.services.ProjectService;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,28 +20,28 @@ public class ProjectController {
     model.addAttribute("project", project);
     model.addAttribute("sessionID", UserController.session.getUser_id());
     System.out.println(project.getProjectName() + project.getProjectDescription() + project.getProjectPrice());
-    return "addwish";
+    return "add-project";
   }
 
   @GetMapping("/show/{id}")
-  public String showWishes(@PathVariable("id") int id, Model model) {
-    List<Project> wishes = projectService.showAll(id);
-    model.addAttribute("wishes", wishes);
-    return "show-wishes2";
+  public String showProjects(@PathVariable("id") int id, Model model) {
+    List<Project> projects = projectService.showAll(id);
+    model.addAttribute("projects", projects);
+    return "show-project2";
   }
 
   @PostMapping("/save")
-  public String saveWish(@ModelAttribute Project wish, User user) {
-    projectService.addWish(wish, user);
-    return "redirect:/show-wishes";
+  public String saveProject(@ModelAttribute Project project, User user) {
+    projectService.addProject(project, user);
+    return "redirect:/show-project";
   }
 
-  @PostMapping("/addwish")
-  public String addWishPost(@ModelAttribute Project wish, User user, Model model) {
+  @PostMapping("/add-project")
+  public String addProjectPost(@ModelAttribute Project project, User user, Model model) {
     model.addAttribute("project", project);
     //System.out.println(wish.getWishName() + wish.getWishDescription() + wish.getWishPrice());
     user.setUser_id(UserController.session.getUser_id());
-    projectService.addWish(project, user);
+    projectService.addProject(project, user);
     return "redirect:/show/" + UserController.session.getUser_id();
   }
 
