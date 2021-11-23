@@ -9,11 +9,14 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 public class UserController {
-private UserService userService = new UserService;
+
+  private UserService userService = new UserService();
   public static User session;
 
-  @PostMapping("/createUser")
-  public String createUser(@ModelAttribute User user, Model model) { //Jens' version af createUser
+  //OBS! Ænder createUser til createUser newUser23-11-2021 kl.10:26
+
+  @PostMapping("/newUser")
+  public String newUser(@ModelAttribute User user, Model model) { //Jens' version af createUser
     model.addAttribute("user", user);
     userService.createUser(user);
     return "redirect:/loginpage";
