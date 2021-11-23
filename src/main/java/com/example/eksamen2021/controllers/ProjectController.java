@@ -1,6 +1,7 @@
 package com.example.eksamen2021.controllers;
 
 import com.example.eksamen2021.domain.models.Project;
+import com.example.eksamen2021.domain.models.User;
 import com.example.eksamen2021.domain.services.ProjectService;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
