@@ -1,6 +1,6 @@
 package com.example.eksamen2021.domain.models;
 
-public class SubProject {
+public class Subproject {
 
 private int subproject_id;
 private String subproject_name;
@@ -13,20 +13,20 @@ private int subproject_price;
   */
 
 
-  public SubProject(int subproject_id, String subproject_name, String subproject_description, int subproject_price) {
+  public Subproject(int subproject_id, String subproject_name, String subproject_description, int subproject_price) {
     this.subproject_id = subproject_id;
     this.subproject_name = subproject_name;
     this.subproject_description = subproject_description;
     this.subproject_price = subproject_price;
   }
 
-  public SubProject(int subproject_id, String subproject_name, String subproject_description) {
+  public Subproject(int subproject_id, String subproject_name, String subproject_description) {
     this.subproject_id = subproject_id;
     this.subproject_name = subproject_name;
     this.subproject_description = subproject_description;
   }
 
-  public SubProject() {
+  public Subproject() {
   }
 
   public int getSubproject_id() {

@@ -1,7 +1,7 @@
 package com.example.eksamen2021.repositories;
 
 import com.example.eksamen2021.domain.models.Project;
-import com.example.eksamen2021.domain.models.SubProject;
+import com.example.eksamen2021.domain.models.Subproject;
 import com.example.eksamen2021.domain.models.User;
 
 import java.sql.Connection;
@@ -23,11 +23,11 @@ public class ProjectRepository {
       //1. Get a connection to database
       Connection con = DBManager.getConnection();
       //2. Prepare statement
-      mySql = "INSERT INTO projects (project_id, project_name, project_description) VALUES (?, ?, ?)";
+      mySql = "INSERT INTO projects (user_id, project_name, project_description) VALUES (?, ?, ?)";
 
       ps = con.prepareStatement(mySql);
       //3. Set the parameters
-      ps.setInt(1, project.getProject_id());
+      ps.setInt(1, user.getUser_id());
       ps.setString(2, project.getProject_name());
       ps.setString(3, project.getProject_description());
       //4. Execute SQL query
@@ -41,7 +41,7 @@ public class ProjectRepository {
   }
 
   //TILFØJER ET SUBPROJEKT TIL BRUGERENS SUBPROJEKTLISTE
-  public int addSubProject(SubProject subProject, User user) {
+  public int addSubproject(Project project, Subproject subproject) {
     String mySql;
     PreparedStatement ps;
     int h = 0;
@@ -50,11 +50,11 @@ public class ProjectRepository {
       //1. Get a connection to database
       Connection con = DBManager.getConnection();
       //2. Prepare statement
-      mySql = "INSERT INTO subprojects (subproject_id, subproject_name, subproject_description) VALUES (?, ?, ?)";
+      mySql = "INSERT INTO subprojects (project_id, subproject_name, subproject_description) VALUES (?, ?, ?)";
 
       ps = con.prepareStatement(mySql);
       //3. Set the parameters
-      ps.setInt(1, subproject.getSubproject_id());
+      ps.setInt(1, project.getProject_id());
       ps.setString(2, subproject.getSubproject_name());
       ps.setString(3, subproject.getSubproject_description());
       //4. Execute SQL query
@@ -67,7 +67,7 @@ public class ProjectRepository {
     return h; //returnerer brugeren til Service
   }
 
-  //VISER ALLE ØNSKERNE PÅ BRUGERENS ØNSKELISTE
+  //VISER ALLE PROJEKTERNE PÅ BRUGERENS PROJEKTLISTE
   public List<Project> showAll(int id) {
     ArrayList<Project> projects = new ArrayList<>();
     try {
@@ -91,6 +91,7 @@ public class ProjectRepository {
     return projects;
   }
 
+  //VISER ALLE SUBPROJEKTER DER HØRER TIL PROJEKT-ID'EN
   public List<Project> showAllSubProjects(int id) {
     ArrayList<Project> projects = new ArrayList<>();
     try {
