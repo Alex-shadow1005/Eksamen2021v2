@@ -17,17 +17,16 @@ public class UserController {
  // Denne metode tager oplysninger, som brugeren har indtastet om en ny kunde.
  // Objektet bruges til at gemme oplysninger om kunden i databasen.
   //OBS! Ænder createUser til newUser newUser23-11-2021 kl.10:26
-  @PostMapping("/newUser")
-  public String createUser(@ModelAttribute User user, Model model) { //Jens' version af createUser
-    model.addAttribute("user", user);
-    userService.createUser(user);
-    return "redirect:/loginpage";
+ @GetMapping("/")
+ public String index() {
+   return "index";
+ }
+
+  @GetMapping("/login-page") //starter login-process her -> login-page.html
+  public String login() {
+    return "login-page";
   }
 
-  @GetMapping("/loginpage") //starter login-process her -> loginpage.html
-  public String login() {
-    return "loginpage";
-  }
 
   @GetMapping("/login")
   public String loginUser(@ModelAttribute User user, Model model) { //ModelAttribute gemmer parametre i User ved at lave det til et objekt
@@ -35,8 +34,15 @@ public class UserController {
     System.out.println("user WWaazzaaa" + user);
     session = userService.loginUser(user);
     if (session == null) {
-      return "loginpage";
+      return "login-page";
     }
     return "redirect:/show/" + session.getUser_id();
+  }
+
+  @PostMapping("/new-User")
+  public String createUser(@ModelAttribute User user, Model model) { //Jens' version af createUser
+    model.addAttribute("user", user);
+    userService.createUser(user);
+    return "redirect:/login-page";
   }
 }
