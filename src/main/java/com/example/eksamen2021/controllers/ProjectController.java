@@ -61,14 +61,12 @@ public class ProjectController {
     return "redirect:/show/" + UserController.session.getUser_id();
   }
 
-  /* @PostMapping("/add-subproject")
-  public String addSubprojectPost(@ModelAttribute Project project, Subproject subproject, Model model) {
+  @PostMapping("/add-subproject/{projectid}")
+  public String addSubprojectPost(@PathVariable("projectid") int projectid, @ModelAttribute Project project, Subproject subproject, Model model) {
     model.addAttribute("subproject", subproject);
-    System.out.println(wish.getWishName() + wish.getWishDescription() + wish.getWishPrice());
-    project.setProject_id(UserController.session.getProject_id());
-    projectService.addSubproject(subproject, project);
-    return "redirect:/show/" + UserController.session.getProject_id();
+    project.setProject_id(projectid); //kan kalde vores id her i stedet, skal laves i Thymeleaf
+    projectService.addSubproject(project, subproject);
+    return "redirect:/show/" + projectid;
   }
-   */
-
+  
 }
