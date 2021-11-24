@@ -2,30 +2,63 @@ package com.example.eksamen2021.domain.models;
 
 public class SubProject {
 
-  private User user;
-  private String wishlistName;
+private int subproject_id;
+private String subproject_name;
+private String subproject_description;
+private int subproject_price;
 
-  public SubProject(String wishlistName, User user) {
-    this.wishlistName = wishlistName;
-    this.user = user;
+  /*
+  private User user;
+  private String projectlistName;
+  */
+
+
+  public SubProject(int subproject_id, String subproject_name, String subproject_description, int subproject_price) {
+    this.subproject_id = subproject_id;
+    this.subproject_name = subproject_name;
+    this.subproject_description = subproject_description;
+    this.subproject_price = subproject_price;
+  }
+
+  public SubProject(int subproject_id, String subproject_name, String subproject_description) {
+    this.subproject_id = subproject_id;
+    this.subproject_name = subproject_name;
+    this.subproject_description = subproject_description;
   }
 
   public SubProject() {
   }
 
-  public String getWishlistName() {
-    return wishlistName.toLowerCase();
+  public int getSubproject_id() {
+    return subproject_id;
   }
 
-  public void setWishlistName(String wishlistName) {
-    this.wishlistName = wishlistName.toLowerCase();
+  public void setSubproject_id(int subproject_id) {
+    this.subproject_id = subproject_id;
   }
 
-  public User getUser() {
-    return user;
+  public String getSubproject_name() {
+    return subproject_name;
   }
 
-  public void setUser(User user) {
-    this.user = user;
+  public void setSubproject_name(String subproject_name) {
+    this.subproject_name = subproject_name;
   }
+
+  public String getSubproject_description() {
+    return subproject_description;
+  }
+
+  public void setSubproject_description(String subproject_description) {
+    this.subproject_description = subproject_description;
+  }
+
+  public int getSubproject_price() {
+    return subproject_price;
+  }
+
+  public void setSubproject_price(int subproject_price) {
+    this.subproject_price = subproject_price;
+  }
+
 }
