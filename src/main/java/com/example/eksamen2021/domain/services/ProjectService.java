@@ -1,6 +1,7 @@
 package com.example.eksamen2021.domain.services;
 
 import com.example.eksamen2021.domain.models.Project;
+import com.example.eksamen2021.domain.models.Subproject;
 import com.example.eksamen2021.domain.models.User;
 import com.example.eksamen2021.repositories.ProjectRepository;
 
@@ -19,8 +20,21 @@ public class ProjectService {
     }
   }
 
+  public String addSubproject(Project project, Subproject subproject) {
+    int addSubprojectSuccess = projectRepository.addSubproject(project, subproject);
+    if (addSubprojectSuccess == 1) {
+      return "redirect:/show";
+    } else {
+      System.out.println("sut :c");
+      return "redirect:/addWish";
+    }
+  }
+
   public List<Project> showAll(int id) {
     return projectRepository.showAll(id);
   }
 
+  public List<Subproject> showAllSubprojects(int id) {
+    return projectRepository.showAllSubprojects(id);
+  }
 }

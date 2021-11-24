@@ -92,8 +92,8 @@ public class ProjectRepository {
   }
 
   //VISER ALLE SUBPROJEKTER DER HØRER TIL PROJEKT-ID'EN
-  public List<Project> showAllSubProjects(int id) {
-    ArrayList<Project> projects = new ArrayList<>();
+  public List<Subproject> showAllSubprojects(int id) {
+    ArrayList<Subproject> subprojects = new ArrayList<>();
     try {
       Connection con = DBManager.getConnection();
       String SQL = "SELECT * FROM subprojects WHERE project_id = ?"; // Do this line when we know database name and stuff
@@ -103,7 +103,7 @@ public class ProjectRepository {
       ResultSet rs = ps.executeQuery();
 
       while (rs.next()) {
-        projects.add(new Project(
+        subprojects.add(new Subproject(
             rs.getString(3),
             rs.getString(4),
             rs.getInt(5)
@@ -112,6 +112,6 @@ public class ProjectRepository {
     } catch (SQLException ex) {
       System.out.println(ex.getMessage());
     }
-    return projects;
+    return subprojects;
   }
 }

@@ -1,6 +1,7 @@
 package com.example.eksamen2021.controllers;
 
 import com.example.eksamen2021.domain.models.Project;
+import com.example.eksamen2021.domain.models.Subproject;
 import com.example.eksamen2021.domain.models.User;
 import com.example.eksamen2021.domain.services.ProjectService;
 import org.springframework.ui.Model;
@@ -16,17 +17,32 @@ public class ProjectController {
 
 
   @GetMapping("/add-project")
-  public String addWish(@ModelAttribute Project project, Model model) {
+  public String addProject(@ModelAttribute Project project, Model model) {
     model.addAttribute("project", project);
     model.addAttribute("sessionID", UserController.session.getUser_id());
-    System.out.println(project.getProject_name() + project.getProject_description() + project.getProject_cost());
+    System.out.println(project.getProject_name() + project.getProject_description() + project.getProject_price());
     return "add-project";
+  }
+
+  @GetMapping("/add-subproject")
+  public String addSubproject(@ModelAttribute Subproject subproject, Model model) {
+    model.addAttribute("subproject", subproject);
+    model.addAttribute("sessionID", UserController.session.getUser_id());
+    //System.out.println(project.getProject_name() + project.getProject_description() + project.getProject_price());
+    return "add-subproject";
   }
 
   @GetMapping("/show/{id}")
   public String showProjects(@PathVariable("id") int id, Model model) {
     List<Project> projects = projectService.showAll(id);
     model.addAttribute("projects", projects);
+    return "show-project2";
+  }
+
+  @GetMapping("/showsubprojects/{id}")
+  public String showSubprojects(@PathVariable("id") int id, Model model) {
+    List<Subproject> subprojects = projectService.showAllSubprojects(id);
+    model.addAttribute("subprojects", subprojects);
     return "show-project2";
   }
 
@@ -44,4 +60,15 @@ public class ProjectController {
     projectService.addProject(project, user);
     return "redirect:/show/" + UserController.session.getUser_id();
   }
+
+  /* @PostMapping("/add-subproject")
+  public String addSubprojectPost(@ModelAttribute Project project, Subproject subproject, Model model) {
+    model.addAttribute("subproject", subproject);
+    System.out.println(wish.getWishName() + wish.getWishDescription() + wish.getWishPrice());
+    project.setProject_id(UserController.session.getProject_id());
+    projectService.addSubproject(subproject, project);
+    return "redirect:/show/" + UserController.session.getProject_id();
+  }
+   */
+
 }

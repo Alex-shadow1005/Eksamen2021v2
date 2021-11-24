@@ -29,6 +29,12 @@ private int subproject_price;
   public Subproject() {
   }
 
+  public Subproject(String subproject_name, String subproject_description, int subproject_price) {
+    this.subproject_name = subproject_name;
+    this.subproject_description = subproject_description;
+    this.subproject_price = subproject_price;
+  }
+
   public int getSubproject_id() {
     return subproject_id;
   }

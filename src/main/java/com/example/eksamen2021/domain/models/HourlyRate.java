@@ -1,16 +1,16 @@
 package com.example.eksamen2021.domain.models;
 
 public class HourlyRate {
- final private int seninerDeveloper = 1500;
+ final private int seniorDeveloper = 1500;
  final private int developer = 750;
  final private int graphicDesigner = 500;
 
-  private int seninerDeveloperSum;
+  private int seniorDeveloperSum;
   private int developerSum;
   private int graphicDesignerSum;
 
-  public int getSeninerDeveloper() {
-    return seninerDeveloper;
+  public int getSeniorDeveloper() {
+    return seniorDeveloper;
   }
 
   public int getDeveloper() {
@@ -21,12 +21,12 @@ public class HourlyRate {
     return graphicDesigner;
   }
 
-  public int getSeninerDeveloperSum() {
-    return seninerDeveloperSum;
+  public int getSeniorDeveloperSum() {
+    return seniorDeveloperSum;
   }
 
-  public void setSeninerDeveloperSum(int seninerDeveloperSum) {
-    this.seninerDeveloperSum = seninerDeveloperSum;
+  public void setSeniorDeveloperSum(int seniorDeveloperSum) {
+    this.seniorDeveloperSum = seniorDeveloperSum;
   }
 
   public int getDeveloperSum() {
