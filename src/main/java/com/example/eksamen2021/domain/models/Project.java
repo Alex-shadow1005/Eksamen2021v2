@@ -1,72 +1,67 @@
 package com.example.eksamen2021.domain.models;
 
 public class Project {
-  private int wishID;
-  private String wishName;
-  private String wishDescription;
-  private int wishPrice;
+  private int project_id;
+  private String project_name;
+  private String project_description;
+  private int project_cost;
 
 
-  public Project(int wishID, String wishName, String wishDescription, int wishPrice) {
-    this.wishID = wishID;
-    this.wishName = wishName;
-    this.wishDescription = wishDescription;
-    this.wishPrice = wishPrice;
+  public Project(int project_id, String project_name, String project_description, int project_cost) {
+    this.project_id = project_id;
+    this.project_name = project_name;
+    this.project_description = project_description;
+    this.project_cost = project_cost;
   }
 
-  public Project(String wishName, String wishDescription, int wishPrice) {
-    this.wishName = wishName;
-    this.wishDescription = wishDescription;
-    this.wishPrice = wishPrice;
+  public Project(String project_name, String project_description, int project_cost) {
+    this.project_name = project_name;
+    this.project_description = project_description;
+    this.project_cost = project_cost;
   }
 
   public Project() {
   }
 
-
-  public Project(int user_id, int wish_id, int wishlist_id, String wishName, String wishDescription, int wishPrice) {
+  public int getProject_id() {
+    return project_id;
   }
 
-
-  public int getWishID() {
-    return wishID;
+  public void setProject_id(int project_id) {
+    this.project_id = project_id;
   }
 
-  public void setWishID(int wishID) {
-    this.wishID = wishID;
+  public String getProject_name() {
+    return project_name;
   }
 
-  public String getWishName() {
-    return wishName;
+  public void setProject_name(String project_name) {
+    this.project_name = project_name;
   }
 
-  public void setWishName(String wishName) {
-    this.wishName = wishName;
+  public String getProject_description() {
+    return project_description;
   }
 
-  public String getWishDescription() {
-    return wishDescription;
+  public void setProject_description(String project_description) {
+    this.project_description = project_description;
   }
 
-  public void setWishDescription(String wishDescription) {
-    this.wishDescription = wishDescription;
+  public int getProject_cost() {
+    return project_cost;
   }
 
-  public int getWishPrice() {
-    return wishPrice;
-  }
-
-  public void setWishPrice(int wishPrice) {
-    this.wishPrice = wishPrice;
+  public void setProject_cost(int project_cost) {
+    this.project_cost = project_cost;
   }
 
   @Override
   public String toString() {
-    return "Wish: " +
-        "wishID = " + wishID +
-        ", wishName = " + wishName +
-        ", wishDescription = " + wishDescription +
-        ", wishPrice=" + wishPrice;
+    return "Project: " +
+        "project id = " + project_id +
+        ", project name = " + project_name +
+        ", project description = " + project_description +
+        ", project price = " + project_cost;
   }
 
 }

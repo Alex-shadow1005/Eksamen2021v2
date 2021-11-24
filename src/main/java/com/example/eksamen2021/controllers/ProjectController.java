@@ -19,7 +19,7 @@ public class ProjectController {
   public String addWish(@ModelAttribute Project project, Model model) {
     model.addAttribute("project", project);
     model.addAttribute("sessionID", UserController.session.getUser_id());
-    System.out.println(project.getProjectName() + project.getProjectDescription() + project.getProjectPrice());
+    System.out.println(project.getProject_name() + project.getProject_description() + project.getProject_cost());
     return "add-project";
   }
 

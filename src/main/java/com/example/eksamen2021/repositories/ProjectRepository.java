@@ -27,8 +27,8 @@ public class ProjectRepository {
       ps = con.prepareStatement(mySql);
       //3. Set the parameters
       ps.setInt(1, user.getUser_id());
-      ps.setString(2, project.getWishName());
-      ps.setString(3, project.getWishDescription());
+      ps.setString(2, project.getProject_name());
+      ps.setString(3, project.getProject_description());
       //4. Execute SQL query
       h = ps.executeUpdate();
       System.out.println("Project added");

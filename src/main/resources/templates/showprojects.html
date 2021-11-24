@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+
+    <link rel="stylesheet" href="layoutStylesheet.css">
+    <link rel="stylesheet" href="createAccountStylesheet.css">
+
+    <!-- Stylesheet solution fordi reference til stylesheet ikke virker-->
+    <style>
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        * {
+            box-sizing: border-box
+        }
+
+        /* Full-width input fields */
+        input[type=text], input[type=password] {
+            width: 100%;
+            padding: 15px;
+            margin: 5px 0 22px 0;
+            display: inline-block;
+            background: #f1f1f1;
+        }
+
+        input[type=text]:focus, input[type=password]:focus {
+            background-color: #ddd;
+            outline: none;
+        }
+
+        hr {
+            border: 0px solid #f1f1f1;
+            margin-bottom: 25px;
+        }
+
+        /* Set a style for all buttons */
+        button {
+            background-color: #04AA6D;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            opacity: 0.9;
+        }
+
+        button:hover {
+            opacity: 1;
+        }
+
+        /* Extra styles for the cancel button */
+        .cancelbtn {
+            padding: 14px 20px;
+            background-color: #f44336;
+        }
+
+        /* Float cancel and signup buttons and add an equal width */
+        .cancelbtn, .signupbtn {
+            float: left;
+            width: 50%;
+        }
+
+        /* Add padding to container elements */
+        .container {
+            padding: 16px;
+        }
+
+        /* Clear floats */
+        .clearfix::after {
+            content: "";
+            clear: both;
+            display: table;
+        }
+
+        /* Change styles for cancel button and signup button on extra small screens */
+        @media screen and (max-width: 300px) {
+            .cancelbtn, .signupbtn {
+                width: 100%;
+            }
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        /* Style the header */
+        header {
+            background-color: #666;
+            padding: 30px;
+            text-align: center;
+            font-size: 35px;
+            color: white;
+
+        }
+
+        headerpic {
+            width: 50px;
+            margin-top: -120px;
+            float: left;
+        }
+
+        /* Create two columns/boxes that floats next to each other */
+        nav {
+            float: left;
+            width: 30%;
+            height: 100%; /* only for demonstration, should be removed */
+            background: white;
+            padding: 20px;
+        }
+
+        /* Style the list inside the menu */
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        article {
+            float: left;
+            padding: 20px;
+            width: 70%;
+            background-color: white;
+            height: 100%; /* only for demonstration, should be removed */
+        }
+
+        article-box {
+            float: left;
+            padding: 20px;
+            width: 70%;
+            background-color: #f1f1f1;
+            height: 300px; /* only for demonstration, should be removed */
+        }
+
+        /* Clear floats after the columns */
+        section::after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+        /* Style the footer */
+        footer {
+            position: absolute;
+            margin-top: auto;
+            height: 120px;
+            width: 100%;
+            background-color: #777;
+            padding: 10px;
+            text-align: center;
+            color: white;
+        }
+
+
+        /* Create three equal columns that float next to each other */
+        .column {
+            float: left;
+            width: 33.33%;
+        }
+
+        /* Clear floats after the columns */
+        .row:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+
+        /*
+        link styling:
+         */
+
+        a:link {
+            color: black;
+            background-color: transparent;
+            text-decoration: none;
+        }
+
+        a:visited {
+            color: white;
+            background-color: transparent;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: cadetblue;
+            background-color: transparent;
+            text-decoration: none;
+        }
+
+        a:active {
+            color: white;
+            background-color: transparent;
+            text-decoration: none;
+        }
+
+        /* Responsive layout - makes the two columns/boxes stack on top of each other instead of next to each other, on small screens */
+        @media (max-width: 600px) {
+            nav, article {
+                width: 100%;
+                height: auto;
+            }
+        }
+
+    </style>
+
+    <!-- Slut på stylesheet, start på HTML-->
+
+    <title>Wishlist</title>
+
+
+</head>
+<body>
+<header>
+    <h2>Your Wishlist</h2>
+
+</header>
+
+<section>
+    <nav>
+        <h1 style="font-size: xxx-large"></h1>
+        <ul>
+            <a href="/loginpage">
+                <button type="button" style="background-color: cadetblue">Login</button>
+            </a></li>
+            <li>
+                <a href="/show/{id}">
+                    <button type="button" style="background-color: cadetblue">Show Wishlist</button>
+                </a></li>
+            <li>
+                <a href="/addwish">
+                    <button type="button" style="background-color: cadetblue">Add Wish</button>
+                </a></li>
+        </ul>
+    </nav>
+
+    <div class="article-box">
+        <article>
+
+            <table>
+                <tr>
+                    <th>ID</th>
+                    <th>&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;</th>
+                    <th>Name</th>
+                    <th>&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;</th>
+                    <th>Description</th>
+                    <th>&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;</th>
+                    <th>Price</th>
+                </tr>
+
+
+                <tr th:each="wish : ${wishes}">
+                    <td th:text="${wish.wishID}"></td>
+                    <td>&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;</td>
+                    <td th:text="${wish.wishName}"></td>
+                    <td>&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;</td>
+                    <td th:text="${wish.wishDescription}"></td>
+                    <td>&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;</td>
+                    <td th:text="${wish.wishPrice}"></td>
+                </tr>
+
+
+                </tr>
+
+            </table>
+            <br>
+
+            <a th:href="@{/addwish}">
+                <button type="button" style="background-color: cadetblue">Add wish</button>
+            </a>
+
+
+        </article>
+    </div>
+</section>
+
+
+<!-- FOOTER START -->
+
+<footer>
+    <div class="row">
+        <div class="column">
+            <h3>Contact Us</h3>
+            <p> <a href="mailto:kea@kea.dk">Email Us Here</a> </p>
+        </div>
+
+        <div class="column">
+            <h3>About Us</h3>
+            <p>Just three classmates who have fun when working on a project together! :)</p>
+        </div>
+
+        <div class="column">
+            <h3>KEA</h3>
+            <p> <a href="https://www.kea.dk" target="_blank">Go visit KEA's website</a> </p>
+        </div>
+    </div>
+
+</footer>
+
+<!--FOOTER END-->
+
+</body>
+</html>
