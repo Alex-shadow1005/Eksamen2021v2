@@ -68,5 +68,5 @@ public class ProjectController {
     projectService.addSubproject(project, subproject);
     return "redirect:/show/" + projectid;
   }
-  
+
 }
