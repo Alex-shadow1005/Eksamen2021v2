@@ -29,6 +29,8 @@ CREATE TABLE `projects` (
   `project_id` int(11) NOT NULL AUTO_INCREMENT,
   `project_name` varchar(100) DEFAULT NULL,
   `project_description` varchar(1000) NOT NULL,
+  `project_cost` int(11) NOT NULL,
+  PRIMARY KEY (`project_id`),
   UNIQUE KEY `project_id_UNIQUE` (`project_id`),
   KEY `user_id_idx` (`user_id`),
   CONSTRAINT `user_id` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
@@ -55,7 +57,8 @@ CREATE TABLE `subprojects` (
   `subproject_id` int(11) NOT NULL AUTO_INCREMENT,
   `project_id` int(11) NOT NULL,
   `subproject_name` varchar(100) DEFAULT NULL,
-  `subprojects_description` varchar(1000) NOT NULL,
+  `subproject_description` varchar(1000) NOT NULL,
+  `subproject_cost` int(11) NOT NULL,
   PRIMARY KEY (`subproject_id`),
   KEY `project_id_idx` (`project_id`),
   CONSTRAINT `project_id` FOREIGN KEY (`project_id`) REFERENCES `projects` (`project_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
@@ -107,4 +110,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-11-23 10:29:44
+-- Dump completed on 2021-11-24 10:48:42
