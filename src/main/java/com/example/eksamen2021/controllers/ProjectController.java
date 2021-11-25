@@ -23,6 +23,26 @@ public class ProjectController {
     System.out.println(project.getProject_name() + project.getProject_description() + project.getProject_price());
     return "add-project";
   }
+//viser alle id nummere fra Project
+  @GetMapping("/showall")
+  public String showAll(Model model) {
+    List<Project> projectId = projectService.showAll(1);
+    model.addAttribute("Projectlist", projectId);
+    return "show-projects";
+  }
+//sender projct id til projectservice (@Path tager id,et fra urlen og gemmer det??)
+  @GetMapping("/delete-project/{projectId}")
+  public String deleteProject(@PathVariable int projectId, Model model) {
+   projectService.deleteProject(projectId);
+    return "show-projects";
+  }
+  //sender projct id til projectservice (@Path tager id,et fra urlen og gemmer det??)
+  @GetMapping("/delete-subproject/{subprojectId}")
+  public String deleteSubproject(@PathVariable int subprojectId, Model model) {
+    projectService.deleteSubproject(subprojectId);
+
+    return "show-projects";
+  }
 
   @GetMapping("/add-subproject")
   public String addSubproject(@ModelAttribute Subproject subproject, Model model) {

@@ -16,7 +16,7 @@ public class ProjectService {
       return "redirect:/show";
     } else {
       System.out.println("sut :c");
-      return "redirect:/addWish";
+      return "redirect:/addProject";
     }
   }
 
@@ -26,8 +26,16 @@ public class ProjectService {
       return "redirect:/show";
     } else {
       System.out.println("sut :c");
-      return "redirect:/addWish";
+      return "redirect:/addProject";
     }
+  }
+//deleter projectet ud fra dens ID
+  public void deleteProject(int projectId) {
+    projectRepository.deleteProject(projectId);
+  }
+  //deleter projectet ud fra dens SubID
+  public void deleteSubproject(int subprjectid) {
+    projectRepository.deleteSubproject(subprjectid);
   }
 
   public List<Project> showAll(int id) {

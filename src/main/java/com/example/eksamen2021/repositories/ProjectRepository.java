@@ -67,6 +67,18 @@ public class ProjectRepository {
     return h; //returnerer brugeren til Service
   }
 
+  public void deleteProject(int projectId) {
+    mySql = "DELETE FROM projects (project_id, subproject_name, subproject_description) VALUES (?, ?, ?)";
+
+  }
+
+  public void deleteSubproject(int subprojectId) {
+    mySql = "DELETE FROM projects (subproject_id, subproject_name, subproject_description) VALUES (?, ?, ?)";
+
+  }
+
+
+
   //VISER ALLE PROJEKTERNE PÅ BRUGERENS PROJEKTLISTE
   public List<Project> showAll(int id) {
     ArrayList<Project> projects = new ArrayList<>();
