@@ -87,9 +87,10 @@ public class ProjectRepository {
             ps.setInt(1, projectId);
             //4. Execute SQL query
             ps.executeUpdate();
+            System.out.println("successfully deleted project");
             //5. Display the result set
         } catch (SQLException err) {
-            System.out.println("Fejl i count err=" + err.getMessage());
+            System.out.println("Cannot delete project with subproject. Please delete any subprojects before deleting project." + err.getMessage());
         }
     }
 
