@@ -121,6 +121,39 @@ public class ProjectRepository {
 
     }
 
+    public void updateSubproject(Subproject subproject) {
+        String mysql;
+        PreparedStatement ps;
+
+        try {
+            //1. Get a connection to database
+            Connection con = DBManager.getConnection();
+
+            //2. Prepare statement
+            mysql = "UPDATE FROM subproject SET" + "subproject_name=?," +
+                    "subproject_description=?," + "subproject_seniordeveloper_hours=?"
+                    + "subproject_developer_hours=?" + "subproject_graphic_hours=?" + "WHERE subproject_id=?";
+
+
+            ps = con.prepareStatement(mysql);
+
+            //3. Set the parameters
+            ps.setString(1, subproject.getSubproject_name());
+            ps.setString(2, subproject.getSubproject_description());
+            ps.setInt(3, subproject.getSubproject_seniordeveloper_hours());
+            ps.setInt(4, subproject.getSubproject_developer_hours());
+            ps.setInt(5, subproject.getSubproject_graphic_hours());
+            ps.setInt(6, subproject.getSubproject_id());
+
+            //4. Execute SQL query
+            ps.executeUpdate();
+
+            //5. Display the result set
+        } catch (SQLException err) {
+            System.out.println("Fejl i count err=" + err.getMessage());
+        }
+    }
+
 
     //VISER ALLE PROJEKTERNE PÅ BRUGERENS PROJEKTLISTE
     public List<Project> showAll(int id) {

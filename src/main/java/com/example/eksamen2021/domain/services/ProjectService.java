@@ -41,6 +41,11 @@ public class ProjectService {
     projectRepository.deleteSubproject(subprjectid);
   }
 
+  //updater subprojecter ud fra sub_ID
+  public void updateSubproject(Subproject subproject) throws SQLException{
+    projectRepository.updateSubproject(subproject);
+  }
+
 
 
 

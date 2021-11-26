@@ -46,6 +46,14 @@ public class ProjectController {
     return "show-projects";
   }
 
+  //sender projct id til projectservice (@Path tager id,et fra urlen og gemmer det??)
+    @GetMapping("/update-subproject")
+    public String updateSubproject(@ModelAttribute Subproject subproject) throws SQLException{
+      projectService.updateSubproject(subproject);
+
+      return "show-projects";
+    }
+
 
 
 
