@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ProjectRepository {
+  private Project project;
 
   //TILFØJER ET PROJEKT TIL BRUGERENS PROJEKTLISTE
   public int addProject(Project project, User user) {
@@ -67,17 +68,40 @@ public class ProjectRepository {
     return h; //returnerer brugeren til Service
   }
 
-  public void deleteProject(int projectId) {
-    mySql = "DELETE FROM projects (project_id, subproject_name, subproject_description) VALUES (?, ?, ?)";
+  public void deleteProject(int projectId) throws SQLException {
 
+    String mySql;
+    PreparedStatement ps;
+    // int h = 0;
+    try {
+
+      //1. Get a connection to database
+      Connection con = DBManager.getConnection();
+
+      //2. Prepare statement
+      mySql = "DELETE FROM projects WHERE project_id=?";
+
+      ps = con.prepareStatement(mySql);
+      //3. Set the parameters
+      ps.setInt(1, projectId);
+      //4. Execute SQL query
+      ps.executeUpdate();
+      //5. Display the result set
+    } catch (SQLException err) {
+      System.out.println("Fejl i count err=" + err.getMessage());
+    }
   }
 
-  public void deleteSubproject(int subprojectId) {
+
+
+
+
+
+ /* public void deleteSubproject(int subprojectId) {
     mySql = "DELETE FROM projects (subproject_id, subproject_name, subproject_description) VALUES (?, ?, ?)";
 
   }
-
-
+*/
 
   //VISER ALLE PROJEKTERNE PÅ BRUGERENS PROJEKTLISTE
   public List<Project> showAll(int id) {
