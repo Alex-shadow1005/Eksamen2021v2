@@ -30,6 +30,8 @@ public class ProjectController {
     model.addAttribute("Projectlist", projectId);
     return "show-projects";
   }
+
+
 //sender projct id til projectservice (@Path tager id,et fra urlen og gemmer det??)
   @GetMapping("/delete-project/{projectId}")
   public String deleteProject(@PathVariable int projectId, Model model) {
@@ -44,6 +46,7 @@ public class ProjectController {
     return "show-projects";
   }
 
+
   @GetMapping("/add-subproject")
   public String addSubproject(@ModelAttribute Subproject subproject, Model model) {
     model.addAttribute("subproject", subproject);
@@ -56,14 +59,14 @@ public class ProjectController {
   public String showProjects(@PathVariable("id") int id, Model model) {
     List<Project> projects = projectService.showAll(id);
     model.addAttribute("projects", projects);
-    return "show-project2";
+    return "show-projects";
   }
 
   @GetMapping("/showsubprojects/{id}")
   public String showSubprojects(@PathVariable("id") int id, Model model) {
     List<Subproject> subprojects = projectService.showAllSubprojects(id);
     model.addAttribute("subprojects", subprojects);
-    return "show-project2";
+    return "show-projects";
   }
 
   @PostMapping("/save")

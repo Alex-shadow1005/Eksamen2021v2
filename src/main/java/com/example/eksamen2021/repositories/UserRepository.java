@@ -20,7 +20,7 @@ public class UserRepository {
       //1. Get a connection to database
       Connection con = DBManager.getConnection();
       //2. Prepare statement
-      mySql = "INSERT INTO user (user_email, user_password, user_username) VALUES (?, ?, ?)"; //Opretter streng i SQL
+      mySql = "INSERT INTO users (user_email, user_password, user_username) VALUES (?, ?, ?)"; //Opretter streng i SQL
 
       ps = con.prepareStatement(mySql);
       //3. Set the parameters
@@ -46,7 +46,7 @@ public class UserRepository {
         User tempUser = null;
         try {
             Connection con = DBManager.getConnection();
-            sqlStr = "SELECT * FROM user WHERE email = ? AND password = ?"; //leder efter en user med den email og password de har tastet ind
+            sqlStr = "SELECT * FROM users WHERE user_email = ? AND user_password = ?"; //leder efter en user med den email og password de har tastet ind
 
             ps = con.prepareStatement(sqlStr);
             ps.setString(1, user.getUser_email()); //sætter email ind i ?-pladsen
