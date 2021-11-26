@@ -39,7 +39,7 @@ public class UserController {
     return "redirect:/show/" + session.getUser_id();
   }
 
-  @PostMapping("/new-User")
+  @PostMapping("/new-user")
   public String createUser(@ModelAttribute User user, Model model) { //Jens' version af createUser
     model.addAttribute("user", user);
     userService.createUser(user);

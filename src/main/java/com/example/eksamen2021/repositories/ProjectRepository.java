@@ -67,6 +67,7 @@ public class ProjectRepository {
     return h; //returnerer brugeren til Service
   }
 
+
   public void deleteProject(int projectId) {
     mySql = "DELETE FROM projects (project_id, subproject_name, subproject_description) VALUES (?, ?, ?)";
 

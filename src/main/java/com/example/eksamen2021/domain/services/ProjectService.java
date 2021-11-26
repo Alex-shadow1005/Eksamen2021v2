@@ -29,6 +29,8 @@ public class ProjectService {
       return "redirect:/addProject";
     }
   }
+
+
 //deleter projectet ud fra dens ID
   public void deleteProject(int projectId) {
     projectRepository.deleteProject(projectId);
@@ -37,6 +39,8 @@ public class ProjectService {
   public void deleteSubproject(int subprjectid) {
     projectRepository.deleteSubproject(subprjectid);
   }
+
+
 
   public List<Project> showAll(int id) {
     return projectRepository.showAll(id);

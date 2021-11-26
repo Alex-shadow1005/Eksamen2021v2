@@ -7,7 +7,7 @@ public class UserService {
 
   UserRepository userRepository = new UserRepository();
 
-  public String createUser(User user) {
+  public String createUser(User user) {  //DEN HER SKAL LAVES OM, SÅ endpoints kun ligger i Controllers
     int createUserSuccess = userRepository.createUser(user);
     if (createUserSuccess == 1)
       return "redirect:/login";//end pont = yes
