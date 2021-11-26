@@ -30,6 +30,8 @@ public class ProjectService {
       return "redirect:/addProject";
     }
   }
+
+
 //deleter projectet ud fra dens ID
   public void deleteProject(int projectId) throws SQLException {
     projectRepository.deleteProject(projectId);
@@ -40,6 +42,7 @@ public class ProjectService {
   }
 
  */
+
 
   public List<Project> showAll(int id) {
     return projectRepository.showAll(id);
