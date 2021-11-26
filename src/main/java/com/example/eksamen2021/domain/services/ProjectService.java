@@ -5,6 +5,7 @@ import com.example.eksamen2021.domain.models.Subproject;
 import com.example.eksamen2021.domain.models.User;
 import com.example.eksamen2021.repositories.ProjectRepository;
 
+import java.sql.SQLException;
 import java.util.List;
 
 public class ProjectService {
@@ -32,13 +33,14 @@ public class ProjectService {
 
 
 //deleter projectet ud fra dens ID
-  public void deleteProject(int projectId) {
+  public void deleteProject(int projectId) throws SQLException {
     projectRepository.deleteProject(projectId);
   }
   //deleter projectet ud fra dens SubID
-  public void deleteSubproject(int subprjectid) {
+  public void deleteSubproject(int subprjectid) throws SQLException {
     projectRepository.deleteSubproject(subprjectid);
   }
+
 
 
 

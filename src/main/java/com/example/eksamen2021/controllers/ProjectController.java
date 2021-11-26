@@ -4,14 +4,16 @@ import com.example.eksamen2021.domain.models.Project;
 import com.example.eksamen2021.domain.models.Subproject;
 import com.example.eksamen2021.domain.models.User;
 import com.example.eksamen2021.domain.services.ProjectService;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.sql.SQLException;
 import java.util.List;
-
+@Controller
 public class ProjectController {
   private ProjectService projectService = new ProjectService();
 
@@ -34,17 +36,19 @@ public class ProjectController {
 
 //sender projct id til projectservice (@Path tager id,et fra urlen og gemmer det??)
   @GetMapping("/delete-project/{projectId}")
-  public String deleteProject(@PathVariable int projectId, Model model) {
+  public String deleteProject(@PathVariable int projectId) throws SQLException {
    projectService.deleteProject(projectId);
     return "show-projects";
   }
   //sender projct id til projectservice (@Path tager id,et fra urlen og gemmer det??)
-  @GetMapping("/delete-subproject/{subprojectId}")
-  public String deleteSubproject(@PathVariable int subprojectId, Model model) {
+ @GetMapping("/delete-subproject/{subprojectId}")
+  public String deleteSubproject(@PathVariable int subprojectId) throws SQLException {
     projectService.deleteSubproject(subprojectId);
 
     return "show-projects";
   }
+
+
 
 
   @GetMapping("/add-subproject")
