@@ -103,7 +103,7 @@ public class ProjectRepository {
             //1. Get a connection to database
             Connection con = DBManager.getConnection();
             //2. Prepare statement
-            mySql = "DELETE FROM subproject where subproject_id=?";
+            mySql = "DELETE FROM subprojects where subproject_id=?";
 
             ps = con.prepareStatement(mySql);
             //3. Set the parameters
