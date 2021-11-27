@@ -34,8 +34,9 @@
                         <input type="password" placeholder="Enter Password" name="user_password" required
                                id="user_password">
                         <!--sender password videre til UserController /login-->
-
-                        <button type="submit">Login</button>
+                        <br>
+                        <br>
+                        <button type="submit" class="start-button">Login</button>
                         <!-- virker remember me overhovedet?
                         <label>
                             <input type="checkbox" checked="checked" name="remember"> Remember me
@@ -63,16 +64,16 @@
 
 
     <div class="article-box">
-    <article>
+        <article>
 
 
-            <form action="/new-user" method="POST" style="border:1px solid #ccc">
+            <form action="/new-user" method="POST">
                 <p class="w3-justify">
                 <div class="container">
-                
+
 
                     <label for="user_username"><b>Username</b></label>
-                    <input type="text" placeholder="Enter username" name="user_username" required id="user_username">
+                    <input type="text" placeholder="Enter Username" name="user_username" required id="user_username">
 
                     <!--//Input skal have et id af den pågældene attribut fra lable-->
                     <label for="user_email"><b>Email</b></label>
@@ -88,77 +89,48 @@
                     </label>-->
 
                     <!--SKAL VI LAVE EN TERMS??-->
-                    <p>By creating an account you agree to our <a href="#" style="color:dodgerblue">Terms & Privacy</a>.
+                    <p>By creating an account you agree to our <a href="/terms" target="popup" onclick="window.open('/terms','popup','width=600,height=600'); return false;"
+                    >Terms & Privacy</a>.
                     </p>
 
                     <div class="clearfix">
                         <!-- SYNES IKKE DER SKAL VÆRE EN CANCEL <button type="button" class="cancelbtn">Cancel</button>-->
-                        <button type="submit" class="signupbtn">Sign Up</button>
+                        <button type="submit" class="start-button">Sign Up</button>
                     </div>
-                </p>
+                    </p>
                 </div>
             </form>
 
         </article>
     </div>
+</div>
 
     <!-- END OF CREATE USER -->
 
-<!-- FOOTER START -->
 
-<footer>
-    <div class="row">
-        <div class="column">
-            <h3></h3>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-        </div>
-
-        <div class="column">
-        </div>
-
-        <div class="column">
+    <!-- FORSØG PÅ ALPHA SOLUTIONS NAVBAR
+    <div id="navbar">
+        <div class="header">
         </div>
     </div>
-
-</footer>
-
-<!--FOOTER END-->
-
-
-<!-- FORSØG PÅ ALPHA SOLUTIONS NAVBAR
-<div id="navbar">
-    <div class="header">
+    <div id="logo">
+        <a href="/login-page">
+            <img src="logo.jpg" alt="Team Super Awesome Logo">
+        </a>
     </div>
-</div>
-<div id="logo">
-    <a href="/login-page">
-        <img src="logo.jpg" alt="Team Super Awesome Logo">
-    </a>
-</div>
-<div id="headermenu">
-    <nav class="headermenubuttons">
-        <ul>
-            <li>
-                <a class="headerchoice" href="/createproject.html"></a>
-            </li>
-            <li>
-                <a class="headerchoice" href="/showprojects.html"></a>
-            </li>
-            <li>
-                <a class="headerchoice" href="/edituser.html"></a>
-            </li>
-        </ul>
-    </nav>
-</div>
--->
+    <div id="headermenu">
+        <nav class="headermenubuttons">
+            <ul>
+                <li>
+                    <a class="headerchoice" href="/createproject.html"></a>
+                </li>
+                <li>
+                    <a class="headerchoice" href="/showprojects.html"></a>
+                </li>
+                <li>
+                    <a class="headerchoice" href="/edituser.html"></a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+    -->

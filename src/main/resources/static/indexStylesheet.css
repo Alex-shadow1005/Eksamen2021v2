@@ -94,3 +94,20 @@ a:active, a:hover {
     padding-top: 64px !important;
     padding-bottom: 64px !important
 }
+
+/* TABLE CSS: */
+table {
+    border-collapse: collapse;
+    width: 100%;
+    align-content: center;
+}
+
+td, th {
+    border: 1px solid #59869D;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: ghostwhite;
+}
