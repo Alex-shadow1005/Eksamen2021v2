@@ -20,13 +20,13 @@ public class UserRepository {
       //1. Get a connection to database
       Connection con = DBManager.getConnection();
       //2. Prepare statement
-      mySql = "INSERT INTO users (user_email, user_password, user_username) VALUES (?, ?, ?)"; //Opretter streng i SQL
+      mySql = "INSERT INTO users (user_username, user_email, user_password) VALUES (?, ?, ?)"; //Opretter streng i SQL
 
       ps = con.prepareStatement(mySql);
       //3. Set the parameters
-      ps.setString(1, user.getUser_email()); //sætter brugerens email ind i det første ?
-      ps.setString(2, user.getUser_password()); //sætter brugerens password ind i det næste ?
-      ps.setString(3, user.getUser_username()); //sætter brugerens username ind i det næste ?
+      ps.setString(1, user.getUser_username()); //sætter brugerens username ind i det næste ?
+      ps.setString(2, user.getUser_email()); //sætter brugerens email ind i det første ?
+      ps.setString(3, user.getUser_password()); //sætter brugerens password ind i det næste ?
       //4. Execute SQL query
       h = ps.executeUpdate();
       System.out.println("User added");
