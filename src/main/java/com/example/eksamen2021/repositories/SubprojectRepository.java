@@ -64,7 +64,7 @@ public class SubprojectRepository {
         }
 
     }
-
+/*
     public void updateSubproject(int subproject_id, Subproject subEdt) {
         String mysql;
         PreparedStatement ps;
@@ -95,6 +95,8 @@ public class SubprojectRepository {
             System.out.println("Fejl i count err=" + err.getMessage());
         }
     }
+
+ */
 
     //VISER ALLE SUBPROJEKTER DER HØRER TIL PROJEKT-ID'EN
     public List<Subproject> showAllSubprojects(int id) {

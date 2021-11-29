@@ -16,7 +16,7 @@ import java.util.List;
 public class SubprojectController {
 
     private SubprojectService subprojectService = new SubprojectService();
-
+/*
     //sender projct id til projectservice (@Path tager id,et fra urlen og gemmer det??)
     @GetMapping("/update-subproject/{subproject_id}")
     public String updateSubproject(@PathVariable("subproject_id") int subprojectId, Model model) throws SQLException {
@@ -24,6 +24,8 @@ public class SubprojectController {
         model.addAttribute("subproject", subEdt);
         return "show-projects";
     }
+
+ */
 
 
     @GetMapping("/add-subproject")

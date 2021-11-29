@@ -69,10 +69,6 @@ public class ProjectRepository {
     }
   }
 
-
-
-
-
   //VISER ALLE PROJEKTERNE PÅ BRUGERENS PROJEKTLISTE
   public List<Project> showAll(int id) {
     ArrayList<Project> projects = new ArrayList<>();

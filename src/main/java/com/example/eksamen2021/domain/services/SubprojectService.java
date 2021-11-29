@@ -25,11 +25,13 @@ public class SubprojectService {
     public void deleteSubproject(int subprjectid) throws SQLException {
         subprojectRepository.deleteSubproject(subprjectid);
     }
-
+/*
     //updater subprojecter ud fra sub_ID
     public void updateSubproject(int subproject_id, Subproject subEdt) throws SQLException{
         subprojectRepository.updateSubproject(subproject_id, subEdt);
     }
+
+ */
 
     public List<Subproject> showAllSubprojects(int id) {
         return subprojectRepository.showAllSubprojects(id);
