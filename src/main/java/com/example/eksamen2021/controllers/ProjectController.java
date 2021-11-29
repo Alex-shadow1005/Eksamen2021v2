@@ -70,7 +70,7 @@ public class ProjectController {
   public String showSubprojects(@PathVariable("id") int id, Model model) {
     List<Subproject> subprojects = projectService.showAllSubprojects(id);
     model.addAttribute("subprojects", subprojects);
-    return "show-projects";
+    return "show-subprojects";
   }
 
   @PostMapping("/save")
@@ -93,7 +93,7 @@ public class ProjectController {
     model.addAttribute("subproject", subproject);
     project.setProject_id(projectid); //kan kalde vores id her i stedet, skal laves i Thymeleaf
     projectService.addSubproject(project, subproject);
-    return "redirect:/show/" + projectid;
+    return "redirect:/show-subprojects/" + projectid;
   }
 
 }

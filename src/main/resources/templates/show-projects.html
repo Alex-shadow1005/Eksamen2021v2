@@ -29,6 +29,10 @@
 
                         <th>Price</th>
 
+                        <th>Hours</th>
+
+                        <th>Subprojects</th>
+
                         <th>Edit</th>
 
                         <th>Delete</th>
@@ -42,14 +46,18 @@
 
                         <td th:text="${project.project_price}"></td>
 
+                        <td th:text="${project.project_hours}"></td>
+
+                        <td><a href="/show-subprojects/">
+                            <button class="button smaller-button">Subproject</button></a></td>
+
                         <td><!-- EDIT PROJECT HER --></td>
 
                         <td><!-- DELETE PROJECT HER --></td>
 
-                        <!-- TILFØJ: HOURS, SHOW SUBPROJECTS?-->
                     </tr>
 
-                    </tr>
+
                 </table>
                 <br>
                 <br>
@@ -130,6 +138,25 @@
     }
 
     .start-button:hover {
+        background-color: #59869D; /*samme farve som taget fra Alpha-Solutions hjemmeside!*/
+        color: white;
+    }
+
+    .smaller-button {
+        padding: 4px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 15px;
+        margin: 2px 2px;
+        transition-duration: 0.4s;
+        cursor: pointer;
+        background-color: white;
+        color: black;
+        border: 2px solid #e7e7e7;
+    }
+
+    .smaller-button:hover {
         background-color: #59869D; /*samme farve som taget fra Alpha-Solutions hjemmeside!*/
         color: white;
     }

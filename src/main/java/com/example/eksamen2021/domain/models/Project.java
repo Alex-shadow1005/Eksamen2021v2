@@ -5,6 +5,7 @@ public class Project {
   private String project_name;
   private String project_description;
   private int project_price;
+  private int project_hours;
 
 
   public Project(int project_id, String project_name, String project_description, int project_price) {
@@ -18,6 +19,7 @@ public class Project {
     this.project_name = project_name;
     this.project_description = project_description;
     this.project_price = project_price;
+    this.project_hours = project_hours;
   }
 
   public Project() {
@@ -53,6 +55,14 @@ public class Project {
 
   public void setProject_price(int project_price) {
     this.project_price = project_price;
+  }
+
+  public int getProject_hours() {
+    return project_hours;
+  }
+
+  public void setProject_hours(int project_hours) {
+    this.project_hours = project_hours;
   }
 
   @Override

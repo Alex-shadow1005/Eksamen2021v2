@@ -6,6 +6,7 @@ private int subproject_id;
 private String subproject_name;
 private String subproject_description;
 private int subproject_price;
+private int subproject_hours;
 
   /*
   private User user;
@@ -67,4 +68,12 @@ private int subproject_price;
     this.subproject_price = subproject_price;
   }
 
+  public int getSubproject_hours() {
+    return subproject_hours;
+  }
+
+  public void setSubproject_hours(int subproject_hours) {
+    this.subproject_hours = subproject_hours;
+  }
 }
+
