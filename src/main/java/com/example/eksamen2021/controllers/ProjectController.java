@@ -39,12 +39,7 @@ public class ProjectController {
   }
   //sender projct id til projectservice (@Path tager id,et fra urlen og gemmer det??)
   //@DeleteMapping
- @GetMapping ("/delete-subproject/{subprojectId}")
-  public String deleteSubproject(@PathVariable int subprojectId) throws SQLException {
-    projectService.deleteSubproject(subprojectId);
 
-    return "show-projects";
-  }
 /*
   //sender projct id til projectservice (@Path tager id,et fra urlen og gemmer det??)
     @GetMapping("/update-subproject")
@@ -53,25 +48,7 @@ public class ProjectController {
 
       return "show-projects";
     }*/
-  //sender projct id til projectservice (@Path tager id,et fra urlen og gemmer det??)
-  @GetMapping("/update-subproject/{subproject_id}")
-  public String updateSubproject(@PathVariable("subproject_id") int subprojectId, Model model) throws SQLException{
-    Subproject subEdt = projectService.updateSubproject(subprojectId);
-model.addAttribute("subproject", subEdt);
-    return "show-projects";
-  }
 
-
-
-
-  @GetMapping("/add-subproject")
-  public String addSubproject(@ModelAttribute Subproject subproject, Model model) {
-    model.addAttribute("subproject", subproject);
-    model.addAttribute("sessionID", UserController.session.getUserId());
-    //System.out.println(project.getProject_name() + project.getProject_description() + project.getProject_price());
-    //We will return to this one ^
-    return "add-subproject";
-  }
 
   @GetMapping("/show/{id}")
   public String showProjects(@PathVariable("id") int id, Model model) {
@@ -80,12 +57,6 @@ model.addAttribute("subproject", subEdt);
     return "show-projects";
   }
 
-  @GetMapping("/showsubprojects/{id}")
-  public String showSubprojects(@PathVariable("id") int id, Model model) {
-    List<Subproject> subprojects = projectService.showAllSubprojects(id);
-    model.addAttribute("subprojects", subprojects);
-    return "show-projects";
-  }
 
   @PostMapping("/save")
   public String saveProject(@ModelAttribute Project project, User user) {
@@ -103,12 +74,6 @@ model.addAttribute("subproject", subEdt);
     return "redirect:/show/" + UserController.session.getUserId();
   }
 
-  @PostMapping("/add-subproject/{projectid}")
-  public String addSubprojectPost(@PathVariable("projectid") int projectid, @ModelAttribute Project project, Subproject subproject, Model model) {
-    model.addAttribute("subproject", subproject);
-    project.setProjectId(projectid); //kan kalde vores id her i stedet, skal laves i Thymeleaf
-    projectService.addSubproject(project, subproject);
-    return "redirect:/show/" + projectid;
-  }
+
 
 }

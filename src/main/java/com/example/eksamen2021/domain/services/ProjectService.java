@@ -21,39 +21,16 @@ public class ProjectService {
     }
   }
 
-  public String addSubproject(Project project, Subproject subproject) {
-    int addSubprojectSuccess = projectRepository.addSubproject(project, subproject);
-    if (addSubprojectSuccess == 1) {
-      return "redirect:/show";
-    } else {
-      System.out.println("sut :c");
-      return "redirect:/addProject";
-    }
-  }
-
 
 //deleter projectet ud fra dens ID
   public void deleteProject(int projectId) throws SQLException {
     projectRepository.deleteProject(projectId);
   }
-  //deleter projectet ud fra dens SubID
-  public void deleteSubproject(int subprjectid) throws SQLException {
-    projectRepository.deleteSubproject(subprjectid);
-  }
-
-  //updater subprojecter ud fra sub_ID
-  public void updateSubproject(int subproject_id, Subproject subEdt) throws SQLException{
-    projectRepository.updateSubproject(subproject_id, subEdt);
-  }
-
-
 
 
   public List<Project> showAll(int id) {
     return projectRepository.showAll(id);
   }
 
-  public List<Subproject> showAllSubprojects(int id) {
-    return projectRepository.showAllSubprojects(id);
-  }
+
 }
