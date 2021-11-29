@@ -3,25 +3,25 @@ package com.example.eksamen2021.domain.models;
 public class Subproject {
 
 
-  private int subproject_id;
-  private int project_id;
-  private String subproject_name;
-  private String subproject_description;
-  private int subproject_seniordeveloper_hours;
-  private int subproject_developer_hours;
-  private int subproject_graphic_hours;
-  private int subproject_price;
+  private int subprojectId;
+  private int projectId;
+  private String subprojectName;
+  private String subprojectDescription;
+  private int subprojectSeniordeveloperHours;
+  private int subprojectDeveloperHours;
+  private int subprojectGraphicHours;
+  private int subprojectPrice;
 
-  public int getSubproject_seniordeveloper_hours() {
-    return subproject_seniordeveloper_hours;
+  public int getSubprojectSeniordeveloperHours() {
+    return subprojectSeniordeveloperHours;
   }
 
-  public int getSubproject_developer_hours() {
-    return subproject_developer_hours;
+  public int getSubprojectDeveloperHours() {
+    return subprojectDeveloperHours;
   }
 
-  public int getSubproject_graphic_hours() {
-    return subproject_graphic_hours;
+  public int getSubprojectGraphicHours() {
+    return subprojectGraphicHours;
   }
 
   /*
@@ -30,58 +30,58 @@ public class Subproject {
   */
 
 
-  public Subproject(int subproject_id, String subproject_name, String subproject_description, int subproject_price) {
-    this.subproject_id = subproject_id;
-    this.subproject_name = subproject_name;
-    this.subproject_description = subproject_description;
-    this.subproject_price = subproject_price;
+  public Subproject(int subprojectId, String subprojectName, String subprojectDescription, int subprojectPrice) {
+    this.subprojectId = subprojectId;
+    this.subprojectName = subprojectName;
+    this.subprojectDescription = subprojectDescription;
+    this.subprojectPrice = subprojectPrice;
   }
 
-  public Subproject(int subproject_id, String subproject_name, String subproject_description) {
-    this.subproject_id = subproject_id;
-    this.subproject_name = subproject_name;
-    this.subproject_description = subproject_description;
+  public Subproject(int subprojectId, String subprojectName, String subprojectDescription) {
+    this.subprojectId = subprojectId;
+    this.subprojectName = subprojectName;
+    this.subprojectDescription = subprojectDescription;
   }
 
   public Subproject() {
   }
 
-  public Subproject(String subproject_name, String subproject_description, int subproject_price) {
-    this.subproject_name = subproject_name;
-    this.subproject_description = subproject_description;
-    this.subproject_price = subproject_price;
+  public Subproject(String subprojectName, String subprojectDescription, int subprojectPrice) {
+    this.subprojectName = subprojectName;
+    this.subprojectDescription = subprojectDescription;
+    this.subprojectPrice = subprojectPrice;
   }
 
-  public int getSubproject_id() {
-    return subproject_id;
+  public int getSubprojectId() {
+    return subprojectId;
   }
 
-  public void setSubproject_id(int subproject_id) {
-    this.subproject_id = subproject_id;
+  public void setSubprojectId(int subprojectId) {
+    this.subprojectId = subprojectId;
   }
 
-  public String getSubproject_name() {
-    return subproject_name;
+  public String getSubprojectName() {
+    return subprojectName;
   }
 
-  public void setSubproject_name(String subproject_name) {
-    this.subproject_name = subproject_name;
+  public void setSubprojectName(String subprojectName) {
+    this.subprojectName = subprojectName;
   }
 
-  public String getSubproject_description() {
-    return subproject_description;
+  public String getSubprojectDescription() {
+    return subprojectDescription;
   }
 
-  public void setSubproject_description(String subproject_description) {
-    this.subproject_description = subproject_description;
+  public void setSubprojectDescription(String subprojectDescription) {
+    this.subprojectDescription = subprojectDescription;
   }
 
-  public int getSubproject_price() {
-    return subproject_price;
+  public int getSubprojectPrice() {
+    return subprojectPrice;
   }
 
-  public void setSubproject_price(int subproject_price) {
-    this.subproject_price = subproject_price;
+  public void setSubprojectPrice(int subprojectPrice) {
+    this.subprojectPrice = subprojectPrice;
   }
 
 }

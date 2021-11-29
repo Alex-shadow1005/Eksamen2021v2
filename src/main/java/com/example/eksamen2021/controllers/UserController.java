@@ -36,7 +36,7 @@ public class UserController {
     if (session == null) {
       return "login-page";
     }
-    return "redirect:/show/" + session.getUser_id();
+    return "redirect:/show/" + session.getUserId();
   }
 
   @PostMapping("/new-user")

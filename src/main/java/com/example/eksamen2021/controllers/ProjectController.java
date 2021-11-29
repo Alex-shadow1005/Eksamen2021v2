@@ -18,8 +18,8 @@ public class ProjectController {
   @GetMapping("/add-project")
   public String addProject(@ModelAttribute Project project, Model model) {
     model.addAttribute("project", project);
-    model.addAttribute("sessionID", UserController.session.getUser_id());
-    System.out.println(project.getProject_name() + project.getProject_description() + project.getProject_price());
+    model.addAttribute("sessionID", UserController.session.getUserId());
+    System.out.println(project.getProjectName() + project.getProjectDescription() + project.getProjectPrice());
     return "add-project";
   }
 //viser alle id nummere fra Project
@@ -55,8 +55,8 @@ public class ProjectController {
     }*/
   //sender projct id til projectservice (@Path tager id,et fra urlen og gemmer det??)
   @GetMapping("/update-subproject/{subproject_id}")
-  public String updateSubproject(@PathVariable("subproject_id") int subproject_id, Model model) throws SQLException{
-    Subproject subEdt = projectService.updateSubproject(subproject_id);
+  public String updateSubproject(@PathVariable("subproject_id") int subprojectId, Model model) throws SQLException{
+    Subproject subEdt = projectService.updateSubproject(subprojectId);
 model.addAttribute("subproject", subEdt);
     return "show-projects";
   }
@@ -67,8 +67,9 @@ model.addAttribute("subproject", subEdt);
   @GetMapping("/add-subproject")
   public String addSubproject(@ModelAttribute Subproject subproject, Model model) {
     model.addAttribute("subproject", subproject);
-    model.addAttribute("sessionID", UserController.session.getUser_id());
+    model.addAttribute("sessionID", UserController.session.getUserId());
     //System.out.println(project.getProject_name() + project.getProject_description() + project.getProject_price());
+    //We will return to this one ^
     return "add-subproject";
   }
 
@@ -96,15 +97,16 @@ model.addAttribute("subproject", subEdt);
   public String addProjectPost(@ModelAttribute Project project, User user, Model model) {
     model.addAttribute("project", project);
     //System.out.println(wish.getWishName() + wish.getWishDescription() + wish.getWishPrice());
-    user.setUser_id(UserController.session.getUser_id());
+    //We will return to this one ^
+    user.setUserId(UserController.session.getUserId());
     projectService.addProject(project, user);
-    return "redirect:/show/" + UserController.session.getUser_id();
+    return "redirect:/show/" + UserController.session.getUserId();
   }
 
   @PostMapping("/add-subproject/{projectid}")
   public String addSubprojectPost(@PathVariable("projectid") int projectid, @ModelAttribute Project project, Subproject subproject, Model model) {
     model.addAttribute("subproject", subproject);
-    project.setProject_id(projectid); //kan kalde vores id her i stedet, skal laves i Thymeleaf
+    project.setProjectId(projectid); //kan kalde vores id her i stedet, skal laves i Thymeleaf
     projectService.addSubproject(project, subproject);
     return "redirect:/show/" + projectid;
   }

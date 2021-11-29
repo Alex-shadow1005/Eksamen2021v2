@@ -28,9 +28,9 @@ public class ProjectRepository {
 
       ps = con.prepareStatement(mySql);
       //3. Set the parameters
-      ps.setInt(1, user.getUser_id());
-      ps.setString(2, project.getProject_name());
-      ps.setString(3, project.getProject_description());
+      ps.setInt(1, user.getUserId());
+      ps.setString(2, project.getProjectName());
+      ps.setString(3, project.getProjectDescription());
       //4. Execute SQL query
       h = ps.executeUpdate();
       System.out.println("Project added");
@@ -55,9 +55,9 @@ public class ProjectRepository {
 
       ps = con.prepareStatement(mySql);
       //3. Set the parameters
-      ps.setInt(1, project.getProject_id());
-      ps.setString(2, subproject.getSubproject_name());
-      ps.setString(3, subproject.getSubproject_description());
+      ps.setInt(1, project.getProjectId());
+      ps.setString(2, subproject.getSubprojectName());
+      ps.setString(3, subproject.getSubprojectDescription());
       //4. Execute SQL query
       h = ps.executeUpdate();
       System.out.println("Subproject added");

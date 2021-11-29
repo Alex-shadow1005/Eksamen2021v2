@@ -1,60 +1,60 @@
 package com.example.eksamen2021.domain.models;
 
 public class User {
-  private int user_id;
-  private String user_email;
-  private String user_password;
-  private String user_username;
+  private int userId;
+  private String userEmail;
+  private String userPassword;
+  private String userUsername;
   //Vi skal se vi kan nå det også
   private String passwordRepeat;
 
 
-  public User(int user_id, String user_email, String user_password, String user_username) {
-    this.user_id = user_id;
-    this.user_email = user_email;
-    this.user_password = user_password;
-    this.user_username = user_username;
+  public User(int userId, String userEmail, String userPassword, String userUsername) {
+    this.userId = userId;
+    this.userEmail = userEmail;
+    this.userPassword = userPassword;
+    this.userUsername = userUsername;
   }
 
-  public User(int user_id, String user_email, String user_password) {
-    this.user_id = user_id;
-    this.user_email = user_email;
-    this.user_password = user_password;
+  public User(int userId, String userEmail, String userPassword) {
+    this.userId = userId;
+    this.userEmail = userEmail;
+    this.userPassword = userPassword;
   }
 
   public User() {
   }
 
-  public int getUser_id() {
-    return user_id;
+  public int getUserId() {
+    return userId;
   }
 
-  public void setUser_id(int user_id) {
-    this.user_id = user_id;
+  public void setUserId(int userId) {
+    this.userId = userId;
   }
 
-  public String getUser_email() {
-    return user_email;
+  public String getUserEmail() {
+    return userEmail;
   }
 
-  public void setUser_email(String user_email) {
-    this.user_email = user_email;
+  public void setUserEmail(String userEmail) {
+    this.userEmail = userEmail;
   }
 
-  public String getUser_password() {
-    return user_password;
+  public String getUserPassword() {
+    return userPassword;
   }
 
-  public void setUser_password(String user_password) {
-    this.user_password = user_password;
+  public void setUserPassword(String userPassword) {
+    this.userPassword = userPassword;
   }
 
-  public String getUser_username() {
-    return user_username;
+  public String getUserUsername() {
+    return userUsername;
   }
 
-  public void setUser_username(String user_username) {
-    this.user_username = user_username;
+  public void setUserUsername(String userUsername) {
+    this.userUsername = userUsername;
   }
 }
 
