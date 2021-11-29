@@ -79,7 +79,7 @@ public class ProjectRepository {
       Connection con = DBManager.getConnection();
 
       //2. Prepare statement
-      mySql = "DELETE FROM projects WHERE project_id=?";
+      mySql = "DELETE FROM projects WHERE project_id=? AND subproject_id=?"; //Vent slut
 
 
       ps = con.prepareStatement(mySql);
@@ -130,7 +130,7 @@ public class ProjectRepository {
       Connection con = DBManager.getConnection();
 
       //2. Prepare statement
-      mysql = "UPDATE su"
+      mysql = "UPDATE su";
 
 
       ps = con.prepareStatement(mysql);
