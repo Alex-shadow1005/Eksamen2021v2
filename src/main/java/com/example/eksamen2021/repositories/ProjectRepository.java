@@ -121,7 +121,7 @@ public class ProjectRepository {
 
   }
 
-  public void updateSubproject(Subproject subproject) {
+  public void updateSubproject(int subproject_id, Subproject subEdt) {
     String mysql;
     PreparedStatement ps;
 
@@ -130,13 +130,7 @@ public class ProjectRepository {
       Connection con = DBManager.getConnection();
 
       //2. Prepare statement
-      mysql = "UPDATE FROM subproject SET" +
-          "subproject_name=?," +//1
-          "subproject_description=?," +//2
-          "subproject_seniordeveloper_hours=?" +//3
-          "subproject_developer_hours=?" +//4
-          "subproject_graphic_hours=?" +//5
-          "WHERE subproject_id=?";//6
+      mysql = "UPDATE su"
 
 
       ps = con.prepareStatement(mysql);

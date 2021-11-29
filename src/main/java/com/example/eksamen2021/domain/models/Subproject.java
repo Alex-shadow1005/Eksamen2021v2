@@ -2,13 +2,15 @@ package com.example.eksamen2021.domain.models;
 
 public class Subproject {
 
-private int subproject_id;
-private String subproject_name;
-private String subproject_description;
-private int subproject_price;
-private int subproject_seniordeveloper_hours;
-private int subproject_developer_hours;
-private int subproject_graphic_hours;
+
+  private int subproject_id;
+  private int project_id;
+  private String subproject_name;
+  private String subproject_description;
+  private int subproject_seniordeveloper_hours;
+  private int subproject_developer_hours;
+  private int subproject_graphic_hours;
+  private int subproject_price;
 
   public int getSubproject_seniordeveloper_hours() {
     return subproject_seniordeveloper_hours;

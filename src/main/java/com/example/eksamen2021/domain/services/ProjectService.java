@@ -42,8 +42,8 @@ public class ProjectService {
   }
 
   //updater subprojecter ud fra sub_ID
-  public void updateSubproject(Subproject subproject) throws SQLException{
-    projectRepository.updateSubproject(subproject);
+  public void updateSubproject(int subproject_id, Subproject subEdt) throws SQLException{
+    projectRepository.updateSubproject(subproject_id, subEdt);
   }
 
 
