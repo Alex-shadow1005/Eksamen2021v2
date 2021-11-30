@@ -121,7 +121,7 @@ public class SubprojectRepository {
         }
         return subprojects;
     }
-    public Subproject findSubprojectID(int subproject_id) {
+    public Subproject findSubprojectID(int subprojectId) {
         String mysql;
         PreparedStatement ps;
         Subproject findSubproject = null;
@@ -136,7 +136,7 @@ public class SubprojectRepository {
             ps = con.prepareStatement(mysql);
 
             //3. Set the parameters
-            ps.setInt(1, subproject_id);
+            ps.setInt(1, subprojectId);
 
             //4. Execute SQL query
             ResultSet rs = ps.executeQuery();

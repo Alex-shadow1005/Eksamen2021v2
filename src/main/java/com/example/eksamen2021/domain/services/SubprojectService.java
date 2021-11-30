@@ -37,8 +37,8 @@ public class SubprojectService {
         return subprojectRepository.showAllSubprojects(id);
     }
 
-    public Subproject findSubprojectID(int subprjectid){
-        return subprojectRepository.findSubprojectID(subprjectid);
+    public Subproject findSubprojectID(int subprojectId){
+        return subprojectRepository.findSubprojectID(subprojectId);
     }
     //updater subprojecter ud fra sub_ID
     public void updateSubproject(Subproject subproject) throws SQLException{
