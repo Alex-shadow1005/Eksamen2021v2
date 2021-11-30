@@ -12,23 +12,22 @@ public class Subproject {
   private int subprojectGraphicHours;
   private int subprojectPrice;
 
-  public int getSubprojectSeniordeveloperHours() {
-    return subprojectSeniordeveloperHours;
-  }
 
-  public int getSubprojectDeveloperHours() {
-    return subprojectDeveloperHours;
-  }
-
-  public int getSubprojectGraphicHours() {
-    return subprojectGraphicHours;
-  }
 
   /*
   private User user;
   private String projectlistName;
   */
 
+  public Subproject(int subprojectId, String subprojectName, String subprojectDescription, int subprojectSeniordeveloperHours, int subprojectDeveloperHours, int subprojectGraphicHours, int subprojectPrice) {
+    this.subprojectId = subprojectId;
+    this.subprojectName = subprojectName;
+    this.subprojectDescription = subprojectDescription;
+    this.subprojectSeniordeveloperHours = subprojectSeniordeveloperHours;
+    this.subprojectDeveloperHours = subprojectDeveloperHours;
+    this.subprojectGraphicHours = subprojectGraphicHours;
+    this.subprojectPrice = subprojectPrice;
+  }
 
   public Subproject(int subprojectId, String subprojectName, String subprojectDescription, int subprojectPrice) {
     this.subprojectId = subprojectId;
@@ -84,4 +83,15 @@ public class Subproject {
     this.subprojectPrice = subprojectPrice;
   }
 
+  public int getSubprojectSeniordeveloperHours() {
+    return subprojectSeniordeveloperHours;
+  }
+
+  public int getSubprojectDeveloperHours() {
+    return subprojectDeveloperHours;
+  }
+
+  public int getSubprojectGraphicHours() {
+    return subprojectGraphicHours;
+  }
 }

@@ -58,4 +58,18 @@ public class SubprojectController {
 
         return "show-projects";
     }
+    //sender projct id til projectservice (@Path tager id,et fra urlen og gemmer det??)
+    @GetMapping("/update-subproject/{subproject_id}")
+    public String updateSubproject(@PathVariable("subproject_id") int subproject_id, Model model) throws SQLException{
+        Subproject subproject = subprojectService.findSubprojectID(subproject_id);
+        model.addAttribute("subproject",subproject);
+
+        return "show-projects";
+    }
+    //Post
+    @PostMapping("/update-subproject")
+    public String updateSubproject(@ModelAttribute Subproject subproject) throws SQLException {
+        subprojectService.updateSubproject(subproject);
+        return "show-projects";
+    }
 }

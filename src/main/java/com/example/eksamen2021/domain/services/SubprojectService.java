@@ -36,4 +36,12 @@ public class SubprojectService {
     public List<Subproject> showAllSubprojects(int id) {
         return subprojectRepository.showAllSubprojects(id);
     }
+
+    public Subproject findSubprojectID(int subprjectid){
+        return subprojectRepository.findSubprojectID(subprjectid);
+    }
+    //updater subprojecter ud fra sub_ID
+    public void updateSubproject(Subproject subproject) throws SQLException{
+        subprojectRepository.updateSubproject(subproject);
+    }
 }

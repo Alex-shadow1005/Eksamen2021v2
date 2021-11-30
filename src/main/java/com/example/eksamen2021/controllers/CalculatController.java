@@ -8,10 +8,10 @@ import java.sql.SQLException;
 
 public class CalculatController {
 
-    @GetMapping("/calulate/{productId}")
+   /* @GetMapping("/calulate/{productId}")
     public String calculate(PathVariable int projectId) throws SQLException {
         CalculatService.calculateProjectSum(projectId);
         return "show-projects";
-    }
+    }*/
 
 }
