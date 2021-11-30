@@ -2,6 +2,7 @@ package com.example.eksamen2021.controllers;
 
 import com.example.eksamen2021.domain.models.Project;
 import com.example.eksamen2021.domain.models.Subproject;
+import com.example.eksamen2021.domain.services.CalculatService;
 import com.example.eksamen2021.domain.services.SubprojectService;
 import com.example.eksamen2021.repositories.SubprojectRepository;
 import org.springframework.ui.Model;
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.context.request.WebRequest;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -16,6 +18,7 @@ import java.util.List;
 public class SubprojectController {
 
     private SubprojectService subprojectService = new SubprojectService();
+    private CalculatService calculatService = new CalculatService();
 /*
     //sender projct id til projectservice (@Path tager id,et fra urlen og gemmer det??)
     @GetMapping("/update-subproject/{subproject_id}")
@@ -70,6 +73,26 @@ public class SubprojectController {
     @PostMapping("/update-subproject")
     public String updateSubproject(@ModelAttribute Subproject subproject) throws SQLException {
         subprojectService.updateSubproject(subproject);
+        return "show-projects";
+    }
+
+    @PostMapping("/calculateSubprojectPrice/ {subprojectId}")
+    public String calculateSubprojectPrice(@ModelAttribute Subproject subproject) throws SQLException {
+
+        calculatService.calsubprice(
+                subproject.getSubprojectDeveloperHours(),
+                subproject.getSubprojectDeveloperHours(),
+                subproject.getSubprojectGraphicHours());
+        return "show-projects";
+    }
+
+    @PostMapping("/calculateSubprojectHours/ {subprojectId}")
+    public String calculateSubprojectHours(@ModelAttribute Subproject subproject) throws SQLException {
+
+        calculatService.calsubhours(
+                subproject.getSubprojectDeveloperHours(),
+                subproject.getSubprojectDeveloperHours(),
+                subproject.getSubprojectGraphicHours());
         return "show-projects";
     }
 }

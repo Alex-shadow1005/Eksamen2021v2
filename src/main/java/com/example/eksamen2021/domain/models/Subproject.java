@@ -10,13 +10,16 @@ public class Subproject {
   private int subprojectDeveloperHours;
   private int subprojectGraphicHours;
   private int subprojectPrice;
+  private int subprojectTotalHours;
 
   /*
   private User user;
   private String projectlistName;
   */
 
-  public Subproject(int subprojectId, String subprojectName, String subprojectDescription, int subprojectSeniordeveloperHours, int subprojectDeveloperHours, int subprojectGraphicHours, int subprojectPrice) {
+
+
+  public Subproject(int subprojectId, String subprojectName, String subprojectDescription, int subprojectSeniordeveloperHours, int subprojectDeveloperHours, int subprojectGraphicHours, int subprojectPrice, int subprojectTotalHours) {
     this.subprojectId = subprojectId;
     this.subprojectName = subprojectName;
     this.subprojectDescription = subprojectDescription;
@@ -24,6 +27,7 @@ public class Subproject {
     this.subprojectDeveloperHours = subprojectDeveloperHours;
     this.subprojectGraphicHours = subprojectGraphicHours;
     this.subprojectPrice = subprojectPrice;
+    this.subprojectTotalHours = subprojectTotalHours;
   }
   //DENNE KONSTRUKTØR BRUGES I PROJECTREPO SHOWALLPROJECTS-METODEN
   public Subproject(String subproject_name, String subprojectDescription, int subprojectSeniordeveloperHours, int subprojectDeveloperHours, int subprojectGraphicHours, int subprojectPrice) {
@@ -118,5 +122,10 @@ public class Subproject {
   public void setSubprojectPrice(int subprojectPrice) {
     this.subprojectPrice = subprojectPrice;
   }
+  public int getSubprojectTotalHours() {return subprojectTotalHours;}
+
+  public void setSubprojectTotalHours(int subprojectTotalHours) {this.subprojectTotalHours = subprojectTotalHours;}
+
 }
+
 
