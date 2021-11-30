@@ -136,7 +136,8 @@ public class ProjectRepository {
                 projects.add(new Project(
                         rs.getString(3),
                         rs.getString(4),
-                        rs.getInt(5)
+                        rs.getInt(5),
+                        rs.getInt(6)
                 ));
             }
         } catch (SQLException ex) {
@@ -146,21 +147,26 @@ public class ProjectRepository {
     }
 
     //VISER ALLE SUBPROJEKTER DER HØRER TIL PROJEKT-ID'EN
-    public List<Subproject> showAllSubprojects(int id) {
+    public List<Subproject> showAllSubprojects(int projectid2) {
         ArrayList<Subproject> subprojects = new ArrayList<>();
         try {
             Connection con = DBManager.getConnection();
             String SQL = "SELECT * FROM subprojects WHERE project_id = ?"; // Do this line when we know database name and stuff
 
+            System.out.println("tried to get projectid from database here" + projectid2);
+
             PreparedStatement ps = con.prepareStatement(SQL);
-            ps.setInt(1, id);
+            ps.setInt(1, projectid2);
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()) {
                 subprojects.add(new Subproject(
                         rs.getString(3),
                         rs.getString(4),
-                        rs.getInt(5)
+                        rs.getInt(5),
+                        rs.getInt(6),
+                        rs.getInt(7),
+                        rs.getInt(8)
                 ));
             }
         } catch (SQLException ex) {

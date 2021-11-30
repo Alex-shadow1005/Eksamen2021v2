@@ -15,7 +15,7 @@ public class Project {
     this.project_price = project_price;
   }
 
-  public Project(String project_name, String project_description, int project_price) {
+  public Project(String project_name, String project_description, int project_price, int project_hours) {
     this.project_name = project_name;
     this.project_description = project_description;
     this.project_price = project_price;

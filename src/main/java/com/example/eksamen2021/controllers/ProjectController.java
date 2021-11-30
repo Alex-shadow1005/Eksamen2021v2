@@ -4,6 +4,7 @@ import com.example.eksamen2021.domain.models.Project;
 import com.example.eksamen2021.domain.models.Subproject;
 import com.example.eksamen2021.domain.models.User;
 import com.example.eksamen2021.domain.services.ProjectService;
+import org.springframework.boot.web.servlet.server.Session;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,6 +17,7 @@ import java.util.List;
 @Controller
 public class ProjectController {
   private ProjectService projectService = new ProjectService();
+  User user = new User();
 
 
   @GetMapping("/add-project")
@@ -66,12 +68,24 @@ public class ProjectController {
     return "show-projects";
   }
 
-  @GetMapping("/showsubprojects/{id}")
-  public String showSubprojects(@PathVariable("id") int id, Model model) {
-    List<Subproject> subprojects = projectService.showAllSubprojects(id);
+  @GetMapping("/show-subprojects")
+  public String showSubprojects(@PathVariable("projectid2") int projectid2, Project project, Model model) { //ModelAttribute gemmer parametre i User ved at lave det til et objekt
+    List<Subproject> subprojects = projectService.showAllSubprojects(projectid2);
+    model.addAttribute("subproject", subprojects);
+    System.out.println("show subproject test" + subprojects);
+    return "redirect:/show-subprojects/" + project.getProject_id();
+  }
+
+    /*
+  @GetMapping("/show-subprojects/{id}")
+  public String showSubprojects(@PathVariable("projectid") int projectid, Model model) {
+    List<Subproject> subprojects = projectService.showAllSubprojects(projectid);
+    System.out.println("project id test here: " + projectid);
     model.addAttribute("subprojects", subprojects);
     return "show-subprojects";
   }
+
+     */
 
   @PostMapping("/save")
   public String saveProject(@ModelAttribute Project project, User user) {
