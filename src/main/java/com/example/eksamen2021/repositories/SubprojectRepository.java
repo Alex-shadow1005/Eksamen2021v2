@@ -177,7 +177,7 @@ public class SubprojectRepository {
             //2. Prepare statement
             mysql = "UPDATE heroku_dd9ca97e9e588ce.subprojects SET" +
                 // 1
-                "subproject_name = ?," + // 1
+                "subproject_name =  ft," + // 1
                 // 2
                 "subproject_description = ?," + // 2
                 // 3
