@@ -5,6 +5,7 @@ public class Project {
   private String projectName;
   private String projectDescription;
   private int projectPrice;
+  private int projectHours;
 
 
   public Project(int projectId, String projectName, String projectDescription, int projectPrice) {
@@ -54,6 +55,7 @@ public class Project {
   public void setProjectPrice(int projectPrice) {
     this.projectPrice = projectPrice;
   }
+
 
   @Override
   public String toString() {

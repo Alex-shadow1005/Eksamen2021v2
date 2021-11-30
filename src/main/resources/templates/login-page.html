@@ -1,48 +1,26 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
 <head>
-    <link rel="stylesheet" href="createAccountStylesheet.css">
-    <link rel="stylesheet" href="layoutStylesheet.css">
-    <link rel="stylesheet" href="loginStylesheet.css">
+    <link rel="stylesheet" href="indexStylesheet.css">
+
 
     <meta charset="UTF-8">
-    <title>Get Started</title>
+    <title>Welcome to Team Super Awesome's Website</title>
 </head>
 
 <body>
 
-<header>
-    <h2>TSA</h2>
-    <!--<picture>
-        <img src="logo.jpg" alt="Logo"
-             style="width: 90px; float: left; margin-top: -120px">
-    </picture>-->
-</header>
+<div class="w3-container w3-content w3-center w3-padding-64" style="max-width:800px" id="band">
+    <h2 class="w3-wide">LOG IN</h2>
+    <p class="w3-opacity"><i>Log in if you've already registered</i></p>
 
-<section>
-    <nav>
-        <ul>
-            <li>
-                <a href="#">
-                    <button type="button" style="background-color: cadetblue">Home</button>
-                </a></li>
-            <li>
-                <a href="/show/{id}">
-                    <button type="button" style="background-color: cadetblue">Show Project</button>
-                </a></li>
-            <li>
-                <a href="/add-project">
-                    <button type="button" style="background-color: cadetblue">Create Project</button>
-                </a></li>
-        </ul>
-    </nav>
+
+    <!--LOG IN METODE HER-->
 
     <div class="article-box">
         <article>
-
-
-            <!--Start login-metode-->
-            <form action="/login" method="GET"> <!--Sender informationer videre herfra til PostController -> /login -->
+            <form action="/login" method="GET"> <!--Sender informationer videre herfra til UserController -> /login -->
 
                 <div class="container">
 
@@ -61,22 +39,31 @@
                 </div>
             </form>
 
-            <!-- Slut login-metode-->
         </article>
     </div>
+
+    <!-- END OF LOGIN METHOD -->
+
+</div>
+
+
+<!-- START OF CREATE USER METHOD -->
+
+<div class="w3-container w3-content w3-center w3-padding-64" style="max-width:800px" id="band">
+    <!--KAN JEG FJERNE ID'ET ELLER LAVE DET OM?-->
+    <h2 class="w3-wide">REGISTER</h2>
+    <p class="w3-opacity"><i>Register here if you're a new user</i></p>
+
+    <!-- START CREATE USER-->
 
 
     <div class="article-box">
         <article>
-            <!-- Start create user metode-->
 
 
-            <form action="/new-user" method="POST" style="border:1px solid #ccc">
-
+            <form action="/new-user" method="POST">
+                <p class="w3-justify">
                 <div class="container">
-                    <h1>Sign Up</h1>
-                    <p>Please fill in this form to create an account.</p>
-                    <hr>
 
                     <label for="userUsername"><b>Username</b></label>
                     <input type="text" placeholder="Enter username" name="userUsername" required id="userUsername">
@@ -88,82 +75,55 @@
                     <label for="userPassword"><b>Password</b></label>
                     <input type="password" placeholder="Enter Password" name="userPassword" required id="userPassword">
 
+
                     <!-- TIL SENERE IMPLEMENTATION.
                     <label>
                         <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> Remember me
                     </label>-->
 
                     <!--SKAL VI LAVE EN TERMS??-->
-                    <p>By creating an account you agree to our <a href="#" style="color:dodgerblue">Terms & Privacy</a>.
+                    <p>By creating an account you agree to our <a href="/terms" target="popup" onclick="window.open('/terms','popup','width=600,height=600'); return false;"
+                    >Terms & Privacy</a>.
                     </p>
 
                     <div class="clearfix">
                         <!-- SYNES IKKE DER SKAL VÆRE EN CANCEL <button type="button" class="cancelbtn">Cancel</button>-->
-                        <button type="submit" class="signupbtn">Sign Up</button>
+                        <button type="submit" class="start-button">Sign Up</button>
                     </div>
+                    </p>
                 </div>
             </form>
 
-            <!-- Slut create user-->
         </article>
     </div>
+</div>
 
-</section>
+    <!-- END OF CREATE USER -->
 
 
-
-
-<!-- FOOTER START -->
-<!--
-<footer>
-    <div class="row">
-        <div class="column">
-            <h3>Contact Us</h3>
-            <p> <a href="mailto:kea@kea.dk">Email Us Here</a> </p>
-        </div>
-
-        <div class="column">
-            <h3>About Us</h3>
-            <p>Just three classmates who have fun when working on a project together! :)</p>
-        </div>
-
-        <div class="column">
-            <h3>KEA</h3>
-            <p> <a href="https://www.kea.dk" target="_blank">Go visit KEA's website</a> </p>
+    <!-- FORSØG PÅ ALPHA SOLUTIONS NAVBAR
+    <div id="navbar">
+        <div class="header">
         </div>
     </div>
-
-</footer> -->
-
-<!--FOOTER END-->
-
-</body>
-</html>
-
-
-<!-- FORSØG PÅ ALPHA SOLUTIONS NAVBAR
-<div id="navbar">
-    <div class="header">
+    <div id="logo">
+        <a href="/login-page">
+            <img src="logo.jpg" alt="Team Super Awesome Logo">
+        </a>
     </div>
-</div>
-<div id="logo">
-    <a href="/login-page">
-        <img src="logo.jpg" alt="Team Super Awesome Logo">
-    </a>
-</div>
-<div id="headermenu">
-    <nav class="headermenubuttons">
-        <ul>
-            <li>
-                <a class="headerchoice" href="/createproject.html"></a>
-            </li>
-            <li>
-                <a class="headerchoice" href="/showprojects.html"></a>
-            </li>
-            <li>
-                <a class="headerchoice" href="/edituser.html"></a>
-            </li>
-        </ul>
-    </nav>
-</div>
--->
+    <div id="headermenu">
+        <nav class="headermenubuttons">
+            <ul>
+                <li>
+                    <a class="headerchoice" href="/createproject.html"></a>
+                </li>
+                <li>
+                    <a class="headerchoice" href="/showprojects.html"></a>
+                </li>
+                <li>
+                    <a class="headerchoice" href="/edituser.html"></a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+    -->
