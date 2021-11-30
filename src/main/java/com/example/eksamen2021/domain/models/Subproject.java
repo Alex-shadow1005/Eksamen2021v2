@@ -12,12 +12,8 @@ public class Subproject {
   private int subprojectPrice;
   private int subprojectTotalHours;
 
-  /*
-  private User user;
-  private String projectlistName;
-  */
 
-
+  //KONSTRUKTØRER:
 
   public Subproject(int subprojectId, String subprojectName, String subprojectDescription, int subprojectSeniordeveloperHours, int subprojectDeveloperHours, int subprojectGraphicHours, int subprojectPrice, int subprojectTotalHours) {
     this.subprojectId = subprojectId;
@@ -29,47 +25,41 @@ public class Subproject {
     this.subprojectPrice = subprojectPrice;
     this.subprojectTotalHours = subprojectTotalHours;
   }
-  //DENNE KONSTRUKTØR BRUGES I PROJECTREPO SHOWALLPROJECTS-METODEN
-  public Subproject(String subproject_name, String subprojectDescription, int subprojectSeniordeveloperHours, int subprojectDeveloperHours, int subprojectGraphicHours, int subprojectPrice) {
-    this.subprojectName = subproject_name;
+
+  //DENNE KONSTRUKTØR BRUGES I PROJECTREPO SHOWALLPROJECTS-METODEN OG I FINDSUBPROJECTID-METODEN
+  public Subproject(int subprojectId, int projectId, String subprojectName, String subprojectDescription, int subprojectSeniordeveloperHours, int subprojectDeveloperHours, int subprojectGraphicHours, int subprojectPrice) {
+    this.subprojectId = subprojectId;
+    this.projectId = projectId;
+    this.subprojectName = subprojectName;
     this.subprojectDescription = subprojectDescription;
     this.subprojectSeniordeveloperHours = subprojectSeniordeveloperHours;
     this.subprojectDeveloperHours = subprojectDeveloperHours;
     this.subprojectGraphicHours = subprojectGraphicHours;
     this.subprojectPrice = subprojectPrice;
-  }
 
-  public int getSubprojectSeniordeveloperHours() {
-    return subprojectSeniordeveloperHours;
-  }
-  public int getSubprojectDeveloperHours() {
-    return subprojectDeveloperHours;
-  }
-  public int getSubprojectGraphicHours() {
-    return subprojectGraphicHours;
   }
 
 
   public Subproject(int subprojectId, String subprojectName, String subprojectDescription, int subprojectPrice) {
     this.subprojectId = subprojectId;
+    this.projectId = projectId;
     this.subprojectName = subprojectName;
     this.subprojectDescription = subprojectDescription;
     this.subprojectPrice = subprojectPrice;
   }
 
+  //BRUGES I addSubproject METODEN
   public Subproject(int subprojectId, String subprojectName, String subprojectDescription) {
     this.subprojectId = subprojectId;
     this.subprojectName = subprojectName;
     this.subprojectDescription = subprojectDescription;
   }
 
-  public Subproject(String subprojectName, String subprojectDescription, int subprojectPrice) {
-    this.subprojectName = subprojectName;
-    this.subprojectDescription = subprojectDescription;
-    this.subprojectPrice = subprojectPrice;
-  }
   public Subproject() {
   }
+
+  //GETTERS AND SETTERS
+
 
   public int getSubprojectId() {
     return subprojectId;
@@ -103,12 +93,24 @@ public class Subproject {
     this.subprojectDescription = subprojectDescription;
   }
 
+  public int getSubprojectSeniordeveloperHours() {
+    return subprojectSeniordeveloperHours;
+  }
+
   public void setSubprojectSeniordeveloperHours(int subprojectSeniordeveloperHours) {
     this.subprojectSeniordeveloperHours = subprojectSeniordeveloperHours;
   }
 
+  public int getSubprojectDeveloperHours() {
+    return subprojectDeveloperHours;
+  }
+
   public void setSubprojectDeveloperHours(int subprojectDeveloperHours) {
     this.subprojectDeveloperHours = subprojectDeveloperHours;
+  }
+
+  public int getSubprojectGraphicHours() {
+    return subprojectGraphicHours;
   }
 
   public void setSubprojectGraphicHours(int subprojectGraphicHours) {
@@ -122,10 +124,13 @@ public class Subproject {
   public void setSubprojectPrice(int subprojectPrice) {
     this.subprojectPrice = subprojectPrice;
   }
-  public int getSubprojectTotalHours() {return subprojectTotalHours;}
 
-  public void setSubprojectTotalHours(int subprojectTotalHours) {this.subprojectTotalHours = subprojectTotalHours;}
+  public int getSubprojectTotalHours() {
+    return subprojectTotalHours;
+  }
 
+  public void setSubprojectTotalHours(int subprojectTotalHours) {
+    this.subprojectTotalHours = subprojectTotalHours;
+  }
 }
-
 
