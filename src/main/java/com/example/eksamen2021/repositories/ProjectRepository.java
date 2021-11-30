@@ -42,7 +42,6 @@ public class ProjectRepository {
   }
 
 
-
   public void deleteProject(int projectId) throws SQLException {
 
     String mySql;
@@ -92,6 +91,4 @@ public class ProjectRepository {
     }
     return projects;
   }
-
-
 }

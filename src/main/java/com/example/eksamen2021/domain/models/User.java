@@ -25,6 +25,9 @@ public class User {
   public User() {
   }
 
+  public User(String string, String string1) {
+  }
+
   public int getUserId() {
     return userId;
   }

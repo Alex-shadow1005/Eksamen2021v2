@@ -36,6 +36,44 @@ body {
     color: white;
 }
 
+.smaller-button {
+    padding: 4px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 15px;
+    margin: 2px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    background-color: white;
+    color: black;
+    border: 2px solid #e7e7e7;
+}
+
+.smaller-button:hover {
+    background-color: #59869D; /*samme farve som taget fra Alpha-Solutions hjemmeside!*/
+    color: white;
+}
+
+.cancel-button {
+    padding: 16px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    background-color: white;
+    color: black;
+    border: 2px solid #e7e7e7;
+}
+
+.cancel-button:hover {
+    background-color: crimson; /*samme farve som taget fra Alpha-Solutions hjemmeside!*/
+    color: white;
+}
+
 a {
     background-color: transparent;
     color: inherit
@@ -70,20 +108,8 @@ a:active, a:hover {
     padding: 0.01em 16px
 }
 
-.w3-opacity, .w3-hover-opacity:hover {
+.w3-opacity {
     opacity: 0.60
-}
-
-.w3-opacity-off, .w3-hover-opacity-off:hover {
-    opacity: 1
-}
-
-.w3-opacity-max {
-    opacity: 0.25
-}
-
-.w3-opacity-min {
-    opacity: 0.75
 }
 
 .w3-center {
@@ -93,4 +119,21 @@ a:active, a:hover {
 .w3-padding-64 {
     padding-top: 64px !important;
     padding-bottom: 64px !important
+}
+
+/* TABLE CSS: */
+table {
+    border-collapse: collapse;
+    width: 100%;
+    align-content: center;
+}
+
+td, th {
+    border: 1px solid #59869D;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: ghostwhite;
 }
