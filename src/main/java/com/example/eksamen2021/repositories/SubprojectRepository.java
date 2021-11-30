@@ -177,7 +177,7 @@ public class SubprojectRepository {
             //2. Prepare statement
             mysql = "UPDATE subprojects SET" +
                 // 1
-                "subproject_name = ?," + // 1
+                "subproject_name =  ft," + // 1
                 // 2
                 "subproject_description = ?," + // 2
                 // 3
