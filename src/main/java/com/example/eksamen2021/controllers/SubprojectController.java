@@ -45,10 +45,10 @@ public class SubprojectController {
 
 
     @GetMapping("/show-subprojects/{id}")
-    public String showSubprojects2(@PathVariable("id") int id, Model model) { //ModelAttribute gemmer parametre i User ved at lave det til et objekt
-        List<Subproject> subprojects = subprojectService.showAllSubprojects(id);
+    public String showSubprojects2(@PathVariable("projectId") int projectId, Model model) { //ModelAttribute gemmer parametre i User ved at lave det til et objekt
+        List<Subproject> subprojects = subprojectService.showAllSubprojects(projectId);
         model.addAttribute("subproject", subprojects);
-        System.out.println("show subproject test i controller" + subprojects + " " + id);
+        System.out.println("show subproject test i controller" + subprojects + " " + projectId);
         return "show-subprojects";
     }
 
@@ -76,5 +76,19 @@ public class SubprojectController {
         subprojectService.deleteSubproject(subprojectId);
 
         return "show-projects";
+    }
+    //sender projct id til projectservice (@Path tager id,et fra urlen og gemmer det??)
+    @GetMapping("/update-subproject/{subprojectId}")
+    public String updateSubproject(@PathVariable("subprojectId") int subprojectId, Model model) throws SQLException{
+        Subproject subproject = subprojectService.findSubprojectID(subprojectId);
+        model.addAttribute("subproject",subproject);
+
+        return "show-subprojects";
+    }
+    //Post
+    @PostMapping("/update-subproject")
+    public String updateSubproject(@ModelAttribute Subproject subproject) throws SQLException {
+        subprojectService.updateSubproject(subproject);
+        return "show-subprojects";
     }
 }

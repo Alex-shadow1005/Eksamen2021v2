@@ -31,7 +31,7 @@ public class ProjectService {
 
 
   public List<Project> showAll(int id) {
-    return projectRepository.showAll(id);
+    return projectRepository.showAllProjects(id);
   }
 
 }

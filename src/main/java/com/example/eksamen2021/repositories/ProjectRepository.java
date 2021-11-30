@@ -69,7 +69,7 @@ public class ProjectRepository {
   }
 
   //VISER ALLE PROJEKTERNE PÅ BRUGERENS PROJEKTLISTE
-  public List<Project> showAll(int id) {
+  public List<Project> showAllProjects(int id) {
     ArrayList<Project> projects = new ArrayList<>();
     try {
       Connection con = DBManager.getConnection();

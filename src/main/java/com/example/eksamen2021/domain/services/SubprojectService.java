@@ -22,8 +22,8 @@ public class SubprojectService {
     }
 
     //deleter projectet ud fra dens SubID
-    public void deleteSubproject(int subprjectid) throws SQLException {
-        subprojectRepository.deleteSubproject(subprjectid);
+    public void deleteSubproject(int subprojectid) throws SQLException {
+        subprojectRepository.deleteSubproject(subprojectid);
     }
 /*
     //updater subprojecter ud fra sub_ID
@@ -34,10 +34,11 @@ public class SubprojectService {
  */
 
 
-    public List<Subproject> showAllSubprojects(int id) {
-        System.out.println("test i service + id = " + id);
-        return subprojectRepository.showAllSubprojects(id);
+    public List<Subproject> showAllSubprojects(int projektId) {
+        System.out.println("test i service + id = " + projektId);
+        return subprojectRepository.showAllSubprojects(projektId);
     }
+
 
 
     /*
@@ -47,4 +48,12 @@ public class SubprojectService {
     }
      */
 
+
+    public Subproject findSubprojectID(int subprojectId){
+        return subprojectRepository.findSubprojectID(subprojectId);
+    }
+    //updater subprojecter ud fra sub_ID
+    public void updateSubproject(Subproject subproject) throws SQLException{
+        subprojectRepository.updateSubproject(subproject);
+    }
 }

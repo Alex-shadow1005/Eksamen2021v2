@@ -128,4 +128,106 @@ public class SubprojectRepository {
         }
         return subprojects;
     }
+    public Subproject findSubprojectID(int subprojectId) {
+        String mysql;
+        PreparedStatement ps;
+        Subproject findSubproject = null;
+        try {
+            //1. Get a connection to database
+            Connection con = DBManager.getConnection();
+
+            //2. Prepare statement
+            mysql = "SELECT * FROM subproject WHERE subproject_id = ?";
+
+
+            ps = con.prepareStatement(mysql);
+
+            //3. Set the parameters
+            ps.setInt(1, subprojectId);
+
+            //4. Execute SQL query
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                findSubproject =(new Subproject(
+                    // WorkBase colonder
+                    //subproject_id
+                    rs.getInt(1),
+                    //subproject_name
+                    rs.getString(3),
+                    //subproject_description
+                    rs.getString(4),
+                    //subproject_seniordeveloper_hours
+                    rs.getInt(5),
+                    //subproject_developer_hours
+                    rs.getInt(6),
+                    //subproject_graphic_hours
+                    rs.getInt(7),
+                    //subproject_price = ?
+                    rs.getInt(8)
+                ));
+            }
+            System.out.println("finder ID YESSS");
+        } catch (SQLException err) {
+            System.out.println("Post con "+err.getMessage());
+        }
+        return findSubproject;
+    }
+    public void updateSubproject(Subproject subproject) {
+        String mysql;
+        PreparedStatement ps;
+        System.out.println("Seee der er en "+subproject);
+        try {
+            //1. Get a connection to database
+            Connection con = DBManager.getConnection();
+
+            //2. Prepare statement
+            mysql = "UPDATE heroku_dd9ca97e9e588ce.subprojects SET" +
+                // 1
+                "subproject_name =  ft," + // 1
+                // 2
+                "subproject_description = ?," + // 2
+                // 3
+                "subproject_seniordeveloper_hours = ?," + // 3
+                // 4
+                "subproject_developer_hours = ?," + // 4
+                // 5
+                "subproject_graphic_hours = ?," + // 5
+                // 6
+                "subproject_price = ?" + // 6
+                //7
+                "WHERE subproject_id = ?"; // 7
+
+
+            ps = con.prepareStatement(mysql);
+
+            //3. Set the parameters
+            // 1
+            ps.setString(1, subproject.getSubprojectName());
+            // 2
+            ps.setString(2, subproject.getSubprojectDescription());
+            // 3
+            ps.setInt(3, subproject.getSubprojectSeniordeveloperHours());
+            // 4
+            ps.setInt(4, subproject.getSubprojectDeveloperHours());
+            // 5
+            ps.setInt(5, subproject.getSubprojectGraphicHours());
+            // 6
+            ps.setInt(6, subproject.getSubprojectPrice());
+            // 7 WHERE subproject_id = ?
+            ps.setInt(7, subproject.getSubprojectId());
+
+
+            //4. Execute SQL query
+            int rows = ps.executeUpdate();
+
+            if(rows > 0){
+                System.out.println("A new user has been inserted Successfully.");
+            }
+            //5. Display the result set
+        } catch (SQLException err) {
+            System.out.println("Fejl user has NOT! been inserted Successfully=" + err.getMessage());
+        }
+        System.out.println("Du har udatert");
+    }
 }
