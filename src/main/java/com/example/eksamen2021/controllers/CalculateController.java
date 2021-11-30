@@ -1,12 +1,6 @@
 package com.example.eksamen2021.controllers;
 
-import com.example.eksamen2021.domain.services.CalculatService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-
-import java.sql.SQLException;
-
-public class CalculatController {
+public class CalculateController {
 
 /*
     @GetMapping("/calulate/{productId}")

@@ -25,8 +25,8 @@ public class ProjectController {
     return "add-project";
   }
 //viser alle id nummere fra Project
-  @GetMapping("/showall")
-  public String showAll(Model model) {
+  @GetMapping("/showallprojects")
+  public String showAllProjects(Model model) {
     List<Project> projectId = projectService.showAll(1);
     model.addAttribute("Projectlist", projectId);
     return "show-projects";
