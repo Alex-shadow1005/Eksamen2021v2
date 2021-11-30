@@ -33,15 +33,18 @@ public class SubprojectService {
 
  */
 
-    /*
+
     public List<Subproject> showAllSubprojects(int id) {
+        System.out.println("test i service + id = " + id);
         return subprojectRepository.showAllSubprojects(id);
     }
-     */
 
+
+    /*
     public List<Subproject> showAllSubprojects(int projectid2) {
         System.out.println("projectid in service here: " + projectid2);
         return subprojectRepository.showAllSubprojects(projectid2);
     }
+     */
 
 }

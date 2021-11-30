@@ -105,15 +105,22 @@ public class SubprojectRepository {
             Connection con = DBManager.getConnection();
             String SQL = "SELECT * FROM subprojects WHERE project_id = ?"; // Do this line when we know database name and stuff
 
+            System.out.println("test i repo: + id =" + id);
+
             PreparedStatement ps = con.prepareStatement(SQL);
             ps.setInt(1, id);
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()) {
                 subprojects.add(new Subproject(
+                        rs.getInt(1),
+                        rs.getInt(2),
                         rs.getString(3),
                         rs.getString(4),
-                        rs.getInt(5)
+                        rs.getInt(5),
+                        rs.getInt(6),
+                        rs.getInt(7),
+                        rs.getInt(8)
                 ));
             }
         } catch (SQLException ex) {

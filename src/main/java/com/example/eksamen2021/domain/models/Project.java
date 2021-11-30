@@ -1,6 +1,7 @@
 package com.example.eksamen2021.domain.models;
 
 public class Project {
+  private int userId;
   private int projectId;
   private String projectName;
   private String projectDescription;
@@ -9,6 +10,16 @@ public class Project {
 
 
   public Project(String projectName, String projectDescription, int projectHours, int projectPrice) {
+    this.projectName = projectName;
+    this.projectDescription = projectDescription;
+    this.projectHours = projectHours;
+    this.projectPrice = projectPrice;
+  }
+
+  //DENNE KONSTRUKTØR BRUGES I SHOW-PROJECTS.HTML
+  public Project(int projectId, String projectName, String projectDescription, int projectHours, int projectPrice) {
+    //this.userId = userId;
+    this.projectId = projectId;
     this.projectName = projectName;
     this.projectDescription = projectDescription;
     this.projectHours = projectHours;

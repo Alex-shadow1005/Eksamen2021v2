@@ -36,13 +36,20 @@
                     </tr>
 
                     <tr th:each="subproject : ${subprojects}">
-                        <td th:text="${subproject.subproject_name}"></td>
 
-                        <td th:text="${subproject.subproject_description}"></td>
+                        <p hidden th:text="${subproject.subprojectId}"></p>
 
-                        <td th:text="${subproject.subproject_price}"></td>
+                        <td th:text="${subproject.subprojectName}"></td>
 
-                        <td th:text="${subproject.subproject_hours}"></td>
+                        <td th:text="${subproject.subprojectDescription}"></td>
+
+                        <td th:text="${subproject.subprojectSeniordeveloperHours}"></td>
+
+                        <td th:text="${subproject.subprojectDeveloperHours}"></td>
+
+                        <td th:text="${subproject.subprojectGraphicHours}"></td>
+
+                        <td th:text="${subproject.subprojectPrice}"></td>
 
                         <!-- VIser subprojects til subprojects. En kommende feature
                         <td><a href="/showsubprojects/">

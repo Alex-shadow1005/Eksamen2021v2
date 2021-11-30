@@ -22,6 +22,8 @@ public class ProjectController {
     System.out.println(project.getProjectName() + project.getProjectDescription() + project.getProjectPrice());
     return "add-project";
   }
+
+  /* test af om vi bruger den -> BRUGES IKKE
 //viser alle id nummere fra Project
   @GetMapping("/showall")
   public String showAll(Model model) {
@@ -29,7 +31,7 @@ public class ProjectController {
     model.addAttribute("Projectlist", projectId);
     return "show-projects";
   }
-
+   */
 
 //sender projct id til projectservice (@Path tager id,et fra urlen og gemmer det??)
   @GetMapping("/delete-project/{projectId}")
