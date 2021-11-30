@@ -4,20 +4,14 @@ public class Project {
   private int projectId;
   private String projectName;
   private String projectDescription;
-  private int projectPrice;
   private int projectHours;
+  private int projectPrice;
 
 
-  public Project(int projectId, String projectName, String projectDescription, int projectPrice) {
-    this.projectId = projectId;
+  public Project(String projectName, String projectDescription, int projectHours, int projectPrice) {
     this.projectName = projectName;
     this.projectDescription = projectDescription;
-    this.projectPrice = projectPrice;
-  }
-
-  public Project(String projectName, String projectDescription, int projectPrice) {
-    this.projectName = projectName;
-    this.projectDescription = projectDescription;
+    this.projectHours = projectHours;
     this.projectPrice = projectPrice;
   }
 
@@ -56,6 +50,13 @@ public class Project {
     this.projectPrice = projectPrice;
   }
 
+  public int getProjectHours() {
+    return projectHours;
+  }
+
+  public void setProjectHours(int projectHours) {
+    this.projectHours = projectHours;
+  }
 
   @Override
   public String toString() {

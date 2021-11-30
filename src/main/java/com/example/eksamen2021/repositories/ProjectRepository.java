@@ -83,7 +83,8 @@ public class ProjectRepository {
         projects.add(new Project(
             rs.getString(3),
             rs.getString(4),
-            rs.getInt(5)
+            rs.getInt(5),
+            rs.getInt(6)
         ));
       }
     } catch (SQLException ex) {

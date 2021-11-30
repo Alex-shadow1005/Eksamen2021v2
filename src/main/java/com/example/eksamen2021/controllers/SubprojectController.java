@@ -44,6 +44,24 @@ public class SubprojectController {
         return "show-projects";
     }
 
+    @GetMapping("/show-subprojects")
+    public String showSubprojects(@PathVariable("projectid2") int projectid2, Project project, Model model) { //ModelAttribute gemmer parametre i User ved at lave det til et objekt
+        List<Subproject> subprojects = subprojectService.showAllSubprojects(projectid2);
+        model.addAttribute("subproject", subprojects);
+        System.out.println("show subproject test" + subprojects);
+        return "redirect:/show-subprojects/" + project.getProjectId();
+    }
+
+    /*
+  @GetMapping("/show-subprojects/{id}")
+  public String showSubprojects(@PathVariable("projectid") int projectid, Model model) {
+    List<Subproject> subprojects = projectService.showAllSubprojects(projectid);
+    System.out.println("project id test here: " + projectid);
+    model.addAttribute("subprojects", subprojects);
+    return "show-subprojects";
+  }
+     */
+
     @PostMapping("/add-subproject/{projectid}")
     public String addSubprojectPost(@PathVariable("projectid") int projectid, @ModelAttribute Project project, Subproject subproject, Model model) {
         model.addAttribute("subproject", subproject);
