@@ -64,12 +64,12 @@ public class SubprojectController {
         Subproject subproject = subprojectService.findSubprojectID(subprojectId);
         model.addAttribute("subproject",subproject);
 
-        return "show-projects";
+        return "show-subprojects";
     }
     //Post
     @PostMapping("/update-subproject")
     public String updateSubproject(@ModelAttribute Subproject subproject) throws SQLException {
         subprojectService.updateSubproject(subproject);
-        return "show-projects";
+        return "show-subprojects";
     }
 }

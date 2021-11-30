@@ -169,13 +169,13 @@ public class SubprojectRepository {
     public void updateSubproject(Subproject subproject) {
         String mysql;
         PreparedStatement ps;
-
+        System.out.println("Seee der er en "+subproject);
         try {
             //1. Get a connection to database
             Connection con = DBManager.getConnection();
 
             //2. Prepare statement
-            mysql = "UPDATE subprojects SET" +
+            mysql = "UPDATE heroku_dd9ca97e9e588ce.subprojects SET" +
                 // 1
                 "subproject_name = ?," + // 1
                 // 2
@@ -212,11 +212,14 @@ public class SubprojectRepository {
 
 
             //4. Execute SQL query
-            ps.executeUpdate();
+            int rows = ps.executeUpdate();
 
+            if(rows > 0){
+                System.out.println("A new user has been inserted Successfully.");
+            }
             //5. Display the result set
         } catch (SQLException err) {
-            System.out.println("Fejl i count err=" + err.getMessage());
+            System.out.println("Fejl user has NOT! been inserted Successfully=" + err.getMessage());
         }
         System.out.println("Du har udatert");
     }
