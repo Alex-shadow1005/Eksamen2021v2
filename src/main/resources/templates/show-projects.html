@@ -40,17 +40,23 @@
                     </tr>
 
                     <tr th:each="project : ${projects}">
+
+                     <!--   <td hidden th:text="${project.userId}"></td> -->
+
+                        <p hidden th:text="${project.projectId}"></p>
+
                         <td th:text="${project.projectName}"></td>
 
                         <td th:text="${project.projectDescription}"></td>
 
-                        <td th:text="${project.projectPrice}"></td>
-
                         <td th:text="${project.projectHours}"></td>
 
-                        <td><form action="/show-subprojects/" method="GET">
-                            <a href="/show-subprojects/">
-                            <button type="submit" class="button smaller-button">Subproject</button></a>
+                        <td th:text="${project.projectPrice}"></td>
+
+
+                        <td><form action="/subprojects" method="GET">
+                            <!--<a href="/show-subprojects/">-->
+                            <button type="submit" class="button smaller-button">Subproject</button><!--</a>-->
                         </form></td>
 
                         <td><!-- EDIT PROJECT HER --></td>

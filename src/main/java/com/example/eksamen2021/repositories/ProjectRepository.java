@@ -81,9 +81,11 @@ public class ProjectRepository {
 
       while (rs.next()) {
         projects.add(new Project(
+            rs.getInt(2),
             rs.getString(3),
             rs.getString(4),
-            rs.getInt(5)
+            rs.getInt(5),
+            rs.getInt(6)
         ));
       }
     } catch (SQLException ex) {
