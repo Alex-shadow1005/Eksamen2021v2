@@ -30,7 +30,7 @@ public class ProjectService {
   }
 
 
-  public List<Project> showAll(int id) {
+  public List<Project> showAllProjects(int id) {
     return projectRepository.showAllProjects(id);
   }
 

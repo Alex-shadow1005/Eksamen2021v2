@@ -54,7 +54,7 @@ public class ProjectController {
 
   @GetMapping("/show/{id}")
   public String showProjects(@PathVariable("id") int id, Model model) {
-    List<Project> projects = projectService.showAll(id);
+    List<Project> projects = projectService.showAllProjects(id);
     model.addAttribute("projects", projects);
     return "show-projects";
   }
