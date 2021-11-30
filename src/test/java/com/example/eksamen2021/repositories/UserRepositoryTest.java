@@ -28,9 +28,7 @@ class UserRepositoryTest {
     PreparedStatement ps;
     ResultSet rs;
     User tempUser = null;
-    User user = new User("UserTest@test.dk",
-        "1234TEST"
-    );
+    User user = new User("UserTest@test.dk", "1234TEST");
     try {
       Connection con = DBManager.getConnection();
       // Act
@@ -38,8 +36,8 @@ class UserRepositoryTest {
       sqlStr = "SELECT * FROM users WHERE user_email = ? AND user_password = ?"; //leder efter en user med den email og password de har tastet ind
 
       ps = con.prepareStatement(sqlStr);
-      ps.setString(1, user.getUser_email()); //sætter email ind i ?-pladsen
-      ps.setString(2, user.getUser_password()); //sætter password ind i ?-pladsen
+      ps.setString(1, user.getUserEmail()); //sætter email ind i ?-pladsen
+      ps.setString(2, user.getUserPassword()); //sætter password ind i ?-pladsen
 
       rs = ps.executeQuery();
 

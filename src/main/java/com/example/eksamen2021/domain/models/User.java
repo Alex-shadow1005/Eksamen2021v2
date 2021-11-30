@@ -21,19 +21,11 @@ public class User {
     this.userEmail = userEmail;
     this.userPassword = userPassword;
   }
-// Lave den til test
-  public User(String user_email, String user_password, String user_username) {
-    this.user_email = user_email;
-    this.user_password = user_password;
-    this.user_username = user_username;
-  }
-
-  public User(String user_email, String user_password) {
-    this.user_email = user_email;
-    this.user_password = user_password;
-  }
 
   public User() {
+  }
+
+  public User(String string, String string1) {
   }
 
   public int getUserId() {
