@@ -14,13 +14,11 @@ public class Subproject {
 
   //KONSTRUKTØRER:
 
-  //BRUGES I subproject HTML
-  public Subproject(int subprojectId, int projectId, String subprojectName, String subprojectDescription, int subprojectSeniordeveloperHours, int subprojectDeveloperHours, int subprojectGraphicHours, int subprojectPrice) {
-  }
 
   //DENNE KONSTRUKTØR BRUGES I PROJECTREPO SHOWALLPROJECTS-METODEN OG I FINDSUBPROJECTID-METODEN
-  public Subproject(int subprojectId, String subprojectName, String subprojectDescription, int subprojectSeniordeveloperHours, int subprojectDeveloperHours, int subprojectGraphicHours, int subprojectPrice) {
+  public Subproject(int subprojectId, int projectId, String subprojectName, String subprojectDescription, int subprojectSeniordeveloperHours, int subprojectDeveloperHours, int subprojectGraphicHours, int subprojectPrice) {
     this.subprojectId = subprojectId;
+    this.projectId = projectId;
     this.subprojectName = subprojectName;
     this.subprojectDescription = subprojectDescription;
     this.subprojectSeniordeveloperHours = subprojectSeniordeveloperHours;
@@ -46,6 +44,10 @@ public class Subproject {
   }
 
   public Subproject() {
+  }
+
+  //Bruges i findsubprojectId (sorry - har ikke gidet skrive den. Regner med at den bliver merget ind fra feature)
+  public Subproject(int anInt, String string, String string1, int anInt1, int anInt2, int anInt3, int anInt4) {
   }
 
   //GETTERS AND SETTERS

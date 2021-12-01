@@ -113,14 +113,14 @@ public class SubprojectRepository {
 
             while (rs.next()) {
                 subprojects.add(new Subproject(
-                        rs.getInt(1),
-                        rs.getInt(2),
-                        rs.getString(3),
-                        rs.getString(4),
-                        rs.getInt(5),
-                        rs.getInt(6),
-                        rs.getInt(7),
-                        rs.getInt(8)
+                    rs.getInt(1),
+                    rs.getInt(2),
+                    rs.getString(3),
+                    rs.getString(4),
+                    rs.getInt(5),
+                    rs.getInt(6),
+                    rs.getInt(7),
+                    rs.getInt(8)
                 ));
             }
         } catch (SQLException ex) {
@@ -128,6 +128,7 @@ public class SubprojectRepository {
         }
         return subprojects;
     }
+
     public Subproject findSubprojectID(int subprojectId) {
         String mysql;
         PreparedStatement ps;

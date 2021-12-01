@@ -18,66 +18,77 @@
 
     <section>
 
-        <div class="s-center">
-            <article>
+        <div class="container content center padding-64" style="max-width:800px" id="band">
+            <h2 class="wide">YOUR PROJECTS</h2>
+            <p class="opacity"><i>An overview of your projects</i></p>
+            <p>Here you can see, edit and delete your current projects.</p><br>
 
-                <table>
-                    <tr>
-                        <th>Name</th>
+            <section>
 
-                        <th>Description</th>
+                <div class="s-center">
+                    <article>
 
-                        <th>Price</th>
+                        <table>
+                            <tr>
+                                <th>Name</th>
 
-                        <th>Hours</th>
+                                <th>Description</th>
 
-                        <th>Subprojects</th>
+                                <th>Price</th>
 
-                        <th>Edit</th>
+                                <th>Hours</th>
 
-                        <th>Delete</th>
+                                <th>Subprojects</th>
 
-                    </tr>
+                                <th>Edit</th>
 
-                    <tr th:each="project : ${projects}">
+                                <th>Delete</th>
 
-                        <!--   <td hidden th:text="${project.userId}"></td> -->
+                            </tr>
 
-                        <p hidden th:text="${project.projectId}"></p>
+                            <tr th:each="project : ${projects}">
 
-                        <td th:text="${project.projectName}"></td>
+                                <!--   <td hidden th:text="${project.userId}"></td> -->
 
-                        <td th:text="${project.projectDescription}"></td>
+                                <p hidden th:text="${project.projectId}"></p>
 
-                        <td th:text="${project.projectHours}"></td>
+                                <td th:text="${project.projectName}"></td>
 
-                        <td th:text="${project.projectPrice}"></td>
+                                <td th:text="${project.projectDescription}"></td>
 
+                                <td th:text="${project.projectHours}"></td>
 
-                        <td>
-                            <form action="/subprojects" method="GET" modelAttribute="project">
-                                <!--<a href="/show-subprojects/">-->
-                                <button type="submit" class="button smaller-button">Subproject</button><!--</a>-->
-                            </form>
-                        </td>
-
-                        <td><!-- EDIT PROJECT HER --></td>
-
-                        <td><!-- DELETE PROJECT HER --></td>
-
-                    </tr>
+                                <td th:text="${project.projectPrice}"></td>
 
 
-                </table>
-                <br>
-                <br>
+                                <td>
+                                    <!--                            <form action="/show-subprojects/5" method="GET" modelAttribute="project">-->
+                                    <a th:href="|/show-subprojects/${project.projectId}|">
+                                        <button type="submit" class="button smaller-button">Subproject</button></a>
+                                    <!--</form>-->
+                                </td>
 
-                <a th:href="@{/add-project}">
-                    <button type="button" class="start-button">Add project</button>
-                </a>
+                                <td><!-- EDIT PROJECT HER --></td>
 
-            </article>
+                                <td><!-- DELETE PROJECT HER --></td>
+
+                            </tr>
+
+
+                        </table>
+                        <br>
+                        <br>
+
+                        <a th:href="@{/add-project}">
+                            <button type="button" class="start-button">Add project</button>
+                        </a>
+
+                    </article>
+                </div>
+            </section>
+
         </div>
+
     </section>
 
 </div>
