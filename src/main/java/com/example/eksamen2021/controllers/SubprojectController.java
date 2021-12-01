@@ -96,21 +96,20 @@ public class SubprojectController {
     }
 
     @PostMapping("/calculateSubprojectPrice/{subprojectId}")
-    public String calculateSubprojectPrice(@PathVariable int subprojectId) throws SQLException {
-        System.out.println("im here");
-        System.out.println(subprojectService.findSubprojectID(subprojectId));
+    public String calculateSubprojectPrice(@ModelAttribute Subproject subproject) throws SQLException {
 
-        /*
+
+
         calculatService.calsubprice(
                 subproject.getSubprojectDeveloperHours(),
                 subproject.getSubprojectDeveloperHours(),
                 subproject.getSubprojectGraphicHours());
 
-         */
+
         return "show-projects";
     }
 
-    @PostMapping("/calculateSubprojectHours/ {subprojectId}")
+    @PostMapping("/calculateSubprojectHours/{subprojectId}")
     public String calculateSubprojectHours(@ModelAttribute Subproject subproject) throws SQLException {
 
         calculatService.calsubhours(
