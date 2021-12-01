@@ -121,7 +121,7 @@ public class SubprojectRepository {
         }
         return subprojects;
     }
-    public Subproject findSubprojectID(int subprojectId) {
+    public Subproject findSubprojectID(int subprojectId)throws SQLException {
         String mysql;
         PreparedStatement ps;
         Subproject findSubproject = null;
@@ -166,7 +166,7 @@ public class SubprojectRepository {
         }
         return findSubproject;
     }
-    public void updateSubproject(Subproject subproject) {
+    public void updateSubproject(Subproject subproject) throws SQLException {
         String mysql;
         PreparedStatement ps;
         System.out.println("Seee der er en "+subproject);

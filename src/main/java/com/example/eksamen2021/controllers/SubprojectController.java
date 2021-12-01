@@ -5,10 +5,7 @@ import com.example.eksamen2021.domain.models.Subproject;
 import com.example.eksamen2021.domain.services.SubprojectService;
 import com.example.eksamen2021.repositories.SubprojectRepository;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -38,7 +35,7 @@ public class SubprojectController {
     }
 
     @GetMapping("/showsubprojects/{id}")
-    public String showSubprojects(@PathVariable("id") int id, Model model) {
+    public String showSubprojects(@PathVariable("id") int id, Model model) throws SQLException {
         List<Subproject> subprojects = subprojectService.showAllSubprojects(id);
         model.addAttribute("subprojects", subprojects);
         return "show-projects";
@@ -63,8 +60,7 @@ public class SubprojectController {
     public String updateSubproject(@PathVariable("subprojectId") int subprojectId, Model model) throws SQLException{
         Subproject subproject = subprojectService.findSubprojectID(subprojectId);
         model.addAttribute("subproject",subproject);
-
-        return "show-subprojects";
+        return "update";
     }
     //Post
     @PostMapping("/update-subproject")

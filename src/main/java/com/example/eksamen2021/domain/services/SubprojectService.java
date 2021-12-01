@@ -33,11 +33,11 @@ public class SubprojectService {
 
  */
 
-    public List<Subproject> showAllSubprojects(int id) {
+    public List<Subproject> showAllSubprojects(int id) throws SQLException{
         return subprojectRepository.showAllSubprojects(id);
     }
 
-    public Subproject findSubprojectID(int subprojectId){
+    public Subproject findSubprojectID(int subprojectId)throws SQLException{
         return subprojectRepository.findSubprojectID(subprojectId);
     }
     //updater subprojecter ud fra sub_ID
