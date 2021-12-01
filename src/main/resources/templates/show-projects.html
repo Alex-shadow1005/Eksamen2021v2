@@ -18,7 +18,7 @@
 
     <section>
 
-        <div class="center">
+        <div class="s-center">
             <article>
 
                 <table>
@@ -41,7 +41,7 @@
 
                     <tr th:each="project : ${projects}">
 
-                     <!--   <td hidden th:text="${project.userId}"></td> -->
+                        <!--   <td hidden th:text="${project.userId}"></td> -->
 
                         <p hidden th:text="${project.projectId}"></p>
 
@@ -54,10 +54,12 @@
                         <td th:text="${project.projectPrice}"></td>
 
 
-                        <td><form action="/subprojects" method="GET">
-                            <!--<a href="/show-subprojects/">-->
-                            <button type="submit" class="button smaller-button">Subproject</button><!--</a>-->
-                        </form></td>
+                        <td>
+                            <form action="/subprojects" method="GET" modelAttribute="project">
+                                <!--<a href="/show-subprojects/">-->
+                                <button type="submit" class="button smaller-button">Subproject</button><!--</a>-->
+                            </form>
+                        </td>
 
                         <td><!-- EDIT PROJECT HER --></td>
 
@@ -112,6 +114,7 @@
 </body>
 
 <style>
+
     html {
         box-sizing: border-box;
         -ms-text-size-adjust: 100%;
@@ -182,7 +185,7 @@
         letter-spacing: 4px
     }
 
-    .center .bar {
+    .s-center .bar {
         display: inline-block;
         width: auto
     }
