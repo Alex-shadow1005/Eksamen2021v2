@@ -9,39 +9,62 @@ import java.sql.SQLException;
 import java.util.List;
 
 public class SubprojectService {
-    private SubprojectRepository subprojectRepository = new SubprojectRepository();
+  private SubprojectRepository subprojectRepository = new SubprojectRepository();
 
-    public String addSubproject(Project project, Subproject subproject) {
-        int addSubprojectSuccess = subprojectRepository.addSubproject(project, subproject);
-        if (addSubprojectSuccess == 1) {
-            return "redirect:/show";
-        } else {
-            System.out.println("sut :c");
-            return "redirect:/addProject";
-        }
+  public String addSubproject(Project project, Subproject subproject) {
+    int addSubprojectSuccess = subprojectRepository.addSubproject(project, subproject);
+    if (addSubprojectSuccess == 1) {
+      return "redirect:/show";
+    } else {
+      System.out.println("sut :c");
+      return "redirect:/addProject";
     }
+  }
 
-    //deleter projectet ud fra dens SubID
-    public void deleteSubproject(int subprjectid) throws SQLException {
-        subprojectRepository.deleteSubproject(subprjectid);
-    }
+  //deleter projectet ud fra dens SubID
+  public void deleteSubproject(int subprojectid) throws SQLException {
+    subprojectRepository.deleteSubproject(subprojectid);
+  }
 /*
     //updater subprojecter ud fra sub_ID
     public void updateSubproject(int subproject_id, Subproject subEdt) throws SQLException{
         subprojectRepository.updateSubproject(subproject_id, subEdt);
     }
 
+/*
+  public List<Subproject> showAllSubprojects(int id) throws SQLException {
+    return subprojectRepository.showAllSubprojects(id);
+  }
+
  */
 
-    public List<Subproject> showAllSubprojects(int id) throws SQLException{
-        return subprojectRepository.showAllSubprojects(id);
+
+ /* public List<Subproject> showAllSubprojects(int projektId) {
+    System.out.println("test i service + id = " + projektId);
+    return subprojectRepository.showAllSubprojects(projektId);
+  }
+
+  */
+
+
+
+
+    public List<Subproject> showAllSubprojects(int projectid2) {
+        System.out.println("projectid in service here: " + projectid2);
+        return subprojectRepository.showAllSubprojects(projectid2);
+
     }
 
-    public Subproject findSubprojectID(int subprojectId)throws SQLException{
-        return subprojectRepository.findSubprojectID(subprojectId);
-    }
-    //updater subprojecter ud fra sub_ID
-    public void updateSubproject(Subproject subproject) throws SQLException{
-        subprojectRepository.updateSubproject(subproject);
-    }
+
+
+  public Subproject findSubprojectID(int subprojectId) throws SQLException {
+    return subprojectRepository.findSubprojectID(subprojectId);
+  }
+
+  //updater subprojecter ud fra sub_ID
+  public void updateSubproject(Subproject subproject) throws SQLException {
+    subprojectRepository.updateSubproject(subproject);
+  }
 }
+
+

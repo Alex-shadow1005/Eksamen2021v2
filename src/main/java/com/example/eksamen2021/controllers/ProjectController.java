@@ -14,8 +14,6 @@ import java.util.List;
 @Controller
 public class ProjectController {
   private ProjectService projectService = new ProjectService();
-  User user = new User();
-
 
   @GetMapping("/add-project")
   public String addProject(@ModelAttribute Project project, Model model) {
@@ -24,14 +22,16 @@ public class ProjectController {
     System.out.println(project.getProjectName() + project.getProjectDescription() + project.getProjectPrice());
     return "add-project";
   }
+
+  /* test af om vi bruger den -> BRUGES IKKE
 //viser alle id nummere fra Project
-  @GetMapping("/showall")
-  public String showAll(Model model) {
+  @GetMapping("/showallprojects")
+  public String showAllProjects(Model model) {
     List<Project> projectId = projectService.showAll(1);
     model.addAttribute("Projectlist", projectId);
     return "show-projects";
   }
-
+   */
 
 //sender projct id til projectservice (@Path tager id,et fra urlen og gemmer det??)
   @GetMapping("/delete-project/{projectId}")
@@ -54,29 +54,10 @@ public class ProjectController {
 
   @GetMapping("/show/{id}")
   public String showProjects(@PathVariable("id") int id, Model model) {
-    List<Project> projects = projectService.showAll(id);
+    List<Project> projects = projectService.showAllProjects(id);
     model.addAttribute("projects", projects);
     return "show-projects";
   }
-
-
-  @GetMapping("/show-subprojects")
-  public String showSubprojects(@PathVariable("projectid2") int projectid2, Project project, Model model) { //ModelAttribute gemmer parametre i User ved at lave det til et objekt
-    List<Subproject> subprojects = projectService.showAllSubprojects(projectid2);
-    model.addAttribute("subproject", subprojects);
-    System.out.println("show subproject test" + subprojects);
-    return "redirect:/show-subprojects/" + project.getProjectId();
-  }
-
-    /*
-  @GetMapping("/show-subprojects/{id}")
-  public String showSubprojects(@PathVariable("projectid") int projectid, Model model) {
-    List<Subproject> subprojects = projectService.showAllSubprojects(projectid);
-    System.out.println("project id test here: " + projectid);
-    model.addAttribute("subprojects", subprojects);
-    return "show-subprojects";
-  }
-     */
 
   @PostMapping("/save")
   public String saveProject(@ModelAttribute Project project, User user) {

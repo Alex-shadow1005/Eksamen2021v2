@@ -30,13 +30,17 @@ public class ProjectService {
   }
 
 
-  public List<Project> showAll(int id) {
-    return projectRepository.showAll(id);
+  public List<Project> showAllProjects(int id) {
+    return projectRepository.showAllProjects(id);
   }
+
 
 
   public List<Subproject> showAllSubprojects(int projectid2) {
     System.out.println("projectid in service here: " + projectid2);
     return subprojectRepository.showAllSubprojects(projectid2);
   }
+
+
+
 }

@@ -1,5 +1,6 @@
 package com.example.eksamen2021.controllers;
 
+import com.example.eksamen2021.domain.models.Project;
 import com.example.eksamen2021.domain.models.User;
 import com.example.eksamen2021.domain.services.UserService;
 import org.springframework.stereotype.Controller;
@@ -13,6 +14,7 @@ public class UserController {
 
   private UserService userService = new UserService();
   public static User session;
+  Project project = new Project(); //SILKE TEST
 
  // Denne metode tager oplysninger, som brugeren har indtastet om en ny kunde.
  // Objektet bruges til at gemme oplysninger om kunden i databasen.
