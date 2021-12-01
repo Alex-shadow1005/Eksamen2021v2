@@ -186,7 +186,7 @@ public class SubprojectRepository {
             //2. Prepare statement
             mysql = "UPDATE subprojects SET" +
                 // 1
-                "subproject_name = ?" + // 1
+                "subproject_name = ?," + // 1
                 // 2
                 "subproject_description = ?," + // 2
                 // 3
@@ -218,8 +218,11 @@ public class SubprojectRepository {
             ps.setInt(5, subproject.getSubprojectGraphicHours());
             // 6
             ps.setInt(6, subproject.getSubprojectPrice());
-            // 7 WHERE subproject_id = ?
-            ps.setInt(7, subproject.getSubprojectId());
+            // 7
+            ps.setInt(7,subproject.getSubprojectTotalHours());
+            // 8 WHERE subproject_id = ?
+            ps.setInt(8, subproject.getSubprojectId());
+
 
 
             //4. Execute SQL query
@@ -228,6 +231,7 @@ public class SubprojectRepository {
             if(rows > 0){
                 System.out.println("A new user has been inserted Successfully.");
             }
+
             //5. Display the result set
         } catch (SQLException err) {
             System.out.println("Fejl user has NOT! been inserted Successfully=" + err.getMessage());
