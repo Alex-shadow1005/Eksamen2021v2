@@ -12,12 +12,7 @@ public class CalculateService {
         Subproject subproject = new Subproject();
 
 
-/*
-    public void calcualte(int projectId) throws SQLException {
-        CalculatRepositories.calculateProjectSum(projectId);
-    }
 
- */
 
         public double calsubprice(double seniorDeveloperhours, double developerhours, double graphicDesignerhours){
 

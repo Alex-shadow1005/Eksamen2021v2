@@ -1,6 +1,10 @@
 package com.example.eksamen2021.domain.models;
 
+import com.example.eksamen2021.domain.services.CalculateService;
+
 public class Subproject {
+  CalculateService calculateService = new CalculateService();
+  CalculateHourlyRate calculateHourlyRate = new CalculateHourlyRate();
 
   private int subprojectId;
   private int projectId;
@@ -15,7 +19,22 @@ public class Subproject {
 
   //KONSTRUKTØRER:
 
-  public Subproject(int subprojectId, String subprojectName, String subprojectDescription, int subprojectSeniordeveloperHours, int subprojectDeveloperHours, int subprojectGraphicHours, int subprojectPrice, int subprojectTotalHours) {
+  public Subproject(int subprojectId, String subprojectName, String subprojectDescription, int subprojectSeniordeveloperHours, int subprojectDeveloperHours, int subprojectGraphicHours) {
+    this.subprojectId = subprojectId;
+    this.subprojectName = subprojectName;
+    this.subprojectDescription = subprojectDescription;
+    this.subprojectSeniordeveloperHours = subprojectSeniordeveloperHours;
+    this.subprojectDeveloperHours = subprojectDeveloperHours;
+    this.subprojectGraphicHours = subprojectGraphicHours;
+
+    subprojectPrice = (int) calculateService.calsubprice(getSubprojectSeniordeveloperHours(),getSubprojectDeveloperHours(),getSubprojectGraphicHours()) *
+            (calculateHourlyRate.getSeniorDeveloper() + calculateHourlyRate.getDeveloper() + calculateHourlyRate.getGraphicDesigner());
+
+    subprojectTotalHours = (int) calculateService.calsubhours(getSubprojectSeniordeveloperHours(),getSubprojectDeveloperHours(),getSubprojectGraphicHours());
+
+  }
+//find  subID
+  public Subproject(int subprojectId, String subprojectName, String subprojectDescription, int subprojectSeniordeveloperHours, int subprojectDeveloperHours, int subprojectGraphicHours, int subprojectPrice) {
     this.subprojectId = subprojectId;
     this.subprojectName = subprojectName;
     this.subprojectDescription = subprojectDescription;
@@ -23,10 +42,8 @@ public class Subproject {
     this.subprojectDeveloperHours = subprojectDeveloperHours;
     this.subprojectGraphicHours = subprojectGraphicHours;
     this.subprojectPrice = subprojectPrice;
-    this.subprojectTotalHours = subprojectTotalHours;
   }
 
-  //DENNE KONSTRUKTØR BRUGES I PROJECTREPO SHOWALLPROJECTS-METODEN OG I FINDSUBPROJECTID-METODEN
   public Subproject(int subprojectId, int projectId, String subprojectName, String subprojectDescription, int subprojectSeniordeveloperHours, int subprojectDeveloperHours, int subprojectGraphicHours, int subprojectPrice) {
     this.subprojectId = subprojectId;
     this.projectId = projectId;

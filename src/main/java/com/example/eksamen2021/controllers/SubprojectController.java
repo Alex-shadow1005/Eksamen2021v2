@@ -4,6 +4,7 @@ import com.example.eksamen2021.domain.models.Project;
 import com.example.eksamen2021.domain.models.Subproject;
 import com.example.eksamen2021.domain.services.CalculateService;
 import com.example.eksamen2021.domain.services.SubprojectService;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import java.sql.SQLException;
 import java.util.List;
 
+@Controller
 public class SubprojectController {
 
     private SubprojectService subprojectService = new SubprojectService();
@@ -93,13 +95,18 @@ public class SubprojectController {
         return "show-subprojects";
     }
 
-    @PostMapping("/calculateSubprojectPrice/ {subprojectId}")
-    public String calculateSubprojectPrice(@ModelAttribute Subproject subproject) throws SQLException {
+    @PostMapping("/calculateSubprojectPrice/{subprojectId}")
+    public String calculateSubprojectPrice(@PathVariable int subprojectId) throws SQLException {
+        System.out.println("im here");
+        System.out.println(subprojectService.findSubprojectID(subprojectId));
 
+        /*
         calculatService.calsubprice(
                 subproject.getSubprojectDeveloperHours(),
                 subproject.getSubprojectDeveloperHours(),
                 subproject.getSubprojectGraphicHours());
+
+         */
         return "show-projects";
     }
 
