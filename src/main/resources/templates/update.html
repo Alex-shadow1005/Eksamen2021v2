@@ -1,25 +1,254 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:form="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Subproject</title>
 </head>
+
+
 <body>
+<a href="http://www.google.com/">link</a>
 
-    <form  action="/update-subproject" modelAttribute="subproject" method="post">
+    <form action="/new-update-subproject" modelAttribute="subproject" method="POST">
 
-        <a href="http://www.google.com/">link</a>
-            <label for="subprojectName">First name:</label>
-            <input type="text" id="subprojectName" name="subprojectName"><br><br>
 
-            <label for="subprojectDescription">Last name:</label>
-            <input type="text" id="subprojectDescription" name="subprojectDescription"><br><br>
 
-            <input type="submit" value="Submit">
+<tr th:each="subproject : ${subproject}">
+            <label for="subprojectId">subproject id:</label>
+            <input type="text" id="subprojectId" name="subprojectId" th:value="${subproject.subprojectId}"><br><br>
+
+
+            <label for="subprojectName">subproject name:</label>
+            <input type="text" id="subprojectName" name="subprojectName" th:value="${subproject.subprojectName}"><br><br>
+
+
+            <label for="subprojectDescription">subproject description:</label>
+            <input type="text" id="subprojectDescription" name="subprojectDescription" th:value="${subproject.subprojectDescription}"><br><br>
+
+
+            <label for="subprojectSeniordeveloperHours">subproject seniordeveloper hours:</label>
+            <input type="text" id="subprojectSeniordeveloperHours" name="subprojectSeniordeveloperHours" th:value="${subproject.subprojectSeniordeveloperHours}"><br><br>
+
+
+            <label for="subprojectDeveloperHours">subproject developer hours:</label>
+            <input type="text" id="subprojectDeveloperHours" name="subprojectDeveloperHours"
+                   th:value="${subproject.subprojectDeveloperHours}"><br><br>
+
+
+            <label for="subprojectGraphicHours">subproject graphic hours:</label>
+            <input type="text" id="subprojectGraphicHours" name="subprojectGraphicHours"
+                   th:value="${subproject.subprojectGraphicHours}"><br><br>
+
+            <label for="subprojectPrice">subproject price:</label>
+            <input type="text" id="subprojectPrice" name="subprojectPrice" th:value="${subproject.subprojectPrice}" hidden><br><br>
+
+
+            <label for="subprojectTotalHours">subproject_total_hours:</label>
+            <input type="text" id="subprojectTotalHours" name="subprojectTotalHours" th:value="${subproject.subprojectTotalHours}"
+                   hidden><br><br>
+
+
             <button type="submit" class="button smaller-button">??btg</button>
 
-            <input type="submit" value="Submit"/>
+
+</tr>
     </form>
 
+
 </body>
+<style>
+    html {
+        box-sizing: border-box;
+        -ms-text-size-adjust: 100%;
+        -webkit-text-size-adjust: 100%;
+        overflow-x: hidden
+    }
+
+    *, *:before, *:after {
+        box-sizing: inherit
+    }
+
+    body {
+        background: linear-gradient(30deg, #59869D, ghostwhite); /*samme farve som taget fra Alpha-Solutions hjemmeside! (bortset fra den hvide, ghost lød bare sejere, feel free to change it haha*/
+        margin: 0;
+        font-family: Verdana, sans-serif;
+        font-size: 15px;
+        line-height: 1.5
+    }
+
+    .start-button {
+        padding: 16px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        transition-duration: 0.4s;
+        cursor: pointer;
+        background-color: white;
+        color: black;
+        border: 2px solid #e7e7e7;
+    }
+
+    .start-button:hover {
+        background-color: #59869D; /*samme farve som taget fra Alpha-Solutions hjemmeside!*/
+        color: white;
+    }
+
+    .smaller-button {
+        padding: 4px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 15px;
+        margin: 2px 2px;
+        transition-duration: 0.4s;
+        cursor: pointer;
+        background-color: white;
+        color: black;
+        border: 2px solid #e7e7e7;
+    }
+
+    .smaller-button:hover {
+        background-color: #59869D; /*samme farve som taget fra Alpha-Solutions hjemmeside!*/
+        color: white;
+    }
+
+    a {
+        background-color: transparent;
+        color: inherit
+    }
+
+    a:active, a:hover {
+        outline-width: 0
+    }
+
+    .wide {
+        letter-spacing: 4px
+    }
+
+    .center .bar {
+        display: inline-block;
+        width: auto
+    }
+
+    .container:after, .container:before {
+        content: "";
+        display: table;
+        clear: both
+    }
+
+    .content {
+        margin-left: auto;
+        margin-right: auto;
+        max-width: 980px
+    }
+
+    .container {
+        padding: 0.01em 16px
+    }
+
+    .opacity, .hover-opacity:hover {
+        opacity: 0.60
+    }
+
+    .opacity-off, .hover-opacity-off:hover {
+        opacity: 1
+    }
+
+    .opacity-max {
+        opacity: 0.25
+    }
+
+    .opacity-min {
+        opacity: 0.75
+    }
+
+    .center {
+        text-align: center !important
+    }
+
+    .padding-64 {
+        padding-top: 64px !important;
+        padding-bottom: 64px !important
+    }
+
+
+    /* TABLE CSS: */
+    table {
+        border-collapse: collapse;
+        width: 100%;
+        align-content: center;
+    }
+
+    td, th {
+        border: 1px solid #59869D;
+        text-align: left;
+        padding: 8px;
+    }
+
+    tr:nth-child(even) {
+        background-color: ghostwhite;
+    }
+</style>
 </html>
+
+<!--
+<section>
+    <div class="article-box">
+        <article>
+            <table>
+                <tr>
+                    <th>Name</th>
+                    <th>&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;</th>
+                    <th>Description</th>
+                    <th>&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;</th>
+                    <th>Price</th>
+                </tr>
+                                <tr th:each="project : ${projects}">
+<<<<<<< HEAD
+                                    <td th:text="${project.projectId}"></td>
+                                    <td>&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;</td>
+                                    <td th:text="${project.projectName}"></td>
+=======
+                                    <td th:text="${project.project_name}"></td>
+>>>>>>> weekrnd-work
+                                    <td>&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;</td>
+                                    <td th:text="${project.projectDescription}"></td>
+                                    <td>&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;</td>
+                                    <td th:text="${project.projectPrice}"></td>
+                                </tr>
+                </tr>
+            </table>
+            <br>
+            <a th:href="@{/addproject}">
+                <button type="button" style="background-color: cadetblue">Add project</button>
+            </a>
+        </article>
+    </div>
+</section>
+-->
+
+<!-- FOOTER START -->
+<!--
+<footer>
+    <div class="row">
+        <div class="column">
+            <h3>Contact Us</h3>
+            <p><a href="mailto:kea@kea.dk">Email Us Here</a></p>
+        </div>
+
+        <div class="column">
+            <h3>About Us</h3>
+            <p>Just three classmates who have fun when working on a project together! :)</p>
+        </div>
+
+        <div class="column">
+            <h3>KEA</h3>
+            <p><a href="https://www.kea.dk" target="_blank">Go visit KEA's website</a></p>
+        </div>
+    </div>
+
+</footer>
+-->
+<!--FOOTER END-->

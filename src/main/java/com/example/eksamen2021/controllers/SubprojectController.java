@@ -4,12 +4,13 @@ import com.example.eksamen2021.domain.models.Project;
 import com.example.eksamen2021.domain.models.Subproject;
 import com.example.eksamen2021.domain.services.CalculateService;
 import com.example.eksamen2021.domain.services.SubprojectService;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.sql.SQLException;
 import java.util.List;
-
+@Controller
 public class SubprojectController {
 
   private SubprojectService subprojectService = new SubprojectService();
@@ -87,6 +88,16 @@ public String showSubprojects(@PathVariable("projectid") int projectid, Model mo
         return "show-projects";
     }
 
+
+
+
+
+
+
+
+
+
+
   //sender projct id til projectservice (@Path tager id,et fra urlen og gemmer det??)
   @GetMapping("/update-subproject/{subprojectId}")
   public String updateSubproject(@PathVariable("subprojectId") int subprojectId, Model model) throws SQLException {
@@ -95,12 +106,24 @@ public String showSubprojects(@PathVariable("projectid") int projectid, Model mo
     return "update";
   }
 
+
+
+
   //Post
-  @PostMapping("/update-subproject")
+  @PostMapping("/new-update-subproject")
   public String updateSubproject(@ModelAttribute Subproject subproject) throws SQLException {
     subprojectService.updateSubproject(subproject);
-    return "show-subprojects";
+    return "redirect:/show-subprojects";
   }
+
+
+
+
+
+
+
+
+
 
     @PostMapping("/calculateSubprojectPrice/ {subprojectId}")
     public String calculateSubprojectPrice(@ModelAttribute Subproject subproject) throws SQLException {

@@ -137,7 +137,7 @@ public class SubprojectRepository {
             Connection con = DBManager.getConnection();
 
             //2. Prepare statement
-            mysql = "SELECT * FROM subproject WHERE subproject_id = ?";
+            mysql = "SELECT * FROM subprojects WHERE subproject_id = ?";
 
 
             ps = con.prepareStatement(mysql);
@@ -184,9 +184,9 @@ public class SubprojectRepository {
             Connection con = DBManager.getConnection();
 
             //2. Prepare statement
-            mysql = "UPDATE heroku_dd9ca97e9e588ce.subprojects SET" +
+            mysql = "UPDATE subprojects SET" +
                 // 1
-                "subproject_name =  ft," + // 1
+                "subproject_name = ?" + // 1
                 // 2
                 "subproject_description = ?," + // 2
                 // 3
