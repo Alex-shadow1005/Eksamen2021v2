@@ -103,7 +103,7 @@ public class SubprojectRepository {
         ArrayList<Subproject> subprojects = new ArrayList<>();
         try {
             Connection con = DBManager.getConnection();
-            String SQL = "SELECT * FROM subprojects WHERE project_id = ?"; // Do this line when we know database name and stuff
+            String SQL = "SELECT * FROM subprojects WHERE project_id = ?";
 
             System.out.println("test i repo: + id =" + id);
 
@@ -129,7 +129,8 @@ public class SubprojectRepository {
         return subprojects;
     }
 
-    public Subproject findSubprojectID(int subprojectId) {
+    public Subproject findSubprojectID(int subprojectId)throws SQLException {
+
         String mysql;
         PreparedStatement ps;
         Subproject findSubproject = null;
@@ -138,7 +139,7 @@ public class SubprojectRepository {
             Connection con = DBManager.getConnection();
 
             //2. Prepare statement
-            mysql = "SELECT * FROM subproject WHERE subproject_id = ?";
+            mysql = "SELECT * FROM subprojects WHERE subproject_id = ?";
 
 
             ps = con.prepareStatement(mysql);
@@ -165,7 +166,9 @@ public class SubprojectRepository {
                     //subproject_graphic_hours
                     rs.getInt(7),
                     //subproject_price = ?
-                    rs.getInt(8)
+                    rs.getInt(8),
+                    //subproject_total_hours
+                    rs.getInt(9)
                 ));
             }
             System.out.println("finder ID YESSS");
@@ -174,7 +177,7 @@ public class SubprojectRepository {
         }
         return findSubproject;
     }
-    public void updateSubproject(Subproject subproject) {
+    public void updateSubproject(Subproject subproject) throws SQLException {
         String mysql;
         PreparedStatement ps;
         System.out.println("Seee der er en "+subproject);
@@ -183,9 +186,9 @@ public class SubprojectRepository {
             Connection con = DBManager.getConnection();
 
             //2. Prepare statement
-            mysql = "UPDATE heroku_dd9ca97e9e588ce.subprojects SET" +
+            mysql = "UPDATE subprojects SET" +
                 // 1
-                "subproject_name =  ft," + // 1
+                "subproject_name = ?," + // 1
                 // 2
                 "subproject_description = ?," + // 2
                 // 3
@@ -195,9 +198,11 @@ public class SubprojectRepository {
                 // 5
                 "subproject_graphic_hours = ?," + // 5
                 // 6
-                "subproject_price = ?" + // 6
+                "subproject_price = ?," + // 6
                 //7
-                "WHERE subproject_id = ?"; // 7
+                 "subproject_total_hours = ?" + //7
+                //8
+                "WHERE subproject_id = ?"; // 8
 
 
             ps = con.prepareStatement(mysql);
@@ -215,8 +220,11 @@ public class SubprojectRepository {
             ps.setInt(5, subproject.getSubprojectGraphicHours());
             // 6
             ps.setInt(6, subproject.getSubprojectPrice());
-            // 7 WHERE subproject_id = ?
-            ps.setInt(7, subproject.getSubprojectId());
+            // 7
+            ps.setInt(7,subproject.getSubprojectTotalHours());
+            // 8 WHERE subproject_id = ?
+            ps.setInt(8, subproject.getSubprojectId());
+
 
 
             //4. Execute SQL query
@@ -225,10 +233,68 @@ public class SubprojectRepository {
             if(rows > 0){
                 System.out.println("A new user has been inserted Successfully.");
             }
+
             //5. Display the result set
         } catch (SQLException err) {
             System.out.println("Fejl user has NOT! been inserted Successfully=" + err.getMessage());
         }
         System.out.println("Du har udatert");
     }
+
+
+
+    // skal det være ud fra idet??
+    //TILFØJER ET SUBPROJEKT TIL BRUGERENS SUBPROJEKTLISTE
+    public double addSubprojectPrice(Subproject subproject) {
+        String mySql;
+        PreparedStatement ps;
+        int h = 0;
+
+        try {
+            //1. Get a connection to database
+            Connection con = DBManager.getConnection();
+            //2. Prepare statement
+            mySql = "INSERT INTO subprojects (subproject_price) VALUES (?)";
+
+            ps = con.prepareStatement(mySql);
+            //3. Set the parameters
+            ps.setInt(1, subproject.getSubprojectPrice());
+
+            //4. Execute SQL query
+            h = ps.executeUpdate();
+            System.out.println("Subprojectprice added");
+            //5. Display the result set
+        } catch (SQLException err) {
+            System.out.println("Fejl i count err=" + err.getMessage());
+        }
+        return h; //returnerer brugeren til Service
+    }
+
+
+    //TILFØJER ET SUBPROJEKT TIL BRUGERENS SUBPROJEKTLISTE
+    public int addSubprojectHours( Subproject subproject) {
+        String mySql;
+        PreparedStatement ps;
+        int h = 0;
+
+        try {
+            //1. Get a connection to database
+            Connection con = DBManager.getConnection();
+            //2. Prepare statement
+            mySql = "INSERT INTO subprojects (subproject_hours) VALUES (?)";
+
+            ps = con.prepareStatement(mySql);
+            //3. Set the parameters
+            ps.setInt(1, subproject.getSubprojectTotalHours());
+
+            //4. Execute SQL query
+            h = ps.executeUpdate();
+            System.out.println("Subprojectprice added");
+            //5. Display the result set
+        } catch (SQLException err) {
+            System.out.println("Fejl i count err=" + err.getMessage());
+        }
+        return h; //returnerer brugeren til Service
+    }
+
 }

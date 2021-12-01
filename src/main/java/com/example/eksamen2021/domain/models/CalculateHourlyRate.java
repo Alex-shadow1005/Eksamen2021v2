@@ -1,6 +1,6 @@
 package com.example.eksamen2021.domain.models;
 
-public class HourlyRate {
+public class CalculateHourlyRate {
 
   private final int seniorDeveloper = 1500;
   private final int developer = 750;

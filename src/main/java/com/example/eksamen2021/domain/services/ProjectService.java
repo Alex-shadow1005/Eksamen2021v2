@@ -34,4 +34,13 @@ public class ProjectService {
     return projectRepository.showAllProjects(id);
   }
 
+
+
+  public List<Subproject> showAllSubprojects(int projectid2) {
+    System.out.println("projectid in service here: " + projectid2);
+    return subprojectRepository.showAllSubprojects(projectid2);
+  }
+
+
+
 }
