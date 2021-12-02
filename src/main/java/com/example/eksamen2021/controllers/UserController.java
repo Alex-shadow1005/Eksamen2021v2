@@ -14,7 +14,6 @@ public class UserController {
 
   private UserService userService = new UserService();
   public static User session;
-  Project project = new Project(); //SILKE TEST
 
  // Denne metode tager oplysninger, som brugeren har indtastet om en ny kunde.
  // Objektet bruges til at gemme oplysninger om kunden i databasen.

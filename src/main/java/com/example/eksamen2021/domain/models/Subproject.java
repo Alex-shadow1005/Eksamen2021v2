@@ -18,7 +18,7 @@ public class Subproject {
 
   //KONSTRUKTØRER:
 
-  //test den her om den bruges??????????
+  //bruges i addsubprojekt - d.2/12 kl 13 Silke
   public Subproject(int subprojectId, String subprojectName, String subprojectDescription, int subprojectSeniordeveloperHours, int subprojectDeveloperHours, int subprojectGraphicHours) {
     this.subprojectId = subprojectId;
     this.subprojectName = subprojectName;

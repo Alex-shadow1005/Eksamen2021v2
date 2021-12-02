@@ -34,29 +34,29 @@
 
                     <form method="POST" th:action="@{/add-subproject}" th:object="${subproject}">
 
-                        <td hidden><input type="text" th:field="*{subproject.subprojectId}"
+                        <td hidden><input type="text" th:field="*{subprojectId}"
                                    placeholder="Subproject ID"></td>
 
-                        <td hidden><input type="text" th:field="*{subproject.projectId}"
+                        <td hidden><input type="text" th:field="*{projectId}"
                                           placeholder="Project ID"></td>
 
-                        <td><input type="text" th:field="*{subproject.subprojectName}"
+                        <td><input type="text" th:field="*{subprojectName}"
                                    placeholder="Name"></td>
 
-                        <td><input type="text" th:field="*{subproject.subprojectDescription}"
+                        <td><input type="text" th:field="*{subprojectDescription}"
                                    placeholder="Description" size="150"></td>
 
-                        <td><input type="text" th:field="*{subproject.subprojectSeniordeveloperHours}"
+                        <td><input type="text" th:field="*{subprojectSeniordeveloperHours}"
                                    placeholder="Senior developer hours"></td>
 
-                        <td><input type="text" th:field="*{subproject.subprojectDeveloperHours}"
+                        <td><input type="text" th:field="*{subprojectDeveloperHours}"
                                    placeholder="Developer hours"></td>
 
-                        <td><input type="text" th:field="*{subproject.projectGraphicHours}"
+                        <td><input type="text" th:field="*{subprojectGraphicHours}"
                                    placeholder="Graphic designer hours"></td>
 
-                        <td hidden><input type="text" th:field="*{subproject.subprojectPrice}"
-                                          placeholder="Subproject Price"></td>
+                        <!--<td hidden><input type="text" th:field="*{subprojectPrice}"
+                                          placeholder="Subproject Price"></td> -->
 
 
                         <!--Vil gerne have lavet description input feltet om, så det kan være større (en boks)-->
@@ -114,7 +114,7 @@
 
 <!--FOOTER END-->
 </body>
-
+-->
 </html>
 
 

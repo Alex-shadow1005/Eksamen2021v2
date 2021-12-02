@@ -18,15 +18,16 @@ public class SubprojectController {
 
   private SubprojectService subprojectService = new SubprojectService();
   private CalculateService calculatService = new CalculateService();
+  public static Project currentProject;
 
 
   //subproject id = 0, får den ikke rigtigt med? uden path
   //med path: viser ikke sout 
   @GetMapping("/add-subproject")
-  public String addSubproject(@PathVariable("subprojectId") int subprojectId, @ModelAttribute Subproject subproject, Model model) {
-    model.addAttribute("subprojectId", subprojectId);
+  public String addSubproject(@ModelAttribute Subproject subproject, Model model) {
+    model.addAttribute("subproject", subproject);
     //subproject.getSubprojectId();
-    System.out.println("subproject id in addsubpro. id = " + subprojectId);
+    System.out.println("subproject id in addsubpro. id = " + subproject);
     return "add-subproject";
   }
 

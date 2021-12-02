@@ -33,20 +33,20 @@
 
                     <form method="POST" th:action="@{/add-project}" th:object="${project}">
 
-                        <td hidden><input type="text" th:field="*{project.projectId}"
-                                          placeholder="ProjectId"></td>
+                        <!--<td hidden><input type="text" th:field="*{project.projectId}"
+                                          placeholder="ProjectId"></td>-->
 
-                        <td><input type="text" th:field="*{project.projectName}"
+                        <td><input type="text" th:field="*{projectName}"
                                    placeholder="Name"></td>
 
-                        <td><input type="text" th:field="*{project.projectDescription}"
+                        <td><input type="text" th:field="*{projectDescription}"
                                    placeholder="Description" size="150"></td>
 
-                        <td><input type="text" th:field="*{project.projectHours}"
+                        <!--<td><input type="text" th:field="*{project.projectHours}"
                                    placeholder="Description"></td>
 
                         <td><input type="text" th:field="*{project.projectPrice}"
-                                   placeholder="Price"></td>
+                                   placeholder="Price"></td>-->
 
 
                         <button type="reset" class="cancel-button">Clear form</button>
