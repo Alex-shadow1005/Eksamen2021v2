@@ -67,11 +67,7 @@ public class Subproject {
   }
 
 
-<<<<<<< HEAD
-=======
 
-
->>>>>>> developer
   //GETTERS AND SETTERS
 
 
