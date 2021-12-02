@@ -10,8 +10,9 @@ import java.sql.SQLException;
 import java.util.List;
 
 public class SubprojectService {
-  @Autowired
-  CalculateService calculateService;
+  //@Autowired
+  //CalculateService calculateService;
+  CalculateService calculateService = new CalculateService();
 
   private SubprojectRepository subprojectRepository = new SubprojectRepository();
 
