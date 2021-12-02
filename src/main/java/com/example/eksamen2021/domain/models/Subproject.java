@@ -19,20 +19,6 @@ public class Subproject {
 
   //KONSTRUKTØRER:
 
-  public Subproject(int subprojectId, String subprojectName, String subprojectDescription, int subprojectSeniordeveloperHours, int subprojectDeveloperHours, int subprojectGraphicHours) {
-    this.subprojectId = subprojectId;
-    this.subprojectName = subprojectName;
-    this.subprojectDescription = subprojectDescription;
-    this.subprojectSeniordeveloperHours = subprojectSeniordeveloperHours;
-    this.subprojectDeveloperHours = subprojectDeveloperHours;
-    this.subprojectGraphicHours = subprojectGraphicHours;
-
-    subprojectPrice = (int) calculateService.calsubprice(getSubprojectSeniordeveloperHours(),getSubprojectDeveloperHours(),getSubprojectGraphicHours()) *
-            (calculateHourlyRate.getSeniorDeveloper() + calculateHourlyRate.getDeveloper() + calculateHourlyRate.getGraphicDesigner());
-
-    subprojectTotalHours = (int) calculateService.calsubhours(getSubprojectSeniordeveloperHours(),getSubprojectDeveloperHours(),getSubprojectGraphicHours());
-
-  }
 //find  subID
   public Subproject(int subprojectId, String subprojectName, String subprojectDescription, int subprojectSeniordeveloperHours, int subprojectDeveloperHours, int subprojectGraphicHours, int subprojectPrice) {
     this.subprojectId = subprojectId;
@@ -43,7 +29,7 @@ public class Subproject {
     this.subprojectGraphicHours = subprojectGraphicHours;
     this.subprojectPrice = subprojectPrice;
   }
-
+//show allsubproject
   public Subproject(int subprojectId, int projectId, String subprojectName, String subprojectDescription, int subprojectSeniordeveloperHours, int subprojectDeveloperHours, int subprojectGraphicHours, int subprojectPrice) {
     this.subprojectId = subprojectId;
     this.projectId = projectId;
@@ -56,21 +42,21 @@ public class Subproject {
 
   }
 
-
-  public Subproject(int subprojectId, String subprojectName, String subprojectDescription, int subprojectPrice) {
-    this.subprojectId = subprojectId;
-    this.projectId = projectId;
-    this.subprojectName = subprojectName;
-    this.subprojectDescription = subprojectDescription;
-    this.subprojectPrice = subprojectPrice;
-  }
-
   //BRUGES I addSubproject METODEN
-  public Subproject(int subprojectId, String subprojectName, String subprojectDescription) {
+  public Subproject(int subprojectId, String subprojectName, String subprojectDescription,int subprojectSeniordeveloperHours, int subprojectDeveloperHours, int subprojectGraphicHours) {
     this.subprojectId = subprojectId;
     this.subprojectName = subprojectName;
     this.subprojectDescription = subprojectDescription;
+    this.subprojectSeniordeveloperHours = subprojectSeniordeveloperHours;
+    this.subprojectDeveloperHours = subprojectDeveloperHours;
+    this.subprojectGraphicHours = subprojectGraphicHours;
+
+    subprojectPrice = (int) calculateService.calsubprice(getSubprojectSeniordeveloperHours(),getSubprojectDeveloperHours(),getSubprojectGraphicHours()) *
+            (calculateHourlyRate.getSeniorDeveloper() + calculateHourlyRate.getDeveloper() + calculateHourlyRate.getGraphicDesigner());
+
+    subprojectTotalHours = (int) calculateService.calsubhours(getSubprojectSeniordeveloperHours(),getSubprojectDeveloperHours(),getSubprojectGraphicHours());
   }
+
 
   public Subproject() {
   }
