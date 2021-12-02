@@ -22,18 +22,13 @@ public class SubprojectRepository {
             //1. Get a connection to database
             Connection con = DBManager.getConnection();
             //2. Prepare statement
-            mySql = "INSERT INTO subprojects (project_id, subproject_name, subproject_description, subproject_seniordeveloper_hours," +
-                    " subproject_developer_hours, subproject_graphic_hours) VALUES (?, ?, ?, ?, ?, ?)";
+            mySql = "INSERT INTO subprojects (project_id, subproject_name, subproject_description) VALUES (?, ?, ?)";
 
             ps = con.prepareStatement(mySql);
             //3. Set the parameters
             ps.setInt(1, project.getProjectId());
             ps.setString(2, subproject.getSubprojectName());
             ps.setString(3, subproject.getSubprojectDescription());
-            ps.setInt(4, subproject.getSubprojectSeniordeveloperHours());
-            ps.setInt(5, subproject.getSubprojectDeveloperHours());
-            ps.setInt(6, subproject.getSubprojectGraphicHours());
-
             //4. Execute SQL query
             h = ps.executeUpdate();
             System.out.println("Subproject added");

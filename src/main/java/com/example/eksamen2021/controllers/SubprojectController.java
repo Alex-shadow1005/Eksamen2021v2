@@ -139,18 +139,24 @@ public String showSubprojects(@PathVariable("projectid") int projectid, Model mo
         System.out.println("im here");
         System.out.println(subprojectService.findSubprojectID(subprojectId));
 
-        /*
-        calculatService.calsubprice(
-                subproject.getSubprojectDeveloperHours(),
-                subproject.getSubprojectDeveloperHours(),
-                subproject.getSubprojectGraphicHours());
+        Subproject sub = subprojectService.findSubprojectID(subprojectId);
+
+
+
+
+        /*calculatService.calsubprice(
+                sub.getSubprojectDeveloperHours(),
+                sub.getSubprojectDeveloperHours(),
+                sub.getSubprojectGraphicHours());
 
          */
-        return "show-projects";
+
+
+        return "redirect:/show-subprojects";
     }
 
 
-
+/*
     @PostMapping("/calculateSubprojectHours/ {subprojectId}")
     public String calculateSubprojectHours(@ModelAttribute Subproject subproject) throws SQLException {
 
@@ -159,7 +165,7 @@ public String showSubprojects(@PathVariable("projectid") int projectid, Model mo
                 subproject.getSubprojectDeveloperHours(),
                 subproject.getSubprojectGraphicHours());
         return "show-projects";
-    }
+    }*/
 
 
 }
