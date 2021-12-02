@@ -22,32 +22,48 @@
         <article>
 
             <table>
-            <tr>
-                <th>Project name</th>
-                <th>Description</th>
+                <tr>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Hours</th>
+                    <th>Price</th>
                 </tr>
 
                 <tr>
+                    <form action="/"></form>
 
-                <form method="POST" th:action="@{/add-project}" th:object="${project}">
-                <td><input type="text" th:field="*{projectName}"
-                       placeholder="Name"></td>
-                <td><input type="text" th:field="*{projectDescription}"
-                       placeholder="Description" size="150"></td>
-                    <!--Vil gerne have lavet description input feltet om, så det kan være større (en boks)-->
+                    <form method="POST" th:action="@{/add-project}" th:object="${project}">
 
-                <!-- skal ikke have pris, vel?
-                <input type="text" th:field="*{project_price}"
-                       placeholder="Price">-->
+                        <td hidden><input type="text" th:field="*{project.projectId}"
+                                          placeholder="ProjectId"></td>
 
-            </tr>
+                        <td><input type="text" th:field="*{project.projectName}"
+                                   placeholder="Name"></td>
+                        <td><input type="text" th:field="*{project.projectDescription}"
+                                   placeholder="Description" size="150"></td>
+
+                        <td><input type="text" th:field="*{project.projectHours}"
+                                   placeholder="Description"></td>
+
+                        <td><input type="text" th:field="*{project.projectPrice}"
+                                   placeholder="Description"></td>
+
+                        Vil gerne have lavet description input feltet om, så det kan være større (en boks)
+
+                        skal ikke have pris, vel?
+                        <input type="text" th:field="*{project_price}"
+                               placeholder="Price">
+
+                        <button type="reset" class="cancel-button">Clear form</button>
+                        <button type="submit" class="start-button">Add Project</button>
+                    </form>
+
+                </tr>
             </table>
             <br>
             <br>
 
-                <button type="reset" class="cancel-button">Clear form</button>
-                <button type="submit" class="start-button">Add Project</button>
-            </form>
+
         </article>
         <br>
         <br>
