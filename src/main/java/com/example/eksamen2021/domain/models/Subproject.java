@@ -1,6 +1,9 @@
 package com.example.eksamen2021.domain.models;
 
+import com.example.eksamen2021.domain.services.CalculateService;
+
 public class Subproject {
+
 
   private int subprojectId;
   private int projectId;
@@ -15,7 +18,18 @@ public class Subproject {
 
   //KONSTRUKTØRER:
 
-  public Subproject(int subprojectId, String subprojectName, String subprojectDescription, int subprojectSeniordeveloperHours, int subprojectDeveloperHours, int subprojectGraphicHours, int subprojectPrice, int subprojectTotalHours) {
+  //test den her om den bruges??????????
+  public Subproject(int subprojectId, String subprojectName, String subprojectDescription, int subprojectSeniordeveloperHours, int subprojectDeveloperHours, int subprojectGraphicHours) {
+    this.subprojectId = subprojectId;
+    this.subprojectName = subprojectName;
+    this.subprojectDescription = subprojectDescription;
+    this.subprojectSeniordeveloperHours = subprojectSeniordeveloperHours;
+    this.subprojectDeveloperHours = subprojectDeveloperHours;
+    this.subprojectGraphicHours = subprojectGraphicHours;
+  }
+
+//find  subID
+  public Subproject(int subprojectId, String subprojectName, String subprojectDescription, int subprojectSeniordeveloperHours, int subprojectDeveloperHours, int subprojectGraphicHours, int subprojectPrice) {
     this.subprojectId = subprojectId;
     this.subprojectName = subprojectName;
     this.subprojectDescription = subprojectDescription;
@@ -23,10 +37,9 @@ public class Subproject {
     this.subprojectDeveloperHours = subprojectDeveloperHours;
     this.subprojectGraphicHours = subprojectGraphicHours;
     this.subprojectPrice = subprojectPrice;
-    this.subprojectTotalHours = subprojectTotalHours;
   }
 
-  //DENNE KONSTRUKTØR BRUGES I PROJECTREPO SHOWALLPROJECTS-METODEN OG I FINDSUBPROJECTID-METODEN
+  //Bruges i showallsubprojects + html
   public Subproject(int subprojectId, int projectId, String subprojectName, String subprojectDescription, int subprojectSeniordeveloperHours, int subprojectDeveloperHours, int subprojectGraphicHours, int subprojectPrice) {
     this.subprojectId = subprojectId;
     this.projectId = projectId;
@@ -39,7 +52,7 @@ public class Subproject {
 
   }
 
-
+  //test den her om den bruges??????????
   public Subproject(int subprojectId, String subprojectName, String subprojectDescription, int subprojectPrice) {
     this.subprojectId = subprojectId;
     this.projectId = projectId;
@@ -57,6 +70,8 @@ public class Subproject {
 
   public Subproject() {
   }
+
+
 
   //GETTERS AND SETTERS
 

@@ -5,13 +5,17 @@ html {
     overflow-x: hidden
 }
 
+*, *:before, *:after {
+    box-sizing: inherit;
+}
 
 body {
     background: linear-gradient(30deg, #59869D, ghostwhite); /*samme farve som taget fra Alpha-Solutions hjemmeside! (bortset fra den hvide, ghost lød bare sejere, feel free to change it haha*/
     margin: 0;
     font-family: Verdana, sans-serif;
     font-size: 15px;
-    line-height: 1.5
+    line-height: 1.5;
+    text-align: center;
 }
 
 .start-button {
@@ -84,7 +88,7 @@ a:active, a:hover {
     letter-spacing: 4px
 }
 
-.center .bar {
+.s-center .bar {
     display: inline-block;
     width: auto
 }

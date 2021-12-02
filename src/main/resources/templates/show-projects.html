@@ -11,6 +11,7 @@
 
 <body>
 
+
 <div class="container content center padding-64" style="max-width:800px" id="band">
     <h2 class="wide">YOUR PROJECTS</h2>
     <p class="opacity"><i>An overview of your projects</i></p>
@@ -18,7 +19,7 @@
 
     <section>
 
-        <div class="center">
+        <div class="s-center">
             <article>
 
                 <table>
@@ -41,7 +42,7 @@
 
                     <tr th:each="project : ${projects}">
 
-                     <!--   <td hidden th:text="${project.userId}"></td> -->
+                        <!--   <td hidden th:text="${project.userId}"></td> -->
 
                         <p hidden th:text="${project.projectId}"></p>
 
@@ -54,10 +55,13 @@
                         <td th:text="${project.projectPrice}"></td>
 
 
-                        <td><form action="/subprojects" method="GET">
-                            <!--<a href="/show-subprojects/">-->
-                            <button type="submit" class="button smaller-button">Subproject</button><!--</a>-->
-                        </form></td>
+                        <td>
+                            <!--                            <form action="/show-subprojects/5" method="GET" modelAttribute="project">-->
+                            <a th:href="|/show-subprojects/${project.projectId}|">
+                                <button type="submit" class="button smaller-button">Subproject</button>
+                            </a>
+                            <!--</form>-->
+                        </td>
 
                         <td><!-- EDIT PROJECT HER --></td>
 
@@ -77,6 +81,10 @@
             </article>
         </div>
     </section>
+
+</div>
+
+</section>
 
 </div>
 
@@ -112,6 +120,7 @@
 </body>
 
 <style>
+
     html {
         box-sizing: border-box;
         -ms-text-size-adjust: 100%;
@@ -182,7 +191,7 @@
         letter-spacing: 4px
     }
 
-    .center .bar {
+    .s-center .bar {
         display: inline-block;
         width: auto
     }

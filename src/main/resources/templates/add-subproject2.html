@@ -11,7 +11,7 @@
 
 <body>
 
-<div class="container content center padding-64" style="max-width:800px" id="band">
+<div class="container content center padding-64" style="max-width:1000px" id="band">
     <h2 class="wide">ADD PROJECT</h2>
     <p class="opacity"><i>Add a new project to your project-list</i></p>
 </div>
@@ -23,31 +23,47 @@
 
             <table>
                 <tr>
-                    <th>Name</th>
+                    <th>Project name</th>
                     <th>Description</th>
-                    <th>Hours</th>
-                    <th>Price</th>
+                    <th>Senior developer hours</th>
+                    <th>Developer hours</th>
+                    <th>Graphic designer hours</th>
                 </tr>
 
                 <tr>
 
-                    <form method="POST" th:action="@{/add-project}" th:object="${project}">
+                    <form method="POST" th:action="@{/add-subproject}" th:object="${subproject}">
 
-                        <td hidden><input type="text" th:field="*{project.projectId}"
-                                          placeholder="ProjectId"></td>
+                        <td hidden><input type="text" th:field="*{subproject.subprojectId}"
+                                   placeholder="Subproject ID"></td>
 
-                        <td><input type="text" th:field="*{project.projectName}"
+                        <td hidden><input type="text" th:field="*{subproject.projectId}"
+                                          placeholder="Project ID"></td>
+
+                        <td><input type="text" th:field="*{subproject.subprojectName}"
                                    placeholder="Name"></td>
 
-                        <td><input type="text" th:field="*{project.projectDescription}"
+                        <td><input type="text" th:field="*{subproject.subprojectDescription}"
                                    placeholder="Description" size="150"></td>
 
-                        <td><input type="text" th:field="*{project.projectHours}"
-                                   placeholder="Description"></td>
+                        <td><input type="text" th:field="*{subproject.subprojectSeniordeveloperHours}"
+                                   placeholder="Senior developer hours"></td>
 
-                        <td><input type="text" th:field="*{project.projectPrice}"
-                                   placeholder="Price"></td>
+                        <td><input type="text" th:field="*{subproject.subprojectDeveloperHours}"
+                                   placeholder="Developer hours"></td>
 
+                        <td><input type="text" th:field="*{subproject.projectGraphicHours}"
+                                   placeholder="Graphic designer hours"></td>
+
+                        <td hidden><input type="text" th:field="*{subproject.subprojectPrice}"
+                                          placeholder="Subproject Price"></td>
+
+
+                        <!--Vil gerne have lavet description input feltet om, så det kan være større (en boks)-->
+
+                        <!-- skal ikke have pris, vel?
+                        <input type="text" th:field="*{project_price}"
+                               placeholder="Price">-->
 
                         <button type="reset" class="cancel-button">Clear form</button>
                         <button type="submit" class="start-button">Add Project</button>
@@ -57,7 +73,6 @@
             </table>
             <br>
             <br>
-
 
         </article>
         <br>

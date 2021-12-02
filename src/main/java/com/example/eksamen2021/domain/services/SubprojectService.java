@@ -4,14 +4,21 @@ import com.example.eksamen2021.domain.models.Project;
 import com.example.eksamen2021.domain.models.Subproject;
 import com.example.eksamen2021.repositories.ProjectRepository;
 import com.example.eksamen2021.repositories.SubprojectRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.sql.SQLException;
 import java.util.List;
 
 public class SubprojectService {
+  @Autowired
+  CalculateService calculateService;
+
   private SubprojectRepository subprojectRepository = new SubprojectRepository();
 
   public String addSubproject(Project project, Subproject subproject) {
+     double sum = calculateService.calsubprice(100,200,300);
+    System.out.println(sum);
+
     int addSubprojectSuccess = subprojectRepository.addSubproject(project, subproject);
     if (addSubprojectSuccess == 1) {
       return "redirect:/show";
