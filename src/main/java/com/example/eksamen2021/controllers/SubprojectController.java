@@ -18,25 +18,26 @@ public class SubprojectController {
 
   private SubprojectService subprojectService = new SubprojectService();
   private CalculateService calculatService = new CalculateService();
-  public static Project currentProject;
+  public static Project currentProject = new Project();
 
 
-  //subproject id = 0, får den ikke rigtigt med? uden path
-  //med path: viser ikke sout 
+  //subproject og project id = 0
   @GetMapping("/add-subproject")
   public String addSubproject(@ModelAttribute Subproject subproject, Model model) {
     model.addAttribute("subproject", subproject);
+    model.addAttribute("currentproject", currentProject.getProjectId());
     //subproject.getSubprojectId();
-    System.out.println("subproject id in addsubpro. id = " + subproject);
+    System.out.println("CONTROLLER: subproject id in addsubpro. id = " + subproject);
     return "add-subproject";
   }
 
   @PostMapping("/add-subproject")
   public String addSubprojectPost(@ModelAttribute Subproject subproject, Project project, Model model) {
     model.addAttribute("subproject", subproject);
-    subproject.getSubprojectId();
+    project.setProjectId(currentProject.getProjectId());
+    //subproject.getSubprojectId();
     subprojectService.addSubproject(project, subproject);
-    return "redirect:/subprojects/" + project.getProjectId();
+    return "redirect:/subprojects/" + currentProject.getProjectId();
   }
 
 

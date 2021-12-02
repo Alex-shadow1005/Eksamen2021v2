@@ -21,17 +21,17 @@
     <div class="s-center">
         <article>
 
+            <form method="POST" th:action="@{/add-project}" th:object="${project}">
+
             <table>
                 <tr>
                     <th>Name</th>
                     <th>Description</th>
-                    <th>Hours</th>
-                    <th>Price</th>
+
                 </tr>
 
                 <tr>
 
-                    <form method="POST" th:action="@{/add-project}" th:object="${project}">
 
                         <!--<td hidden><input type="text" th:field="*{project.projectId}"
                                           placeholder="ProjectId"></td>-->
@@ -49,15 +49,15 @@
                                    placeholder="Price"></td>-->
 
 
-                        <button type="reset" class="cancel-button">Clear form</button>
-                        <button type="submit" class="start-button">Add Project</button>
-                    </form>
+
 
                 </tr>
             </table>
             <br>
             <br>
-
+                <button type="reset" class="cancel-button">Clear form</button>
+                <button type="submit" class="start-button">Add Project</button>
+            </form>
 
         </article>
         <br>

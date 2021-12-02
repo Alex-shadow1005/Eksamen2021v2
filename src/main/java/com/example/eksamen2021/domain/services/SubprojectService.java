@@ -17,15 +17,16 @@ public class SubprojectService {
   private SubprojectRepository subprojectRepository = new SubprojectRepository();
 
   public String addSubproject(Project project, Subproject subproject) {
-     double sum = calculateService.calsubprice(100,200,300);
+    /* SILKE HAR UDKOMMENTERET: SORRY ALEX. til test.::: double sum = calculateService.calsubprice(100,200,300);
     System.out.println(sum);
+     */
 
     int addSubprojectSuccess = subprojectRepository.addSubproject(project, subproject);
     if (addSubprojectSuccess == 1) {
-      return "redirect:/show";
+      return "redirect:/subprojects/";
     } else {
       System.out.println("sut :c");
-      return "redirect:/addProject";
+      return "redirect:/add-subprojects";
     }
   }
 
