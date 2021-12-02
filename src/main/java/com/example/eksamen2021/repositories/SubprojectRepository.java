@@ -67,39 +67,6 @@ public class SubprojectRepository {
         }
 
     }
-/*
-    public void updateSubproject(int subproject_id, Subproject subEdt) {
-        String mysql;
-        PreparedStatement ps;
-
-        try {
-            //1. Get a connection to database
-            Connection con = DBManager.getConnection();
-
-            //2. Prepare statement
-            mysql = "UPDATE su";
-
-
-            ps = con.prepareStatement(mysql);
-
-            //3. Set the parameters
-            ps.setString(1, subproject.getSubproject_name());
-            ps.setString(2, subproject.getSubproject_description());
-            ps.setInt(3, subproject.getSubproject_seniordeveloper_hours());
-            ps.setInt(4, subproject.getSubproject_developer_hours());
-            ps.setInt(5, subproject.getSubproject_graphic_hours());
-            ps.setInt(6, subproject.getSubproject_id());
-
-            //4. Execute SQL query
-            ps.executeUpdate();
-
-            //5. Display the result set
-        } catch (SQLException err) {
-            System.out.println("Fejl i count err=" + err.getMessage());
-        }
-    }
-
- */
 
     //VISER ALLE SUBPROJEKTER DER HØRER TIL PROJEKT-ID'EN
     public List<Subproject> showAllSubprojects(int id) {
@@ -185,9 +152,6 @@ public class SubprojectRepository {
 
         String mysql;
         PreparedStatement ps;
-        System.out.println("sub 02-12" +subproject.getSubprojectName());
-        System.out.println("Seee der er en "+subproject.toString());
-        System.out.println("Seee der er en " + subproject);
 
         try {
             //1. Get a connection to database
@@ -228,15 +192,13 @@ public class SubprojectRepository {
 
 
             //4. Execute SQL query
-            ps.executeUpdate();
+         int rows = ps.executeUpdate();
 
-
-            /*if(rows > 0){
 
             if (rows > 0) {
 
                 System.out.println("A new user has been inserted Successfully.");
-            }*/
+            }
 
             //5. Display the result set
         } catch (SQLException err) {
