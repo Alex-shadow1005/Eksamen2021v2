@@ -5,7 +5,7 @@ import com.example.eksamen2021.domain.models.Subproject;
 import com.example.eksamen2021.domain.models.User;
 import com.example.eksamen2021.domain.services.CalculateService;
 import com.example.eksamen2021.domain.services.SubprojectService;
-import com.example.eksamen2021.repositories.SubprojectRepository;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -109,16 +109,24 @@ public class SubprojectController {
     return "redirect:/show-subprojects";
   }
 
-  @PostMapping("/calculateSubprojectPrice/ {subprojectId}")
+  @PostMapping("/calculateSubprojectPrice/{subprojectId}")
   public String calculateSubprojectPrice(@ModelAttribute Subproject subproject) throws SQLException {
 
-    calculatService.calsubprice(
+/*    calculatService.calsubprice(
         subproject.getSubprojectDeveloperHours(),
         subproject.getSubprojectDeveloperHours(),
         subproject.getSubprojectGraphicHours());
+
+ */
     return "show-projects";
   }
+}
 
+
+
+//UDKOMMENTEREDE METODER
+
+  /*
   @PostMapping("/calculateSubprojectHours/ {subprojectId}")
   public String calculateSubprojectHours(@ModelAttribute Subproject subproject) throws SQLException {
 
@@ -128,49 +136,5 @@ public class SubprojectController {
         subproject.getSubprojectGraphicHours());
     return "show-projects";
   }
-}
 
-
-
-
-    /*
-  @GetMapping("/showsubprojects/{id}")
-  public String showSubprojects(@PathVariable("id") int id, Model model) throws SQLException {
-    List<Subproject> subprojects = subprojectService.showAllSubprojects(id);
-    model.addAttribute("subprojects", subprojects);
-    return "show-projects";
-  }
-  */
-
-    /*
-  @GetMapping("/show-subprojects/{id}")
-  public String showSubprojects(@PathVariable("projectid") int projectid, Model model) {
-    List<Subproject> subprojects = projectService.showAllSubprojects(projectid);
-    System.out.println("project id test here: " + projectid);
-    model.addAttribute("subprojects", subprojects);
-    return "show-subprojects";
-  }
-     */
-
-
-  /*
-@GetMapping("/show-subprojects/{id}")
-public String showSubprojects(@PathVariable("projectid") int projectid, Model model) {
-  List<Subproject> subprojects = projectService.showAllSubprojects(projectid);
-  System.out.println("project id test here: " + projectid);
-  model.addAttribute("subprojects", subprojects);
-  return "show-subprojects";
-}
    */
-
-
-    /*
-    //sender projct id til projectservice (@Path tager id,et fra urlen og gemmer det??)
-    @GetMapping("/update-subproject/{subproject_id}")
-    public String updateSubproject(@PathVariable("subproject_id") int subprojectId, Model model) throws SQLException {
-        Subproject subEdt = subprojectService.updateSubproject(subprojectId);
-        model.addAttribute("subproject", subEdt);
-        return "show-projects";
-    }
-
- */
