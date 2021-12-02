@@ -53,4 +53,5 @@ public class UserController {
     model.addAttribute("message",exception.getMessage());
     return "errorMessagePage";
   }
+
 }
