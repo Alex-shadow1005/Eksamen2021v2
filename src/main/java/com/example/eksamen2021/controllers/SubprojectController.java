@@ -37,7 +37,7 @@ public class SubprojectController {
     project.setProjectId(currentProject.getProjectId());
     //subproject.getSubprojectId();
     subprojectService.addSubproject(project, subproject);
-    return "redirect:/subprojects/" + currentProject.getProjectId();
+    return "redirect:/show-subprojects/" + currentProject.getProjectId();
   }
 
 
@@ -73,7 +73,9 @@ public class SubprojectController {
   @GetMapping("/show-subprojects/{projectId}")
   public String showSubprojects2(@PathVariable("projectId") int projectId, Model model) { //ModelAttribute gemmer parametre i User ved at lave det til et objekt
     List<Subproject> subprojects = subprojectService.showAllSubprojects(projectId);
-    model.addAttribute("subproject", subprojects);
+    model.addAttribute("subprojects", subprojects);
+    currentProject.setProjectId(projectId);
+    model.addAttribute("currentproject",currentProject);
     System.out.println("show subproject test i controller" + subprojects + " " + projectId);
     return "show-subprojects";
 

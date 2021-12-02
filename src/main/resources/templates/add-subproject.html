@@ -22,6 +22,9 @@
         <article>
 
             <form method="POST" th:action="@{/add-subproject}" th:object="${subproject}">
+                <div th:object="${currentproject}">
+
+                </div>
 
             <table>
                 <tr>
@@ -39,7 +42,7 @@
                         <td hidden><input type="text" th:field="*{subprojectId}"
                                    placeholder="Subproject ID"></td>
 
-                        <td hidden><input type="text" th:field="*{projectId}"
+                        <td hidden><input type="text" th:value="*{projectId}"
                                           placeholder="Project ID"></td>
 
                         <td><input type="text" th:field="*{subprojectName}"
