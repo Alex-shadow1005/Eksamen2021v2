@@ -11,6 +11,7 @@
 
 <body>
 
+
 <div class="container content center padding-64" style="max-width:800px" id="band">
     <h2 class="wide">YOUR PROJECTS</h2>
     <p class="opacity"><i>An overview of your projects</i></p>
@@ -18,78 +19,72 @@
 
     <section>
 
-        <div class="container content center padding-64" style="max-width:800px" id="band">
-            <h2 class="wide">YOUR PROJECTS</h2>
-            <p class="opacity"><i>An overview of your projects</i></p>
-            <p>Here you can see, edit and delete your current projects.</p><br>
+        <div class="s-center">
+            <article>
 
-            <section>
+                <table>
+                    <tr>
+                        <th>Name</th>
 
-                <div class="s-center">
-                    <article>
+                        <th>Description</th>
 
-                        <table>
-                            <tr>
-                                <th>Name</th>
+                        <th>Price</th>
 
-                                <th>Description</th>
+                        <th>Hours</th>
 
-                                <th>Price</th>
+                        <th>Subprojects</th>
 
-                                <th>Hours</th>
+                        <th>Edit</th>
 
-                                <th>Subprojects</th>
+                        <th>Delete</th>
 
-                                <th>Edit</th>
+                    </tr>
 
-                                <th>Delete</th>
+                    <tr th:each="project : ${projects}">
 
-                            </tr>
+                        <!--   <td hidden th:text="${project.userId}"></td> -->
 
-                            <tr th:each="project : ${projects}">
+                        <p hidden th:text="${project.projectId}"></p>
 
-                                <!--   <td hidden th:text="${project.userId}"></td> -->
+                        <td th:text="${project.projectName}"></td>
 
-                                <p hidden th:text="${project.projectId}"></p>
+                        <td th:text="${project.projectDescription}"></td>
 
-                                <td th:text="${project.projectName}"></td>
+                        <td th:text="${project.projectHours}"></td>
 
-                                <td th:text="${project.projectDescription}"></td>
-
-                                <td th:text="${project.projectHours}"></td>
-
-                                <td th:text="${project.projectPrice}"></td>
+                        <td th:text="${project.projectPrice}"></td>
 
 
-                                <td>
-                                    <!--                            <form action="/show-subprojects/5" method="GET" modelAttribute="project">-->
-                                    <a th:href="|/show-subprojects/${project.projectId}|">
-                                        <button type="submit" class="button smaller-button">Subproject</button></a>
-                                    <!--</form>-->
-                                </td>
+                        <td>
+                            <!--                            <form action="/show-subprojects/5" method="GET" modelAttribute="project">-->
+                            <a th:href="|/show-subprojects/${project.projectId}|">
+                                <button type="submit" class="button smaller-button">Subproject</button>
+                            </a>
+                            <!--</form>-->
+                        </td>
 
-                                <td><!-- EDIT PROJECT HER --></td>
+                        <td><!-- EDIT PROJECT HER --></td>
 
-                                <td><!-- DELETE PROJECT HER --></td>
+                        <td><!-- DELETE PROJECT HER --></td>
 
-                            </tr>
+                    </tr>
 
 
-                        </table>
-                        <br>
-                        <br>
+                </table>
+                <br>
+                <br>
 
-                        <a th:href="@{/add-project}">
-                            <button type="button" class="start-button">Add project</button>
-                        </a>
+                <a th:href="@{/add-project}">
+                    <button type="button" class="start-button">Add project</button>
+                </a>
 
-                    </article>
-                </div>
-            </section>
-
+            </article>
         </div>
-
     </section>
+
+</div>
+
+</section>
 
 </div>
 
