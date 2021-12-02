@@ -1,7 +1,6 @@
 package com.example.eksamen2021.controllers;
 
-import com.example.eksamen2021.domain.LoginSampleException;
-import com.example.eksamen2021.domain.models.Project;
+import com.example.eksamen2021.domain.UserExceptionMessage;
 import com.example.eksamen2021.domain.models.User;
 import com.example.eksamen2021.domain.services.UserService;
 import org.springframework.stereotype.Controller;
@@ -32,7 +31,7 @@ public class UserController {
 
 
   @GetMapping("/login")
-  public String loginUser(@ModelAttribute User user, Model model) throws LoginSampleException { //ModelAttribute gemmer parametre i User ved at lave det til et objekt
+  public String loginUser(@ModelAttribute User user, Model model) throws UserExceptionMessage { //ModelAttribute gemmer parametre i User ved at lave det til et objekt
     model.addAttribute("user", user);
     System.out.println("user WWaazzaaa" + user);
     session = userService.loginUser(user);
@@ -43,15 +42,16 @@ public class UserController {
   }
 
   @PostMapping("/new-user")
-  public String createUser(@ModelAttribute User user, Model model) { //Jens' version af createUser
+  public String createUser(@ModelAttribute User user, Model model)throws UserExceptionMessage { //Jens' version af createUser
     model.addAttribute("user", user);
     userService.createUser(user);
     return "redirect:/login-page";
   }
 
-  @ExceptionHandler(LoginSampleException.class)
+  @ExceptionHandler(UserExceptionMessage.class)
   public String handleError(Model model, Exception exception) {
     model.addAttribute("message",exception.getMessage());
     return "errorMessagePage";
   }
+
 }
