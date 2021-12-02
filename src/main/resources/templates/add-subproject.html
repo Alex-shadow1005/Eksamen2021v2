@@ -12,8 +12,8 @@
 <body>
 
 <div class="container content center padding-64" style="max-width:1000px" id="band">
-    <h2 class="wide">ADD PROJECT</h2>
-    <p class="opacity"><i>Add a new project to your project-list</i></p>
+    <h2 class="wide">ADD SUBPROJECT</h2>
+    <p class="opacity"><i>Add a new subproject to your subproject-list</i></p>
 </div>
 
 <!-- START ADD PROJECT METHOD -->
@@ -21,19 +21,21 @@
     <div class="s-center">
         <article>
 
+            <form method="POST" th:action="@{/add-subproject}" th:object="${subproject}">
+
             <table>
                 <tr>
-                    <th>Project name</th>
+                    <th>Subproject name</th>
                     <th>Description</th>
                     <th>Senior developer hours</th>
                     <th>Developer hours</th>
                     <th>Graphic designer hours</th>
                 </tr>
 
-                <tr>
 
-                    <form method="POST" th:action="@{/add-subproject}" th:object="${subproject}">
 
+
+<tr>
                         <td hidden><input type="text" th:field="*{subprojectId}"
                                    placeholder="Subproject ID"></td>
 
@@ -44,7 +46,7 @@
                                    placeholder="Name"></td>
 
                         <td><input type="text" th:field="*{subprojectDescription}"
-                                   placeholder="Description" size="150"></td>
+                                   placeholder="Description"></td>
 
                         <td><input type="text" th:field="*{subprojectSeniordeveloperHours}"
                                    placeholder="Senior developer hours"></td>
@@ -64,13 +66,18 @@
                         <!-- skal ikke have pris, vel?
                         <input type="text" th:field="*{project_price}"
                                placeholder="Price">-->
+</tr>
 
-                        <button type="reset" class="cancel-button">Clear form</button>
-                        <button type="submit" class="start-button">Add Project</button>
-                    </form>
 
-                </tr>
+
+
             </table>
+                <br>
+                <br>
+            <button type="reset" class="cancel-button">Clear form</button>
+            <button type="submit" class="start-button">Add Project</button>
+            </form>
+
             <br>
             <br>
 
@@ -114,7 +121,6 @@
 
 <!--FOOTER END-->
 </body>
--->
 </html>
 
 
