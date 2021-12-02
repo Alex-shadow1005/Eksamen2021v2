@@ -5,6 +5,9 @@ html {
     overflow-x: hidden
 }
 
+*, *:before, *:after {
+    box-sizing: inherit;
+}
 
 body {
     background: linear-gradient(30deg, #59869D, ghostwhite); /*samme farve som taget fra Alpha-Solutions hjemmeside! (bortset fra den hvide, ghost lød bare sejere, feel free to change it haha*/
@@ -84,7 +87,7 @@ a:active, a:hover {
     letter-spacing: 4px
 }
 
-.center .bar {
+.s-center .bar {
     display: inline-block;
     width: auto
 }
