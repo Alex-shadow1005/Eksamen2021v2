@@ -185,30 +185,23 @@ public class SubprojectRepository {
 
         String mysql;
         PreparedStatement ps;
+        System.out.println("sub 02-12" +subproject.getSubprojectName());
+        System.out.println("Seee der er en "+subproject.toString());
         System.out.println("Seee der er en " + subproject);
+
         try {
             //1. Get a connection to database
             Connection con = DBManager.getConnection();
 
             //2. Prepare statement
 
-            mysql = "UPDATE subprojects SET" +
-                // 1
-                "subproject_name = ?," + // 1
-                // 2
-                "subproject_description = ?," + // 2
-                // 3
-                "subproject_seniordeveloper_hours = ?," + // 3
-                // 4
-                "subproject_developer_hours = ?," + // 4
-                // 5
-                "subproject_graphic_hours = ?," + // 5
-                // 6
-                "subproject_price = ?," + // 6
-                //7
-                 "subproject_total_hours = ?" + //7
-                //8
-                "WHERE subproject_id = ?"; // 8
+
+            mysql = "UPDATE subprojects SET subproject_name = ?, subproject_description = ?,\n" +
+                "subproject_seniordeveloper_hours = ?,subproject_developer_hours = ?,\n" +
+                "subproject_graphic_hours = ?, subproject_price = ?,\n" +
+                "subproject_total_hours = ? WHERE subproject_id = ?;\n";
+
+            //"WHERE subproject_id = " + subproject.getSubprojectId(); // 8*
 
 
 
@@ -230,16 +223,20 @@ public class SubprojectRepository {
             // 7
             ps.setInt(7,subproject.getSubprojectTotalHours());
             // 8 WHERE subproject_id = ?
-            ps.setInt(8, subproject.getSubprojectId());
+            ps.setInt(8,subproject.getSubprojectId());
 
 
 
             //4. Execute SQL query
-            int rows = ps.executeUpdate();
+            ps.executeUpdate();
+
+
+            /*if(rows > 0){
 
             if (rows > 0) {
+
                 System.out.println("A new user has been inserted Successfully.");
-            }
+            }*/
 
             //5. Display the result set
         } catch (SQLException err) {

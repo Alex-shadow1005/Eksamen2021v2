@@ -6,8 +6,9 @@ import com.example.eksamen2021.repositories.SubprojectRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 
 public class CalculateService {
-@Autowired
-CalculateHourlyRate calculateHourlyRate;
+//@Autowired
+//CalculateHourlyRate calculateHourlyRate;
+    CalculateHourlyRate calculateHourlyRate = new CalculateHourlyRate();
 
 
 
