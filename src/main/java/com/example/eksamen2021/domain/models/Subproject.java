@@ -147,5 +147,20 @@ public class Subproject {
   public void setSubprojectTotalHours(int subprojectTotalHours) {
     this.subprojectTotalHours = subprojectTotalHours;
   }
+
+  @Override
+  public String toString() {
+    return "Subproject{" +
+        "subprojectId=" + subprojectId +
+        ", projectId=" + projectId +
+        ", subprojectName='" + subprojectName + '\'' +
+        ", subprojectDescription='" + subprojectDescription + '\'' +
+        ", subprojectSeniordeveloperHours=" + subprojectSeniordeveloperHours +
+        ", subprojectDeveloperHours=" + subprojectDeveloperHours +
+        ", subprojectGraphicHours=" + subprojectGraphicHours +
+        ", subprojectPrice=" + subprojectPrice +
+        ", subprojectTotalHours=" + subprojectTotalHours +
+        '}';
+  }
 }
 
