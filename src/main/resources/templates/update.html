@@ -1,131 +1,62 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-
 <head>
-    <link rel="stylesheet" href="indexStylesheet.css">
-
     <meta charset="UTF-8">
-    <title>Projects</title>
+    <title>Subproject</title>
 </head>
 
 
 <body>
+<a href="http://www.google.com/">link</a>
 
-<div class="container content center padding-64" style="max-width:800px" id="band">
-    <h2 class="wide">YOUR PROJECTS</h2>
-    <p class="opacity"><i>An overview of your projects</i></p>
-    <p>Here you can see, edit and delete your current projects.</p><br>
-
-    <section>
-
-        <div class="container content center padding-64" style="max-width:800px" id="band">
-            <h2 class="wide">YOUR PROJECTS</h2>
-            <p class="opacity"><i>An overview of your projects</i></p>
-            <p>Here you can see, edit and delete your current projects.</p><br>
-
-            <section>
-
-                <div class="s-center">
-                    <article>
-
-                        <table>
-                            <tr>
-                                <th>Name</th>
-
-                                <th>Description</th>
-
-                                <th>Price</th>
-
-                                <th>Hours</th>
-
-                                <th>Subprojects</th>
-
-                                <th>Edit</th>
-
-                                <th>Delete</th>
-
-                            </tr>
-
-                            <tr th:each="project : ${projects}">
-
-                                <!--   <td hidden th:text="${project.userId}"></td> -->
-
-                                <p hidden th:text="${project.projectId}"></p>
-
-                                <td th:text="${project.projectName}"></td>
-
-                                <td th:text="${project.projectDescription}"></td>
-
-                                <td th:text="${project.projectHours}"></td>
-
-                                <td th:text="${project.projectPrice}"></td>
+    <form action="/new-update-subproject" modelAttribute="subproject" method="POST">
 
 
-                                <td>
-                                    <!--                            <form action="/show-subprojects/5" method="GET" modelAttribute="project">-->
-                                    <a th:href="|/show-subprojects/${project.projectId}|">
-                                        <button type="submit" class="button smaller-button">Subproject</button></a>
-                                    <!--</form>-->
-                                </td>
 
-                                <td><!-- EDIT PROJECT HER --></td>
-
-                                <td><!-- DELETE PROJECT HER --></td>
-
-                            </tr>
+<tr th:each="subproject : ${subproject}">
+            <label for="subprojectId">subproject id:</label>
+            <input type="text" id="subprojectId" name="subprojectId" th:value="${subproject.subprojectId}"><br><br>
 
 
-                        </table>
-                        <br>
-                        <br>
+            <label for="subprojectName">subproject name:</label>
+            <input type="text" id="subprojectName" name="subprojectName" th:value="${subproject.subprojectName}"><br><br>
 
-                        <a th:href="@{/add-project}">
-                            <button type="button" class="start-button">Add project</button>
-                        </a>
 
-                    </article>
-                </div>
-            </section>
+            <label for="subprojectDescription">subproject description:</label>
+            <input type="text" id="subprojectDescription" name="subprojectDescription" th:value="${subproject.subprojectDescription}"><br><br>
 
-        </div>
 
-    </section>
+            <label for="subprojectSeniordeveloperHours">subproject seniordeveloper hours:</label>
+            <input type="text" id="subprojectSeniordeveloperHours" name="subprojectSeniordeveloperHours" th:value="${subproject.subprojectSeniordeveloperHours}"><br><br>
 
-</div>
 
-<!-- BUTTON
-    <div class="button">
-        <br>
-        <a href="/login-page">
-            <button class="button start-button">Start</button>
-            -->
+            <label for="subprojectDeveloperHours">subproject developer hours:</label>
+            <input type="text" id="subprojectDeveloperHours" name="subprojectDeveloperHours"
+                   th:value="${subproject.subprojectDeveloperHours}"><br><br>
 
-<!-- FOOTER START -->
-<footer>
-    <div class="row">
-        <div class="column">
-            <h3></h3>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-        </div>
-        <div class="column">
-        </div>
-        <div class="column">
-        </div>
-    </div>
-</footer>
-<!--FOOTER END-->
+
+            <label for="subprojectGraphicHours">subproject graphic hours:</label>
+            <input type="text" id="subprojectGraphicHours" name="subprojectGraphicHours"
+                   th:value="${subproject.subprojectGraphicHours}"><br><br>
+
+            <label for="subprojectPrice">subproject price:</label>
+            <input type="text" id="subprojectPrice" name="subprojectPrice" th:value="${subproject.subprojectPrice}" hidden><br><br>
+
+
+            <label for="subprojectTotalHours">subproject_total_hours:</label>
+            <input type="text" id="subprojectTotalHours" name="subprojectTotalHours" th:value="${subproject.subprojectTotalHours}"
+                   hidden><br><br>
+
+
+            <button type="submit" class="button smaller-button">??btg</button>
+
+
+</tr>
+    </form>
+
+
 </body>
-
 <style>
-
     html {
         box-sizing: border-box;
         -ms-text-size-adjust: 100%;
@@ -196,7 +127,7 @@
         letter-spacing: 4px
     }
 
-    .s-center .bar {
+    .center .bar {
         display: inline-block;
         width: auto
     }
