@@ -1,5 +1,6 @@
 package com.example.eksamen2021.repositories;
 
+import com.example.eksamen2021.domain.LoginSampleException;
 import com.example.eksamen2021.domain.models.User;
 
 import java.sql.Connection;
@@ -39,7 +40,7 @@ public class UserRepository {
 
 
     //TJEKKER I DATABASE AT EMAIL OG PASSWORD MATCHER, NÅR BRUGEREN LOGGER IND
-    public User validateUser(User user) { //modtager user fra PostService -> loginpage hvis failed, wishlist hvis successfuldt login
+    public User validateUser(User user) throws LoginSampleException { //modtager user fra PostService -> loginpage hvis failed, wishlist hvis successfuldt login
         String sqlStr;
         PreparedStatement ps;
         ResultSet rs;
@@ -56,11 +57,15 @@ public class UserRepository {
 
             if (rs.next()) { //kører resultaterne igennem (så længe der er flere resultatsæt)
                 tempUser = new User(rs.getInt(1), rs.getString(2), rs.getString(3)); //sætter String ind i resultSet
+            }else {
+              throw new LoginSampleException("UserEmail & UserPassword is Not validate login");
             }
 
             //Hvis den email og password matcher -> wishlist (forside for brugere der er logget ind). Ellers: prøv igen (på login-siden)
         } catch (SQLException err) {
-            System.out.println("Fejl i count err=" + err.getMessage()); //-> gå til login-side på forkert login-besked
+          throw new LoginSampleException(err.getMessage());
+
+           // System.out.println("Fejl i count err=" + err.getMessage()); //-> gå til login-side på forkert login-besked
 
         }
         return tempUser;
