@@ -65,9 +65,15 @@
 
                         <td><!-- EDIT PROJECT HER --></td>
 
-                        <td><!-- DELETE PROJECT HER --></td>
+                        <td>
+                            <a th:href="@{/show/155/${projectId}}" class="btn btn-danger" button="deleteButton"> Delete</a>
+                        </td>
 
                     </tr>
+
+                    <!-- <a th:href="|/show-projects/${project.projectId}|">
+                        <button type="submit" class="button smaller-button">Delete</button>
+                    </a> -->
 
 
                 </table>
@@ -86,6 +92,26 @@
 
 </section>
 
+</div>
+
+<div class="modal" tabindex="-1" role="dialog" id="deleteModel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Du er ved at slette et projekt, bekraft venligst</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Er du sikker på at du vil slette et projekt der har subprojekter under sig?</p>
+            </div>
+            <div class="modal-footer">
+                <a href="" class="btn btn-primary" id="delRef">Yes, Delete</a>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
 </div>
 
 <!-- BUTTON

@@ -4,6 +4,7 @@ import com.example.eksamen2021.domain.models.Project;
 import com.example.eksamen2021.domain.models.Subproject;
 import com.example.eksamen2021.domain.models.User;
 import com.example.eksamen2021.domain.services.ProjectService;
+import org.apache.catalina.valves.rewrite.RewriteCond;
 import org.springframework.boot.web.servlet.server.Session;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -54,6 +55,11 @@ public class ProjectController {
     return "redirect:/show-project";
   }
 
+  @RequestMapping(value="/delete", method = {RequestMethod.DELETE, RequestMethod.GET})
+  public String delete(Integer Id) throws SQLException {
+    projectService.deleteProject(Id);
+    return "redirect:/showAllProjects";
+  }
 
 }
 
