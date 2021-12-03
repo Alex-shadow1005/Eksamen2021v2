@@ -73,6 +73,12 @@ public class SubprojectController {
   @GetMapping("/show-subprojects/{projectId}")
   public String showSubprojects2(@PathVariable("projectId") int projectId, Model model) { //ModelAttribute gemmer parametre i User ved at lave det til et objekt
     List<Subproject> subprojects = subprojectService.showAllSubprojects(projectId);
+    for (Subproject sp:subprojects) {
+     sp.setSubprojectPrice((int) calculatService.calsubprice(sp.getSubprojectSeniordeveloperHours(),sp.getSubprojectDeveloperHours(), sp.getSubprojectGraphicHours()));
+    }
+    for (Subproject sp:subprojects) {
+      sp.setSubprojectTotalHours((int)calculatService.calsubhours(sp.getSubprojectSeniordeveloperHours(),sp.getSubprojectDeveloperHours(),sp.getSubprojectGraphicHours()));
+    }
     model.addAttribute("subprojects", subprojects);
     currentProject.setProjectId(projectId);
     model.addAttribute("currentproject",currentProject);
