@@ -16,13 +16,13 @@ public class UserController {
   private UserService userService = new UserService();
  public static User session; //OBS Den  vedr.figur1#
 
- // Denne metode tager oplysninger, som brugeren har indtastet om en ny kunde.
- // Objektet bruges til at gemme oplysninger om kunden i databasen.
+  // Denne metode tager oplysninger, som brugeren har indtastet om en ny kunde.
+  // Objektet bruges til at gemme oplysninger om kunden i databasen.
   //OBS! Ænder createUser til newUser newUser23-11-2021 kl.10:26
- @GetMapping("/")
- public String index() {
-   return "index";
- }
+  @GetMapping("/")
+  public String index() {
+    return "index";
+  }
 
   @GetMapping("/login-page") //starter login-process her -> login-page.html
   public String login() {
@@ -35,13 +35,12 @@ public class UserController {
 //OBS ny  ændert Jens kl.15:03 02-12-2021
     model.addAttribute("user", user);
     System.out.println("user WWaazzaaa" + user);
-    session = userService.loginUser(user);
-    if (session == null) {
-      return "login-page";
-    }
+     session = userService.loginUser(user);
     return "redirect:/show/" + session.getUserId();
-   //OBS figur1#
-   //før ændert Jens kl.15:03 02-12-2021
+  }
+
+  //OBS figur1#
+  //før ændert Jens kl.15:03 02-12-2021
    /* model.addAttribute("user", user);
     System.out.println("user WWaazzaaa" + user);
     session = userService.loginUser(user);
@@ -50,11 +49,11 @@ public class UserController {
     }
     return "redirect:/show/" + session.getUserId();
     */
-    //OBS figur1#
-  }
+  //OBS figur1#
+
 
   @PostMapping("/new-user")
-  public String createUser(@ModelAttribute User user, Model model)throws ErrorMessageException { //Jens' version af createUser
+  public String createUser(@ModelAttribute User user, Model model) throws ErrorMessageException { //Jens' version af createUser
     model.addAttribute("user", user);
     userService.createUser(user);
     return "redirect:/login-page";
@@ -62,7 +61,7 @@ public class UserController {
 
   @ExceptionHandler(ErrorMessageException.class)
   public String handleError(Model model, Exception exception) {
-    model.addAttribute("message",exception.getMessage());
+    model.addAttribute("message", exception.getMessage());
     return "errorMessagePage";
   }
 

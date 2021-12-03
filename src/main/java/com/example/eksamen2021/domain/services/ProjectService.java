@@ -5,13 +5,13 @@ import com.example.eksamen2021.domain.models.Project;
 import com.example.eksamen2021.domain.models.Subproject;
 import com.example.eksamen2021.domain.models.User;
 import com.example.eksamen2021.repositories.ProjectRepositoryImpl;
-import com.example.eksamen2021.repositories.SubprojectRepository;
+import com.example.eksamen2021.repositories.SubprojectRepositoryImpl;
 
 import java.util.List;
 
 public class ProjectService {
   private ProjectRepositoryImpl projectRepositoryImpl = new ProjectRepositoryImpl();
-  private SubprojectRepository subprojectRepository = new SubprojectRepository();
+  private SubprojectRepositoryImpl subprojectRepository = new SubprojectRepositoryImpl();
 
   //OBS ny  int# ændert Jens kl.10:38 03-12-2021 vedr.public #int# createUser(User user)
   //før String# ændert Jens kl.10:38 03-12-2021 vedr.public #String# createUser(User user)
@@ -43,7 +43,7 @@ public class ProjectService {
 
 
 
-  public List<Subproject> showAllSubprojects(int projectid2) {
+  public List<Subproject> showAllSubprojects(int projectid2) throws ErrorMessageException {
     System.out.println("projectid in service here: " + projectid2);
     return subprojectRepository.showAllSubprojects(projectid2);
   }

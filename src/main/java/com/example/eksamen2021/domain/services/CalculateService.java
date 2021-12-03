@@ -1,9 +1,6 @@
 package com.example.eksamen2021.domain.services;
 
 import com.example.eksamen2021.domain.models.CalculateHourlyRate;
-import com.example.eksamen2021.domain.models.Subproject;
-import com.example.eksamen2021.repositories.SubprojectRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 
 public class CalculateService {
     //@Autowired

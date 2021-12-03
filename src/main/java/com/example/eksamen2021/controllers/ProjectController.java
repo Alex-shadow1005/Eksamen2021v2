@@ -9,12 +9,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+
 @Controller
 public class ProjectController {
   private ProjectService projectService = new ProjectService();
 
   @GetMapping("/create-project")
-  public String addProject(@ModelAttribute Project project, Model model) throws ErrorMessageException{
+  public String addProject(@ModelAttribute Project project, Model model) throws ErrorMessageException {
     model.addAttribute("project", project);
     model.addAttribute("sessionID", UserController.session.getUserId());
     System.out.println(project.getProjectName() + project.getProjectDescription() + project.getProjectPrice());
@@ -22,17 +23,23 @@ public class ProjectController {
   }
 
   @PostMapping("/create-project")
-  public String createProject(@ModelAttribute Project project, User user, Model model) throws ErrorMessageException{
+  public String createProject(@ModelAttribute Project project, User user, Model model) throws ErrorMessageException {
     model.addAttribute("project", project);
     user.setUserId(UserController.session.getUserId());
     projectService.createProject(project, user);
     return "redirect:/show/" + UserController.session.getUserId();
   }
 
-//sender projct id til projectservice (@Path tager id,et fra urlen og gemmer det??)
+  @PostMapping("/save")
+  public String saveProject(@ModelAttribute Project project, User user) throws ErrorMessageException {
+    projectService.createProject(project, user);
+    return "redirect:/show-project";
+  }
+
+  //sender projct id til projectservice (@Path tager id,et fra urlen og gemmer det??)
   @GetMapping("/delete-project/{projectId}")
   public String deleteProject(@PathVariable int projectId) throws ErrorMessageException {
-   projectService.deleteProject(projectId);
+    projectService.deleteProject(projectId);
     return "show-projects";
   }
   //sender projct id til projectservice (@Path tager id,et fra urlen og gemmer det??)
@@ -40,21 +47,16 @@ public class ProjectController {
 
 
   @GetMapping("/show/{id}")
-  public String showProjects(@PathVariable("id") int id, Model model) throws ErrorMessageException{
+  public String showProjects(@PathVariable("id") int id, Model model) throws ErrorMessageException {
     List<Project> projects = projectService.showAllProjects(id);
     model.addAttribute("projects", projects);
     return "show-projects";
   }
 
-  @PostMapping("/save")
-  public String saveProject(@ModelAttribute Project project, User user)throws ErrorMessageException {
-    projectService.createProject(project, user);
-    return "redirect:/show-project";
-  }
 
   @ExceptionHandler(ErrorMessageException.class)
   public String handleError(Model model, Exception exception) {
-    model.addAttribute("message",exception.getMessage());
+    model.addAttribute("message", exception.getMessage());
     return "errorMessagePage";
   }
 
