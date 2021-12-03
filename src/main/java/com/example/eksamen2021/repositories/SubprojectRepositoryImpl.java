@@ -88,7 +88,7 @@ public class SubprojectRepositoryImpl implements SubprojectRepository {
             rs.getInt(8)
         ));
       }
-      
+
       System.out.println("finder ID YESSS");
     } catch (SQLException err) {
       System.out.println("Post con " + err.getMessage());
@@ -108,10 +108,15 @@ public class SubprojectRepositoryImpl implements SubprojectRepository {
       //2. Prepare statement
 
 
-      mysql = "UPDATE subprojects SET subproject_name = ?, subproject_description = ?,\n" +
-          "subproject_seniordeveloper_hours = ?,subproject_developer_hours = ?,\n" +
-          "subproject_graphic_hours = ?, subproject_price = ?,\n" +
-          "subproject_total_hours = ? WHERE subproject_id = ?;\n";
+      mysql = "UPDATE subprojects SET\n" +
+          " subproject_name = ?,\n" +
+          " subproject_description = ?,\n" +
+          "subproject_seniordeveloper_hours = ?\n," +
+          "subproject_developer_hours = ?,\n" +
+          "subproject_graphic_hours = ?,\n" +
+          " subproject_price = ?,\n" +
+          "subproject_total_hours = ?\n" +
+          "WHERE subproject_id = ?;\n";
 
       //"WHERE subproject_id = " + subproject.getSubprojectId(); // 8*
 
