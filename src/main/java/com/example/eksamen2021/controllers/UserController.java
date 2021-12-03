@@ -10,11 +10,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import javax.servlet.http.HttpSession;
+
 @Controller
 public class UserController {
 
   private UserService userService = new UserService();
- public static User session; //OBS Den  vedr.figur1#
+// public static User session; //OBS Den  vedr.figur1#
 
   // Denne metode tager oplysninger, som brugeren har indtastet om en ny kunde.
   // Objektet bruges til at gemme oplysninger om kunden i databasen.
@@ -31,13 +33,14 @@ public class UserController {
 
 
   @GetMapping("/login")
-  public String loginUser(@ModelAttribute User user, Model model) throws ErrorMessageException { //ModelAttribute gemmer parametre i User ved at lave det til et objekt
+  public String loginUser(@ModelAttribute User user, Model model, HttpSession session) throws ErrorMessageException { //ModelAttribute gemmer parametre i User ved at lave det til et objekt
 //OBS ny  ændert Jens kl.15:03 02-12-2021
     model.addAttribute("user", user);
-    System.out.println("user WWaazzaaa" + user);
-     session = userService.loginUser(user);
-    return "redirect:/show/" + session.getUserId();
+    session.setAttribute("session",userService.loginUser(user));
+    User usersession = (User) session.getAttribute("session");
+    return "redirect:/show/" + usersession.getUserId();
   }
+
 
   //OBS figur1#
   //før ændert Jens kl.15:03 02-12-2021

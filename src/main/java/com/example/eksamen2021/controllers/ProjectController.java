@@ -8,27 +8,47 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @Controller
 public class ProjectController {
   private ProjectService projectService = new ProjectService();
-
+  //ny ændert Jens kl.15:03 02-12-2021 HttpSession session GET
   @GetMapping("/create-project")
+  public String addProject(@ModelAttribute Project project, Model model, HttpSession session) throws ErrorMessageException {
+    model.addAttribute("project", project);
+    User usersession = (User) session.getAttribute("session");//jens
+    model.addAttribute("sessionID", usersession.getUserId());
+
+    System.out.println(project.getProjectName() + project.getProjectDescription() + project.getProjectPrice());
+    return "create-project";
+  }//før ændert Jens kl.14:33 03-12-2021
+/*  @GetMapping("/create-project")
   public String addProject(@ModelAttribute Project project, Model model) throws ErrorMessageException {
     model.addAttribute("project", project);
     model.addAttribute("sessionID", UserController.session.getUserId());
     System.out.println(project.getProjectName() + project.getProjectDescription() + project.getProjectPrice());
     return "create-project";
-  }
-
+  } */
+//ny ændert Jens kl.15:03 02-12-2021 HttpSession session POST
   @PostMapping("/create-project")
+  public String createProject(@ModelAttribute Project project, User user, Model model,HttpSession session) throws ErrorMessageException {
+    model.addAttribute("project", project);
+    User usersession = (User) session.getAttribute("session");//jens
+    user.setUserId(usersession.getUserId());
+    projectService.createProject(project, user);
+    return "redirect:/show/" + usersession.getUserId();
+  }//før ændert Jens kl.14:33 03-12-2021
+/* @PostMapping("/create-project")
   public String createProject(@ModelAttribute Project project, User user, Model model) throws ErrorMessageException {
     model.addAttribute("project", project);
     user.setUserId(UserController.session.getUserId());
     projectService.createProject(project, user);
     return "redirect:/show/" + UserController.session.getUserId();
   }
+
+ */
 
   @PostMapping("/save")
   public String saveProject(@ModelAttribute Project project, User user) throws ErrorMessageException {
