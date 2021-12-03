@@ -1,6 +1,6 @@
 package com.example.eksamen2021.repositories;
 
-import com.example.eksamen2021.domain.UserExceptionMessage;
+import com.example.eksamen2021.domain.ErrorMessageException;
 import com.example.eksamen2021.domain.models.User;
 
 import java.sql.Connection;
@@ -12,7 +12,7 @@ public class UserRepositoryImpl implements UserRepository {
 
   //OPRETTER NY BRUGER
   //OBS! Ænder newUser til createUser 23-11-2021 kl.10:26
-  public int createUser(User user)throws UserExceptionMessage {
+  public int createUser(User user)throws ErrorMessageException {
     String mySql;
     PreparedStatement ps;
     int createUserSuccess = 0;
@@ -33,7 +33,7 @@ public class UserRepositoryImpl implements UserRepository {
       if(createUserSuccess == 1) {
         System.out.println("User added");
       }else {
-        throw new UserExceptionMessage("Fejl i count createUser  err=");
+        throw new ErrorMessageException("Fejl i count createUser  err=");
       }
       //5. Display the result set
     } catch (SQLException err) {
@@ -44,7 +44,7 @@ public class UserRepositoryImpl implements UserRepository {
 
 
     //TJEKKER I DATABASE AT EMAIL OG PASSWORD MATCHER, NÅR BRUGEREN LOGGER IND
-    public User validateUser(User user) throws UserExceptionMessage { //modtager user fra PostService -> loginpage hvis failed, wishlist hvis successfuldt login
+    public User validateUser(User user) throws ErrorMessageException { //modtager user fra PostService -> loginpage hvis failed, wishlist hvis successfuldt login
         String sqlStr;
         PreparedStatement ps;
         ResultSet rs;
@@ -61,13 +61,15 @@ public class UserRepositoryImpl implements UserRepository {
 
             if (rs.next()) { //kører resultaterne igennem (så længe der er flere resultatsæt)
                 tempUser = new User(rs.getInt(1), rs.getString(2), rs.getString(3)); //sætter String ind i resultSet
+
+
             }else {
-              throw new UserExceptionMessage("UserEmail & UserPassword is Not validate login");
+              throw new ErrorMessageException("UserEmail & UserPassword is Not validate login OBS  vedr. metode = public User validateUser(User user) ");
             }
 
             //Hvis den email og password matcher -> wishlist (forside for brugere der er logget ind). Ellers: prøv igen (på login-siden)
         } catch (SQLException err) {
-          throw new UserExceptionMessage(err.getMessage());
+          throw new ErrorMessageException(err.getMessage());
 
            // System.out.println("Fejl i count err=" + err.getMessage()); //-> gå til login-side på forkert login-besked
 

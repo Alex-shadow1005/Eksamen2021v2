@@ -1,6 +1,6 @@
 package com.example.eksamen2021.controllers;
 
-import com.example.eksamen2021.domain.UserExceptionMessage;
+import com.example.eksamen2021.domain.ErrorMessageException;
 import com.example.eksamen2021.domain.models.User;
 import com.example.eksamen2021.domain.services.UserService;
 import org.springframework.stereotype.Controller;
@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 public class UserController {
 
   private UserService userService = new UserService();
-  public static User session;
+ public static User session; //OBS Den  vedr.figur1#
 
  // Denne metode tager oplysninger, som brugeren har indtastet om en ny kunde.
  // Objektet bruges til at gemme oplysninger om kunden i databasen.
@@ -31,7 +31,8 @@ public class UserController {
 
 
   @GetMapping("/login")
-  public String loginUser(@ModelAttribute User user, Model model) throws UserExceptionMessage { //ModelAttribute gemmer parametre i User ved at lave det til et objekt
+  public String loginUser(@ModelAttribute User user, Model model) throws ErrorMessageException { //ModelAttribute gemmer parametre i User ved at lave det til et objekt
+//OBS ny  ændert Jens kl.15:03 02-12-2021
     model.addAttribute("user", user);
     System.out.println("user WWaazzaaa" + user);
     session = userService.loginUser(user);
@@ -39,16 +40,27 @@ public class UserController {
       return "login-page";
     }
     return "redirect:/show/" + session.getUserId();
+   //OBS figur1#
+   //før ændert Jens kl.15:03 02-12-2021
+   /* model.addAttribute("user", user);
+    System.out.println("user WWaazzaaa" + user);
+    session = userService.loginUser(user);
+    if (session == null) {
+      return "login-page";
+    }
+    return "redirect:/show/" + session.getUserId();
+    */
+    //OBS figur1#
   }
 
   @PostMapping("/new-user")
-  public String createUser(@ModelAttribute User user, Model model)throws UserExceptionMessage { //Jens' version af createUser
+  public String createUser(@ModelAttribute User user, Model model)throws ErrorMessageException { //Jens' version af createUser
     model.addAttribute("user", user);
     userService.createUser(user);
     return "redirect:/login-page";
   }
 
-  @ExceptionHandler(UserExceptionMessage.class)
+  @ExceptionHandler(ErrorMessageException.class)
   public String handleError(Model model, Exception exception) {
     model.addAttribute("message",exception.getMessage());
     return "errorMessagePage";
