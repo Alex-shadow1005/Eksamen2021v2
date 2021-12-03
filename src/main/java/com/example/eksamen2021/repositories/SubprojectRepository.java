@@ -208,58 +208,5 @@ public class SubprojectRepository {
     }
 
 
-    // skal det være ud fra idet??
-    //TILFØJER ET SUBPROJEKT TIL BRUGERENS SUBPROJEKTLISTE
-    public double addSubprojectPrice(Subproject subproject) {
-        String mySql;
-        PreparedStatement ps;
-        int h = 0;
-
-        try {
-            //1. Get a connection to database
-            Connection con = DBManager.getConnection();
-            //2. Prepare statement
-            mySql = "INSERT INTO subprojects (subproject_price) VALUES (?)";
-
-            ps = con.prepareStatement(mySql);
-            //3. Set the parameters
-            ps.setInt(1, subproject.getSubprojectPrice());
-
-            //4. Execute SQL query
-            h = ps.executeUpdate();
-            System.out.println("Subprojectprice added");
-            //5. Display the result set
-        } catch (SQLException err) {
-            System.out.println("Fejl i count err=" + err.getMessage());
-        }
-        return h; //returnerer brugeren til Service
-    }
-
-
-    //TILFØJER ET SUBPROJEKT TIL BRUGERENS SUBPROJEKTLISTE
-    public int addSubprojectHours(Subproject subproject) {
-        String mySql;
-        PreparedStatement ps;
-        int h = 0;
-
-        try {
-            //1. Get a connection to database
-            Connection con = DBManager.getConnection();
-            //2. Prepare statement
-            mySql = "INSERT INTO subprojects (subproject_hours) VALUES (?)";
-
-            ps = con.prepareStatement(mySql);
-            //3. Set the parameters
-            ps.setInt(1, subproject.getSubprojectTotalHours());
-
-            //4. Execute SQL query
-            h = ps.executeUpdate();
-            System.out.println("Subprojectprice added");
-            //5. Display the result set
-        } catch (SQLException err) {
-            System.out.println("Fejl i count err=" + err.getMessage());
-        }
-        return h; //returnerer brugeren til Service
-    }
 
 }

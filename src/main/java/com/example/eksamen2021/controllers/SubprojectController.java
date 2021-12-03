@@ -73,15 +73,17 @@ public class SubprojectController {
   @GetMapping("/show-subprojects/{projectId}")
   public String showSubprojects2(@PathVariable("projectId") int projectId, Model model) { //ModelAttribute gemmer parametre i User ved at lave det til et objekt
     List<Subproject> subprojects = subprojectService.showAllSubprojects(projectId);
-    for (Subproject sp:subprojects) {
-     sp.setSubprojectPrice((int) calculatService.calsubprice(sp.getSubprojectSeniordeveloperHours(),sp.getSubprojectDeveloperHours(), sp.getSubprojectGraphicHours()));
+    //for hvert subproject ud fra id tager den og udregner ud fra den fastlagte pris
+    for (Subproject sp : subprojects) {
+      sp.setSubprojectPrice((int) calculatService.calsubprice(sp.getSubprojectSeniordeveloperHours(), sp.getSubprojectDeveloperHours(), sp.getSubprojectGraphicHours()));
     }
-    for (Subproject sp:subprojects) {
-      sp.setSubprojectTotalHours((int)calculatService.calsubhours(sp.getSubprojectSeniordeveloperHours(),sp.getSubprojectDeveloperHours(),sp.getSubprojectGraphicHours()));
+    //for hvert subproject ud fra id tager den og udregner ud fra timer
+    for (Subproject sp : subprojects) {
+      sp.setSubprojectTotalHours((int) calculatService.calsubhours(sp.getSubprojectSeniordeveloperHours(), sp.getSubprojectDeveloperHours(), sp.getSubprojectGraphicHours()));
     }
     model.addAttribute("subprojects", subprojects);
     currentProject.setProjectId(projectId);
-    model.addAttribute("currentproject",currentProject);
+    model.addAttribute("currentproject", currentProject);
     System.out.println("show subproject test i controller" + subprojects + " " + projectId);
     return "show-subprojects";
 
@@ -118,33 +120,5 @@ public class SubprojectController {
     subprojectService.updateSubproject(subproject);
     return "redirect:/show-subprojects";
   }
-
-  @PostMapping("/calculateSubprojectPrice/{subprojectId}")
-  public String calculateSubprojectPrice(@ModelAttribute Subproject subproject) throws SQLException {
-
-/*    calculatService.calsubprice(
-        subproject.getSubprojectDeveloperHours(),
-        subproject.getSubprojectDeveloperHours(),
-        subproject.getSubprojectGraphicHours());
-
- */
-    return "show-projects";
-  }
 }
 
-
-
-//UDKOMMENTEREDE METODER
-
-  /*
-  @PostMapping("/calculateSubprojectHours/ {subprojectId}")
-  public String calculateSubprojectHours(@ModelAttribute Subproject subproject) throws SQLException {
-
-    calculatService.calsubhours(
-        subproject.getSubprojectDeveloperHours(),
-        subproject.getSubprojectDeveloperHours(),
-        subproject.getSubprojectGraphicHours());
-    return "show-projects";
-  }
-
-   */
