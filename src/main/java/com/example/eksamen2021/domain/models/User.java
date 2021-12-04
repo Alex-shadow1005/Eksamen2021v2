@@ -9,6 +9,7 @@ public class User {
   private String passwordRepeat;
 
 
+
   public User(int userId, String userEmail, String userPassword, String userUsername) {
     this.userId = userId;
     this.userEmail = userEmail;
@@ -22,8 +23,12 @@ public class User {
     this.userPassword = userPassword;
   }
 
-  public User() {
+  public User(String userEmail, String userPassword, String userUsername) {
+    this.userEmail = userEmail;
+    this.userPassword = userPassword;
+    this.userUsername = userUsername;
   }
+  public User(){}
 
   public User(String string, String string1) {
   }
