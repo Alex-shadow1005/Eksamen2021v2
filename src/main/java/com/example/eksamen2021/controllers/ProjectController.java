@@ -69,6 +69,20 @@ public String createProject2(@ModelAttribute Project project, User user, Model m
     projectService.createProject(project, user);
     return "redirect:/show-project";
   }
+  //sender projct id til projectservice (@Path tager id,et fra urlen og gemmer det??)
+  @GetMapping("/update-project/{projectId}")
+  public String updateproject(@PathVariable("projectId") int projectId, Model model) throws ErrorMessageException {
+    Project project = projectService.findProjectID(projectId);
+    model.addAttribute("project", project);
+    return "udate2";
+  }
+
+  //Post
+  @PostMapping("/new-update-project")
+  public String updateProject(@ModelAttribute Project project) throws ErrorMessageException {
+    projectService.updateProject(project);
+    return "redirect:/show-projects";
+  }
 
   //sender projct id til projectservice (@Path tager id,et fra urlen og gemmer det??)
   @GetMapping("/delete-project/{projectId}")
