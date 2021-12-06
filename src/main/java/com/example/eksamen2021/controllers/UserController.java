@@ -58,9 +58,32 @@ public class UserController {
   @PostMapping("/new-user")
   public String createUser(@ModelAttribute User user, Model model) throws ErrorMessageException { //Jens' version af createUser
     model.addAttribute("user", user);
-    userService.createUser(user);
-    return "redirect:/login-page";
+     userService.createUser(user);
+    //if(user1.equals(user)){
+      return "redirect:/login-page";
+//    }else {
+
+//    throw new ErrorMessageException("UserEmail & UserPassword is Not validate login OBS  vedr. metode = public User validateUser(User user) ");
   }
+
+  /*@PostMapping("/new-user")
+  public String createUser(@ModelAttribute User user, Model model) throws ErrorMessageException { //Jens' version af createUser
+    model.addAttribute("user", user);
+    int createUserSuccess = userService.createUser(user);
+    if(createUserSuccess == 1) {
+      System.out.println("User added");
+      return "redirect:/login-page";
+    }else {
+      throw new ErrorMessageException("Fejl i count createUser  err=");
+    }
+
+  }
+
+   */
+
+
+
+
 
   @ExceptionHandler(ErrorMessageException.class)
   public String handleError(Model model, Exception exception) {

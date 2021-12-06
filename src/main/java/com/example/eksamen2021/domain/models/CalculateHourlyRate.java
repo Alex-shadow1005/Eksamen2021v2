@@ -6,6 +6,7 @@ public class CalculateHourlyRate {
   private final int developer = 750;
   private final int graphicDesigner = 500;
 
+
   public int getSeniorDeveloper() {
     return seniorDeveloper;
   }

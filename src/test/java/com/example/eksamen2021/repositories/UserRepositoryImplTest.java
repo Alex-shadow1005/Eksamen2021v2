@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class UserRepositoryImplTest {
+public class UserRepositoryImplTest {
   UserRepositoryImpl userRepository;
   JDBCTestSetup jdbcTestSetup;
 
@@ -21,19 +21,21 @@ class UserRepositoryImplTest {
 
   @Test
   public void createUser_GivenCorrectUserInfo() throws ErrorMessageException {
-/*
-    User user = new User("someone@AlphaSolutions.dk","1234","Alpha");
-    //Act/DK:Handling
-   int newUser = userRepository.createUser(user);
-    //Assert/DK:Påstå
-    assertTrue(newUser > 0);
-    assertEquals("someone@AlphaSolutions.dk",newUser.getUserEmail());
-    assertEquals("1234",newUser.getUserPassword());
 
-*/
+    User user = new User("Tine", "1234", "Tine");
+    //Act/DK:Handling
+    User newUser = userRepository.createUser(user);
+    //Assert/DK:Påstå
+    assertTrue(user.getUserId() != 0);
+    assertEquals("Tine", newUser.getUserEmail());
+    assertEquals("1234", newUser.getUserPassword());
+
   }
 
+/*
   @Test
   public void validateUser() {
   }
+
+ */
 }

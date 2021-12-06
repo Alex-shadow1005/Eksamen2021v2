@@ -30,6 +30,15 @@ public class ProjectService {
      */
   }
 
+  public Project findProjectID(int projectId) throws ErrorMessageException {
+    return projectRepositoryImpl.findProjectID(projectId);
+  }
+
+  //updater subprojecter ud fra sub_ID
+  public void updateProject(Project project) throws ErrorMessageException {
+    projectRepositoryImpl.updateProject(project);
+  }
+
 
 //deleter projectet ud fra dens ID
   public void deleteProject(int projectId) throws ErrorMessageException{

@@ -2,6 +2,7 @@ package com.example.eksamen2021.controllers;
 
 import com.example.eksamen2021.domain.ErrorMessageException;
 import com.example.eksamen2021.domain.models.Project;
+import com.example.eksamen2021.domain.models.Subproject;
 import com.example.eksamen2021.domain.models.User;
 import com.example.eksamen2021.domain.services.ProjectService;
 import org.springframework.stereotype.Controller;
@@ -54,6 +55,20 @@ public class ProjectController {
   public String saveProject(@ModelAttribute Project project, User user) throws ErrorMessageException {
     projectService.createProject(project, user);
     return "redirect:/show-project";
+  }
+  //sender projct id til projectservice (@Path tager id,et fra urlen og gemmer det??)
+  @GetMapping("/update-project/{projectId}")
+  public String updateproject(@PathVariable("projectId") int projectId, Model model) throws ErrorMessageException {
+    Project project = projectService.findProjectID(projectId);
+    model.addAttribute("project", project);
+    return "udate2";
+  }
+
+  //Post
+  @PostMapping("/new-update-project")
+  public String updateProject(@ModelAttribute Project project) throws ErrorMessageException {
+    projectService.updateProject(project);
+    return "redirect:/show-projects";
   }
 
   //sender projct id til projectservice (@Path tager id,et fra urlen og gemmer det??)

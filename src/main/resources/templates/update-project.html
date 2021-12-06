@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <link rel="stylesheet" href="indexStylesheet.css">
+
+
+    <meta charset="UTF-8">
+    <title>Welcome to Team Super Awesome's Website</title>
+</head>
+
+<body>
+
+<div class="container content center padding-64" style="max-width:800px" id="band">
+    <h2 class="wide">LOG IN</h2>
+    <p class="opacity"><i>Log in if you've subprojectId</i></p>
+
+
+    <!--LOG IN METODE HER-->
+
+    <div class="article-box">
+        <article>
+            <form action="/login" method="GET"> <!--Sender informationer videre herfra til UserController -> /login -->
+
+                <div class="container">
+
+                    <label for="projectId"><b>projectId</b></label>
+                    <input type="text" placeholder="Enter projectId" name="projectId" required id="projectId">
+                    <!-- sender email videre til PostController /login-->
+
+                    <br>
+                    <button class="start-button" type="submit">ProID</button>
+
+                    <!-- REMEMBER USERNAME/EMAIL & PASSWORD BLIVER GJORT AF BROWSEREN
+                    <input type="checkbox" checked="checked" name="remember"> Remember me
+                </label>-->
+                </div>
+            </form>
+
+        </article>
+    </div>
+
+    <!-- END OF LOGIN METHOD -->
+
+</div>
