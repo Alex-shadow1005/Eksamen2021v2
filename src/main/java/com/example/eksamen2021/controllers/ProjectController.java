@@ -88,6 +88,11 @@ public String createProject2(@ModelAttribute Project project, User user, Model m
       List<Subproject> subprojects = subprojectRepository.showAllSubprojects(id);
       pj.setProjectHours(calculateService.calprojecthours(subprojects));
     }
+    for (Project pj:projects) {
+      List<Subproject> subprojects =subprojectRepository.showAllSubprojects(id);
+      pj.setProjectPrice(calculateService.calprojectprice(subprojects));
+
+    }
 
     model.addAttribute("projects", projects);
     return "show-projects";

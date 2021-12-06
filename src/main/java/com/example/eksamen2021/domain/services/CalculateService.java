@@ -49,5 +49,15 @@ public class CalculateService {
         return projecttotalhours;
     }
 
+
+    public int calprojectprice(List<Subproject> subprojects) {
+        int projectotalprice = 0;
+
+        for (Subproject sp:subprojects) {
+            projectotalprice += sp.getSubprojectPrice();
+        }
+        return projectotalprice;
+    }
+
 }
 
