@@ -15,7 +15,7 @@
 
 <tr th:each="subproject : ${subproject}">
             <label for="subprojectId">subproject id:</label>
-            <input type="text" id="subprojectId" name="subprojectId" th:value="${subproject.subprojectId}"><br><br>
+            <input hidden type="text" id="subprojectId" name="subprojectId" th:value="${subproject.subprojectId}"><br><br>
 
 
             <label for="subprojectName">subproject name:</label>

@@ -21,12 +21,10 @@ public class SubprojectController {
   public static Project currentProject = new Project();
 
 
-  //subproject og project id = 0
   @GetMapping("/add-subproject")
   public String addSubproject(@ModelAttribute Subproject subproject, Model model) {
     model.addAttribute("subproject", subproject);
     model.addAttribute("currentproject", currentProject.getProjectId());
-    //subproject.getSubprojectId();
     System.out.println("CONTROLLER: subproject id in addsubpro. id = " + subproject);
     return "add-subproject";
   }
@@ -35,31 +33,9 @@ public class SubprojectController {
   public String addSubprojectPost(@ModelAttribute Subproject subproject, Project project, Model model) {
     model.addAttribute("subproject", subproject);
     project.setProjectId(currentProject.getProjectId());
-    //subproject.getSubprojectId();
     subprojectService.addSubproject(project, subproject);
     return "redirect:/show-subprojects/" + currentProject.getProjectId();
   }
-
-
-  /* SILKE TEST
-  @GetMapping("/add-subproject")
-  public String addSubproject(@PathVariable("subprojectId") int subprojectId, @ModelAttribute Subproject subproject, Model model) {
-    model.addAttribute("subproject", subproject);
-    System.out.println("add subproject id = " + subprojectId);
-    return "redirect:/add-subproject2/" + subproject.getSubprojectId();
-  }
-
-  @PostMapping("/add-subproject")
-  public String addSubprojectPost(@PathVariable("subprojectId") int subprojectId, @ModelAttribute Subproject subproject, Project project, Model model) {
-    model.addAttribute("subproject", subproject);
-    System.out.println("POST add subpro id = " + subprojectId);
-    subproject.getSubprojectId();
-    subprojectService.addSubproject(project, subproject);
-    return "redirect:/subprojects/" + project.getProjectId();
-  }
-
-   */
-
 
   //@Author: Silke
   @GetMapping("/subprojects/{id}")
@@ -69,7 +45,7 @@ public class SubprojectController {
     return "redirect:/show-subprojects/" + project.getProjectId();
   }
 
-  //@Author: Silke
+  //@Author: Silke (show) & Alexander (calculate)
   @GetMapping("/show-subprojects/{projectId}")
   public String showSubprojects2(@PathVariable("projectId") int projectId, Model model) { //ModelAttribute gemmer parametre i User ved at lave det til et objekt
     List<Subproject> subprojects = subprojectService.showAllSubprojects(projectId);
@@ -86,16 +62,13 @@ public class SubprojectController {
     return "show-subprojects";
 
   }
-/* SILKE TEST
-  @PostMapping("/add-subproject/{projectid}")
-  public String addSubprojectPost(@PathVariable("projectid") int projectid, @ModelAttribute Project project, Subproject subproject, Model model) {
-    model.addAttribute("subproject", subproject);
-    project.setProjectId(projectid); //kan kalde vores id her i stedet, skal laves i Thymeleaf
-    subprojectService.addSubproject(project, subproject);
-    return "redirect:/show/" + projectid;
+  /*
+  @GetMapping("/show-projects/{userId}")
+  public String returnToShow(@PathVariable("userId") int userId) {
+    currentProject.getUserId();
   }
 
- */
+   */
 
   @GetMapping("/delete-subproject/{subprojectId}")
   public String deleteSubproject(@PathVariable int subprojectId) throws SQLException {
@@ -116,7 +89,7 @@ public class SubprojectController {
   @PostMapping("/new-update-subproject")
   public String updateSubproject(@ModelAttribute Subproject subproject) throws SQLException {
     subprojectService.updateSubproject(subproject);
-    return "redirect:/show-subprojects";
+    return "redirect:/show-subprojects/" + currentProject.getProjectId();
   }
 
   @PostMapping("/calculateSubprojectPrice/{subprojectId}")

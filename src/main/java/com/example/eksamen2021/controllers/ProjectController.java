@@ -42,43 +42,26 @@ public class ProjectController {
 
 
   @GetMapping("/show/{id}")
-  public String showProjects(@PathVariable("id") int id, Model model) {
+  public String showProjects(@PathVariable("id") int id, Model model, User user) {
     List<Project> projects = projectService.showAllProjects(id);
     model.addAttribute("projects", projects);
+    model.addAttribute("user", user);
     return "show-projects";
   }
 
+  /*
   @PostMapping("/save")
   public String saveProject(@ModelAttribute Project project, User user) {
     projectService.addProject(project, user);
     return "redirect:/show-project";
   }
 
+   */
+
 
 }
 
 //UDKOMMENTEREDE METODER:
-
-  /* test af om vi bruger den -> BRUGES IKKE
-//viser alle id nummere fra Project
-  @GetMapping("/showallprojects")
-  public String showAllProjects(Model model) {
-    List<Project> projectId = projectService.showAll(1);
-    model.addAttribute("Projectlist", projectId);
-    return "show-projects";
-  }
-   */
-
-  /*
-  @PostMapping("/add-subproject/{projectid}")
-  public String addSubprojectPost(@PathVariable("projectid") int projectid, @ModelAttribute Project project, Subproject subproject, Model model) {
-    model.addAttribute("subproject", subproject);
-    project.setProjectId(projectid); //kan kalde vores id her i stedet, skal laves i Thymeleaf
-    projectService.addSubproject(project, subproject);
-    return "redirect:/show-subprojects/" + projectid;
-  }
-
-   */
 
   /*
   //sender projct id til projectservice (@Path tager id,et fra urlen og gemmer det??)

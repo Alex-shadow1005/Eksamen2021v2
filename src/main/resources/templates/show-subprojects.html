@@ -75,9 +75,19 @@
                 <br>
                 <br>
 
+               <!-- <p hidden th:object="currentproject.userId"> </p> -->
+
+                
+                <a th:href="@{/show/{id}}">
+                    <button type="button" class="start-button">Go back</button>
+                </a>
+
+
+
                 <a th:href="@{/add-subproject}">
                     <button type="button" class="start-button">Add subproject</button>
                 </a>
+
 
             </article>
         </div>
