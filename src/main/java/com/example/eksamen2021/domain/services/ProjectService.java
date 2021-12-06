@@ -1,5 +1,4 @@
 package com.example.eksamen2021.domain.services;
-
 import com.example.eksamen2021.domain.ErrorMessageException;
 import com.example.eksamen2021.domain.models.Project;
 import com.example.eksamen2021.domain.models.Subproject;

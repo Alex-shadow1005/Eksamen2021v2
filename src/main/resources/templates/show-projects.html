@@ -3,6 +3,7 @@
 
 <head>
     <link rel="stylesheet" href="indexStylesheet.css">
+    <script type="text/javascript" th:src="@{/static/delete.js}"></script>
 
     <meta charset="UTF-8">
     <title>Projects</title>
@@ -66,7 +67,8 @@
                         <td><!-- EDIT PROJECT HER --></td>
 
                         <td>
-                            <a th:href="@{/show/155/${projectId}}" class="btn btn-danger" button="deleteButton"> Delete</a>
+                            <a th:href="@{/show/165/${projectId}}" class="btn btn-danger"></a>
+                            <button th:onclick="'deleteProject(\'' + ${project.projectId} + '\');'" class="button smaller-button">Delete</button>
                         </td>
 
                     </tr>
@@ -281,6 +283,14 @@
         background-color: ghostwhite;
     }
 </style>
+
+<script>
+    function deleteProject(projectId) {
+        if (confirm("Indset besked her")) {
+            location.assign("http://localhost:8080/delete-project/" + projectId)
+        }
+    }
+</script>
 </html>
 
 <!--

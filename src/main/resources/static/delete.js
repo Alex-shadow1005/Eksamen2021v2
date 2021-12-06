@@ -1,10 +1,6 @@
-$('document').ready(function () {
-
-    $('.table #deleteButton').on('click',function (event) {
-        event.preventDefault();
-        var href = $(this).attr('href');
-        $('#deleteModal #delRef').attr('href', href);
-        $('#deleteModal').model();
-
-    });
-});
+function deleteProject(projectId) {
+    if (confirm("Indset besked her")) {
+        //location.assign("http://localhost:8080/delete-project/" + projectId)
+        console.log(projectId)
+    }
+}

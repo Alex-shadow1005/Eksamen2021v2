@@ -79,6 +79,7 @@ public class ProjectController {
     model.addAttribute("message", exception.getMessage());
     return "errorMessagePage";
   }
+
 }
 
 //UDKOMMENTEREDE METODER:
