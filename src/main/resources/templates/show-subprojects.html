@@ -35,6 +35,8 @@
 
                         <th>Price</th>
 
+                        <th>Hours</th>
+
                         <th>Edit</th>
 
                         <th>Delete</th>
@@ -57,6 +59,8 @@
 
                         <td th:text="${subproject.subprojectPrice}"></td>
 
+                        <td th:text="${subproject.subprojectTotalHours}"></td>
+
                         <!-- VIser subprojects til subprojects. En kommende feature
                         <td><a href="/showsubprojects/">
                             <button class="button start-button">Subproject-knap her</button></a></td>
@@ -71,7 +75,7 @@
                 <br>
                 <br>
 
-                <a th:href="@{/add-subproject}">
+                <a th:href="@{/create-subproject}">
                     <button type="button" class="start-button">Add subproject</button>
                 </a>
 
