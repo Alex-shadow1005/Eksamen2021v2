@@ -18,6 +18,8 @@ public class Subproject {
 
   //KONSTRUKTØRER:
 
+
+
   //bruges i addsubprojekt - d.2/12 kl 13 Silke
   public Subproject(int subprojectId, String subprojectName, String subprojectDescription, int subprojectSeniordeveloperHours, int subprojectDeveloperHours, int subprojectGraphicHours) {
     this.subprojectId = subprojectId;
@@ -39,8 +41,10 @@ public class Subproject {
     this.subprojectPrice = subprojectPrice;
   }
 
+
   //Bruges i showallsubprojects + html
   public Subproject(int subprojectId, int projectId, String subprojectName, String subprojectDescription, int subprojectSeniordeveloperHours, int subprojectDeveloperHours, int subprojectGraphicHours, int subprojectPrice, int subprojectTotalHours) {
+
     this.subprojectId = subprojectId;
     this.projectId = projectId;
     this.subprojectName = subprojectName;
@@ -53,6 +57,7 @@ public class Subproject {
 
   }
 
+
   //test den her om den bruges??????????
   public Subproject(int subprojectId, String subprojectName, String subprojectDescription, int subprojectPrice) {
     this.subprojectId = subprojectId;
@@ -62,6 +67,7 @@ public class Subproject {
     this.subprojectPrice = subprojectPrice;
   }
 
+
   //BRUGES I addSubproject METODEN
   public Subproject(int subprojectId, String subprojectName, String subprojectDescription) {
     this.subprojectId = subprojectId;
@@ -70,8 +76,8 @@ public class Subproject {
   }
 
   public Subproject() {
-  }
 
+  }
 
 
   //GETTERS AND SETTERS

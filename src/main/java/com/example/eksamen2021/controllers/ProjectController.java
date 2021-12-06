@@ -100,7 +100,6 @@ public String createProject2(@ModelAttribute Project project, User user, Model m
     return "errorMessagePage";
   }
 
-
 }
 
 //UDKOMMENTEREDE METODER:
