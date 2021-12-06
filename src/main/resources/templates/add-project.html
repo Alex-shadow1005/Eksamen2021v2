@@ -21,33 +21,44 @@
     <div class="s-center">
         <article>
 
+            <form method="POST" th:action="@{/add-project}" th:object="${project}">
+
             <table>
-            <tr>
-                <th>Project name</th>
-                <th>Description</th>
+                <tr>
+                    <th>Name</th>
+                    <th>Description</th>
+
                 </tr>
 
                 <tr>
 
-                <form method="POST" th:action="@{/add-project}" th:object="${project}">
-                <td><input type="text" th:field="*{projectName}"
-                       placeholder="Name"></td>
-                <td><input type="text" th:field="*{projectDescription}"
-                       placeholder="Description" size="150"></td>
-                    <!--Vil gerne have lavet description input feltet om, så det kan være større (en boks)-->
 
-                <!-- skal ikke have pris, vel?
-                <input type="text" th:field="*{project_price}"
-                       placeholder="Price">-->
+                        <!--<td hidden><input type="text" th:field="*{project.projectId}"
+                                          placeholder="ProjectId"></td>-->
 
-            </tr>
+                        <td><input type="text" th:field="*{projectName}"
+                                   placeholder="Name"></td>
+
+                        <td><input type="text" th:field="*{projectDescription}"
+                                   placeholder="Description" size="150"></td>
+
+                        <!--<td><input type="text" th:field="*{project.projectHours}"
+                                   placeholder="Description"></td>
+
+                        <td><input type="text" th:field="*{project.projectPrice}"
+                                   placeholder="Price"></td>-->
+
+
+
+
+                </tr>
             </table>
             <br>
             <br>
-
                 <button type="reset" class="cancel-button">Clear form</button>
                 <button type="submit" class="start-button">Add Project</button>
             </form>
+
         </article>
         <br>
         <br>

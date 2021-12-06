@@ -3,8 +3,7 @@ package com.example.eksamen2021.domain.models;
 import com.example.eksamen2021.domain.services.CalculateService;
 
 public class Subproject {
-  CalculateService calculateService = new CalculateService();
-  CalculateHourlyRate calculateHourlyRate = new CalculateHourlyRate();
+
 
   private int subprojectId;
   private int projectId;
@@ -21,8 +20,15 @@ public class Subproject {
 
 
 
-
-
+  //bruges i addsubprojekt - d.2/12 kl 13 Silke
+  public Subproject(int subprojectId, String subprojectName, String subprojectDescription, int subprojectSeniordeveloperHours, int subprojectDeveloperHours, int subprojectGraphicHours) {
+    this.subprojectId = subprojectId;
+    this.subprojectName = subprojectName;
+    this.subprojectDescription = subprojectDescription;
+    this.subprojectSeniordeveloperHours = subprojectSeniordeveloperHours;
+    this.subprojectDeveloperHours = subprojectDeveloperHours;
+    this.subprojectGraphicHours = subprojectGraphicHours;
+  }
 
 //find  subID
   public Subproject(int subprojectId, String subprojectName, String subprojectDescription, int subprojectSeniordeveloperHours, int subprojectDeveloperHours, int subprojectGraphicHours, int subprojectPrice) {
@@ -34,7 +40,9 @@ public class Subproject {
     this.subprojectGraphicHours = subprojectGraphicHours;
     this.subprojectPrice = subprojectPrice;
   }
+
 //show all subproject
+
   public Subproject(int subprojectId, int projectId, String subprojectName, String subprojectDescription, int subprojectSeniordeveloperHours, int subprojectDeveloperHours, int subprojectGraphicHours, int subprojectPrice) {
     this.subprojectId = subprojectId;
     this.projectId = projectId;
@@ -47,25 +55,27 @@ public class Subproject {
 
   }
 
+
+  //test den her om den bruges??????????
+  public Subproject(int subprojectId, String subprojectName, String subprojectDescription, int subprojectPrice) {
+    this.subprojectId = subprojectId;
+    this.projectId = projectId;
+    this.subprojectName = subprojectName;
+    this.subprojectDescription = subprojectDescription;
+    this.subprojectPrice = subprojectPrice;
+  }
+
+
   //BRUGES I addSubproject METODEN
-  public Subproject(int subprojectId, String subprojectName, String subprojectDescription,int subprojectSeniordeveloperHours, int subprojectDeveloperHours, int subprojectGraphicHours) {
+  public Subproject(int subprojectId, String subprojectName, String subprojectDescription) {
     this.subprojectId = subprojectId;
     this.subprojectName = subprojectName;
     this.subprojectDescription = subprojectDescription;
-    this.subprojectSeniordeveloperHours = subprojectSeniordeveloperHours;
-    this.subprojectDeveloperHours = subprojectDeveloperHours;
-    this.subprojectGraphicHours = subprojectGraphicHours;
-
-    subprojectPrice = (int) calculateService.calsubprice(getSubprojectSeniordeveloperHours(),getSubprojectDeveloperHours(),getSubprojectGraphicHours()) *
-            (calculateHourlyRate.getSeniorDeveloper() + calculateHourlyRate.getDeveloper() + calculateHourlyRate.getGraphicDesigner());
-
-    subprojectTotalHours = (int) calculateService.calsubhours(getSubprojectSeniordeveloperHours(),getSubprojectDeveloperHours(),getSubprojectGraphicHours());
   }
 
   public Subproject() {
 
   }
-
 
 
   //GETTERS AND SETTERS
@@ -141,6 +151,21 @@ public class Subproject {
 
   public void setSubprojectTotalHours(int subprojectTotalHours) {
     this.subprojectTotalHours = subprojectTotalHours;
+  }
+
+  @Override
+  public String toString() {
+    return "Subproject{" +
+        "subprojectId=" + subprojectId +
+        ", projectId=" + projectId +
+        ", subprojectName='" + subprojectName + '\'' +
+        ", subprojectDescription='" + subprojectDescription + '\'' +
+        ", subprojectSeniordeveloperHours=" + subprojectSeniordeveloperHours +
+        ", subprojectDeveloperHours=" + subprojectDeveloperHours +
+        ", subprojectGraphicHours=" + subprojectGraphicHours +
+        ", subprojectPrice=" + subprojectPrice +
+        ", subprojectTotalHours=" + subprojectTotalHours +
+        '}';
   }
 }
 

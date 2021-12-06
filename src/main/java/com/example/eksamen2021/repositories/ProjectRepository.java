@@ -31,6 +31,7 @@ public class ProjectRepository {
       ps.setInt(1, user.getUserId());
       ps.setString(2, project.getProjectName());
       ps.setString(3, project.getProjectDescription());
+
       //4. Execute SQL query
       h = ps.executeUpdate();
       System.out.println("Project added");

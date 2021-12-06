@@ -22,6 +22,7 @@ public class SubprojectRepository {
             //1. Get a connection to database
             Connection con = DBManager.getConnection();
             //2. Prepare statement
+
             mySql = "INSERT INTO subprojects (project_id, subproject_name, subproject_description, subproject_seniordeveloper_hours," +
                     " subproject_developer_hours, subproject_graphic_hours) VALUES (?, ?, ?, ?, ?, ?)";
 
@@ -69,39 +70,6 @@ public class SubprojectRepository {
         }
 
     }
-/*
-    public void updateSubproject(int subproject_id, Subproject subEdt) {
-        String mysql;
-        PreparedStatement ps;
-
-        try {
-            //1. Get a connection to database
-            Connection con = DBManager.getConnection();
-
-            //2. Prepare statement
-            mysql = "UPDATE su";
-
-
-            ps = con.prepareStatement(mysql);
-
-            //3. Set the parameters
-            ps.setString(1, subproject.getSubproject_name());
-            ps.setString(2, subproject.getSubproject_description());
-            ps.setInt(3, subproject.getSubproject_seniordeveloper_hours());
-            ps.setInt(4, subproject.getSubproject_developer_hours());
-            ps.setInt(5, subproject.getSubproject_graphic_hours());
-            ps.setInt(6, subproject.getSubproject_id());
-
-            //4. Execute SQL query
-            ps.executeUpdate();
-
-            //5. Display the result set
-        } catch (SQLException err) {
-            System.out.println("Fejl i count err=" + err.getMessage());
-        }
-    }
-
- */
 
     //VISER ALLE SUBPROJEKTER DER HØRER TIL PROJEKT-ID'EN
     public List<Subproject> showAllSubprojects(int id) {
@@ -187,30 +155,20 @@ public class SubprojectRepository {
 
         String mysql;
         PreparedStatement ps;
-        System.out.println("Seee der er en " + subproject);
+
         try {
             //1. Get a connection to database
             Connection con = DBManager.getConnection();
 
             //2. Prepare statement
 
-            mysql = "UPDATE subprojects SET" +
-                // 1
-                "subproject_name = ?," + // 1
-                // 2
-                "subproject_description = ?," + // 2
-                // 3
-                "subproject_seniordeveloper_hours = ?," + // 3
-                // 4
-                "subproject_developer_hours = ?," + // 4
-                // 5
-                "subproject_graphic_hours = ?," + // 5
-                // 6
-                "subproject_price = ?," + // 6
-                //7
-                 "subproject_total_hours = ?" + //7
-                //8
-                "WHERE subproject_id = ?"; // 8
+
+            mysql = "UPDATE subprojects SET subproject_name = ?, subproject_description = ?,\n" +
+                "subproject_seniordeveloper_hours = ?,subproject_developer_hours = ?,\n" +
+                "subproject_graphic_hours = ?, subproject_price = ?,\n" +
+                "subproject_total_hours = ? WHERE subproject_id = ?;\n";
+
+            //"WHERE subproject_id = " + subproject.getSubprojectId(); // 8*
 
 
 
@@ -232,14 +190,16 @@ public class SubprojectRepository {
             // 7
             ps.setInt(7,subproject.getSubprojectTotalHours());
             // 8 WHERE subproject_id = ?
-            ps.setInt(8, subproject.getSubprojectId());
+            ps.setInt(8,subproject.getSubprojectId());
 
 
 
             //4. Execute SQL query
-            int rows = ps.executeUpdate();
+         int rows = ps.executeUpdate();
+
 
             if (rows > 0) {
+
                 System.out.println("A new user has been inserted Successfully.");
             }
 

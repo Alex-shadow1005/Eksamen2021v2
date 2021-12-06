@@ -3,6 +3,7 @@
 
 <head>
     <link rel="stylesheet" href="indexStylesheet.css">
+    <script type="text/javascript" th:src="@{/static/delete.js}"></script>
 
     <meta charset="UTF-8">
     <title>Projects</title>
@@ -11,6 +12,7 @@
 
 <body>
 
+
 <div class="container content center padding-64" style="max-width:800px" id="band">
     <h2 class="wide">YOUR PROJECTS</h2>
     <p class="opacity"><i>An overview of your projects</i></p>
@@ -18,79 +20,100 @@
 
     <section>
 
-        <div class="container content center padding-64" style="max-width:800px" id="band">
-            <h2 class="wide">YOUR PROJECTS</h2>
-            <p class="opacity"><i>An overview of your projects</i></p>
-            <p>Here you can see, edit and delete your current projects.</p><br>
+        <div class="s-center">
+            <article>
 
-            <section>
+                <table>
+                    <tr>
+                        <th>Name</th>
 
-                <div class="s-center">
-                    <article>
+                        <th>Description</th>
 
-                        <table>
-                            <tr>
-                                <th>Name</th>
+                        <th>Price</th>
 
-                                <th>Description</th>
+                        <th>Hours</th>
 
-                                <th>Price</th>
+                        <th>Subprojects</th>
 
-                                <th>Hours</th>
+                        <th>Edit</th>
 
-                                <th>Subprojects</th>
+                        <th>Delete</th>
 
-                                <th>Edit</th>
+                    </tr>
 
-                                <th>Delete</th>
+                    <tr th:each="project : ${projects}">
 
-                            </tr>
+                        <!--   <td hidden th:text="${project.userId}"></td> -->
 
-                            <tr th:each="project : ${projects}">
+                        <p hidden th:text="${project.projectId}"></p>
 
-                                <!--   <td hidden th:text="${project.userId}"></td> -->
+                        <td th:text="${project.projectName}"></td>
 
-                                <p hidden th:text="${project.projectId}"></p>
+                        <td th:text="${project.projectDescription}"></td>
 
-                                <td th:text="${project.projectName}"></td>
+                        <td th:text="${project.projectHours}"></td>
 
-                                <td th:text="${project.projectDescription}"></td>
-
-                                <td th:text="${project.projectHours}"></td>
-
-                                <td th:text="${project.projectPrice}"></td>
+                        <td th:text="${project.projectPrice}"></td>
 
 
-                                <td>
-                                    <!--                            <form action="/show-subprojects/5" method="GET" modelAttribute="project">-->
-                                    <a th:href="|/show-subprojects/${project.projectId}|">
-                                        <button type="submit" class="button smaller-button">Subproject</button></a>
-                                    <!--</form>-->
-                                </td>
+                        <td>
+                            <!--                            <form action="/show-subprojects/5" method="GET" modelAttribute="project">-->
+                            <a th:href="|/show-subprojects/${project.projectId}|">
+                                <button type="submit" class="button smaller-button">Subproject</button>
+                            </a>
+                            <!--</form>-->
+                        </td>
 
-                                <td><!-- EDIT PROJECT HER --></td>
+                        <td><!-- EDIT PROJECT HER --></td>
 
-                                <td><!-- DELETE PROJECT HER --></td>
+                        <td>
+                            <a th:href="@{/show/155/${projectId}}" class="btn btn-danger"></a>
+                            <button th:onclick="'deleteProject(\'' + ${project.projectId} + '\');'" class="button smaller-button">Delete</button>
+                        </td>
 
-                            </tr>
+                    </tr>
+
+                    <!-- <a th:href="|/show-projects/${project.projectId}|">
+                        <button type="submit" class="button smaller-button">Delete</button>
+                    </a> -->
 
 
-                        </table>
-                        <br>
-                        <br>
+                </table>
+                <br>
+                <br>
 
-                        <a th:href="@{/add-project}">
-                            <button type="button" class="start-button">Add project</button>
-                        </a>
+                <a th:href="@{/add-project}">
+                    <button type="button" class="start-button">Add project</button>
+                </a>
 
-                    </article>
-                </div>
-            </section>
-
+            </article>
         </div>
-
     </section>
 
+</div>
+
+</section>
+
+</div>
+
+<div class="modal" tabindex="-1" role="dialog" id="deleteModel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Du er ved at slette et projekt, bekraft venligst</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Er du sikker på at du vil slette et projekt der har subprojekter under sig?</p>
+            </div>
+            <div class="modal-footer">
+                <a href="" class="btn btn-primary" id="delRef">Yes, Delete</a>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
 </div>
 
 <!-- BUTTON
@@ -260,6 +283,14 @@
         background-color: ghostwhite;
     }
 </style>
+
+<script>
+    function deleteProject(projectId) {
+        if (confirm("Indset besked her")) {
+            location.assign("http://localhost:8080/delete-project/" + projectId)
+        }
+    }
+</script>
 </html>
 
 <!--

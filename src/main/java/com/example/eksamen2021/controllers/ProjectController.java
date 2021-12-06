@@ -4,6 +4,7 @@ import com.example.eksamen2021.domain.models.Project;
 import com.example.eksamen2021.domain.models.Subproject;
 import com.example.eksamen2021.domain.models.User;
 import com.example.eksamen2021.domain.services.ProjectService;
+import org.apache.catalina.valves.rewrite.RewriteCond;
 import org.springframework.boot.web.servlet.server.Session;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,15 +24,13 @@ public class ProjectController {
     return "add-project";
   }
 
-  /* test af om vi bruger den -> BRUGES IKKE
-//viser alle id nummere fra Project
-  @GetMapping("/showallprojects")
-  public String showAllProjects(Model model) {
-    List<Project> projectId = projectService.showAll(1);
-    model.addAttribute("Projectlist", projectId);
-    return "show-projects";
+  @PostMapping("/add-project")
+  public String addProjectPost(@ModelAttribute Project project, User user, Model model) {
+    model.addAttribute("project", project);
+    user.setUserId(UserController.session.getUserId());
+    projectService.addProject(project, user);
+    return "redirect:/show/" + UserController.session.getUserId();
   }
-   */
 
 //sender projct id til projectservice (@Path tager id,et fra urlen og gemmer det??)
   @GetMapping("/delete-project/{projectId}")
@@ -41,15 +40,6 @@ public class ProjectController {
   }
   //sender projct id til projectservice (@Path tager id,et fra urlen og gemmer det??)
   //@DeleteMapping
-
-/*
-  //sender projct id til projectservice (@Path tager id,et fra urlen og gemmer det??)
-    @GetMapping("/update-subproject")
-    public String updateSubproject(@ModelAttribute Subproject subproject) throws SQLException{
-      projectService.updateSubproject(subproject);
-
-      return "show-projects";
-    }*/
 
 
   @GetMapping("/show/{id}")
@@ -65,15 +55,19 @@ public class ProjectController {
     return "redirect:/show-project";
   }
 
-  @PostMapping("/add-project")
-  public String addProjectPost(@ModelAttribute Project project, User user, Model model) {
-    model.addAttribute("project", project);
-    //System.out.println(wish.getWishName() + wish.getWishDescription() + wish.getWishPrice());
-    //We will return to this one ^
-    user.setUserId(UserController.session.getUserId());
-    projectService.addProject(project, user);
-    return "redirect:/show/" + UserController.session.getUserId();
+}
+
+//UDKOMMENTEREDE METODER:
+
+  /* test af om vi bruger den -> BRUGES IKKE
+//viser alle id nummere fra Project
+  @GetMapping("/showallprojects")
+  public String showAllProjects(Model model) {
+    List<Project> projectId = projectService.showAll(1);
+    model.addAttribute("Projectlist", projectId);
+    return "show-projects";
   }
+   */
 
   /*
   @PostMapping("/add-subproject/{projectid}")
@@ -86,4 +80,13 @@ public class ProjectController {
 
    */
 
-}
+  /*
+  //sender projct id til projectservice (@Path tager id,et fra urlen og gemmer det??)
+    @GetMapping("/update-subproject")
+    public String updateSubproject(@ModelAttribute Subproject subproject) throws SQLException{
+      projectService.updateSubproject(subproject);
+
+      return "show-projects";
+    }*/
+
+
