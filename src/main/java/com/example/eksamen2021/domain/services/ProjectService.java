@@ -1,5 +1,6 @@
 package com.example.eksamen2021.domain.services;
 
+import com.example.eksamen2021.controllers.UserController;
 import com.example.eksamen2021.domain.models.Project;
 import com.example.eksamen2021.domain.models.Subproject;
 import com.example.eksamen2021.domain.models.User;
