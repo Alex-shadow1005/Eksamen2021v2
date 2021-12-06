@@ -2,8 +2,11 @@ package com.example.eksamen2021.controllers;
 
 import com.example.eksamen2021.domain.ErrorMessageException;
 import com.example.eksamen2021.domain.models.Project;
+import com.example.eksamen2021.domain.models.Subproject;
 import com.example.eksamen2021.domain.models.User;
+import com.example.eksamen2021.domain.services.CalculateService;
 import com.example.eksamen2021.domain.services.ProjectService;
+import com.example.eksamen2021.repositories.SubprojectRepositoryImpl;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -14,6 +17,8 @@ import java.util.List;
 @Controller
 public class ProjectController {
   private ProjectService projectService = new ProjectService();
+  private CalculateService calculateService = new CalculateService();
+  private SubprojectRepositoryImpl subprojectRepository = new SubprojectRepositoryImpl();
   //ny ændert Jens kl.15:03 02-12-2021 HttpSession session GET
   @GetMapping("/create-project")
   public String addProject(@ModelAttribute Project project, Model model, HttpSession session) throws ErrorMessageException {
@@ -32,7 +37,7 @@ public class ProjectController {
     return "create-project";
   } */
 //ny ændert Jens kl.15:03 02-12-2021 HttpSession session POST
-  @PostMapping("/create-project")
+  /*@PostMapping("/create-project")
   public String createProject(@ModelAttribute Project project, User user, Model model,HttpSession session) throws ErrorMessageException {
     model.addAttribute("project", project);
     User usersession = (User) session.getAttribute("session");//jens
@@ -49,6 +54,15 @@ public class ProjectController {
   }
 
  */
+//ny ændert alex kl.15:03 02-12-2021 HttpSession session POST
+@PostMapping("/create-project")
+public String createProject2(@ModelAttribute Project project, User user, Model model,HttpSession session) throws ErrorMessageException {
+  model.addAttribute("project", project);
+  User usersession = (User) session.getAttribute("session");//jens
+  user.setUserId(usersession.getUserId());
+  projectService.createProject2(project, user);
+  return "redirect:/show/" + usersession.getUserId();
+}
 
   @PostMapping("/save")
   public String saveProject(@ModelAttribute Project project, User user) throws ErrorMessageException {
@@ -69,6 +83,12 @@ public class ProjectController {
   @GetMapping("/show/{id}")
   public String showProjects(@PathVariable("id") int id, Model model) throws ErrorMessageException {
     List<Project> projects = projectService.showAllProjects(id);
+
+    for (Project pj:projects) {
+      List<Subproject> subprojects = subprojectRepository.showAllSubprojects(id);
+      pj.setProjectHours(calculateService.calprojecthours(subprojects));
+    }
+
     model.addAttribute("projects", projects);
     return "show-projects";
   }

@@ -40,7 +40,7 @@ public class Subproject {
   }
 
   //Bruges i showallsubprojects + html
-  public Subproject(int subprojectId, int projectId, String subprojectName, String subprojectDescription, int subprojectSeniordeveloperHours, int subprojectDeveloperHours, int subprojectGraphicHours, int subprojectPrice) {
+  public Subproject(int subprojectId, int projectId, String subprojectName, String subprojectDescription, int subprojectSeniordeveloperHours, int subprojectDeveloperHours, int subprojectGraphicHours, int subprojectPrice, int subprojectTotalHours) {
     this.subprojectId = subprojectId;
     this.projectId = projectId;
     this.subprojectName = subprojectName;
@@ -49,6 +49,7 @@ public class Subproject {
     this.subprojectDeveloperHours = subprojectDeveloperHours;
     this.subprojectGraphicHours = subprojectGraphicHours;
     this.subprojectPrice = subprojectPrice;
+    this.subprojectTotalHours = subprojectTotalHours;
 
   }
 
@@ -133,7 +134,7 @@ public class Subproject {
   }
 
   public int getSubprojectPrice() {
-    return subprojectPrice;
+    return  subprojectPrice;
   }
 
   public void setSubprojectPrice(int subprojectPrice) {
