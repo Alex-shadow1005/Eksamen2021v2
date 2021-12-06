@@ -33,6 +33,10 @@ public class SubprojectController {
 
   @PostMapping("/create-subproject")
   public String createSubproject(@ModelAttribute Subproject subproject, Project project, Model model) throws ErrorMessageException {
+    subproject.setSubprojectTotalHours((int)calculatService.calsubhours(subproject.getSubprojectSeniordeveloperHours(),subproject.getSubprojectDeveloperHours(),subproject.getSubprojectGraphicHours()));
+    //int totalhours = subproject.getSubprojectTotalHours();
+    //model.addAttribute("totalhours",totalhours);
+    subproject.setSubprojectPrice((int) calculatService.calsubprice(subproject.getSubprojectSeniordeveloperHours(),subproject.getSubprojectDeveloperHours(),subproject.getSubprojectGraphicHours()));
     model.addAttribute("subproject", subproject);
     project.setProjectId(currentProject.getProjectId());
     //subproject.getSubprojectId();
