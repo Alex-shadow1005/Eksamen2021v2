@@ -1,19 +1,24 @@
 package com.example.eksamen2021.domain.models;
 
+import java.util.List;
+
 public class CalculateHourlyRate {
 
-  public double calsubhours3(Subproject subproject) {
+  public void calsubhours3(Subproject subproject) {
 
-    int subprojecttotalhours = subproject.getSubprojectDeveloperHours() + subproject.getSubprojectDeveloperHours() + subproject.getSubprojectSeniordeveloperHours();
+
+    int subprojecttotalhours = 0;
+    subprojecttotalhours += subproject.getSubprojectSeniordeveloperHours() + subproject.getSubprojectDeveloperHours() + subproject.getSubprojectGraphicHours();
     subproject.setSubprojectTotalHours(subprojecttotalhours);
-
-    return subprojecttotalhours;
+    System.out.println("================" + subprojecttotalhours);
+    System.out.println("+++++++++++++++++" + subproject.getSubprojectTotalHours());
+    //return subprojecttotalhours;
   }
 
-  public double calsubprice3(Subproject subproject) {
+  public void calsubprice3(Subproject subproject) {
 
     //seniorDeveloper = 1500;
-   int cal1 = subproject.getSubprojectSeniordeveloperHours() * subproject.getSeniorDeveloper();
+    int cal1 = subproject.getSubprojectSeniordeveloperHours() * subproject.getSeniorDeveloper();
 
     //developer = 750;
     int cal2 = subproject.getSubprojectDeveloperHours() * subproject.getDeveloper();
@@ -23,10 +28,32 @@ public class CalculateHourlyRate {
     int subprojectPrice = cal1 + cal2 + cal3;
 
 
-   subproject.setSubprojectPrice(subprojectPrice);
+    subproject.setSubprojectPrice(subprojectPrice);
+
+  }
+
+  //skal ha alle timer fra sub udfra et project id
+  public void calprojecthours(List<Subproject> subprojects, List<Project> projects) {
+    int projecttotalhours = 0;
+    for (Project ps : projects) {
+      for (Subproject sp : subprojects) {
+        projecttotalhours += sp.getSubprojectTotalHours();
+      }
+      ps.setProjectHours(projecttotalhours);
+    }
 
 
-    return subprojectPrice;
+  }
+
+  public void calprojectprice(List<Subproject> subprojects,List<Project> projects) {
+    int projectotalprice = 0;
+    for (Project ps:projects) {
+      for (Subproject sp : subprojects) {
+        projectotalprice += sp.getSubprojectPrice();
+      }
+      ps.setProjectPrice(projectotalprice);
+    }
+
   }
 
 }

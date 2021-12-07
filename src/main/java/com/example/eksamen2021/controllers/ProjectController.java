@@ -98,16 +98,18 @@ public String createProject2(@ModelAttribute Project project, User user, Model m
   public String showProjects(@PathVariable("id") int id, Model model, User user) throws ErrorMessageException {
 
     List<Project> projects = projectService.showAllProjects(id);
+    List<Subproject> subprojects = subprojectRepository.showAllSubprojects(id);
 
-    for (Project pj:projects) {
-      List<Subproject> subprojects = subprojectRepository.showAllSubprojects(id);
-      pj.setProjectHours(calculateService.calprojecthours(subprojects));
-    }
+   calculateService.calprojecthours(subprojects,projects);
+   calculateService.calprojectprice(subprojects,projects);
+   /*
     for (Project pj:projects) {
       List<Subproject> subprojects =subprojectRepository.showAllSubprojects(id);
       pj.setProjectPrice(calculateService.calprojectprice(subprojects));
 
     }
+
+    */
 
     model.addAttribute("projects", projects);
     model.addAttribute("user", user);

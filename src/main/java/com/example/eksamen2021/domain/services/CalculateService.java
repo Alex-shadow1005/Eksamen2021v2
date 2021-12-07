@@ -12,38 +12,22 @@ public class CalculateService {
   CalculateHourlyRate calculateHourlyRate = new CalculateHourlyRate();
 
 
-  public double calsubhours3(Subproject subproject) {
-
-    return calculateHourlyRate.calsubhours3(subproject);
+  public void calsubhours3(Subproject subproject) {
+    calculateHourlyRate.calsubhours3(subproject);
+    //return calculateHourlyRate.calsubhours3(subproject);
   }
 
-
-  public double calsubprice3(Subproject subproject) {
-    return calculateHourlyRate.calsubprice3(subproject);
+  public void calsubprice3(Subproject subproject) {
+    calculateHourlyRate.calsubprice3(subproject);
   }
 
+  public void calprojecthours(List<Subproject> subprojects,List<Project> projects) {
+    calculateHourlyRate.calprojecthours(subprojects,projects);
 
-  //skal ha alle timer fra sub udfra et project id
-  public int calprojecthours(List<Subproject> subprojects) {
-    int projecttotalhours = 0;
-
-    for (Subproject sp : subprojects) {
-      projecttotalhours += sp.getSubprojectTotalHours();
-
-    }
-
-
-    return projecttotalhours;
   }
+  public void calprojectprice(List<Subproject> subprojects,List<Project> projects) {
+    calculateHourlyRate.calprojectprice(subprojects,projects);
 
-
-  public int calprojectprice(List<Subproject> subprojects) {
-    int projectotalprice = 0;
-
-    for (Subproject sp : subprojects) {
-      projectotalprice += sp.getSubprojectPrice();
-    }
-    return projectotalprice;
   }
 
 }
