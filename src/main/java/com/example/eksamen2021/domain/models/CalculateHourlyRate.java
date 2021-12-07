@@ -2,20 +2,31 @@ package com.example.eksamen2021.domain.models;
 
 public class CalculateHourlyRate {
 
-  private final int seniorDeveloper = 1500;
-  private final int developer = 750;
-  private final int graphicDesigner = 500;
+  public double calsubhours3(Subproject subproject) {
 
+    int subprojecttotalhours = subproject.getSubprojectDeveloperHours() + subproject.getSubprojectDeveloperHours() + subproject.getSubprojectSeniordeveloperHours();
+    subproject.setSubprojectTotalHours(subprojecttotalhours);
 
-  public int getSeniorDeveloper() {
-    return seniorDeveloper;
+    return subprojecttotalhours;
   }
 
-  public int getDeveloper() {
-    return developer;
+  public double calsubprice3(Subproject subproject) {
+
+    //seniorDeveloper = 1500;
+   int cal1 = subproject.getSubprojectSeniordeveloperHours() * subproject.getSeniorDeveloper();
+
+    //developer = 750;
+    int cal2 = subproject.getSubprojectDeveloperHours() * subproject.getDeveloper();
+
+    //graphicDesigner = 500;
+    int cal3 = subproject.getSubprojectGraphicHours() * subproject.getGraphicDesigner();
+    int subprojectPrice = cal1 + cal2 + cal3;
+
+
+   subproject.setSubprojectPrice(subprojectPrice);
+
+
+    return subprojectPrice;
   }
 
-  public int getGraphicDesigner() {
-    return graphicDesigner;
-  }
 }
