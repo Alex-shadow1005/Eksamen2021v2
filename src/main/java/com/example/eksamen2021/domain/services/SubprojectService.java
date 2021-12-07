@@ -43,9 +43,9 @@ public class SubprojectService {
     subprojectRepositoryImpl.deleteSubproject(subprojectid);
   }
 
-  public List<Subproject> showAllSubprojects(int projectid2) throws ErrorMessageException {
-    System.out.println("projectid in service here: " + projectid2);
-    return subprojectRepositoryImpl.showAllSubprojects(projectid2);
+  public List<Subproject> showAllSubprojects(int projectid) throws ErrorMessageException {
+    System.out.println("projectid in service here: " + projectid);
+    return subprojectRepositoryImpl.showAllSubprojects(projectid);
 
   }
 

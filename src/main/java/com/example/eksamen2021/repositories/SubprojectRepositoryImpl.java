@@ -23,7 +23,8 @@ public class SubprojectRepositoryImpl implements SubprojectRepository {
       //1. Get a connection to database
       Connection con = DBManager.getConnection();
       //2. Prepare statement
-      mySql = "INSERT INTO subprojects (project_id, subproject_name, subproject_description, subproject_seniordeveloper_hours, subproject_developer_hours, subproject_graphic_hours, subproject_price, subproject_total_hours) VALUES (?, ?, ?, ?, ?, ?,?,?)";
+      mySql = "INSERT INTO subprojects (project_id, subproject_name, subproject_description, subproject_seniordeveloper_hours, " +
+          "subproject_developer_hours, subproject_graphic_hours, subproject_price, subproject_total_hours) VALUES (?, ?, ?, ?, ?, ?,?,?)";
 
       ps = con.prepareStatement(mySql);
       //3. Set the parameters
