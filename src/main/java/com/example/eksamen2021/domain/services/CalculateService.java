@@ -1,14 +1,17 @@
 package com.example.eksamen2021.domain.services;
 
 import com.example.eksamen2021.domain.models.CalculateHourlyRate;
+import com.example.eksamen2021.domain.models.Project;
 import com.example.eksamen2021.domain.models.Subproject;
-import com.example.eksamen2021.repositories.SubprojectRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+
+import java.util.List;
 
 public class CalculateService {
     //@Autowired
 //CalculateHourlyRate calculateHourlyRate;
     CalculateHourlyRate calculateHourlyRate = new CalculateHourlyRate();
+
+
 
 
     public double calsubprice(double seniorDeveloperhours, double developerhours, double graphicDesignerhours) {
@@ -31,6 +34,19 @@ public class CalculateService {
         return subprojecttotalhours;
 
 
+    }
+//skal ha alle timer fra sub udfra et project id
+    public int calprojecthours(List<Subproject> subprojects) {
+        int projecttotalhours = 0;
+
+
+        for (Subproject sp:subprojects) {
+            projecttotalhours += sp.getSubprojectTotalHours();
+
+        }
+
+
+        return projecttotalhours;
     }
 
 }
