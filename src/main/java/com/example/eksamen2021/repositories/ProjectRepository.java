@@ -11,7 +11,7 @@ public interface ProjectRepository {
 
   public int createProject(Project project, User user) throws ErrorMessageException;
 
-  public Subproject findProjectID(int ProjectId) throws ErrorMessageException;
+  public Project findProjectID(int projectId) throws ErrorMessageException;
 
   public void updateProject(Project project) throws ErrorMessageException;
 

@@ -28,6 +28,7 @@ public class SubprojectService {
       return "redirect:/add-subprojects";
     }
   }
+
   public Subproject findSubprojectID(int subprojectId) throws ErrorMessageException {
     return subprojectRepositoryImpl.findSubprojectID(subprojectId);
   }
@@ -38,7 +39,7 @@ public class SubprojectService {
   }
 
   //deleter projectet ud fra dens SubID
-  public void deleteSubproject(int subprojectid) throws ErrorMessageException{
+  public void deleteSubproject(int subprojectid) throws ErrorMessageException {
     subprojectRepositoryImpl.deleteSubproject(subprojectid);
   }
 

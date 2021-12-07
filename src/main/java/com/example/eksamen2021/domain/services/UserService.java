@@ -17,7 +17,7 @@ public class UserService {
 
   //OBS ny  int# ændert Jens kl.15:03 02-12-2021 vedr.public #int# createUser(User user)
   //før String# ændert Jens kl.15:03 02-12-2021 vedr.public #String# createUser(User user)
-  public int createUser(User user) throws ErrorMessageException {  //DEN HER SKAL LAVES OM, SÅ endpoints kun ligger i Controllers
+  public User createUser(User user) throws ErrorMessageException {  //DEN HER SKAL LAVES OM, SÅ endpoints kun ligger i Controllers
     return userRepositoryImpl.createUser(user);
 
    //før ændert Jens kl.15:03 02-12-2021

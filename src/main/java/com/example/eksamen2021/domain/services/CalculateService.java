@@ -7,46 +7,55 @@ import com.example.eksamen2021.domain.models.Subproject;
 import java.util.List;
 
 public class CalculateService {
-    //@Autowired
+  //@Autowired
 //CalculateHourlyRate calculateHourlyRate;
-    CalculateHourlyRate calculateHourlyRate = new CalculateHourlyRate();
+  CalculateHourlyRate calculateHourlyRate = new CalculateHourlyRate();
 
 
+  public double calsubprice(double seniorDeveloperhours, double developerhours, double graphicDesignerhours) {
+
+    double cal1 = seniorDeveloperhours * calculateHourlyRate.getSeniorDeveloper();
+    double cal2 = developerhours * calculateHourlyRate.getDeveloper();
+    double cal3 = graphicDesignerhours * calculateHourlyRate.getGraphicDesigner();
+    double subprojectPrice = cal1 + cal2 + cal3;
 
 
-    public double calsubprice(double seniorDeveloperhours, double developerhours, double graphicDesignerhours) {
+    return subprojectPrice;
+  }
 
-        double cal1 = seniorDeveloperhours * calculateHourlyRate.getSeniorDeveloper();
-        double cal2 = developerhours * calculateHourlyRate.getDeveloper();
-        double cal3 = graphicDesignerhours * calculateHourlyRate.getGraphicDesigner();
-        double subprojectPrice = cal1 + cal2 + cal3;
+  public double calsubhours(double seniorDeveloperhours, double developerhours, double graphicDesignerhours) {
 
 
-        return subprojectPrice;
+    double subprojecttotalhours = seniorDeveloperhours + developerhours + graphicDesignerhours;
+
+
+    return subprojecttotalhours;
+
+
+  }
+
+  //skal ha alle timer fra sub udfra et project id
+  public int calprojecthours(List<Subproject> subprojects) {
+    int projecttotalhours = 0;
+
+
+    for (Subproject sp : subprojects) {
+      projecttotalhours += sp.getSubprojectTotalHours();
+
     }
 
-    public double calsubhours(double seniorDeveloperhours, double developerhours, double graphicDesignerhours) {
+
+    return projecttotalhours;
+  }
 
 
-        double subprojecttotalhours = seniorDeveloperhours + developerhours + graphicDesignerhours;
-
-
-        return subprojecttotalhours;
-
-
-    }
-//skal ha alle timer fra sub udfra et project id
-    public int calprojecthours(List<Subproject> subprojects) {
-        int projecttotalhours = 0;
-
+    public int calprojectprice(List<Subproject> subprojects) {
+        int projectotalprice = 0;
 
         for (Subproject sp:subprojects) {
-            projecttotalhours += sp.getSubprojectTotalHours();
-
+            projectotalprice += sp.getSubprojectPrice();
         }
-
-
-        return projecttotalhours;
+        return projectotalprice;
     }
 
 }
