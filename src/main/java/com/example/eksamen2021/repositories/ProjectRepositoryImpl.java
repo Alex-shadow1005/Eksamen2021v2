@@ -198,7 +198,8 @@ public class ProjectRepositoryImpl implements ProjectRepository {
     }
     return projects;
   }
-  //TILFØJER ET PROJEKT TIL BRUGERENS PROJEKTLISTE alex
+
+  //TILFØJER ET PROJEKT TIL BRUGERENS PROJEKTLISTE alex - hvorfor er der to create projects?
   public int createProject2(Project project, User user) throws ErrorMessageException {
     String mySql;
     PreparedStatement ps;
