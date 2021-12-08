@@ -30,10 +30,6 @@ public class ProjectService {
      */
   }
 
-  //alex!!!!
-  public int createProject2(Project project, User user) throws ErrorMessageException {
-    return projectRepositoryImpl.createProject2(project, user);
-  }
 
   public Project findProjectID(int projectId) throws ErrorMessageException {
     return projectRepositoryImpl.findProjectID(projectId);

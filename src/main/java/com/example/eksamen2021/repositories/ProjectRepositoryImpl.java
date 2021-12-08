@@ -198,35 +198,5 @@ public class ProjectRepositoryImpl implements ProjectRepository {
     }
     return projects;
   }
-  //TILFØJER ET PROJEKT TIL BRUGERENS PROJEKTLISTE alex
-  public int createProject2(Project project, User user) throws ErrorMessageException {
-    String mySql;
-    PreparedStatement ps;
-    int createProjectSuccess = 0;
 
-    try {
-      //1. Get a connection to database
-      Connection con = DBManager.getConnection();
-      //2. Prepare statement
-      mySql = "INSERT INTO projects (user_id, project_name, project_description) VALUES (?, ?, ?)";
-
-      ps = con.prepareStatement(mySql);
-      //3. Set the parameters
-      ps.setInt(1, user.getUserId());
-      ps.setString(2, project.getProjectName());
-      ps.setString(3, project.getProjectDescription());
-
-      //4. Execute SQL query
-      createProjectSuccess = ps.executeUpdate();
-      if(createProjectSuccess == 1) {
-        System.out.println("Project add");
-      }else {
-        throw new ErrorMessageException("Fejl i count addProject  err=");
-      }
-      //5. Display the result set
-    } catch (SQLException err) {
-      System.out.println(err.getMessage());
-    }
-    return createProjectSuccess; //returnerer brugeren til Service
-  }
 }

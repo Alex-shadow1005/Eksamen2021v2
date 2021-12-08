@@ -36,7 +36,7 @@ public class ProjectController {
     System.out.println(project.getProjectName() + project.getProjectDescription() + project.getProjectPrice());
     return "create-project";
   } */
-//ny ændert Jens kl.15:03 02-12-2021 HttpSession session POST
+//ny ændert Jens kl.1 02-12-2021 HttpSession session POST
   /*@PostMapping("/create-project")
   public String createProject(@ModelAttribute Project project, User user, Model model,HttpSession session) throws ErrorMessageException {
     model.addAttribute("project", project);
@@ -56,11 +56,11 @@ public class ProjectController {
  */
 //ny ændert alex kl.15:03 02-12-2021 HttpSession session POST
 @PostMapping("/create-project")
-public String createProject2(@ModelAttribute Project project, User user, Model model,HttpSession session) throws ErrorMessageException {
+public String createProject(@ModelAttribute Project project, User user, Model model,HttpSession session) throws ErrorMessageException {
   model.addAttribute("project", project);
   User usersession = (User) session.getAttribute("session");//jens
   user.setUserId(usersession.getUserId());
-  projectService.createProject2(project, user);
+  projectService.createProject(project, user);
   return "redirect:/show/" + usersession.getUserId();
 }
 
