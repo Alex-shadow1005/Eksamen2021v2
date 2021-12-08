@@ -1,136 +1,48 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-
 <head>
-    <link rel="stylesheet" href="indexStylesheet.css">
-    <script type="text/javascript" th:src="@{/static/delete.js}"></script>
-
     <meta charset="UTF-8">
-    <title>Projects</title>
+    <title>Subproject</title>
 </head>
 
 
 <body>
+<a href="http://www.google.com/">link</a>
+
+<form action="/new-update-project" modelAttribute="project" method="POST">
 
 
-<div class="container content center padding-64" style="max-width:800px" id="band"> <!--<p th:object="${user}">-->
-    <h2 class="wide">Welcome </h2><!--<h2 class="wide" th:text="${user.getUserUsername()}"></h2>-->
-    <h2 class="wide">YOUR PROJECTS</h2>
-    <p class="opacity"><i>An overview of your projects</i></p>
-    <p>Here you can see, edit and delete your current projects.</p><br>
 
-    <section>
-
-        <div class="s-center">
-            <article>
-
-                <table>
-                    <tr>
-                        <th>Name</th>
-
-                        <th>Description</th>
-
-                        <th>Hours</th>
-
-                        <th>Price</th>
-
-                        <th>Subprojects</th>
-
-                        <th>Edit</th>
-
-                        <th>Delete</th>
-
-                    </tr>
-
-                    <tr th:each="project : ${projects}">
-
-                        <!--   <td hidden th:text="${project.userId}"></td> -->
-
-                        <p hidden th:text="${project.projectId}"></p>
-
-                        <td th:text="${project.projectName}"></td>
-
-                        <td th:text="${project.projectDescription}"></td>
-
-                        <td th:text="${project.projectHours}"></td>
-
-                        <td th:text="${project.projectPrice}"></td>
+    <tr th:each="project : ${project}">
+        <label for="projectId">project id:</label>
+        <input type="text" id="projectId" name="projectId" th:value="${project.projectId}"><br><br>
 
 
-                        <td>
-                            <!--                            <form action="/show-subprojects/5" method="GET" modelAttribute="project">-->
-                            <a th:href="|/show-subprojects/${project.projectId}|">
-                                <button type="submit" class="button smaller-button">Subproject</button>
-                            </a>
-                            <!--</form>-->
-                        </td>
-
-                        <td><!-- EDIT PROJECT HER --></td>
-
-                        <td>
-                            <a th:href="@{/show/155/project.projectId}" class="btn btn-danger"></a>
-                            <button th:onclick="'deleteProject(\'' + ${project.projectId} + '\');'"
-                                    class="button smaller-button">Delete</button>
-                        </td>
-
-                    </tr>
-
-                    <!-- <a th:href="|/show-projects/${project.projectId}|">
-                        <button type="submit" class="button smaller-button">Delete</button>
-                    </a> -->
+        <label for="projectName">project name:</label>
+        <input type="text" id="projectName" name="projectName" th:value="${project.projectName}"><br><br>
 
 
-                </table>
-                <br>
-                <br>
+        <label for="projectDescription">project description:</label>
+        <input type="text" id="projectDescription" name="projectDescription" th:value="${project.projectDescription}"><br><br>
 
-                <a th:href="@{/create-project}">
-                    <button type="button" class="start-button">Add project</button>
-                </a>
 
-            </article>
-        </div>
-    </section>
+        <label for="projectHours">project hours:</label>
+        <input type="text" id="projectHours" name="projectHours" th:value="${project.projectHours}"><br><br>
 
-</div>
 
-</section>
+        <label for="projectPrice">project price:</label>
+        <input type="text" id="projectPrice" name="projectPrice" th:value="${project.projectPrice}" ><br><br>
 
-</div>
 
-<!-- BUTTON
-    <div class="button">
-        <br>
-        <a href="/login-page">
-            <button class="button start-button">Start</button>
-            -->
+        <button type="submit" class="button smaller-button">????btg</button>
 
-<!-- FOOTER START -->
-<footer>
-    <div class="row">
-        <div class="column">
-            <h3></h3>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-        </div>
-        <div class="column">
-        </div>
-        <div class="column">
-        </div>
-    </div>
-</footer>
-<!--FOOTER END-->
+
+    </tr>
+</form>
+
+
 </body>
-
 <style>
-
     html {
         box-sizing: border-box;
         -ms-text-size-adjust: 100%;
@@ -201,7 +113,7 @@
         letter-spacing: 4px
     }
 
-    .s-center .bar {
+    .center .bar {
         display: inline-block;
         width: auto
     }
@@ -265,14 +177,6 @@
         background-color: ghostwhite;
     }
 </style>
-
-<script>
-    function deleteProject(projectId) {
-        if (confirm("Are you sure you wan't to delete this project?")) {
-            location.assign("http://localhost:8080/delete-project/" + projectId)
-        }
-    }
-</script>
 </html>
 
 <!--

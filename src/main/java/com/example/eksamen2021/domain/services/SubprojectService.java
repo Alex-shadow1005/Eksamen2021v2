@@ -28,6 +28,7 @@ public class SubprojectService {
       return "redirect:/add-subprojects";
     }
   }
+
   public Subproject findSubprojectID(int subprojectId) throws ErrorMessageException {
     return subprojectRepositoryImpl.findSubprojectID(subprojectId);
   }
@@ -42,9 +43,9 @@ public class SubprojectService {
     subprojectRepositoryImpl.deleteSubproject(subprojectId);
   }
 
-  public List<Subproject> showAllSubprojects(int projectid2) throws ErrorMessageException {
-    System.out.println("projectid in service here: " + projectid2);
-    return subprojectRepositoryImpl.showAllSubprojects(projectid2);
+  public List<Subproject> showAllSubprojects(int projectid) throws ErrorMessageException {
+    System.out.println("projectid in service here: " + projectid);
+    return subprojectRepositoryImpl.showAllSubprojects(projectid);
 
   }
 

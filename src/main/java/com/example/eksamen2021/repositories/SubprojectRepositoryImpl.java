@@ -23,7 +23,8 @@ public class SubprojectRepositoryImpl implements SubprojectRepository {
       //1. Get a connection to database
       Connection con = DBManager.getConnection();
       //2. Prepare statement
-      mySql = "INSERT INTO subprojects (project_id, subproject_name, subproject_description, subproject_seniordeveloper_hours, subproject_developer_hours, subproject_graphic_hours) VALUES (?, ?, ?, ?, ?, ?)";
+      mySql = "INSERT INTO subprojects (project_id, subproject_name, subproject_description, subproject_seniordeveloper_hours, " +
+          "subproject_developer_hours, subproject_graphic_hours, subproject_price, subproject_total_hours) VALUES (?, ?, ?, ?, ?, ?,?,?)";
 
       ps = con.prepareStatement(mySql);
       //3. Set the parameters
@@ -33,6 +34,9 @@ public class SubprojectRepositoryImpl implements SubprojectRepository {
       ps.setInt(4, subproject.getSubprojectSeniordeveloperHours());
       ps.setInt(5, subproject.getSubprojectDeveloperHours());
       ps.setInt(6, subproject.getSubprojectGraphicHours());
+      ps.setInt(7, subproject.getSubprojectPrice());
+      ps.setInt(8, subproject.getSubprojectTotalHours());
+
       //4. Execute SQL query
       h = ps.executeUpdate();
       if (h > 0){
@@ -206,7 +210,8 @@ public class SubprojectRepositoryImpl implements SubprojectRepository {
             rs.getInt(5),
             rs.getInt(6),
             rs.getInt(7),
-            rs.getInt(8)
+            rs.getInt(8),
+                rs.getInt(9)
         ));
       }
     } catch (SQLException ex) {

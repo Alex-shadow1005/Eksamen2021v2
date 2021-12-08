@@ -33,9 +33,9 @@
 
                         <th>Graphic designer hours</th>
 
-                        <th>Price</th>
-
                         <th>Hours</th>
+
+                        <th>Price</th>
 
                         <th>Edit</th>
 
@@ -57,15 +57,18 @@
 
                         <td th:text="${subproject.subprojectGraphicHours}"></td>
 
-                        <td th:text="${subproject.subprojectPrice}"></td>
-
                         <td th:text="${subproject.subprojectTotalHours}"></td>
+
+                        <td th:text="${subproject.subprojectPrice}"></td>
 
                         <!-- VIser subprojects til subprojects. En kommende feature
                         <td><a href="/showsubprojects/">
                             <button class="button start-button">Subproject-knap her</button></a></td>
                         -->
-                        <td><!-- EDIT PROJECT HER --></td>
+                        <td>
+                            <form action="/update-subproject/" method="GET">
+                                <button class="smaller-button" type="submit">Edit</button>
+                            </form> </td>
 
                         <td>
                             <a th:href="@{/show/${subprojectId}}" class="btn btn-danger"></a>
@@ -79,9 +82,24 @@
                 <br>
                 <br>
 
+               <!-- <p hidden th:object="currentproject.userId"> </p> -->
+
+                <!--
+                <a th:href="@{/show/{id}}">
+                    <button type="button" class="start-button">Go back</button>
+                </a> -->
+
+
                 <a th:href="@{/create-subproject}">
+
                     <button type="button" class="start-button">Add subproject</button>
                 </a>
+          <!--      <h1> Edit test Jens  kl15:30</h1>
+                <a th:href="@{/update-subproject/{subprojectId}">
+                    <button type="button" class="start-button">endt subproject</button>
+                </a>
+                -->
+
 
             </article>
         </div>
@@ -149,6 +167,45 @@
 
     .start-button:hover {
         background-color: #59869D; /*samme farve som taget fra Alpha-Solutions hjemmeside!*/
+        color: white;
+    }
+
+    .smaller-button {
+        padding: 4px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 15px;
+        margin: 2px 2px;
+        transition-duration: 0.4s;
+        cursor: pointer;
+        background-color: white;
+        color: black;
+        border: 2px solid #e7e7e7;
+    }
+
+    .smaller-button:hover {
+        background-color: #59869D; /*samme farve som taget fra Alpha-Solutions hjemmeside!*/
+        color: white;
+    }
+
+
+    .cancel-button {
+        padding: 16px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        transition-duration: 0.4s;
+        cursor: pointer;
+        background-color: white;
+        color: black;
+        border: 2px solid #e7e7e7;
+    }
+
+    .cancel-button:hover {
+        background-color: crimson; /*samme farve som taget fra Alpha-Solutions hjemmeside!*/
         color: white;
     }
 

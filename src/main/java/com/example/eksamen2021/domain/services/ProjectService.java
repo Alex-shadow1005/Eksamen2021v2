@@ -1,4 +1,5 @@
 package com.example.eksamen2021.domain.services;
+
 import com.example.eksamen2021.domain.ErrorMessageException;
 import com.example.eksamen2021.domain.models.Project;
 import com.example.eksamen2021.domain.models.Subproject;
@@ -30,23 +31,29 @@ public class ProjectService {
   }
 
 
-//deleter projectet ud fra dens ID
-  public void deleteProject(int projectId) throws ErrorMessageException{
+  public Project findProjectID(int projectId) throws ErrorMessageException {
+    return projectRepositoryImpl.findProjectID(projectId);
+  }
+
+  //updater subprojecter ud fra sub_ID
+  public void updateProject(Project project) throws ErrorMessageException {
+    projectRepositoryImpl.updateProject(project);
+  }
+
+
+  //deleter projectet ud fra dens ID
+  public void deleteProject(int projectId) throws ErrorMessageException {
     projectRepositoryImpl.deleteProject(projectId);
   }
 
 
-  public List<Project> showAllProjects(int id) throws ErrorMessageException{
+  public List<Project> showAllProjects(int id) throws ErrorMessageException {
     return projectRepositoryImpl.showAllProjects(id);
   }
-
 
 
   public List<Subproject> showAllSubprojects(int projectid2) throws ErrorMessageException {
     System.out.println("projectid in service here: " + projectid2);
     return subprojectRepository.showAllSubprojects(projectid2);
   }
-
-
-
 }

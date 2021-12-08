@@ -14,6 +14,11 @@ public class Subproject {
   private int subprojectGraphicHours;
   private int subprojectPrice;
   private int subprojectTotalHours;
+  private final int seniorDeveloper = 1500;
+  private final int developer = 750;
+  private final int graphicDesigner = 500;
+
+
 
 
   //KONSTRUKTØRER:
@@ -41,9 +46,10 @@ public class Subproject {
     this.subprojectPrice = subprojectPrice;
   }
 
-//show all subproject
 
-  public Subproject(int subprojectId, int projectId, String subprojectName, String subprojectDescription, int subprojectSeniordeveloperHours, int subprojectDeveloperHours, int subprojectGraphicHours, int subprojectPrice) {
+  //Bruges i showallsubprojects + html
+  public Subproject(int subprojectId, int projectId, String subprojectName, String subprojectDescription, int subprojectSeniordeveloperHours, int subprojectDeveloperHours, int subprojectGraphicHours, int subprojectPrice, int subprojectTotalHours) {
+
     this.subprojectId = subprojectId;
     this.projectId = projectId;
     this.subprojectName = subprojectName;
@@ -52,6 +58,7 @@ public class Subproject {
     this.subprojectDeveloperHours = subprojectDeveloperHours;
     this.subprojectGraphicHours = subprojectGraphicHours;
     this.subprojectPrice = subprojectPrice;
+    this.subprojectTotalHours = subprojectTotalHours;
 
   }
 
@@ -151,6 +158,18 @@ public class Subproject {
 
   public void setSubprojectTotalHours(int subprojectTotalHours) {
     this.subprojectTotalHours = subprojectTotalHours;
+  }
+
+  public int getSeniorDeveloper() {
+    return seniorDeveloper;
+  }
+
+  public int getDeveloper() {
+    return developer;
+  }
+
+  public int getGraphicDesigner() {
+    return graphicDesigner;
   }
 
   @Override

@@ -2,8 +2,11 @@ package com.example.eksamen2021.controllers;
 
 import com.example.eksamen2021.domain.ErrorMessageException;
 import com.example.eksamen2021.domain.models.Project;
+import com.example.eksamen2021.domain.models.Subproject;
 import com.example.eksamen2021.domain.models.User;
+import com.example.eksamen2021.domain.services.CalculateService;
 import com.example.eksamen2021.domain.services.ProjectService;
+import com.example.eksamen2021.repositories.SubprojectRepositoryImpl;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -14,6 +17,8 @@ import java.util.List;
 @Controller
 public class ProjectController {
   private ProjectService projectService = new ProjectService();
+  private CalculateService calculateService = new CalculateService();
+  private SubprojectRepositoryImpl subprojectRepository = new SubprojectRepositoryImpl();
   //ny ændert Jens kl.15:03 02-12-2021 HttpSession session GET
   @GetMapping("/create-project")
   public String addProject(@ModelAttribute Project project, Model model, HttpSession session) throws ErrorMessageException {
@@ -31,8 +36,8 @@ public class ProjectController {
     System.out.println(project.getProjectName() + project.getProjectDescription() + project.getProjectPrice());
     return "create-project";
   } */
-//ny ændert Jens kl.15:03 02-12-2021 HttpSession session POST
-  @PostMapping("/create-project")
+//ny ændert Jens kl.1 02-12-2021 HttpSession session POST
+  /*@PostMapping("/create-project")
   public String createProject(@ModelAttribute Project project, User user, Model model,HttpSession session) throws ErrorMessageException {
     model.addAttribute("project", project);
     User usersession = (User) session.getAttribute("session");//jens
@@ -49,11 +54,29 @@ public class ProjectController {
   }
 
  */
+//ny ændert alex kl.15:03 02-12-2021 HttpSession session POST
+@PostMapping("/create-project")
+public String createProject(@ModelAttribute Project project, User user, Model model,HttpSession session) throws ErrorMessageException {
+  model.addAttribute("project", project);
+  User usersession = (User) session.getAttribute("session");//jens
+  user.setUserId(usersession.getUserId());
+  projectService.createProject(project, user);
+  return "redirect:/show/" + usersession.getUserId();
+}
 
-  @PostMapping("/save")
-  public String saveProject(@ModelAttribute Project project, User user) throws ErrorMessageException {
-    projectService.createProject(project, user);
-    return "redirect:/show-project";
+  //sender projct id til projectservice (@Path tager id,et fra urlen og gemmer det??)
+  @GetMapping("/update-project/{projectId}")
+  public String updateproject(@PathVariable("projectId") int projectId, Model model) throws ErrorMessageException {
+    Project project = projectService.findProjectID(projectId);
+    model.addAttribute("project", project);
+    return "udate2";
+  }
+
+  //Post
+  @PostMapping("/new-update-project")
+  public String updateProject(@ModelAttribute Project project) throws ErrorMessageException {
+    projectService.updateProject(project);
+    return "redirect:/show-projects";
   }
 
   //sender projct id til projectservice (@Path tager id,et fra urlen og gemmer det??)
@@ -70,11 +93,27 @@ public class ProjectController {
 
 
   @GetMapping("/show/{id}")
-  public String showProjects(@PathVariable("id") int id, Model model) throws ErrorMessageException {
+  public String showProjects(@PathVariable("id") int id, Model model, User user) throws ErrorMessageException {
+
     List<Project> projects = projectService.showAllProjects(id);
+    List<Subproject> subprojects = subprojectRepository.showAllSubprojects(id);
+
+   calculateService.calprojecthours(subprojects,projects);
+   calculateService.calprojectprice(subprojects,projects);
+   /*
+    for (Project pj:projects) {
+      List<Subproject> subprojects =subprojectRepository.showAllSubprojects(id);
+      pj.setProjectPrice(calculateService.calprojectprice(subprojects));
+
+    }
+
+    */
+
     model.addAttribute("projects", projects);
+    model.addAttribute("user", user);
     return "show-projects";
   }
+
 
 
   @ExceptionHandler(ErrorMessageException.class)
@@ -82,33 +121,19 @@ public class ProjectController {
     model.addAttribute("message", exception.getMessage());
     return "errorMessagePage";
   }
-
 }
 
 //UDKOMMENTEREDE METODER:
 
-  /* test af om vi bruger den -> BRUGES IKKE
-//viser alle id nummere fra Project
-  @GetMapping("/showallprojects")
-  public String showAllProjects(Model model) {
-    List<Project> projectId = projectService.showAll(1);
-    model.addAttribute("Projectlist", projectId);
-    return "show-projects";
-  }
-   */
-
   /*
-  @PostMapping("/add-subproject/{projectid}")
-  public String addSubprojectPost(@PathVariable("projectid") int projectid, @ModelAttribute Project project, Subproject subproject, Model model) {
-    model.addAttribute("subproject", subproject);
-    project.setProjectId(projectid); //kan kalde vores id her i stedet, skal laves i Thymeleaf
-    projectService.addSubproject(project, subproject);
-    return "redirect:/show-subprojects/" + projectid;
+
+    @PostMapping("/save")
+  public String saveProject(@ModelAttribute Project project, User user) throws ErrorMessageException {
+    projectService.createProject(project, user);
+    return "redirect:/show-project";
   }
 
-   */
 
-  /*
   //sender projct id til projectservice (@Path tager id,et fra urlen og gemmer det??)
     @GetMapping("/update-subproject")
     public String updateSubproject(@ModelAttribute Subproject subproject) throws SQLException{

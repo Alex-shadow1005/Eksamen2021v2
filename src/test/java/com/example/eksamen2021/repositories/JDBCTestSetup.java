@@ -5,36 +5,42 @@ import java.sql.Statement;
 
 
 public class JDBCTestSetup {
+
+
+  // min ide lave en test brfor sete OBS til Tine@BeforeEach
+  //DELETE FROM `heroku_dd9ca97e9e588ce`.`users` WHERE (`user_email` = 'someone@AlphaSolutions.dk');
   public void setUpJDBCT() {
     try {
       Connection connection = DBManager.getConnection();
-      Statement  SQLstatementTest = connection.createStatement();
+      Statement SQLstatementTest = connection.createStatement();
       // start transaction
       connection.setAutoCommit(false);
       // create table of Test User
-      SQLstatementTest.addBatch(" DROP TABLE heroku_dd9ca97e9e588ce.test_users");
-      SQLstatementTest.addBatch("CREATE TABLE heroku_dd9ca97e9e588ce.test_users(" +
+      // SQLstatementTest.addBatch("DELETE FROM heroku_dd9ca97e9e588ce.users WHERE(user_id = 'someone@AlphaSolutions.dk'");
+      SQLstatementTest.addBatch("DELETE FROM users WHERE user_email='Tine'");
+  /*    SQLstatementTest.addBatch("CREATE TABLE users(" +
+          " user_id INT NOT NULL AUTO_INCREMENT," +
+          " user_email VARCHAR(100) NOT NULL," +
+          " user_password VARCHAR(100) NOT NULL," +
+          " user_name VARCHAR(100) NOT NULL," +
+          " PRIMARY KEY (user_id)," +
+          " UNIQUE INDEX user_id_UNIQUE(user_id ASC)," +
+          " UNIQUE INDEX user_email_UNIQUE(user_email ASC)");
 
-          " users_id_test INT NOT NULL AUTO_INCREMENT," +
-          " users_email_test`VARCHAR(100) NOT NULL," +
-          " users_password_test`VARCHAR(100) NOT NULL," +
-          " users_name_test`VARCHAR(100) NOT NULL," +
-          "PRIMARY KEY (`users_id_test`)," +
-          "UNIQUE INDEX `users_id_test_UNIQUE`(`users_id_test`ASC), " +
-          "UNIQUE INDEX `users_email_test_UNIQUE`(`users_email_test`ASC) ");
-
+   */
 
       // insert
-      SQLstatementTest.addBatch("insert into users (email, password,name) values ('someone@AlphaSolutions.dk','1234','Alpha')");
-      SQLstatementTest.addBatch("insert into users (email, password) values ('someone@TeamSuperAwesome.com','OneTwoThreeFire','Team')");
+      // SQLstatementTest.addBatch("DELETE FROM users WHERE (user_email = 'someone@AlphaSolutions.dk'");
+     // SQLstatementTest.addBatch("insert into users (user_email, user_password, user_username) values (Tine,1234,Tine)");
+      //SQLstatementTest.addBatch("insert into users (email, password name ) values ('someone@TeamSuperAwesome.com','OneTwoThreeFire','Team')");
 
-      int[] updateCounts = SQLstatementTest.executeBatch();
+      SQLstatementTest.executeBatch();
       // end transaction
 
       connection.commit();
 
     } catch (Exception e) {
-      System.out.println("Fail in JDBCTestFixture - setup");
+      System.out.println("Fail in JDBCTestSetup - setup");
       System.out.println(e.getMessage());
     }
   }

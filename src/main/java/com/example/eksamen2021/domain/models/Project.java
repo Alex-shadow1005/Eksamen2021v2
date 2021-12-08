@@ -69,6 +69,14 @@ public class Project {
     this.projectHours = projectHours;
   }
 
+  public int getUserId() {
+    return userId;
+  }
+
+  public void setUserId(int userId) {
+    this.userId = userId;
+  }
+
   @Override
   public String toString() {
     return "Project: " +

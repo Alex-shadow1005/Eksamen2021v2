@@ -1,34 +1,34 @@
 package com.example.eksamen2021.domain.services;
 
 import com.example.eksamen2021.domain.models.CalculateHourlyRate;
+import com.example.eksamen2021.domain.models.Project;
+import com.example.eksamen2021.domain.models.Subproject;
+
+import java.util.List;
 
 public class CalculateService {
-    //@Autowired
+  //@Autowired
 //CalculateHourlyRate calculateHourlyRate;
-    CalculateHourlyRate calculateHourlyRate = new CalculateHourlyRate();
+  CalculateHourlyRate calculateHourlyRate = new CalculateHourlyRate();
 
 
-    public double calsubprice(double seniorDeveloperhours, double developerhours, double graphicDesignerhours) {
+  public void calsubhours3(Subproject subproject) {
+    calculateHourlyRate.calsubhours3(subproject);
+    //return calculateHourlyRate.calsubhours3(subproject);
+  }
 
-        double cal1 = seniorDeveloperhours * calculateHourlyRate.getSeniorDeveloper();
-        double cal2 = developerhours * calculateHourlyRate.getDeveloper();
-        double cal3 = graphicDesignerhours * calculateHourlyRate.getGraphicDesigner();
-        double subprojectPrice = cal1 + cal2 + cal3;
+  public void calsubprice3(Subproject subproject) {
+    calculateHourlyRate.calsubprice3(subproject);
+  }
 
+  public void calprojecthours(List<Subproject> subprojects,List<Project> projects) {
+    calculateHourlyRate.calprojecthours(subprojects,projects);
 
-        return subprojectPrice;
-    }
+  }
+  public void calprojectprice(List<Subproject> subprojects,List<Project> projects) {
+    calculateHourlyRate.calprojectprice(subprojects,projects);
 
-    public double calsubhours(double seniorDeveloperhours, double developerhours, double graphicDesignerhours) {
-
-
-        double subprojecttotalhours = seniorDeveloperhours + developerhours + graphicDesignerhours;
-
-
-        return subprojecttotalhours;
-
-
-    }
+  }
 
 }
 

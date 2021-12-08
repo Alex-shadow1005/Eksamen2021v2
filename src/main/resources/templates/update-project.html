@@ -22,65 +22,52 @@
         <div class="s-center">
             <article>
 
-                <form action="/new-update-subproject" modelAttribute="subproject" method="POST">
+                <form action="/new-update-project" modelAttribute="project" method="POST">
 
 
 
-                <table>
-                    <tr>
-                        <th>Name</th>
+                    <table>
+                        <tr>
+                            <th>Name</th>
 
-                        <th>Description</th>
+                            <th>Description</th>
 
-                        <th>Senior developer hours</th>
+                          <!--  <th>Senior developer hours</th>
 
-                        <th>Developer hours</th>
+                            <th>Developer hours</th>
 
-                        <th>Graphic designer hours</th>
+                            <th>Graphic designer hours</th> -->
 
-                    </tr>
-
-
+                        </tr>
 
 
-<tr th:each="subproject : ${subproject}">
-           <!-- <label for="subprojectId">subproject id:</label>-->
-           <td hidden> <input type="text" id="subprojectId" name="subprojectId" th:value="${subproject.subprojectId}">
-           </td>
-
- <!--           <label for="subprojectName">subproject name:</label>-->
-            <td><input type="text" id="subprojectName" name="subprojectName" th:value="${subproject.subprojectName}">
-            </td>
-
-     <!--       <label for="subprojectDescription">subproject description:</label>-->
-            <td><input type="text" id="subprojectDescription" name="subprojectDescription" th:value="${subproject.subprojectDescription}">
-            </td>
-
-<!--            <label for="subprojectSeniordeveloperHours">subproject seniordeveloper hours:</label>-->
-            <td><input type="text" id="subprojectSeniordeveloperHours" name="subprojectSeniordeveloperHours" th:value="${subproject.subprojectSeniordeveloperHours}">
-            </td>
-
-<!--            <label for="subprojectDeveloperHours">subproject developer hours:</label>-->
-            <td><input type="text" id="subprojectDeveloperHours" name="subprojectDeveloperHours"
-                   th:value="${subproject.subprojectDeveloperHours}">
-            </td>
-
-<!--            <label for="subprojectGraphicHours">subproject graphic hours:</label>-->
-            <td><input type="text" id="subprojectGraphicHours" name="subprojectGraphicHours"
-                   th:value="${subproject.subprojectGraphicHours}">
-            </td>
-<!--            <label for="subprojectPrice">subproject price:</label>-->
-            <input hidden type="text" id="subprojectPrice" name="subprojectPrice" th:value="${subproject.subprojectPrice}">
 
 
-<!--            <label for="subprojectTotalHours">subproject_total_hours:</label>-->
-            <input hidden type="text" id="subprojectTotalHours" name="subprojectTotalHours" th:value="${subproject.subprojectTotalHours}">
+                        <tr th:each="project : ${project}">
+                            <!-- <label for="subprojectId">subproject id:</label>-->
+                            <td hidden> <input type="text" id="projectId" name="projectId" th:value="${project.projectId}">
+                            </td>
 
+                            <!--           <label for="subprojectName">subproject name:</label>-->
+                            <td><input type="text" id="projectName" name="projectName" th:value="${project.projectName}">
+                            </td>
 
-</tr>
+                            <!--       <label for="subprojectDescription">subproject description:</label>-->
+                            <td><input type="text" id="projectDescription" name="projectDescription" th:value="${project.projectDescription}">
+                            </td>
 
-                </table>
+                            <!--            <label for="subprojectSeniordeveloperHours">subproject seniordeveloper hours:</label>-->
+                            <td hidden><input type="text" id="projectHours" name="projectHours" th:value="${project.projectHours}">
+                            </td>
 
+                            <!--            <label for="subprojectPrice">subproject price:</label>-->
+                            <td hidden><input hidden type="text" id="projectPrice" name="projectPrice" th:value="${project.projectPrice}">
+                            </td>
+
+                        </tr>
+
+                    </table>
+                    <br>
                     <button type="submit" class="button smaller-button">Complete Edit</button>
 
                 </form>
