@@ -3,6 +3,7 @@ package com.example.eksamen2021.controllers;
 import com.example.eksamen2021.domain.ErrorMessageException;
 import com.example.eksamen2021.domain.models.Project;
 import com.example.eksamen2021.domain.models.Subproject;
+import com.example.eksamen2021.domain.models.User;
 import com.example.eksamen2021.domain.services.CalculateService;
 import com.example.eksamen2021.domain.services.SubprojectService;
 
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpSession;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -19,7 +21,6 @@ public class SubprojectController {
   private SubprojectService subprojectService = new SubprojectService();
   private CalculateService calculatService = new CalculateService();
   public static Project currentProject = new Project();
-  public static Subproject currentSubproject = new Subproject();
 
   //subproject og project id = 0
   @GetMapping("/create-subproject")
@@ -42,17 +43,6 @@ public class SubprojectController {
     subprojectService.createSubproject(project, subproject);
     return "redirect:/show-subprojects/" + currentProject.getProjectId();
   }
- /*@PostMapping("/create-subproject")
-  public String createSubproject3(@ModelAttribute Subproject subproject, Project project, Model model) throws ErrorMessageException {
-   calculatService.calsubhours3(subproject);
-  calculatService.calsubprice3(subproject);
-//set og get                            laver om int          meton calsubhours
-    return null;
-
-
-  }
-
-  */
 
 
   //sender projct id til projectservice (@Path tager id,et fra urlen og gemmer det??)
@@ -93,11 +83,17 @@ public class SubprojectController {
 
   //@Author: Silke (show) & Alexander (calculate)
   @GetMapping("/show-subprojects/{projectId}")
-  public String showSubprojects2(@PathVariable("projectId") int projectId, Model model) throws ErrorMessageException { //ModelAttribute gemmer parametre i User ved at lave det til et objekt
+  public String showSubprojects2(@PathVariable("projectId") int projectId, Model model, HttpSession session) throws ErrorMessageException { //ModelAttribute gemmer parametre i User ved at lave det til et objekt
     List<Subproject> subprojects = subprojectService.showAllSubprojects(projectId);
     model.addAttribute("subprojects", subprojects);
-    currentProject.setProjectId(projectId);
-    model.addAttribute("currentproject", currentProject);
+    projectId = currentProject.getProjectId();
+
+    User user = (User) session.getAttribute("session"); //session er en KEY
+    model.addAttribute("userId", user.getUserId());
+
+
+    //model.addAttribute("currentproject", currentProject);
+    System.out.println("test af currentproject.getuserid. userid = " + currentProject.getUserId()); // = 0
     System.out.println("show subproject test i controller" + subprojects + " " + projectId);
     return "show-subprojects";
 

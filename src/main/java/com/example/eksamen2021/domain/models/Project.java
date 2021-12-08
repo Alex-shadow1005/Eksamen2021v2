@@ -16,9 +16,18 @@ public class Project {
     this.projectPrice = projectPrice;
   }
 
+  //DENNE KONSTRUKTØR BRUGES I findId i repo
+  public Project(int userId, int projectId, String projectName, String projectDescription, int projectHours, int projectPrice) {
+    this.userId = userId;
+    this.projectId = projectId;
+    this.projectName = projectName;
+    this.projectDescription = projectDescription;
+    this.projectHours = projectHours;
+    this.projectPrice = projectPrice;
+  }
+
   //DENNE KONSTRUKTØR BRUGES I SHOW-PROJECTS.HTML
   public Project(int projectId, String projectName, String projectDescription, int projectHours, int projectPrice) {
-    //this.userId = userId;
     this.projectId = projectId;
     this.projectName = projectName;
     this.projectDescription = projectDescription;

@@ -111,4 +111,9 @@ public class UserRepositoryImpl implements UserRepository {
     }
     return tempUser;
   }
+
+
+
+  //SELECT * FROM projects
+  //JOIN users ON projects.userId = users.userId
 }

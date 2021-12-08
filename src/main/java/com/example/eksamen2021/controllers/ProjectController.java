@@ -19,6 +19,8 @@ public class ProjectController {
   private ProjectService projectService = new ProjectService();
   private CalculateService calculateService = new CalculateService();
   private SubprojectRepositoryImpl subprojectRepository = new SubprojectRepositoryImpl();
+
+
   //ny ændert Jens kl.15:03 02-12-2021 HttpSession session GET
   @GetMapping("/create-project")
   public String addProject(@ModelAttribute Project project, Model model, HttpSession session) throws ErrorMessageException {
@@ -97,20 +99,12 @@ public String createProject2(@ModelAttribute Project project, User user, Model m
 
    calculateService.calprojecthours(subprojects,projects);
    calculateService.calprojectprice(subprojects,projects);
-   /*
-    for (Project pj:projects) {
-      List<Subproject> subprojects =subprojectRepository.showAllSubprojects(id);
-      pj.setProjectPrice(calculateService.calprojectprice(subprojects));
 
-    }
-
-    */
 
     model.addAttribute("projects", projects);
     model.addAttribute("user", user);
     return "show-projects";
   }
-
 
 
   @ExceptionHandler(ErrorMessageException.class)
@@ -121,22 +115,5 @@ public String createProject2(@ModelAttribute Project project, User user, Model m
 }
 
 //UDKOMMENTEREDE METODER:
-
-  /*
-
-    @PostMapping("/save")
-  public String saveProject(@ModelAttribute Project project, User user) throws ErrorMessageException {
-    projectService.createProject(project, user);
-    return "redirect:/show-project";
-  }
-
-
-  //sender projct id til projectservice (@Path tager id,et fra urlen og gemmer det??)
-    @GetMapping("/update-subproject")
-    public String updateSubproject(@ModelAttribute Subproject subproject) throws SQLException{
-      projectService.updateSubproject(subproject);
-
-      return "show-projects";
-    }*/
 
 

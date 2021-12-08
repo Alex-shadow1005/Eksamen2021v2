@@ -71,7 +71,9 @@ public class ProjectRepositoryImpl implements ProjectRepository {
 
       while (rs.next()) {
         findProject = (new Project(
-            // WorkBase colonder
+            // Workbench columns
+            //user_id
+            rs.getInt(1),
             //project_id
             rs.getInt(2),
             //project_name
@@ -91,6 +93,8 @@ public class ProjectRepositoryImpl implements ProjectRepository {
     }
     return findProject;
   }
+
+
 
 
   @Override
