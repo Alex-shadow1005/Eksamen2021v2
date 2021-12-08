@@ -32,17 +32,27 @@ public class SubprojectController {
 
   @PostMapping("/create-subproject")
   public String createSubproject(@ModelAttribute Subproject subproject, Project project, Model model) throws ErrorMessageException {
-    subproject.setSubprojectTotalHours((int)calculatService.calsubhours(subproject.getSubprojectSeniordeveloperHours(),subproject.getSubprojectDeveloperHours(),subproject.getSubprojectGraphicHours()));
-    //int totalhours = subproject.getSubprojectTotalHours();
-    //model.addAttribute("totalhours",totalhours);
-    subproject.setSubprojectPrice((int) calculatService.calsubprice(subproject.getSubprojectSeniordeveloperHours(),subproject.getSubprojectDeveloperHours(),subproject.getSubprojectGraphicHours()));
+    //subproject.setSubprojectTotalHours((int)calculatService.calsubhours(subproject.getSubprojectSeniordeveloperHours(),subproject.getSubprojectDeveloperHours(),subproject.getSubprojectGraphicHours()));
+    calculatService.calsubhours3(subproject);
+    calculatService.calsubprice3(subproject);
+    // subproject.setSubprojectPrice((int) calculatService.calsubprice(subproject.getSubprojectSeniordeveloperHours(),subproject.getSubprojectDeveloperHours(),subproject.getSubprojectGraphicHours()));
     model.addAttribute("subproject", subproject);
     project.setProjectId(currentProject.getProjectId());
-
     //subproject.getSubprojectId();
     subprojectService.createSubproject(project, subproject);
     return "redirect:/show-subprojects/" + currentProject.getProjectId();
   }
+ /*@PostMapping("/create-subproject")
+  public String createSubproject3(@ModelAttribute Subproject subproject, Project project, Model model) throws ErrorMessageException {
+   calculatService.calsubhours3(subproject);
+  calculatService.calsubprice3(subproject);
+//set og get                            laver om int          meton calsubhours
+    return null;
+
+
+  }
+
+  */
 
 
   //sender projct id til projectservice (@Path tager id,et fra urlen og gemmer det??)
@@ -74,24 +84,17 @@ public class SubprojectController {
 
   //@Author: Silke
   @GetMapping("/subprojects/{id}")
-  public String showSubprojects(@PathVariable("id") int id, @ModelAttribute Project project, Model model)throws ErrorMessageException {
+  public String showSubprojects(@PathVariable("id") int id, @ModelAttribute Project project, Model model) throws ErrorMessageException {
     model.addAttribute("project", project);
     System.out.println("showsubprojects/id test i controller: + id = " + project);
     return "redirect:/show-subprojects/" + project.getProjectId();
   }
 
+
   //@Author: Silke (show) & Alexander (calculate)
   @GetMapping("/show-subprojects/{projectId}")
-  public String showSubprojects2(@PathVariable("projectId") int projectId, Model model)throws ErrorMessageException { //ModelAttribute gemmer parametre i User ved at lave det til et objekt
+  public String showSubprojects2(@PathVariable("projectId") int projectId, Model model) throws ErrorMessageException { //ModelAttribute gemmer parametre i User ved at lave det til et objekt
     List<Subproject> subprojects = subprojectService.showAllSubprojects(projectId);
-    //for hvert subproject ud fra id tager den og udregner ud fra den fastlagte pris
-    for (Subproject sp : subprojects) {
-      sp.setSubprojectPrice((int) calculatService.calsubprice(sp.getSubprojectSeniordeveloperHours(), sp.getSubprojectDeveloperHours(), sp.getSubprojectGraphicHours()));
-    }
-    //for hvert subproject ud fra id tager den og udregner ud fra timer
-    for (Subproject sp : subprojects) {
-      sp.setSubprojectTotalHours((int) calculatService.calsubhours(sp.getSubprojectSeniordeveloperHours(), sp.getSubprojectDeveloperHours(), sp.getSubprojectGraphicHours()));
-    }
     model.addAttribute("subprojects", subprojects);
     currentProject.setProjectId(projectId);
     model.addAttribute("currentproject", currentProject);

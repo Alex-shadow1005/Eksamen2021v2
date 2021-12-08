@@ -14,6 +14,11 @@ public class Subproject {
   private int subprojectGraphicHours;
   private int subprojectPrice;
   private int subprojectTotalHours;
+  private final int seniorDeveloper = 1500;
+  private final int developer = 750;
+  private final int graphicDesigner = 500;
+
+
 
 
   //KONSTRUKTØRER:
@@ -140,7 +145,7 @@ public class Subproject {
   }
 
   public int getSubprojectPrice() {
-    return  subprojectPrice;
+    return subprojectPrice;
   }
 
   public void setSubprojectPrice(int subprojectPrice) {
@@ -153,6 +158,18 @@ public class Subproject {
 
   public void setSubprojectTotalHours(int subprojectTotalHours) {
     this.subprojectTotalHours = subprojectTotalHours;
+  }
+
+  public int getSeniorDeveloper() {
+    return seniorDeveloper;
+  }
+
+  public int getDeveloper() {
+    return developer;
+  }
+
+  public int getGraphicDesigner() {
+    return graphicDesigner;
   }
 
   @Override
