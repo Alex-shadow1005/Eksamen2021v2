@@ -67,7 +67,11 @@
                         -->
                         <td><!-- EDIT PROJECT HER --></td>
 
-                        <td><!-- DELETE PROJECT HER --></td>
+                        <td>
+                            <a th:href="@{/show/${subprojectId}}" class="btn btn-danger"></a>
+                            <button th:onclick="'deleteSubproject(\'' + ${subproject.subprojectId} + '\');'"
+                                    class="button smaller-button">Delete</button>
+                        </td>
 
 
                     </tr>
@@ -213,5 +217,13 @@
         background-color: ghostwhite;
     }
 </style>
+
+<script>
+    function deleteSubproject(subprojectId) {
+        if (confirm("Are you sure you wan't to delete this subproject?")) {
+            location.assign("http://localhost:8080/delete-subproject/" + subprojectId)
+        }
+    }
+</script>
 </html>
 

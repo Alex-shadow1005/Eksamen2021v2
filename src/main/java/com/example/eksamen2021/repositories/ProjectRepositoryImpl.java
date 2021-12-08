@@ -69,7 +69,7 @@ public class ProjectRepositoryImpl  implements ProjectRepository{
       Connection con = DBManager.getConnection();
 
       //2. Prepare statement
-      mySql = "DELETE FROM projects WHERE project_id=? AND subproject_id=?"; //Vent slut
+      mySql = "DELETE FROM projects WHERE project_id=?"; //Vent slut
 
 
       ps = con.prepareStatement(mySql);

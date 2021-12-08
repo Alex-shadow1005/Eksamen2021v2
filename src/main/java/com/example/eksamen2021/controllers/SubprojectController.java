@@ -58,8 +58,7 @@ public class SubprojectController {
   @GetMapping("/delete-subproject/{subprojectId}")
   public String deleteSubproject(@PathVariable int subprojectId) throws ErrorMessageException {
     subprojectService.deleteSubproject(subprojectId);
-
-    return "show-projects";
+    return "show-subprojects";
   }
 
   //@Author: Silke
