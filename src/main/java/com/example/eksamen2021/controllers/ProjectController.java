@@ -64,11 +64,6 @@ public String createProject(@ModelAttribute Project project, User user, Model mo
   return "redirect:/show/" + usersession.getUserId();
 }
 
-  @PostMapping("/save")
-  public String saveProject(@ModelAttribute Project project, User user) throws ErrorMessageException {
-    projectService.createProject(project, user);
-    return "redirect:/show-project";
-  }
   //sender projct id til projectservice (@Path tager id,et fra urlen og gemmer det??)
   @GetMapping("/update-project/{projectId}")
   public String updateproject(@PathVariable("projectId") int projectId, Model model) throws ErrorMessageException {
@@ -117,15 +112,6 @@ public String createProject(@ModelAttribute Project project, User user, Model mo
   }
 
 
-  /*
-  @PostMapping("/save")
-  public String saveProject(@ModelAttribute Project project, User user) {
-    projectService.addProject(project, user);
-    return "redirect:/show-project";
-  }
-
-   */
-
 
   @ExceptionHandler(ErrorMessageException.class)
   public String handleError(Model model, Exception exception) {
@@ -137,6 +123,14 @@ public String createProject(@ModelAttribute Project project, User user, Model mo
 //UDKOMMENTEREDE METODER:
 
   /*
+
+    @PostMapping("/save")
+  public String saveProject(@ModelAttribute Project project, User user) throws ErrorMessageException {
+    projectService.createProject(project, user);
+    return "redirect:/show-project";
+  }
+
+
   //sender projct id til projectservice (@Path tager id,et fra urlen og gemmer det??)
     @GetMapping("/update-subproject")
     public String updateSubproject(@ModelAttribute Subproject subproject) throws SQLException{
