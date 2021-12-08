@@ -10,8 +10,7 @@ public class CalculateHourlyRate {
     int subprojecttotalhours = 0;
     subprojecttotalhours += subproject.getSubprojectSeniordeveloperHours() + subproject.getSubprojectDeveloperHours() + subproject.getSubprojectGraphicHours();
     subproject.setSubprojectTotalHours(subprojecttotalhours);
-    System.out.println("================" + subprojecttotalhours);
-    System.out.println("+++++++++++++++++" + subproject.getSubprojectTotalHours());
+
     //return subprojecttotalhours;
   }
 

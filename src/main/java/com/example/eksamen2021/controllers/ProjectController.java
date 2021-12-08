@@ -38,7 +38,7 @@ public class ProjectController {
     System.out.println(project.getProjectName() + project.getProjectDescription() + project.getProjectPrice());
     return "create-project";
   } */
-//ny ændert Jens kl.15:03 02-12-2021 HttpSession session POST
+//ny ændert Jens kl.1 02-12-2021 HttpSession session POST
   /*@PostMapping("/create-project")
   public String createProject(@ModelAttribute Project project, User user, Model model,HttpSession session) throws ErrorMessageException {
     model.addAttribute("project", project);
@@ -58,11 +58,11 @@ public class ProjectController {
  */
 //ny ændert alex kl.15:03 02-12-2021 HttpSession session POST
 @PostMapping("/create-project")
-public String createProject2(@ModelAttribute Project project, User user, Model model,HttpSession session) throws ErrorMessageException {
+public String createProject(@ModelAttribute Project project, User user, Model model,HttpSession session) throws ErrorMessageException {
   model.addAttribute("project", project);
   User usersession = (User) session.getAttribute("session");//jens
   user.setUserId(usersession.getUserId());
-  projectService.createProject2(project, user);
+  projectService.createProject(project, user);
   return "redirect:/show/" + usersession.getUserId();
 }
 
@@ -83,9 +83,12 @@ public String createProject2(@ModelAttribute Project project, User user, Model m
 
   //sender projct id til projectservice (@Path tager id,et fra urlen og gemmer det??)
   @GetMapping("/delete-project/{projectId}")
-  public String deleteProject(@PathVariable int projectId) throws ErrorMessageException {
+  public String deleteProject(@PathVariable int projectId, Model model) throws ErrorMessageException {
+    model.addAttribute("projectId", projectId);
+    System.out.println("Yo yo yo");
+    System.out.println(projectId);
     projectService.deleteProject(projectId);
-    return "show-projects";
+    return "redirect:/show/";
   }
   //sender projct id til projectservice (@Path tager id,et fra urlen og gemmer det??)
   //@DeleteMapping

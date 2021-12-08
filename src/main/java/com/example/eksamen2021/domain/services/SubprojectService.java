@@ -39,8 +39,8 @@ public class SubprojectService {
   }
 
   //deleter projectet ud fra dens SubID
-  public void deleteSubproject(int subprojectid) throws ErrorMessageException {
-    subprojectRepositoryImpl.deleteSubproject(subprojectid);
+  public void deleteSubproject(int subprojectId) throws ErrorMessageException{
+    subprojectRepositoryImpl.deleteSubproject(subprojectId);
   }
 
   public List<Subproject> showAllSubprojects(int projectid) throws ErrorMessageException {
