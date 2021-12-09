@@ -1,5 +1,6 @@
 package com.example.eksamen2021.domain.models;
 
+import com.example.eksamen2021.domain.SubProjectErrorMessageException;
 import com.example.eksamen2021.domain.services.CalculateService;
 
 public class Subproject {
@@ -19,10 +20,7 @@ public class Subproject {
   private final int graphicDesigner = 500;
 
 
-
-
   //KONSTRUKTØRER:
-
 
 
   //bruges i addsubprojekt - d.2/12 kl 13 Silke
@@ -35,7 +33,7 @@ public class Subproject {
     this.subprojectGraphicHours = subprojectGraphicHours;
   }
 
-//find  subID
+  //find  subID
   public Subproject(int subprojectId, String subprojectName, String subprojectDescription, int subprojectSeniordeveloperHours, int subprojectDeveloperHours, int subprojectGraphicHours, int subprojectPrice) {
     this.subprojectId = subprojectId;
     this.subprojectName = subprojectName;
@@ -81,6 +79,42 @@ public class Subproject {
   }
 
   public Subproject() {
+
+  }
+
+  //information expert jens
+  public void calsubhours() throws SubProjectErrorMessageException {
+    int subprojecttotalhours = 0;
+    subprojecttotalhours += getSubprojectSeniordeveloperHours() + getSubprojectDeveloperHours() + getSubprojectGraphicHours();
+    setSubprojectTotalHours(subprojecttotalhours);
+    System.out.println(subprojecttotalhours + "hhhhhhhhhhhhhhhhhhhhhhhhh");
+    //return subprojecttotalhours;
+  }
+
+  //information expert jens
+  public void calsubprice() throws SubProjectErrorMessageException {
+    try {
+      //seniorDeveloper = 1500;
+      int cal1 = getSubprojectSeniordeveloperHours() * getSeniorDeveloper();
+
+      //developer = 750;
+      int cal2 = getSubprojectDeveloperHours() * getDeveloper();
+
+      //graphicDesigner = 500;
+      int cal3 = getSubprojectGraphicHours() * getGraphicDesigner();
+      int subprojectPrice = cal1 + cal2 + cal3;
+
+      setSubprojectPrice(subprojectPrice);
+      if (subprojectPrice == 0) {
+        throw new SubProjectErrorMessageException("calsubprice i public class Subproject");
+      } else {
+        System.out.println("calsubprice is add XD");
+      }
+
+
+    } catch (Exception err) {
+      System.out.println(err.getMessage());
+    }
 
   }
 

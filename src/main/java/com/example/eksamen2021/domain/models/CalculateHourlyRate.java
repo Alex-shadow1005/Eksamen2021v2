@@ -3,8 +3,7 @@ package com.example.eksamen2021.domain.models;
 import java.util.List;
 
 public class CalculateHourlyRate {
-
-  public void calsubhours3(Subproject subproject) {
+ /* public void calsubhours3(Subproject subproject) {
 
 
     int subprojecttotalhours = 0;
@@ -30,6 +29,7 @@ public class CalculateHourlyRate {
     subproject.setSubprojectPrice(subprojectPrice);
 
   }
+  */
 
   //skal ha alle timer fra sub udfra et project id
   public void calprojecthours(List<Subproject> subprojects, List<Project> projects) {
@@ -54,5 +54,6 @@ public class CalculateHourlyRate {
     }
 
   }
+
 
 }

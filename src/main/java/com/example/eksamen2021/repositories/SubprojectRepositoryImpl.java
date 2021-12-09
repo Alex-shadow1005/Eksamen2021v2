@@ -1,6 +1,6 @@
 package com.example.eksamen2021.repositories;
 
-import com.example.eksamen2021.domain.ErrorMessageException;
+import com.example.eksamen2021.domain.SubProjectErrorMessageException;
 import com.example.eksamen2021.domain.models.Project;
 import com.example.eksamen2021.domain.models.Subproject;
 
@@ -14,7 +14,7 @@ import java.util.List;
 public class SubprojectRepositoryImpl implements SubprojectRepository {
 
   //TILFØJER ET SUBPROJEKT TIL BRUGERENS SUBPROJEKTLISTE
-  public int createSubproject(Project project, Subproject subproject) throws ErrorMessageException {
+  public int createSubproject(Project project, Subproject subproject) throws SubProjectErrorMessageException {
     String mySql;
     PreparedStatement ps;
     int h = 0;
@@ -23,8 +23,7 @@ public class SubprojectRepositoryImpl implements SubprojectRepository {
       //1. Get a connection to database
       Connection con = DBManager.getConnection();
       //2. Prepare statement
-      mySql = "INSERT INTO subprojects (project_id, subproject_name, subproject_description, subproject_seniordeveloper_hours, " +
-          "subproject_developer_hours, subproject_graphic_hours, subproject_price, subproject_total_hours) VALUES (?, ?, ?, ?, ?, ?,?,?)";
+      mySql = "INSERT INTO subprojects (project_id, subproject_name, subproject_description, subproject_seniordeveloper_hours, subproject_developer_hours, subproject_graphic_hours, subproject_price, subproject_total_hours) VALUES (?, ?, ?, ?, ?, ?,?,?)";
 
       ps = con.prepareStatement(mySql);
       //3. Set the parameters
@@ -42,7 +41,7 @@ public class SubprojectRepositoryImpl implements SubprojectRepository {
       if (h > 0){
         System.out.println("Subproject added");
       }else {
-        throw new ErrorMessageException("Fejl i count createUser  err=");
+        throw new SubProjectErrorMessageException("Fejl i count createUser  err=");
       }
       //5. Display the result set
     } catch (SQLException err) {
@@ -51,7 +50,7 @@ public class SubprojectRepositoryImpl implements SubprojectRepository {
     return h; //returnerer brugeren til Service
   }
 
-  public Subproject findSubprojectID(int subprojectId) throws ErrorMessageException {
+  public Subproject findSubprojectID(int subprojectId) throws SubProjectErrorMessageException {
 
 
     String mysql;
@@ -100,7 +99,7 @@ public class SubprojectRepositoryImpl implements SubprojectRepository {
     return findSubproject;
   }
 
-  public void updateSubproject(Subproject subproject) throws ErrorMessageException {
+  public void updateSubproject(Subproject subproject) throws SubProjectErrorMessageException {
 
     String mysql;
     PreparedStatement ps;
@@ -163,7 +162,7 @@ public class SubprojectRepositoryImpl implements SubprojectRepository {
   }
 
   //Sletter et subProject
-  public void deleteSubproject(int subprojectId) throws ErrorMessageException {
+  public void deleteSubproject(int subprojectId) throws SubProjectErrorMessageException {
     String mySql;
     PreparedStatement ps;
 
@@ -189,7 +188,7 @@ public class SubprojectRepositoryImpl implements SubprojectRepository {
   }
 
   //VISER ALLE SUBPROJEKTER DER HØRER TIL PROJEKT-ID'EN
-  public List<Subproject> showAllSubprojects(int id) throws ErrorMessageException {
+  public List<Subproject> showAllSubprojects(int id) throws SubProjectErrorMessageException {
     ArrayList<Subproject> subprojects = new ArrayList<>();
     try {
       Connection con = DBManager.getConnection();

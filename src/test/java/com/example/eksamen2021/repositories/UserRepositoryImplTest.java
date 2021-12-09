@@ -1,6 +1,6 @@
 package com.example.eksamen2021.repositories;
 
-import com.example.eksamen2021.domain.ErrorMessageException;
+import com.example.eksamen2021.domain.UserErrorMessageException;
 import com.example.eksamen2021.domain.models.User;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -20,7 +20,7 @@ public class UserRepositoryImplTest {
   }
 
   @Test
-  public void createUser_GivenCorrectUserInfo() throws ErrorMessageException {
+  public void createUser_GivenCorrectUserInfo() throws UserErrorMessageException {
 
     User user = new User("Tine", "1234", "Tine");
     //Act/DK:Handling

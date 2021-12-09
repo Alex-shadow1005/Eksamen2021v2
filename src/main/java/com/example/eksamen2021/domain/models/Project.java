@@ -1,5 +1,9 @@
 package com.example.eksamen2021.domain.models;
 
+import com.example.eksamen2021.domain.ProjectErrorMessageException;
+
+import java.util.List;
+
 public class Project {
   private int userId;
   private int projectId;
@@ -37,6 +41,51 @@ public class Project {
 
   public Project() {
   }
+//information expert jens
+  public void calprojecthours(List<Subproject> subprojects, List<Project> projects) throws ProjectErrorMessageException {
+    int projecttotalhours = 0;
+    for (Project ps : projects) {
+
+      for (Subproject sp : subprojects) {
+
+        projecttotalhours += sp.getSubprojectTotalHours();
+      }
+      ps.setProjectHours(projecttotalhours);
+    }
+  }
+
+
+
+
+
+
+
+
+
+//information expert jens
+  public void calprojectprices(List<Subproject> subprojects, List<Project> projects) throws ProjectErrorMessageException {
+    int projectotalprice = 0;
+    try {
+      for (Project ps : projects) {
+        for (Subproject sp : subprojects) {
+          projectotalprice += sp.getSubprojectPrice();
+        }
+        ps.setProjectPrice(projectotalprice);
+      }
+
+        if(projectotalprice==0){
+          throw new ProjectErrorMessageException("Fejl i count addProject  err=");
+        }else {
+          System.out.println();
+        }
+
+    }catch (Exception err){
+      System.out.println(err.getMessage());
+    }
+
+
+  }
+
 
   public int getProjectId() {
     return projectId;

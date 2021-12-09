@@ -1,8 +1,7 @@
 package com.example.eksamen2021.repositories;
 
-import com.example.eksamen2021.domain.ErrorMessageException;
+import com.example.eksamen2021.domain.ProjectErrorMessageException;
 import com.example.eksamen2021.domain.models.Project;
-import com.example.eksamen2021.domain.models.Subproject;
 import com.example.eksamen2021.domain.models.User;
 
 import java.sql.Connection;
@@ -16,7 +15,7 @@ public class ProjectRepositoryImpl implements ProjectRepository {
   private Project project;
 
   //TILFØJER ET PROJEKT TIL BRUGERENS PROJEKTLISTE
-  public int createProject(Project project, User user) throws ErrorMessageException {
+  public int createProject(Project project, User user) throws ProjectErrorMessageException {
     String mySql;
     PreparedStatement ps;
     int createProjectSuccess = 0;
@@ -38,7 +37,7 @@ public class ProjectRepositoryImpl implements ProjectRepository {
       if (createProjectSuccess == 1) {
         System.out.println("Project add");
       } else {
-        throw new ErrorMessageException("Fejl i count addProject  err=");
+        throw new ProjectErrorMessageException("Fejl i count addProject  err=");
       }
       //5. Display the result set
     } catch (SQLException err) {
@@ -48,7 +47,7 @@ public class ProjectRepositoryImpl implements ProjectRepository {
   }
 
   @Override
-  public Project findProjectID(int projectId) throws ErrorMessageException {
+  public Project findProjectID(int projectId) throws ProjectErrorMessageException {
 
     String mysql;
     PreparedStatement ps;
@@ -98,7 +97,7 @@ public class ProjectRepositoryImpl implements ProjectRepository {
 
 
   @Override
-  public void updateProject(Project project) throws ErrorMessageException {
+  public void updateProject(Project project) throws ProjectErrorMessageException {
     String mysql;
     PreparedStatement ps;
 
@@ -150,7 +149,7 @@ public class ProjectRepositoryImpl implements ProjectRepository {
   }
 
 
-  public void deleteProject(int projectId) throws ErrorMessageException {
+  public void deleteProject(int projectId) throws ProjectErrorMessageException {
 
     String mySql;
     PreparedStatement ps;
@@ -178,7 +177,7 @@ public class ProjectRepositoryImpl implements ProjectRepository {
   }
 
   //VISER ALLE PROJEKTERNE PÅ BRUGERENS PROJEKTLISTE
-  public List<Project> showAllProjects(int id) throws ErrorMessageException {
+  public List<Project> showAllProjects(int id) throws ProjectErrorMessageException {
     ArrayList<Project> projects = new ArrayList<>();
     try {
       Connection con = DBManager.getConnection();

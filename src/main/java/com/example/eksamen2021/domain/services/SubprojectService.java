@@ -1,11 +1,10 @@
 package com.example.eksamen2021.domain.services;
 
-import com.example.eksamen2021.domain.ErrorMessageException;
+import com.example.eksamen2021.domain.SubProjectErrorMessageException;
 import com.example.eksamen2021.domain.models.Project;
 import com.example.eksamen2021.domain.models.Subproject;
 import com.example.eksamen2021.repositories.SubprojectRepositoryImpl;
 
-import java.sql.SQLException;
 import java.util.List;
 
 public class SubprojectService {
@@ -15,7 +14,7 @@ public class SubprojectService {
 
   private SubprojectRepositoryImpl subprojectRepositoryImpl = new SubprojectRepositoryImpl();
 
-  public String createSubproject(Project project, Subproject subproject) throws ErrorMessageException {
+  public String createSubproject(Project project, Subproject subproject) throws SubProjectErrorMessageException {
     /* SILKE HAR UDKOMMENTERET: SORRY ALEX. til test.::: double sum = calculateService.calsubprice(100,200,300);
     System.out.println(sum);
      */
@@ -29,25 +28,33 @@ public class SubprojectService {
     }
   }
 
-  public Subproject findSubprojectID(int subprojectId) throws ErrorMessageException {
+  public Subproject findSubprojectID(int subprojectId) throws SubProjectErrorMessageException {
     return subprojectRepositoryImpl.findSubprojectID(subprojectId);
   }
 
   //updater subprojecter ud fra sub_ID
-  public void updateSubproject(Subproject subproject) throws ErrorMessageException {
+  public void updateSubproject(Subproject subproject) throws SubProjectErrorMessageException {
     subprojectRepositoryImpl.updateSubproject(subproject);
   }
 
   //deleter projectet ud fra dens SubID
-  public void deleteSubproject(int subprojectId) throws ErrorMessageException{
+  public void deleteSubproject(int subprojectId) throws SubProjectErrorMessageException{
     subprojectRepositoryImpl.deleteSubproject(subprojectId);
   }
 
-  public List<Subproject> showAllSubprojects(int projectid) throws ErrorMessageException {
+  public List<Subproject> showAllSubprojects(int projectid) throws SubProjectErrorMessageException {
     System.out.println("projectid in service here: " + projectid);
     return subprojectRepositoryImpl.showAllSubprojects(projectid);
 
   }
+  public void calsubhours(Subproject subproject) throws SubProjectErrorMessageException{
+    subproject.calsubhours();
+
+  }
+  public void calsubprice(Subproject subproject) throws SubProjectErrorMessageException{
+    subproject.calsubprice();
+  }
+
 
 /*
     //updater subprojecter ud fra sub_ID
