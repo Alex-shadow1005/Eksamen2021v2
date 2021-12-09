@@ -84,7 +84,7 @@ public class SubprojectControllerImpl implements SubprojectController {
   public String showSubprojects2(@PathVariable("projectId") int projectId, Model model, HttpSession session) throws SubProjectErrorMessageException { //ModelAttribute gemmer parametre i User ved at lave det til et objekt
     List<Subproject> subprojects = subprojectService.showAllSubprojects(projectId);
     model.addAttribute("subprojects", subprojects);
-    projectId = currentProject.getProjectId();
+    currentProject.setProjectId(projectId);
 
     User user = (User) session.getAttribute("session"); //session er en KEY
     model.addAttribute("userId", user.getUserId());
