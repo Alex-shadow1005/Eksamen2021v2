@@ -114,7 +114,7 @@ public String createProject(@ModelAttribute Project project, User user, Model mo
 
   public String handleProjectError(Model model, Exception exception) {
     model.addAttribute("message", exception.getMessage());
-    return "errorMessageException/project-error-message-exception";
+    return "errorMessageExceptions/project-error-message-exception";
   }
 
 }
