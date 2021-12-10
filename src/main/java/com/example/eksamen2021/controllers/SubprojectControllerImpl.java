@@ -4,7 +4,6 @@ import com.example.eksamen2021.domain.SubProjectErrorMessageException;
 import com.example.eksamen2021.domain.models.Project;
 import com.example.eksamen2021.domain.models.Subproject;
 import com.example.eksamen2021.domain.models.User;
-import com.example.eksamen2021.domain.services.CalculateService;
 import com.example.eksamen2021.domain.services.SubprojectServiceImpl;
 
 import org.springframework.stereotype.Controller;
