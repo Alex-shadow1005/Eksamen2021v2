@@ -7,7 +7,7 @@ import com.example.eksamen2021.domain.models.Subproject;
 import com.example.eksamen2021.domain.models.User;
 import com.example.eksamen2021.domain.services.CalculateService;
 import com.example.eksamen2021.domain.services.ProjectService;
-import com.example.eksamen2021.domain.services.SubprojectService;
+import com.example.eksamen2021.domain.services.SubprojectServiceImpl;
 import com.example.eksamen2021.repositories.SubprojectRepositoryImpl;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,7 +21,7 @@ public class ProjectControllerImpl implements ProjectController {
   private ProjectService projectService = new ProjectService();
   private CalculateService calculateService = new CalculateService();
   private SubprojectRepositoryImpl subprojectRepository = new SubprojectRepositoryImpl();
-  private SubprojectService subprojectService = new SubprojectService();
+  private SubprojectServiceImpl subprojectServiceImpl = new SubprojectServiceImpl();
 
 
   //ny ændert Jens kl.15:03 02-12-2021 HttpSession session GET

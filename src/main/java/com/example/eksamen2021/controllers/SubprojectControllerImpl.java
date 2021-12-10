@@ -5,7 +5,7 @@ import com.example.eksamen2021.domain.models.Project;
 import com.example.eksamen2021.domain.models.Subproject;
 import com.example.eksamen2021.domain.models.User;
 import com.example.eksamen2021.domain.services.CalculateService;
-import com.example.eksamen2021.domain.services.SubprojectService;
+import com.example.eksamen2021.domain.services.SubprojectServiceImpl;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,7 +17,7 @@ import java.util.List;
 @Controller
 public class SubprojectControllerImpl implements SubprojectController {
 
-  private SubprojectService subprojectService = new SubprojectService();
+  private SubprojectServiceImpl subprojectServiceImpl = new SubprojectServiceImpl();
   private CalculateService calculatService = new CalculateService();
   public static Project currentProject = new Project();
 
@@ -34,13 +34,13 @@ public class SubprojectControllerImpl implements SubprojectController {
   @PostMapping("/create-subproject")
   public String createSubproject(@ModelAttribute Subproject subproject, Project project, Model model) throws SubProjectErrorMessageException {
     //subproject.setSubprojectTotalHours((int)calculatService.calsubhours(subproject.getSubprojectSeniordeveloperHours(),subproject.getSubprojectDeveloperHours(),subproject.getSubprojectGraphicHours()));
-    subprojectService.calsubhours(subproject);
-    subprojectService.calsubprice(subproject);
+    subprojectServiceImpl.calsubhours(subproject);
+    subprojectServiceImpl.calsubprice(subproject);
     // subproject.setSubprojectPrice((int) calculatService.calsubprice(subproject.getSubprojectSeniordeveloperHours(),subproject.getSubprojectDeveloperHours(),subproject.getSubprojectGraphicHours()));
     model.addAttribute("subproject", subproject);
     project.setProjectId(currentProject.getProjectId());
     //subproject.getSubprojectId();
-    subprojectService.createSubproject(project, subproject);
+    subprojectServiceImpl.createSubproject(project, subproject);
     return "redirect:/show-subprojects/" + currentProject.getProjectId();
   }
 
@@ -51,7 +51,7 @@ public class SubprojectControllerImpl implements SubprojectController {
     //subprojectId = currentSubproject.getSubprojectId();
     //System.out.println("UPDATE: subprojekt id = " + subprojectId + " getter: " + currentSubproject.getSubprojectId());
     System.out.println(subprojectId + "<- subprojectid i update subpro controller");
-    Subproject subproject = subprojectService.findSubprojectID(subprojectId);
+    Subproject subproject = subprojectServiceImpl.findSubprojectID(subprojectId);
     System.out.println("Efter service i UPDATE: id = " + subprojectId);
     model.addAttribute("subproject", subproject);
     return "update";
@@ -61,14 +61,14 @@ public class SubprojectControllerImpl implements SubprojectController {
   @PostMapping("/new-update-subproject")
   public String updateSubproject(@ModelAttribute Subproject subproject) throws SubProjectErrorMessageException {
     System.out.println("Test af new-update-subproject");
-    subprojectService.updateSubproject(subproject);
+    subprojectServiceImpl.updateSubproject(subproject);
     System.out.println("test 2 af new-update-subproject");
     return "redirect:/show-subprojects/" + subproject.getProjectId(); //returnerer 0 i projektid :c
   }
 
   @GetMapping("/delete-subproject/{subprojectId}")
   public String deleteSubproject(@PathVariable int subprojectId) throws SubProjectErrorMessageException {
-    subprojectService.deleteSubproject(subprojectId);
+    subprojectServiceImpl.deleteSubproject(subprojectId);
     return "show-subprojects";
   }
 
@@ -84,7 +84,7 @@ public class SubprojectControllerImpl implements SubprojectController {
   //@Author: Silke (show) & Alexander (calculate)
   @GetMapping("/show-subprojects/{projectId}")
   public String showSubprojects2(@PathVariable("projectId") int projectId, Model model, HttpSession session) throws SubProjectErrorMessageException { //ModelAttribute gemmer parametre i User ved at lave det til et objekt
-    List<Subproject> subprojects = subprojectService.showAllSubprojects(projectId);
+    List<Subproject> subprojects = subprojectServiceImpl.showAllSubprojects(projectId);
     model.addAttribute("subprojects", subprojects);
     currentProject.setProjectId(projectId);
 
