@@ -7,7 +7,7 @@ import com.example.eksamen2021.repositories.SubprojectRepositoryImpl;
 
 import java.util.List;
 
-public class SubprojectServiceImpl implements SubprojectService {
+public class SubprojectServiceImpl {
   //@Autowired
   //CalculateService calculateService;
   CalculateService calculateService = new CalculateService();
