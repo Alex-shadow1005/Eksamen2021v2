@@ -85,12 +85,12 @@ public String createProject(@ModelAttribute Project project, User user, Model mo
   }
 
   //sender projct id til projectservice (@Path tager id,et fra urlen og gemmer det??)
-  @GetMapping("/delete-project/{projectId}")
-  public String deleteProject(@PathVariable int projectId, Model model) throws ProjectErrorMessageException {
+  @GetMapping("/delete-project/{projectId}/{userId}")
+  public String deleteProject(@PathVariable int projectId, @PathVariable int userId, Model model) throws ProjectErrorMessageException {
     model.addAttribute("projectId", projectId);
     System.out.println(projectId);
     projectService.deleteProject(projectId);
-    return "redirect:/show/";
+    return "redirect:/show/" + userId;
   }
   //sender projct id til projectservice (@Path tager id,et fra urlen og gemmer det??)
   //@DeleteMapping
