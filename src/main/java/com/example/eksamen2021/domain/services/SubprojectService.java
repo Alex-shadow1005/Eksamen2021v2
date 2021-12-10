@@ -8,19 +8,19 @@ import java.util.List;
 
 public interface SubprojectService {
 
-  public String createSubproject(Project project, Subproject subproject) throws SubProjectErrorMessageException;
+    public String createSubproject(Project project, Subproject subproject) throws SubProjectErrorMessageException;
 
-  public Subproject findSubprojectID(int subprojectId) throws SubProjectErrorMessageException;
+    public Subproject findSubprojectID(int subprojectId) throws SubProjectErrorMessageException;
 
-  public void updateSubproject(Subproject subproject) throws SubProjectErrorMessageException;
+    public void updateSubproject(Subproject subproject) throws SubProjectErrorMessageException;
 
-  public void deleteSubproject(int subprojectId) throws SubProjectErrorMessageException;
+    public void deleteSubproject(int subprojectId) throws SubProjectErrorMessageException;
 
-  public List<Subproject> showAllSubprojects(int projectid) throws SubProjectErrorMessageException;
+    public List<Subproject> showAllSubprojects(int projectid) throws SubProjectErrorMessageException;
 
-  public void calsubhours(Subproject subproject) throws SubProjectErrorMessageException;
+    public void calsubhours(Subproject subproject) throws SubProjectErrorMessageException;
 
-  public void calsubprice(Subproject subproject) throws SubProjectErrorMessageException;
+    public void calsubprice(Subproject subproject) throws SubProjectErrorMessageException;
 
 
 }

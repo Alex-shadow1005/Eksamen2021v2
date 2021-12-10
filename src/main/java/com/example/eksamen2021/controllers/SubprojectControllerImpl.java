@@ -17,7 +17,6 @@ import java.util.List;
 public class SubprojectControllerImpl implements SubprojectController {
 
   private SubprojectServiceImpl subprojectServiceImpl = new SubprojectServiceImpl();
-  private CalculateService calculatService = new CalculateService();
   public static Project currentProject = new Project();
 
   //subproject og project id = 0
