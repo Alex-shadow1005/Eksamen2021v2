@@ -2,10 +2,9 @@ package com.example.eksamen2021.controllers;
 
 import com.example.eksamen2021.domain.UserErrorMessageException;
 import com.example.eksamen2021.domain.models.User;
-import com.example.eksamen2021.domain.services.UserService;
+import com.example.eksamen2021.domain.services.UserServiceImpl;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -15,7 +14,7 @@ import javax.servlet.http.HttpSession;
 @Controller
 public class UserControllerImpl implements UserController {
 
-  private UserService userService = new UserService();
+  private UserServiceImpl userServiceImpl = new UserServiceImpl();
 // public static User session; //OBS Den  vedr.figur1#
 
   // Denne metode tager oplysninger, som brugeren har indtastet om en ny kunde.
@@ -36,7 +35,7 @@ public class UserControllerImpl implements UserController {
   public String loginUser(@ModelAttribute User user, Model model, HttpSession session) throws UserErrorMessageException { //ModelAttribute gemmer parametre i User ved at lave det til et objekt
 //OBS ny  ændert Jens kl.15:03 02-12-2021
     model.addAttribute("user", user);
-    session.setAttribute("session",userService.loginUser(user));
+    session.setAttribute("session", userServiceImpl.loginUser(user));
     User usersession = (User) session.getAttribute("session");
     return "redirect:/show/" + usersession.getUserId();
   }
@@ -46,7 +45,7 @@ public class UserControllerImpl implements UserController {
   //før ændert Jens kl.15:03 02-12-2021
    /* model.addAttribute("user", user);
     System.out.println("user WWaazzaaa" + user);
-    session = userService.loginUser(user);
+    session = userServiceImpl.loginUser(user);
     if (session == null) {
       return "login-page";
     }
@@ -58,7 +57,7 @@ public class UserControllerImpl implements UserController {
   @PostMapping("/new-user")
   public String createUser(@ModelAttribute User user, Model model) throws UserErrorMessageException { //Jens' version af createUser
     model.addAttribute("user", user);
-     userService.createUser(user);
+     userServiceImpl.createUser(user);
     //if(user1.equals(user)){
       return "redirect:/login-page";
 //    }else {
@@ -75,7 +74,7 @@ public class UserControllerImpl implements UserController {
   /*@PostMapping("/new-user")
   public String createUser(@ModelAttribute User user, Model model) throws ErrorMessageException { //Jens' version af createUser
     model.addAttribute("user", user);
-    int createUserSuccess = userService.createUser(user);
+    int createUserSuccess = userServiceImpl.createUser(user);
     if(createUserSuccess == 1) {
       System.out.println("User added");
       return "redirect:/login-page";
