@@ -34,7 +34,7 @@ public class UserRepositoryImpl implements UserRepository {
         //5. Display the result set
         return user; //returnerer brugeren til Service
       } else {
-        throw new UserErrorMessageException("OBS cant not create User  vedr. metode = public User createUser(User user) ");
+        throw new UserErrorMessageException("OBS cant not create User  vedr.UserRepositoryImpl i metode = public User createUser(User user) ");
       }
     } catch (SQLException err) {
       throw new UserErrorMessageException(err.getMessage());
@@ -99,7 +99,7 @@ public class UserRepositoryImpl implements UserRepository {
 
 
       } else {
-        throw new UserErrorMessageException("UserEmail & UserPassword is Not validate login OBS  vedr. metode = public User validateUser(User user) ");
+        throw new UserErrorMessageException("UserEmail & UserPassword is Not validate login OBS  vedr. UserRepositoryImpl i metode = public User validateUser(User user)  ");
       }
 
       //Hvis den email og password matcher -> wishlist (forside for brugere der er logget ind). Ellers: prøv igen (på login-siden)

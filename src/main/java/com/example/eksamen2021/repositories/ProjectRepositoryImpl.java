@@ -1,6 +1,7 @@
 package com.example.eksamen2021.repositories;
 
 import com.example.eksamen2021.domain.ProjectErrorMessageException;
+import com.example.eksamen2021.domain.SubProjectErrorMessageException;
 import com.example.eksamen2021.domain.models.Project;
 import com.example.eksamen2021.domain.models.User;
 
@@ -37,11 +38,11 @@ public class ProjectRepositoryImpl implements ProjectRepository {
       if (createProjectSuccess == 1) {
         System.out.println("Project add");
       } else {
-        throw new ProjectErrorMessageException("Fejl i count addProject  err=");
+        throw new ProjectErrorMessageException("OBS cant not create project vedr.ProjectRepositoryImpl metode: = public int createProject(Project project, User user)");
       }
       //5. Display the result set
     } catch (SQLException err) {
-      System.out.println(err.getMessage());
+      throw new ProjectErrorMessageException(err.getMessage());
     }
     return createProjectSuccess; //returnerer brugeren til Service
   }
@@ -85,22 +86,23 @@ public class ProjectRepositoryImpl implements ProjectRepository {
             rs.getInt(6)
         ));
       }
-
-      System.out.println("finder ID YESSS");
+      if (projectId == findProject.getProjectId()) {
+        System.out.println("finder ID YESSS");
+        return findProject;
+      } else {
+        throw new ProjectErrorMessageException("OBS cant not find project id vedr.ProjectRepositoryImpl i metode: public Project findProjectID(int projectId)");
+      }
     } catch (SQLException err) {
-      System.out.println("Post con " + err.getMessage());
+      throw new ProjectErrorMessageException(err.getMessage());
     }
-    return findProject;
   }
-
-
 
 
   @Override
   public void updateProject(Project project) throws ProjectErrorMessageException {
     String mysql;
     PreparedStatement ps;
-
+    int upateProjectSuccess = 0;
     try {
       //1. Get a connection to database
       Connection con = DBManager.getConnection();
@@ -133,19 +135,19 @@ public class ProjectRepositoryImpl implements ProjectRepository {
       ps.setInt(5, project.getProjectId());
 
       //4. Execute SQL query
-      int rows = ps.executeUpdate();
+      upateProjectSuccess = ps.executeUpdate();
 
 
-      if (rows > 0) {
-
-        System.out.println("A new user has been inserted Successfully.");
+      if (upateProjectSuccess > 0) {
+        System.out.println("Udate Subproject is Successfully.");
+      } else {
+        throw new ProjectErrorMessageException("Cannot updates project whit project id vedr.ProjectRepositoryImpl i metode: public void updateProject (Project project)");
       }
 
       //5. Display the result set
     } catch (SQLException err) {
-      System.out.println("Fejl user has NOT! been inserted Successfully=" + err.getMessage());
+      throw new ProjectErrorMessageException(err.getMessage());
     }
-    System.out.println("Du har udatert");
   }
 
 
@@ -153,7 +155,7 @@ public class ProjectRepositoryImpl implements ProjectRepository {
 
     String mySql;
     PreparedStatement ps;
-    // int h = 0;
+    int deleteProjectSuccess = 0;
     try {
 
       //1. Get a connection to database
@@ -167,12 +169,16 @@ public class ProjectRepositoryImpl implements ProjectRepository {
       //3. Set the parameters
       ps.setInt(1, projectId);
       //4. Execute SQL query
-      ps.executeUpdate();
-
-      System.out.println("successfully deleted project");
+       deleteProjectSuccess = ps.executeUpdate();
+       if(deleteProjectSuccess > 0){
+         System.out.println("Delete Project is Successfully.");
+       }else {
+         throw new ProjectErrorMessageException("Cannot delete project whit project id vedr.ProjectRepositoryImpl i metode:  public void deleteProject ( int ProjectId)");
+       }
       //5. Display the result set
     } catch (SQLException err) {
-      System.out.println("Cannot delete project with subproject. Please delete any subprojects before deleting project." + err.getMessage());
+      throw new ProjectErrorMessageException(err.getMessage());
+     // System.out.println("Cannot delete project with subproject. Please delete any subprojects before deleting project." + err.getMessage());
     }
   }
 
@@ -196,8 +202,8 @@ public class ProjectRepositoryImpl implements ProjectRepository {
             rs.getInt(6)
         ));
       }
-    } catch (SQLException ex) {
-      System.out.println(ex.getMessage());
+    } catch (SQLException err) {
+      throw new ProjectErrorMessageException("OBS cant not show all project id  vedr.projectRepositoryImpl i metode:public List<Project> showAllProjects ( int id)" + err.getMessage());
     }
     return projects;
   }
