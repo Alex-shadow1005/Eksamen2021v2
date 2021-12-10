@@ -88,7 +88,6 @@ public String createProject(@ModelAttribute Project project, User user, Model mo
   @GetMapping("/delete-project/{projectId}")
   public String deleteProject(@PathVariable int projectId, Model model) throws ProjectErrorMessageException {
     model.addAttribute("projectId", projectId);
-    System.out.println("Yo yo yo");
     System.out.println(projectId);
     projectService.deleteProject(projectId);
     return "redirect:/show/";
