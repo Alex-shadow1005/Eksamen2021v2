@@ -6,7 +6,11 @@ import com.example.eksamen2021.domain.models.Project;
 import com.example.eksamen2021.domain.models.Subproject;
 import com.example.eksamen2021.domain.models.User;
 import com.example.eksamen2021.domain.services.CalculateService;
+<<<<<<< HEAD
 import com.example.eksamen2021.domain.services.ProjectServiceImpl;
+=======
+import com.example.eksamen2021.domain.services.ProjectService;
+>>>>>>> bc6304387713f6737b8b98e0abac890903c0bedd
 import com.example.eksamen2021.domain.services.SubprojectServiceImpl;
 import com.example.eksamen2021.repositories.SubprojectRepositoryImpl;
 import org.springframework.stereotype.Controller;

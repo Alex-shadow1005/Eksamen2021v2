@@ -22,6 +22,7 @@ public class SubprojectControllerImpl implements SubprojectController {
   public static Project currentProject = new Project();
 
   //subproject og project id = 0
+
   @GetMapping("/create-subproject")
   public String addSubproject(@ModelAttribute Subproject subproject, Model model) throws SubProjectErrorMessageException {
     model.addAttribute("subproject", subproject);
@@ -49,6 +50,10 @@ public class SubprojectControllerImpl implements SubprojectController {
   public String updateSubproject(@PathVariable("subprojectId") int subprojectId, Model model) throws SubProjectErrorMessageException {
     //subprojectId = currentSubproject.getSubprojectId();
     //System.out.println("UPDATE: subprojekt id = " + subprojectId + " getter: " + currentSubproject.getSubprojectId());
+<<<<<<< HEAD
+=======
+    System.out.println(subprojectId + "<- subprojectid i update subpro controller");
+>>>>>>> bc6304387713f6737b8b98e0abac890903c0bedd
     Subproject subproject = subprojectServiceImpl.findSubprojectID(subprojectId);
     System.out.println("Efter service i UPDATE: id = " + subprojectId);
     model.addAttribute("subproject", subproject);
