@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <link rel="stylesheet" href="indexStylesheet.css">
+
+
+    <meta charset="UTF-8">
+    <title>Add Project</title>
+</head>
+
+<body>
+
+<div class="container content center padding-64" style="max-width:800px" id="band">
+    <h2 class="wide">TEAM SUPER AWESOME</h2>
+    <p class="opacity"><i>Welcome</i></p>
+    <p class="justify"></p>
+
+    <!-- START SAVE PROJECT METHOD -->
+    <div class="article-box">
+        <article>
+
+            <form action="#" th:action="@{/save}" th:object="${project}" method="POST" style="border:1px solid #ccc">
+
+                <div class="container">
+                    <h1>Add project</h1>
+                    <hr>
+
+                    <!-- SKAL IKKE HAVE ID, VEL?
+                    <label for="project_id"><b>ID</b></label>
+                    <input type="text" th:field="*{project_id}" required id="project_id">-->
+
+
+                    <label for="project_name"><b>Name</b></label>
+                    <input type="text" th:field="*{project_name}" placeholder="Enter project name" name="project_name" required
+                           id="project_name">
+
+                    <label for="project_description"><b>Description</b></label>
+                    <input type="text" th:field="*{project_description}" placeholder="Enter description" name="project_description"
+                           required id="project_description">
+
+                    <!-- SKAL IKKE HAVE PRIS EDITABLE, VEL?
+                    <label for="project_price"><b>Price</b></label>
+                    <input type="text" th:field="*{project_price}" placeholder="Enter Price (round number)" name="project_price"
+                           required id="project_price"> -->
+
+                    <div class="clearfix">
+                        <button type="button" class="cancelbtn">Cancel</button>
+                        <button type="submit" class="start-button" style="background-color: cadetblue">Add project</button>
+                    </div>
+                </div>
+            </form>
+        </article>
+    </div>
+</div>
+<!-- END OF ADD PROJECT METHOD-->
+
+<!-- FOOTER START -->
+<footer>
+    <div class="row">
+        <div class="column">
+            <h3></h3>
+            <br>
+            <br>
+            <br>
+        </div>
+        <div class="column">
+        </div>
+        <div class="column">
+        </div>
+    </div>
+</footer>
+
+<!--FOOTER END-->
+</body>
+</html>
+
+
+<!-- HERE'S THE IMAGE CODE, IF YOU GUYS WANNA USE ALPHA SOLUTIONS LOGO
+  <picture>
+    <img src="logo.jpg" alt="Logo"
+         style="width: 90px; float: left; margin-top: -120px">
+  </picture>-->
+
+
+<!-- FOOTER START
+<footer>
+    <div class="row">
+        <div class="column">
+            <h3>Contact Us</h3>
+            <p><a href="mailto:kea@kea.dk">Email Us Here</a></p>
+        </div>
+        <div class="column">
+            <h3>About Us</h3>
+            <p>Just three classmates who have fun when working on a project together! :)</p>
+        </div>
+        <div class="column">
+            <h3>KEA</h3>
+            <p><a href="https://www.kea.dk" target="_blank">Go visit KEA's website</a></p>
+        </div>
+    </div>
+</footer>
+FOOTER END-->
