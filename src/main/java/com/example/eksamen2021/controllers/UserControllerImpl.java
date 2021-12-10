@@ -69,7 +69,7 @@ public class UserControllerImpl implements UserController {
   @Override
   public String handleUserError(Model model, Exception exception) {
     model.addAttribute("message", exception.getMessage());
-    return "errorMessageException/user-error-message-exception";
+    return "errorMessageExceptions/user-error-message-exception";
   }
 
   /*@PostMapping("/new-user")
