@@ -48,9 +48,12 @@ public class CalculateHourlyRate {
     int projectotalprice = 0;
     for (Project ps:projects) {
       for (Subproject sp : subprojects) {
+        //System.out.println("test af prisudregning. pris = " + sp.getSubprojectPrice());
         projectotalprice += sp.getSubprojectPrice();
+        //System.out.println("test 2 af udregning: pris = " + sp.getSubprojectPrice());
       }
       ps.setProjectPrice(projectotalprice);
+      //System.out.println("totalpris: " + projectotalprice);
     }
 
   }

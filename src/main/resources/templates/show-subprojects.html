@@ -2,7 +2,6 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
-    <link rel="stylesheet" href="indexStylesheet.css">
 
     <meta charset="UTF-8">
     <title>Subprojects</title>
@@ -62,14 +61,17 @@
 
                         <td th:text="${subproject.subprojectPrice}"></td>
 
-                        <!-- VIser subprojects til subprojects. En kommende feature
-                        <td><a href="/showsubprojects/">
-                            <button class="button start-button">Subproject-knap her</button></a></td>
+                        <!-- Viser subtasks til subprojects. En kommende feature
+                        <td><a href="/showsubtasks/">
+                            <button class="button start-button">Subtasks-knap her</button></a></td>
                         -->
                         <td>
-                            <form action="/update-subproject/" method="GET">
+
+
+                            <form action="update-subproject/" method="GET">
                                 <button class="smaller-button" type="submit">Edit</button>
                             </form> </td>
+
 
                         <td>
                             <a th:href="@{/show/${subprojectId}}" class="btn btn-danger"></a>
@@ -101,7 +103,7 @@
                 </a>-->
 
                 <a th:href="|/show/${userId}|">
-                    <button class="smaller-button" type="submit">Go back</button>
+                    <button class="start-button" type="submit">Go back</button>
                 </a>
 
 
@@ -221,7 +223,8 @@
 
     a {
         background-color: transparent;
-        color: inherit
+        color: inherit;
+        text-decoration: none;
     }
 
     a:active, a:hover {
