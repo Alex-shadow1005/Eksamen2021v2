@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <link rel="stylesheet" href="indexStylesheet.css">
+
+
+    <meta charset="UTF-8">
+    <title>Create Project</title>
+</head>
+
+<body>
+
+<div class="container content center padding-64" style="max-width:800px" id="band">
+    <h2 class="wide">ADD PROJECT</h2>
+    <p class="opacity"><i>Add a new project to your project-list</i></p>
+</div>
+
+<!-- START ADD PROJECT METHOD -->
+<section>
+    <div class="s-center">
+        <article>
+
+            <form method="POST" th:action="@{/create-project}" th:object="${project}">
+
+            <table>
+                <tr>
+                    <th>Name</th>
+                    <th>Description</th>
+
+                </tr>
+
+                <tr>
+
+
+                        <!--<td hidden><input type="text" th:field="*{project.projectId}"
+                                          placeholder="ProjectId"></td>-->
+
+                        <td><input type="text" th:field="*{projectName}"
+                                   placeholder="Name" required></td>
+
+                        <td><input type="text" th:field="*{projectDescription}"
+                                   placeholder="Description" size="150" required></td>
+
+                        <!--<td><input type="text" th:field="*{project.projectHours}"
+                                   placeholder="Description"></td>
+
+                        <td><input type="text" th:field="*{project.projectPrice}"
+                                   placeholder="Price"></td>-->
+
+
+
+
+                </tr>
+            </table>
+            <br>
+            <br>
+                <button type="reset" class="cancel-button">Clear form</button>
+                <button type="submit" class="start-button">Add Project</button>
+            </form>
+
+        </article>
+        <br>
+        <br>
+        <!-- Virker ikke endnu
+        <a href="/show/">
+        <button type="button" class="cancel-button">Go Back</button>
+        </a>-->
+    </div>
+</section>
+
+
+<!-- FOOTER START -->
+
+<footer>
+    <div class="row">
+        <div class="column">
+            <h3> </h3>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+
+        </div>
+
+        <div class="column">
+        </div>
+
+        <div class="column">
+        </div>
+    </div>
+
+</footer>
+
+<!--FOOTER END-->
+</body>
+
+</html>
+
+
+<!-- FOOTER START
+
+<footer>
+    <div class="row">
+        <div class="column">
+            <h3>Contact Us</h3>
+            <p> <a href="mailto:kea@kea.dk">Email Us Here</a> </p>
+        </div>
+
+        <div class="column">
+            <h3>About Us</h3>
+            <p>Just three classmates who have fun when working on a project together! :)</p>
+        </div>
+
+        <div class="column">
+            <h3>KEA</h3>
+            <p> <a href="https://www.kea.dk" target="_blank">Go visit KEA's website</a> </p>
+        </div>
+    </div>
+
+</footer>
+
+FOOTER END-->

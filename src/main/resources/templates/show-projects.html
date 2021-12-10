@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <link rel="stylesheet" href="indexStylesheet.css">
+    <script type="text/javascript" th:src="@{/static/delete.js}"></script>
+
+    <meta charset="UTF-8">
+    <title>Projects</title>
+</head>
+
+
+<body>
+
+
+<div class="container content center padding-64" style="max-width:800px" id="band"> <!--<p th:object="${user}">-->
+    <h2 class="wide">Welcome </h2><!--<h2 class="wide" th:text="${user.getUserUsername()}"></h2>-->
+    <h2 class="wide">YOUR PROJECTS</h2>
+    <p class="opacity"><i>An overview of your projects</i></p>
+    <p>Here you can see, edit and delete your current projects.</p><br>
+
+    <section>
+
+        <div class="s-center">
+            <article>
+
+                <table>
+                    <tr>
+                        <th>Name</th>
+
+                        <th>Description</th>
+
+                        <th>Hours</th>
+
+                        <th>Price</th>
+
+                        <th>Subprojects</th>
+
+                        <th>Edit</th>
+
+                        <th>Delete</th>
+
+                    </tr>
+
+                    <tr th:each="project : ${projects}">
+
+                        <!--   <td hidden th:text="${project.userId}"></td> -->
+
+                        <p hidden th:text="${project.projectId}"></p>
+
+                        <td th:text="${project.projectName}"></td>
+
+                        <td th:text="${project.projectDescription}"></td>
+
+                        <td th:text="${project.projectHours}"></td>
+
+                        <td th:text="${project.projectPrice}"></td>
+
+
+                        <td>
+                            <!--                            <form action="/show-subprojects/5" method="GET" modelAttribute="project">-->
+                            <a th:href="|/show-subprojects/${project.projectId}|">
+                                <button type="submit" class="button smaller-button">Subproject</button>
+                            </a>
+                            <!--</form>-->
+                        </td>
+
+                        <td><!-- EDIT PROJECT HER --></td>
+
+                        <td>
+                            <a th:href="@{/show/project.projectId}" class="btn btn-danger"></a>
+                            <button th:onclick="'deleteProject(\'' + ${project.projectId} + '\');'"
+                                    class="button smaller-button">Delete</button>
+                        </td>
+
+                    </tr>
+
+                    <!-- <a th:href="|/show-projects/${project.projectId}|">
+                        <button type="submit" class="button smaller-button">Delete</button>
+                    </a> -->
+
+
+                </table>
+                <br>
+                <br>
+
+                <a th:href="@{/create-project}">
+                    <button type="button" class="start-button">Add project</button>
+                </a>
+
+            </article>
+        </div>
+    </section>
+
+</div>
+
+</section>
+
+</div>
+
+<!-- BUTTON
+    <div class="button">
+        <br>
+        <a href="/login-page">
+            <button class="button start-button">Start</button>
+            -->
+
+<!-- FOOTER START -->
+<footer>
+    <div class="row">
+        <div class="column">
+            <h3></h3>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+        </div>
+        <div class="column">
+        </div>
+        <div class="column">
+        </div>
+    </div>
+</footer>
+<!--FOOTER END-->
+</body>
+
+<style>
+
+    html {
+        box-sizing: border-box;
+        -ms-text-size-adjust: 100%;
+        -webkit-text-size-adjust: 100%;
+        overflow-x: hidden
+    }
+
+    *, *:before, *:after {
+        box-sizing: inherit
+    }
+
+    body {
+        background: linear-gradient(30deg, #59869D, ghostwhite); /*samme farve som taget fra Alpha-Solutions hjemmeside! (bortset fra den hvide, ghost lød bare sejere, feel free to change it haha*/
+        margin: 0;
+        font-family: Verdana, sans-serif;
+        font-size: 15px;
+        line-height: 1.5
+    }
+
+    .start-button {
+        padding: 16px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        transition-duration: 0.4s;
+        cursor: pointer;
+        background-color: white;
+        color: black;
+        border: 2px solid #e7e7e7;
+    }
+
+    .start-button:hover {
+        background-color: #59869D; /*samme farve som taget fra Alpha-Solutions hjemmeside!*/
+        color: white;
+    }
+
+    .smaller-button {
+        padding: 4px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 15px;
+        margin: 2px 2px;
+        transition-duration: 0.4s;
+        cursor: pointer;
+        background-color: white;
+        color: black;
+        border: 2px solid #e7e7e7;
+    }
+
+    .smaller-button:hover {
+        background-color: #59869D; /*samme farve som taget fra Alpha-Solutions hjemmeside!*/
+        color: white;
+    }
+
+    a {
+        background-color: transparent;
+        color: inherit
+    }
+
+    a:active, a:hover {
+        outline-width: 0
+    }
+
+    .wide {
+        letter-spacing: 4px
+    }
+
+    .s-center .bar {
+        display: inline-block;
+        width: auto
+    }
+
+    .container:after, .container:before {
+        content: "";
+        display: table;
+        clear: both
+    }
+
+    .content {
+        margin-left: auto;
+        margin-right: auto;
+        max-width: 980px
+    }
+
+    .container {
+        padding: 0.01em 16px
+    }
+
+    .opacity, .hover-opacity:hover {
+        opacity: 0.60
+    }
+
+    .opacity-off, .hover-opacity-off:hover {
+        opacity: 1
+    }
+
+    .opacity-max {
+        opacity: 0.25
+    }
+
+    .opacity-min {
+        opacity: 0.75
+    }
+
+    .center {
+        text-align: center !important
+    }
+
+    .padding-64 {
+        padding-top: 64px !important;
+        padding-bottom: 64px !important
+    }
+
+
+    /* TABLE CSS: */
+    table {
+        border-collapse: collapse;
+        width: 100%;
+        align-content: center;
+    }
+
+    td, th {
+        border: 1px solid #59869D;
+        text-align: left;
+        padding: 8px;
+    }
+
+    tr:nth-child(even) {
+        background-color: ghostwhite;
+    }
+</style>
+
+<script>
+    function deleteProject(projectId) {
+        if (confirm("Are you sure you wan't to delete this project?")) {
+            location.assign("http://localhost:8080/delete-project/" + projectId)
+        }
+    }
+</script>
+</html>
+
+<!--
+<section>
+    <div class="article-box">
+        <article>
+            <table>
+                <tr>
+                    <th>Name</th>
+                    <th>&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;</th>
+                    <th>Description</th>
+                    <th>&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;</th>
+                    <th>Price</th>
+                </tr>
+                                <tr th:each="project : ${projects}">
+<<<<<<< HEAD
+                                    <td th:text="${project.projectId}"></td>
+                                    <td>&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;</td>
+                                    <td th:text="${project.projectName}"></td>
+=======
+                                    <td th:text="${project.project_name}"></td>
+>>>>>>> weekrnd-work
+                                    <td>&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;</td>
+                                    <td th:text="${project.projectDescription}"></td>
+                                    <td>&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;</td>
+                                    <td th:text="${project.projectPrice}"></td>
+                                </tr>
+                </tr>
+            </table>
+            <br>
+            <a th:href="@{/addproject}">
+                <button type="button" style="background-color: cadetblue">Add project</button>
+            </a>
+        </article>
+    </div>
+</section>
+-->
+
+<!-- FOOTER START -->
+<!--
+<footer>
+    <div class="row">
+        <div class="column">
+            <h3>Contact Us</h3>
+            <p><a href="mailto:kea@kea.dk">Email Us Here</a></p>
+        </div>
+
+        <div class="column">
+            <h3>About Us</h3>
+            <p>Just three classmates who have fun when working on a project together! :)</p>
+        </div>
+
+        <div class="column">
+            <h3>KEA</h3>
+            <p><a href="https://www.kea.dk" target="_blank">Go visit KEA's website</a></p>
+        </div>
+    </div>
+
+</footer>
+-->
+<!--FOOTER END-->
