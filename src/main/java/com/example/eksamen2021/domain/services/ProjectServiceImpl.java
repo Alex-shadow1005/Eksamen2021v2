@@ -56,12 +56,12 @@ public class ProjectServiceImpl implements ProjectService{
     return projectRepositoryImpl.showAllProjects(id);
   }
 
-  public void calprojecthours(List<Subproject> subprojects,List<Project> projects) throws ProjectErrorMessageException {
-   calculateHourlyRate.calprojecthours(subprojects,projects);
+  public void calprojecthours(List<Subproject> gettingAllSubprojects,List<Project> projects) throws ProjectErrorMessageException {
+   calculateHourlyRate.calprojecthours(gettingAllSubprojects,projects);
    // project.calprojecthours(subprojects,projects);
   }
-  public void calprojectprices(List<Subproject> subprojects,List<Project> projects) throws ProjectErrorMessageException {
-    calculateHourlyRate.calprojectprice(subprojects,projects);
+  public void calprojectprices(List<Subproject> gettingAllSubprojects,List<Project> projects) throws ProjectErrorMessageException {
+    calculateHourlyRate.calprojectprice(gettingAllSubprojects,projects);
   //  project.calprojectprices(subprojects,projects);
 
   }
