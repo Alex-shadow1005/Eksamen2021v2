@@ -4,7 +4,6 @@ import com.example.eksamen2021.domain.SubProjectErrorMessageException;
 import com.example.eksamen2021.domain.models.Project;
 import com.example.eksamen2021.domain.models.Subproject;
 import com.example.eksamen2021.domain.models.User;
-import com.example.eksamen2021.domain.services.CalculateService;
 import com.example.eksamen2021.domain.services.SubprojectServiceImpl;
 
 import org.springframework.stereotype.Controller;
@@ -18,7 +17,6 @@ import java.util.List;
 public class SubprojectControllerImpl implements SubprojectController {
 
   private SubprojectServiceImpl subprojectServiceImpl = new SubprojectServiceImpl();
-  private CalculateService calculatService = new CalculateService();
   public static Project currentProject = new Project();
 
   //subproject og project id = 0
@@ -50,10 +48,7 @@ public class SubprojectControllerImpl implements SubprojectController {
   public String updateSubproject(@PathVariable("subprojectId") int subprojectId, Model model) throws SubProjectErrorMessageException {
     //subprojectId = currentSubproject.getSubprojectId();
     //System.out.println("UPDATE: subprojekt id = " + subprojectId + " getter: " + currentSubproject.getSubprojectId());
-<<<<<<< HEAD
-=======
     System.out.println(subprojectId + "<- subprojectid i update subpro controller");
->>>>>>> bc6304387713f6737b8b98e0abac890903c0bedd
     Subproject subproject = subprojectServiceImpl.findSubprojectID(subprojectId);
     System.out.println("Efter service i UPDATE: id = " + subprojectId);
     model.addAttribute("subproject", subproject);

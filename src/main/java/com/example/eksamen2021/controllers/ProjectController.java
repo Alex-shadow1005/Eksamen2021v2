@@ -31,4 +31,4 @@ public interface ProjectController {
   @ExceptionHandler(ProjectErrorMessageException.class)
   public String handleProjectError(Model model, Exception exception);
 
-  }
+}

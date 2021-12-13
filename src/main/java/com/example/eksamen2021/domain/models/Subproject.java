@@ -1,7 +1,6 @@
 package com.example.eksamen2021.domain.models;
 
 import com.example.eksamen2021.domain.SubProjectErrorMessageException;
-import com.example.eksamen2021.domain.services.CalculateService;
 
 public class Subproject {
 

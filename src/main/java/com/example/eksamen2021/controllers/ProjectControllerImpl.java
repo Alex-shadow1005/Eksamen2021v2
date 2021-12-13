@@ -5,12 +5,7 @@ import com.example.eksamen2021.domain.SubProjectErrorMessageException;
 import com.example.eksamen2021.domain.models.Project;
 import com.example.eksamen2021.domain.models.Subproject;
 import com.example.eksamen2021.domain.models.User;
-import com.example.eksamen2021.domain.services.CalculateService;
-<<<<<<< HEAD
 import com.example.eksamen2021.domain.services.ProjectServiceImpl;
-=======
-import com.example.eksamen2021.domain.services.ProjectService;
->>>>>>> bc6304387713f6737b8b98e0abac890903c0bedd
 import com.example.eksamen2021.domain.services.SubprojectServiceImpl;
 import com.example.eksamen2021.repositories.SubprojectRepositoryImpl;
 import org.springframework.stereotype.Controller;
@@ -23,7 +18,6 @@ import java.util.List;
 @Controller
 public class ProjectControllerImpl implements ProjectController {
   private ProjectServiceImpl projectServiceImpl = new ProjectServiceImpl();
-  private CalculateService calculateService = new CalculateService();
   private SubprojectRepositoryImpl subprojectRepository = new SubprojectRepositoryImpl();
   private SubprojectServiceImpl subprojectServiceImpl = new SubprojectServiceImpl();
 
