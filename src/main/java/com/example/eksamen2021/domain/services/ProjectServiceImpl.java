@@ -17,22 +17,8 @@ public class ProjectServiceImpl implements ProjectService{
   private CalculateHourlyRate calculateHourlyRate = new CalculateHourlyRate();
   private Project project = new Project();
 
-  //OBS ny  int# ændert Jens kl.10:38 03-12-2021 vedr.public #int# createUser(User user)
-  //før String# ændert Jens kl.10:38 03-12-2021 vedr.public #String# createUser(User user)
   public int createProject(Project project, User user) throws ProjectErrorMessageException {
     return projectRepositoryImpl.createProject(project, user);
-
-
-    //før ændert Jens kl.10:38 03-12-2021
-    /*int addProjectSuccess = projectRepositoryImpl.addProject(project, user);
-    if (addProjectSuccess == 1) {
-      return "redirect:/show";
-    } else {
-      System.out.println("sut :c");
-      return "redirect:/addProject";
-    }
-
-     */
   }
 
 
@@ -73,5 +59,17 @@ public class ProjectServiceImpl implements ProjectService{
   }
 
  */
+
+
+  //før ændert Jens kl.10:38 03-12-2021
+    /*int addProjectSuccess = projectRepositoryImpl.addProject(project, user);
+    if (addProjectSuccess == 1) {
+      return "redirect:/show";
+    } else {
+      System.out.println("sut :c");
+      return "redirect:/addProject";
+    }
+
+     */
 
 }

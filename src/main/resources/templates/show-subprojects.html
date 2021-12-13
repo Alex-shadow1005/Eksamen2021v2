@@ -61,16 +61,12 @@
 
                         <td th:text="${subproject.subprojectPrice}"></td>
 
-                        <!-- Viser subtasks til subprojects. En kommende feature
-                        <td><a href="/showsubtasks/">
-                            <button class="button start-button">Subtasks-knap her</button></a></td>
-                        -->
                         <td>
 
-
-                            <form action="update-subproject/" method="GET">
-                                <button class="smaller-button" type="submit">Edit</button>
-                            </form> </td>
+                                <a th:href="@{/update-subproject/{subprojectId}(subprojectId=${subproject.subprojectId})}">
+                                <button class="smaller-button">Edit</button>
+                                </a>
+                             </td>
 
 
                         <td>
@@ -79,28 +75,16 @@
                                     class="button smaller-button">Delete</button>
                         </td>
 
+                        <!-- Viser subtasks til subprojects. En kommende feature
+                 <td><a href="/showsubtasks/">
+                     <button class="button start-button">Subtasks-knap her</button></a></td>
+                 -->
 
                     </tr>
                 </table>
                 <br>
                 <br>
 
-               <!-- <p hidden th:object="currentproject.userId"> </p> -->
-
-                <!--
-                <a th:href="@{/show/{id}}">
-                    <button type="button" class="start-button">Go back</button>
-                </a> -->
-
-                <!--
-                <a th:href="|/show-projects/${project.userId}|">
-                    <button type="submit" class="button smaller-button">Subproject</button>
-                </a>
--->
-<!--
-                <a th:href="|/show/${subproject.projectId}|">
-                    <button type="submit" class="button smaller-button">Subproject</button>
-                </a>-->
 
                 <a th:href="|/show/${userId}|">
                     <button class="start-button" type="submit">Go back</button>

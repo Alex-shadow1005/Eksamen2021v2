@@ -61,7 +61,7 @@ public class SubprojectControllerImpl implements SubprojectController {
     System.out.println("Test af new-update-subproject");
     subprojectServiceImpl.updateSubproject(subproject);
     System.out.println("test 2 af new-update-subproject");
-    return "redirect:/show-subprojects/" + subproject.getProjectId(); //returnerer 0 i projektid :c
+    return "redirect:/show-subprojects/" + currentProject.getProjectId();
   }
 
   @GetMapping("/delete-subproject/{subprojectId}")

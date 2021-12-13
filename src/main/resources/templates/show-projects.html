@@ -65,7 +65,12 @@
                             <!--</form>-->
                         </td>
 
-                        <td><!-- EDIT PROJECT HER --></td>
+                        <td>
+                            <a th:href="@{/update-project/{projectId}(projectId=${project.projectId})}">
+                                <button class="smaller-button">Edit</button>
+                            </a>
+                        </td>
+                        </td>
 
                         <td>
                             <a th:href="@{/show/project.projectId}" class="btn btn-danger"></a>

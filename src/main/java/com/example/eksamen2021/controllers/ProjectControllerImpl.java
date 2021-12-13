@@ -18,7 +18,6 @@ import java.util.List;
 @Controller
 public class ProjectControllerImpl implements ProjectController {
   private ProjectServiceImpl projectServiceImpl = new ProjectServiceImpl();
-  private SubprojectRepositoryImpl subprojectRepository = new SubprojectRepositoryImpl();
   private SubprojectServiceImpl subprojectServiceImpl = new SubprojectServiceImpl();
 
 
@@ -32,13 +31,14 @@ public class ProjectControllerImpl implements ProjectController {
     System.out.println(project.getProjectName() + project.getProjectDescription() + project.getProjectPrice());
     return "create-project";
   }//før ændert Jens kl.14:33 03-12-2021
-/*  @GetMapping("/create-project")
-  public String addProject(@ModelAttribute Project project, Model model) throws ErrorMessageException {
-    model.addAttribute("project", project);
-    model.addAttribute("sessionID", UserControllerImpl.session.getUserId());
-    System.out.println(project.getProjectName() + project.getProjectDescription() + project.getProjectPrice());
-    return "create-project";
-  } */
+
+  /*  @GetMapping("/create-project")
+    public String addProject(@ModelAttribute Project project, Model model) throws ErrorMessageException {
+      model.addAttribute("project", project);
+      model.addAttribute("sessionID", UserControllerImpl.session.getUserId());
+      System.out.println(project.getProjectName() + project.getProjectDescription() + project.getProjectPrice());
+      return "create-project";
+    } */
 //ny ændert Jens kl.1 02-12-2021 HttpSession session POST
   /*@PostMapping("/create-project")
   public String createProject(@ModelAttribute Project project, User user, Model model,HttpSession session) throws ErrorMessageException {
@@ -58,28 +58,30 @@ public class ProjectControllerImpl implements ProjectController {
 
  */
 //ny ændert alex kl.15:03 02-12-2021 HttpSession session POST
-@PostMapping("/create-project")
-public String createProject(@ModelAttribute Project project, User user, Model model,HttpSession session) throws ProjectErrorMessageException {
-  model.addAttribute("project", project);
-  User usersession = (User) session.getAttribute("session");//jens
-  user.setUserId(usersession.getUserId());
-  projectServiceImpl.createProject(project, user);
-  return "redirect:/show/" + usersession.getUserId();
-}
+  @PostMapping("/create-project")
+  public String createProject(@ModelAttribute Project project, User user, Model model, HttpSession session) throws ProjectErrorMessageException {
+    model.addAttribute("project", project);
+    User usersession = (User) session.getAttribute("session");//jens
+    user.setUserId(usersession.getUserId());
+    projectServiceImpl.createProject(project, user);
+    return "redirect:/show/" + usersession.getUserId();
+  }
 
   //sender projct id til projectservice (@Path tager id,et fra urlen og gemmer det??)
   @GetMapping("/update-project/{projectId}")
   public String updateproject(@PathVariable("projectId") int projectId, Model model) throws ProjectErrorMessageException {
     Project project = projectServiceImpl.findProjectID(projectId);
     model.addAttribute("project", project);
-    return "udate2";
+    return "update-project";
   }
 
   //Post
   @PostMapping("/new-update-project")
-  public String updateProject(@ModelAttribute Project project) throws ProjectErrorMessageException {
+  public String updateProject(@ModelAttribute Project project, User user, HttpSession session) throws ProjectErrorMessageException {
+    User usersession = (User) session.getAttribute("session");//jens
+    user.setUserId(usersession.getUserId());
     projectServiceImpl.updateProject(project);
-    return "redirect:/show-projects";
+    return "redirect:/show/" + usersession.getUserId();
   }
 
   //sender projct id til projectservice (@Path tager id,et fra urlen og gemmer det??)
@@ -100,10 +102,12 @@ public String createProject(@ModelAttribute Project project, User user, Model mo
     List<Project> projects = projectServiceImpl.showAllProjects(id);
     //hvorfor sender den til subprojectRepository unden servise Jens??
 
-   List<Subproject> gettingAllSubprojects = subprojectServiceImpl.gettingAllSubprojects();
 
-    projectServiceImpl.calprojecthours(gettingAllSubprojects,projects);
-    projectServiceImpl.calprojectprices(gettingAllSubprojects,projects);
+    List<Subproject> gettingAllSubprojects = subprojectServiceImpl.gettingAllSubprojects();
+
+    projectServiceImpl.calprojecthours(gettingAllSubprojects, projects);
+    projectServiceImpl.calprojectprices(gettingAllSubprojects, projects);
+
 
     model.addAttribute("projects", projects);
     model.addAttribute("user", user);

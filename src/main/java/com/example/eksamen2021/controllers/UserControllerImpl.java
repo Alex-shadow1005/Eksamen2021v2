@@ -18,7 +18,6 @@ public class UserControllerImpl implements UserController {
 
 
   private UserServiceImpl userServiceImpl = new UserServiceImpl();
-// public static User session; //OBS Den  vedr.figur1#
 
   @GetMapping("/")
   public String index() throws UserErrorMessageException {
@@ -39,7 +38,7 @@ public class UserControllerImpl implements UserController {
     User usersession = (User) session.getAttribute("session");
     return "redirect:/show/" + usersession.getUserId();
   }
-  
+
 
   @PostMapping("/new-user")
   public String createUser(@ModelAttribute User user, Model model) throws UserErrorMessageException { //Jens' version af createUser
@@ -58,6 +57,9 @@ public class UserControllerImpl implements UserController {
     return "errorMessageExceptions/";
   }
 
+}
+
+
   /*@PostMapping("/new-user")
   public String createUser(@ModelAttribute User user, Model model) throws ErrorMessageException { //Jens' version af createUser
     model.addAttribute("user", user);
@@ -74,5 +76,16 @@ public class UserControllerImpl implements UserController {
    */
 
 
+//OBS figur1#
+//før ændert Jens kl.15:03 02-12-2021
+   /* model.addAttribute("user", user);
+    System.out.println("user WWaazzaaa" + user);
+    session = userService.loginUser(user);
+    if (session == null) {
+      return "login-page";
+    }
+    return "redirect:/show/" + session.getUserId();
+    */
+//OBS figur1#
 
-}
+
