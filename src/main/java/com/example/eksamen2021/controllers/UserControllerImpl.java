@@ -16,6 +16,7 @@ import javax.servlet.http.HttpSession;
 @Controller
 public class UserControllerImpl implements UserController {
 
+
   private UserServiceImpl userServiceImpl = new UserServiceImpl();
 
   @GetMapping("/")
@@ -37,6 +38,7 @@ public class UserControllerImpl implements UserController {
     User usersession = (User) session.getAttribute("session");
     return "redirect:/show/" + usersession.getUserId();
   }
+
 
   @PostMapping("/new-user")
   public String createUser(@ModelAttribute User user, Model model) throws UserErrorMessageException { //Jens' version af createUser
