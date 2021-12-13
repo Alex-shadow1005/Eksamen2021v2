@@ -2,6 +2,7 @@ package com.example.eksamen2021.domain.models;
 
 import com.example.eksamen2021.domain.ProjectErrorMessageException;
 
+
 import java.util.List;
 
 public class Project {

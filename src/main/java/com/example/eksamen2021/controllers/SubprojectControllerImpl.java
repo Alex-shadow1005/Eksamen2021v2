@@ -4,7 +4,6 @@ import com.example.eksamen2021.domain.SubProjectErrorMessageException;
 import com.example.eksamen2021.domain.models.Project;
 import com.example.eksamen2021.domain.models.Subproject;
 import com.example.eksamen2021.domain.models.User;
-import com.example.eksamen2021.domain.services.CalculateService;
 import com.example.eksamen2021.domain.services.SubprojectServiceImpl;
 
 import org.springframework.stereotype.Controller;
@@ -18,7 +17,6 @@ import java.util.List;
 public class SubprojectControllerImpl implements SubprojectController {
 
   private SubprojectServiceImpl subprojectServiceImpl = new SubprojectServiceImpl();
-  private CalculateService calculatService = new CalculateService();
   public static Project currentProject = new Project();
 
   //subproject og project id = 0
@@ -63,7 +61,7 @@ public class SubprojectControllerImpl implements SubprojectController {
     System.out.println("Test af new-update-subproject");
     subprojectServiceImpl.updateSubproject(subproject);
     System.out.println("test 2 af new-update-subproject");
-    return "redirect:/show-subprojects/" + subproject.getProjectId(); //returnerer 0 i projektid :c
+    return "redirect:/show-subprojects/" + currentProject.getProjectId();
   }
 
   @GetMapping("/delete-subproject/{subprojectId}")
