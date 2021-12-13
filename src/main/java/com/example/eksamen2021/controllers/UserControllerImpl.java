@@ -16,12 +16,10 @@ import javax.servlet.http.HttpSession;
 @Controller
 public class UserControllerImpl implements UserController {
 
+
   private UserServiceImpl userServiceImpl = new UserServiceImpl();
 // public static User session; //OBS Den  vedr.figur1#
 
-  // Denne metode tager oplysninger, som brugeren har indtastet om en ny kunde.
-  // Objektet bruges til at gemme oplysninger om kunden i databasen.
-  //OBS! Ænder createUser til newUser newUser23-11-2021 kl.10:26
   @GetMapping("/")
   public String index() throws UserErrorMessageException {
     return "index";
@@ -41,20 +39,7 @@ public class UserControllerImpl implements UserController {
     User usersession = (User) session.getAttribute("session");
     return "redirect:/show/" + usersession.getUserId();
   }
-
-
-  //OBS figur1#
-  //før ændert Jens kl.15:03 02-12-2021
-   /* model.addAttribute("user", user);
-    System.out.println("user WWaazzaaa" + user);
-    session = userService.loginUser(user);
-    if (session == null) {
-      return "login-page";
-    }
-    return "redirect:/show/" + session.getUserId();
-    */
-  //OBS figur1#
-
+  
 
   @PostMapping("/new-user")
   public String createUser(@ModelAttribute User user, Model model) throws UserErrorMessageException { //Jens' version af createUser
