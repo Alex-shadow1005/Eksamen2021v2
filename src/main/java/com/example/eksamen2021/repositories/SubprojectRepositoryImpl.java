@@ -204,6 +204,7 @@ public class SubprojectRepositoryImpl implements SubprojectRepository {
 
   //VISER ALLE SUBPROJEKTER DER HØRER TIL PROJEKT-ID'EN
   public List<Subproject> showAllSubprojects(int id) throws SubProjectErrorMessageException {
+    PreparedStatement ps;
     ArrayList<Subproject> subprojects = new ArrayList<>();
     try {
       Connection con = DBManager.getConnection();
@@ -211,8 +212,40 @@ public class SubprojectRepositoryImpl implements SubprojectRepository {
 
       System.out.println("test i repo: + id =" + id);
 
-      PreparedStatement ps = con.prepareStatement(SQL);
+      ps = con.prepareStatement(SQL);
       ps.setInt(1, id);
+      ResultSet rs = ps.executeQuery();
+      while (rs.next()) {
+        subprojects.add(new Subproject(
+            rs.getInt(1),
+            rs.getInt(2),
+            rs.getString(3),
+            rs.getString(4),
+            rs.getInt(5),
+            rs.getInt(6),
+            rs.getInt(7),
+            rs.getInt(8),
+            rs.getInt(9)
+        ));
+      }
+
+    } catch (SQLException err) {
+      throw new SubProjectErrorMessageException("OBS cant not show all Subproject id  vedr.SubprojectRepositoryImpl i metode:public List<Subproject> showAllSubprojects ( int id)" + err.getMessage());
+    }
+    return subprojects;
+
+  }
+
+  //VISER ALLE SUBPROJEKTER DER HØRER TIL PROJEKT-ID'EN
+  public List<Subproject> gettingAllSubprojects() throws SubProjectErrorMessageException {
+    PreparedStatement ps;
+    ArrayList<Subproject> subprojects = new ArrayList<>();
+    try {
+      Connection con = DBManager.getConnection();
+      String SQL = "SELECT * FROM subprojects";
+
+      ps = con.prepareStatement(SQL);
+
       ResultSet rs = ps.executeQuery();
       while (rs.next()) {
         subprojects.add(new Subproject(

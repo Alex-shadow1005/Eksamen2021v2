@@ -99,10 +99,11 @@ public String createProject(@ModelAttribute Project project, User user, Model mo
 
     List<Project> projects = projectServiceImpl.showAllProjects(id);
     //hvorfor sender den til subprojectRepository unden servise Jens??
-   List<Subproject> subprojects = subprojectRepository.showAllSubprojects(id);
 
-   projectServiceImpl.calprojecthours(subprojects,projects);
-   projectServiceImpl.calprojectprices(subprojects,projects);
+   List<Subproject> gettingAllSubprojects = subprojectServiceImpl.gettingAllSubprojects();
+
+    projectServiceImpl.calprojecthours(gettingAllSubprojects,projects);
+    projectServiceImpl.calprojectprices(gettingAllSubprojects,projects);
 
     model.addAttribute("projects", projects);
     model.addAttribute("user", user);
