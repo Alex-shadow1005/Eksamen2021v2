@@ -67,11 +67,15 @@
                         -->
                         <td>
 
+                            <a th:href="@{/update-subproject/${subprojectId}}">
+                                <button class="smaller-button" type="submit">Edit</button>
+                            </a>
 
+                            <!--
                             <form action="update-subproject/" method="GET">
                                 <button class="smaller-button" type="submit">Edit</button>
                             </form> </td>
-
+-->
 
                         <td>
                             <a th:href="@{/show/${subprojectId}}" class="btn btn-danger"></a>
