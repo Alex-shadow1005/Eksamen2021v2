@@ -41,6 +41,9 @@ public class SubprojectServiceImpl implements SubprojectService {
         System.out.println("projectid in service here: " + projectid);
         return subprojectRepositoryImpl.showAllSubprojects(projectid);
     }
+    public List<Subproject> gettingAllSubprojects() throws SubProjectErrorMessageException {
+        return subprojectRepositoryImpl.gettingAllSubprojects();
+    }
 
     public void calsubhours(Subproject subproject) throws SubProjectErrorMessageException {
         subproject.calsubhours();
