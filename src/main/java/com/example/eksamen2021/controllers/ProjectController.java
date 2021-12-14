@@ -23,7 +23,7 @@ public interface ProjectController {
   public String updateProject(@ModelAttribute Project project) throws ProjectErrorMessageException;
 
   @GetMapping("/delete-project/{projectId}/{userId}")
-  public String deleteProject(@PathVariable int projectId, @PathVariable int userId, Model model) throws ProjectErrorMessageException;
+  public String deleteProject(@PathVariable int projectId, User user, HttpSession session) throws ProjectErrorMessageException;
 
   @GetMapping("/show/{id}")
   public String showProjects(@PathVariable("id") int id, Model model, User user) throws ProjectErrorMessageException, SubProjectErrorMessageException;

@@ -33,6 +33,7 @@ public class SubprojectServiceImpl implements SubprojectService {
 
     //sletter projectet ud fra dens subId
     public void deleteSubproject(int subprojectId) throws SubProjectErrorMessageException {
+        System.out.println("!!!!!!!!!!!!ServiceDelete!!!!!!!!!!" + subprojectId);
         subprojectRepositoryImpl.deleteSubproject(subprojectId);
     }
 

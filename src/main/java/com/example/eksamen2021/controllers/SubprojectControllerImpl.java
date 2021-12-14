@@ -66,8 +66,12 @@ public class SubprojectControllerImpl implements SubprojectController {
 
   @GetMapping("/delete-subproject/{subprojectId}")
   public String deleteSubproject(@PathVariable int subprojectId) throws SubProjectErrorMessageException {
+    int projectId = subprojectServiceImpl.findSubprojectID(subprojectId).getProjectId();
+    System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!" + projectId);
     subprojectServiceImpl.deleteSubproject(subprojectId);
-    return "show-subprojects";
+    System.out.println("!!!!!!!!!!!!Delete!!!!!!!!!!" + subprojectId);
+
+    return "redirect:/show-subprojects/" + currentProject.getProjectId();
   }
 
   //@Author: Silke
