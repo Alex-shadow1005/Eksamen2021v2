@@ -1,62 +1,73 @@
 package com.example.eksamen2021.domain.models;
 
+import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 public class CalculateHourlyRate {
- /* public void calsubhours3(Subproject subproject) {
+  /* public void calsubhours3(Subproject subproject) {
 
 
-    int subprojecttotalhours = 0;
-    subprojecttotalhours += subproject.getSubprojectSeniordeveloperHours() + subproject.getSubprojectDeveloperHours() + subproject.getSubprojectGraphicHours();
-    subproject.setSubprojectTotalHours(subprojecttotalhours);
+     int subprojecttotalhours = 0;
+     subprojecttotalhours += subproject.getSubprojectSeniordeveloperHours() + subproject.getSubprojectDeveloperHours() + subproject.getSubprojectGraphicHours();
+     subproject.setSubprojectTotalHours(subprojecttotalhours);
 
-    //return subprojecttotalhours;
-  }
+     //return subprojecttotalhours;
+   }
 
-  public void calsubprice3(Subproject subproject) {
+   public void calsubprice3(Subproject subproject) {
 
-    //seniorDeveloper = 1500;
-    int cal1 = subproject.getSubprojectSeniordeveloperHours() * subproject.getSeniorDeveloper();
+     //seniorDeveloper = 1500;
+     int cal1 = subproject.getSubprojectSeniordeveloperHours() * subproject.getSeniorDeveloper();
 
-    //developer = 750;
-    int cal2 = subproject.getSubprojectDeveloperHours() * subproject.getDeveloper();
+     //developer = 750;
+     int cal2 = subproject.getSubprojectDeveloperHours() * subproject.getDeveloper();
 
-    //graphicDesigner = 500;
-    int cal3 = subproject.getSubprojectGraphicHours() * subproject.getGraphicDesigner();
-    int subprojectPrice = cal1 + cal2 + cal3;
+     //graphicDesigner = 500;
+     int cal3 = subproject.getSubprojectGraphicHours() * subproject.getGraphicDesigner();
+     int subprojectPrice = cal1 + cal2 + cal3;
 
 
-    subproject.setSubprojectPrice(subprojectPrice);
+     subproject.setSubprojectPrice(subprojectPrice);
 
-  }
-  */
+   }
+   */
 
   //skal ha alle timer fra sub udfra et project id
-  public void calprojecthours(List<Subproject> subprojects, List<Project> projects) {
-    int projecttotalhours = 0;
-    for (Project ps : projects) {
-      for (Subproject sp : subprojects) {
-        projecttotalhours += sp.getSubprojectTotalHours();
+  public void calprojecthours(List<Subproject> gettingAllSubprojects, List<Project> projects) {
+
+    for (Project project : projects) {
+      int projectID = project.getProjectId();
+      int projecttotalhours = 0;
+      for (Subproject sp : gettingAllSubprojects) {
+        int ProjectIdFromSubproject = sp.getProjectId();
+        if (projectID == ProjectIdFromSubproject) {
+          projecttotalhours += sp.getSubprojectTotalHours();
+        }
+        project.setProjectHours(projecttotalhours);
       }
-      ps.setProjectHours(projecttotalhours);
+
+
     }
-
-
-  }
-
-  public void calprojectprice(List<Subproject> subprojects,List<Project> projects) {
-    int projectotalprice = 0;
-    for (Project ps:projects) {
-      for (Subproject sp : subprojects) {
-        //System.out.println("test af prisudregning. pris = " + sp.getSubprojectPrice());
-        projectotalprice += sp.getSubprojectPrice();
-        //System.out.println("test 2 af udregning: pris = " + sp.getSubprojectPrice());
-      }
-      ps.setProjectPrice(projectotalprice);
-      //System.out.println("totalpris: " + projectotalprice);
-    }
-
   }
 
 
+  public void calprojectprice(List<Subproject> gettingAllSubprojects, List<Project> projects) {
+    for (Project project : projects) {
+      int projectID = project.getProjectId();
+      int projectotalprice = 0;
+      for (Subproject subproject : gettingAllSubprojects) {
+        int ProjectIdFromSubproject = subproject.getProjectId();
+
+        if (projectID == ProjectIdFromSubproject) {
+          projectotalprice += subproject.getSubprojectPrice();
+        }
+        project.setProjectPrice(projectotalprice);
+
+      }
+
+    }
+
+  }
 }
+

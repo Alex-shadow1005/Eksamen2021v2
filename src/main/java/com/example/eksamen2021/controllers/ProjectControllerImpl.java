@@ -18,7 +18,6 @@ import java.util.List;
 @Controller
 public class ProjectControllerImpl implements ProjectController {
   private ProjectServiceImpl projectServiceImpl = new ProjectServiceImpl();
-  private SubprojectRepositoryImpl subprojectRepository = new SubprojectRepositoryImpl();
   private SubprojectServiceImpl subprojectServiceImpl = new SubprojectServiceImpl();
 
 
@@ -102,10 +101,13 @@ public class ProjectControllerImpl implements ProjectController {
 
     List<Project> projects = projectServiceImpl.showAllProjects(id);
     //hvorfor sender den til subprojectRepository unden servise Jens??
-    List<Subproject> subprojects = subprojectRepository.showAllSubprojects(id);
 
-    projectServiceImpl.calprojecthours(subprojects, projects);
-    projectServiceImpl.calprojectprices(subprojects, projects);
+
+    List<Subproject> gettingAllSubprojects = subprojectServiceImpl.gettingAllSubprojects();
+
+    projectServiceImpl.calprojecthours(gettingAllSubprojects, projects);
+    projectServiceImpl.calprojectprices(gettingAllSubprojects, projects);
+
 
     model.addAttribute("projects", projects);
     model.addAttribute("user", user);
