@@ -60,12 +60,12 @@ public class ProjectControllerImpl implements ProjectController {
   }
 
   //sender projct id til projectservice (@Path tager id,et fra urlen og gemmer det??)
-  @GetMapping("/delete-project/{projectId}/{userId}")
-  public String deleteProject(@PathVariable int projectId, @PathVariable int userId, Model model) throws ProjectErrorMessageException {
-    model.addAttribute("projectId", projectId);
-    System.out.println(projectId);
+  @GetMapping("/delete-project/{projectId}")
+  public String deleteProject(@PathVariable int projectId, User user, HttpSession session) throws ProjectErrorMessageException {
+    User usersession = (User) session.getAttribute("session");//jens
+    user.setUserId(usersession.getUserId());
     projectServiceImpl.deleteProject(projectId);
-    return "redirect:/show/" + userId;
+    return "redirect:/show/" + usersession.getUserId();
   }
   //sender projct id til projectservice (@Path tager id,et fra urlen og gemmer det??)
   //@DeleteMapping

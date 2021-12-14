@@ -60,7 +60,7 @@
 
                         <td>
                             <a th:href="|/show-subprojects/${project.projectId}|">
-                                <button type="submit" class="button smaller-button">View subprojects</button>
+                                <button type="submit" class="button smaller-button">View Subprojects</button>
                             </a>
                         </td>
 
@@ -72,10 +72,10 @@
                         </td>
 
                         <td>
-                            <a th:href="@{/show/project.projectId}" class="btn btn-danger"></a>
+                            <a th:href="|/delete-project/${project.projectId}|" class="btn btn-danger">
                             <button th:onclick="'deleteProject(\'' + ${project.projectId} + '\');'"
-                                    class="button smaller-button">Delete
-                            </button>
+                                    class="button smaller-button">Delete</button></a>
+
                         </td>
 
                     </tr>
@@ -249,8 +249,10 @@
 
 <script>
     function deleteProject(projectId) {
+        let array = window.location.pathname.split("/")
+        console.log(array[0])
         if (confirm("Are you sure you wan't to delete this project?")) {
-            location.assign("http://localhost:8080/delete-project/" + projectId)
+            location.assign("http://localhost:8080/testkald/" + projectId)
         }
     }
 </script>

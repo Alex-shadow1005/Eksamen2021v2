@@ -190,7 +190,7 @@ public class SubprojectRepositoryImpl implements SubprojectRepository {
       deleteSubprojectSuccess = ps.executeUpdate();
       if (deleteSubprojectSuccess > 0) {
 
-        System.out.println("Delete Subproject is Successfully.");
+        System.out.println("Delete Subproject is Successfull.");
       } else {
         throw new SubProjectErrorMessageException("Cannot delete Subproject whit Subproject id vedr.SubprojectRepositoryImpl i metode:  public void deleteSubproject ( int subprojectId)");
       }
