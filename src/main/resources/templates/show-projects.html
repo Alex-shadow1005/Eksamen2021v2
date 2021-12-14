@@ -58,14 +58,17 @@
 
 
                         <td>
-                            <!--                            <form action="/show-subprojects/5" method="GET" modelAttribute="project">-->
                             <a th:href="|/show-subprojects/${project.projectId}|">
-                                <button type="submit" class="button smaller-button">Subproject</button>
+                                <button type="submit" class="button smaller-button">View subproject</button>
                             </a>
-                            <!--</form>-->
                         </td>
 
-                        <td><!-- EDIT PROJECT HER --></td>
+                        <td>
+                            <a th:href="@{/update-project/{projectId}(projectId=${project.projectId})}">
+                                <button class="smaller-button">Edit</button>
+                            </a>
+                        </td>
+                        </td>
 
                         <td>
                             <a th:href="@{/show/project.projectId}" class="btn btn-danger"></a>
@@ -75,9 +78,7 @@
 
                     </tr>
 
-                    <!-- <a th:href="|/show-projects/${project.projectId}|">
-                        <button type="submit" class="button smaller-button">Delete</button>
-                    </a> -->
+                  
 
 
                 </table>
