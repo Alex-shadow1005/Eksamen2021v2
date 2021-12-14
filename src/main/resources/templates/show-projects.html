@@ -25,7 +25,7 @@
             <article>
 
                 <table>
-                    <tr>
+                    <tr> <!-- Start of table row with header-->
                         <th>Name</th>
 
                         <th>Description</th>
@@ -42,7 +42,8 @@
 
                     </tr>
 
-                    <tr th:each="project : ${projects}">
+
+                    <tr th:each="project : ${projects}">  <!-- Start of table row with th insert-->
 
                         <!--   <td hidden th:text="${project.userId}"></td> -->
 
@@ -59,7 +60,7 @@
 
                         <td>
                             <a th:href="|/show-subprojects/${project.projectId}|">
-                                <button type="submit" class="button smaller-button">View subproject</button>
+                                <button type="submit" class="button smaller-button">View subprojects</button>
                             </a>
                         </td>
 
@@ -73,13 +74,11 @@
                         <td>
                             <a th:href="@{/show/project.projectId}" class="btn btn-danger"></a>
                             <button th:onclick="'deleteProject(\'' + ${project.projectId} + '\');'"
-                                    class="button smaller-button">Delete</button>
+                                    class="button smaller-button">Delete
+                            </button>
                         </td>
 
                     </tr>
-
-                  
-
 
                 </table>
                 <br>
@@ -98,13 +97,6 @@
 </section>
 
 </div>
-
-<!-- BUTTON
-    <div class="button">
-        <br>
-        <a href="/login-page">
-            <button class="button start-button">Start</button>
-            -->
 
 <!-- FOOTER START -->
 <footer>
@@ -130,8 +122,8 @@
 <!--FOOTER END-->
 </body>
 
-<style>
 
+<style>
     html {
         box-sizing: border-box;
         -ms-text-size-adjust: 100%;
@@ -227,18 +219,6 @@
         opacity: 0.60
     }
 
-    .opacity-off, .hover-opacity-off:hover {
-        opacity: 1
-    }
-
-    .opacity-max {
-        opacity: 0.25
-    }
-
-    .opacity-min {
-        opacity: 0.75
-    }
-
     .center {
         text-align: center !important
     }
@@ -275,63 +255,3 @@
     }
 </script>
 </html>
-
-<!--
-<section>
-    <div class="article-box">
-        <article>
-            <table>
-                <tr>
-                    <th>Name</th>
-                    <th>&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;</th>
-                    <th>Description</th>
-                    <th>&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;</th>
-                    <th>Price</th>
-                </tr>
-                                <tr th:each="project : ${projects}">
-<<<<<<< HEAD
-                                    <td th:text="${project.projectId}"></td>
-                                    <td>&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;</td>
-                                    <td th:text="${project.projectName}"></td>
-=======
-                                    <td th:text="${project.project_name}"></td>
->>>>>>> weekrnd-work
-                                    <td>&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;</td>
-                                    <td th:text="${project.projectDescription}"></td>
-                                    <td>&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;</td>
-                                    <td th:text="${project.projectPrice}"></td>
-                                </tr>
-                </tr>
-            </table>
-            <br>
-            <a th:href="@{/addproject}">
-                <button type="button" style="background-color: cadetblue">Add project</button>
-            </a>
-        </article>
-    </div>
-</section>
--->
-
-<!-- FOOTER START -->
-<!--
-<footer>
-    <div class="row">
-        <div class="column">
-            <h3>Contact Us</h3>
-            <p><a href="mailto:kea@kea.dk">Email Us Here</a></p>
-        </div>
-
-        <div class="column">
-            <h3>About Us</h3>
-            <p>Just three classmates who have fun when working on a project together! :)</p>
-        </div>
-
-        <div class="column">
-            <h3>KEA</h3>
-            <p><a href="https://www.kea.dk" target="_blank">Go visit KEA's website</a></p>
-        </div>
-    </div>
-
-</footer>
--->
-<!--FOOTER END-->
