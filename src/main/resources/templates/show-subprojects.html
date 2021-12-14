@@ -274,7 +274,9 @@
 
 <script>
     function deleteSubproject(subprojectId) {
-        if (confirm("Are you sure you wan't to delete this subproject?")) {
+        let array = window.location.pathname.split("/")
+        console.log(array[0])
+        if (confirm("Are you sure you want to delete this subproject?")) {
             location.assign("http://localhost:8080/delete-subproject/" + subprojectId)
         }
     }

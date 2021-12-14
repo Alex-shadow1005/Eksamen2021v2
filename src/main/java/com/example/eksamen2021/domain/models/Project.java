@@ -3,15 +3,18 @@ package com.example.eksamen2021.domain.models;
 import com.example.eksamen2021.domain.ProjectErrorMessageException;
 
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Project {
+  private Subproject subproject;
   private int userId;
   private int projectId;
   private String projectName;
   private String projectDescription;
   private int projectHours;
   private int projectPrice;
+  //LISTsubproje
 
 
   public Project(String projectName, String projectDescription, int projectHours, int projectPrice) {
@@ -42,48 +45,38 @@ public class Project {
 
   public Project() {
   }
-//information expert jens
-  public void calprojecthours(List<Subproject> subprojects, List<Project> projects) throws ProjectErrorMessageException {
-    int projecttotalhours = 0;
-    for (Project ps : projects) {
 
-      for (Subproject sp : subprojects) {
+  //information expert jens
+  public void calprojecthours(List<Subproject> gettingAllSubprojects, List<Project> projects) {
 
-        projecttotalhours += sp.getSubprojectTotalHours();
+    for (Project project : projects) {
+      int projectID = project.getProjectId();
+      int projecttotalhours = 0;
+      for (Subproject sp : gettingAllSubprojects) {
+        int ProjectIdFromSubproject = sp.getProjectId();
+        if (projectID == ProjectIdFromSubproject) {
+          projecttotalhours += sp.getSubprojectTotalHours();
+        }
+        project.setProjectHours(projecttotalhours);
       }
-      ps.setProjectHours(projecttotalhours);
     }
   }
 
+  public void calprojectprice(List<Subproject> gettingAllSubprojects, List<Project> projects) {
+    for (Project project : projects) {
+      int projectID = project.getProjectId();
+      int projectotalprice = 0;
+      for (Subproject subproject : gettingAllSubprojects) {
+        int ProjectIdFromSubproject = subproject.getProjectId();
 
-
-
-
-
-
-
-
-//information expert jens
-  public void calprojectprices(List<Subproject> subprojects, List<Project> projects) throws ProjectErrorMessageException {
-    int projectotalprice = 0;
-    try {
-      for (Project ps : projects) {
-        for (Subproject sp : subprojects) {
-          projectotalprice += sp.getSubprojectPrice();
+        if (projectID == ProjectIdFromSubproject) {
+          projectotalprice += subproject.getSubprojectPrice();
         }
-        ps.setProjectPrice(projectotalprice);
+        project.setProjectPrice(projectotalprice);
+
       }
 
-        if(projectotalprice==0){
-          throw new ProjectErrorMessageException("Fejl i count addProject  err=");
-        }else {
-          System.out.println();
-        }
-
-    }catch (Exception err){
-      System.out.println(err.getMessage());
     }
-
 
   }
 
