@@ -96,7 +96,6 @@ public class SubprojectControllerImpl implements SubprojectController {
 
   }
 
-  @Override
   public String handleSubProjectError(Model model, Exception exception) {
     model.addAttribute("message", exception.getMessage());
     return "errorMessageExceptions/subproject-error-message-exception";

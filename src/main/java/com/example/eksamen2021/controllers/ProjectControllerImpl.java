@@ -21,48 +21,23 @@ public class ProjectControllerImpl implements ProjectController {
   private SubprojectServiceImpl subprojectServiceImpl = new SubprojectServiceImpl();
 
 
-  //ny ændert Jens kl.15:03 02-12-2021 HttpSession session GET
+
   @GetMapping("/create-project")
   public String addProject(@ModelAttribute Project project, Model model, HttpSession session) throws ProjectErrorMessageException {
     model.addAttribute("project", project);
-    User usersession = (User) session.getAttribute("session");//jens
+    User usersession = (User) session.getAttribute("session");
     model.addAttribute("sessionID", usersession.getUserId());
-
-    System.out.println(project.getProjectName() + project.getProjectDescription() + project.getProjectPrice());
     return "create-project";
-  }//før ændert Jens kl.14:33 03-12-2021
-
-  /*  @GetMapping("/create-project")
-    public String addProject(@ModelAttribute Project project, Model model) throws ErrorMessageException {
-      model.addAttribute("project", project);
-      model.addAttribute("sessionID", UserControllerImpl.session.getUserId());
-      System.out.println(project.getProjectName() + project.getProjectDescription() + project.getProjectPrice());
-      return "create-project";
-    } */
-//ny ændert Jens kl.1 02-12-2021 HttpSession session POST
-  /*@PostMapping("/create-project")
-  public String createProject(@ModelAttribute Project project, User user, Model model,HttpSession session) throws ErrorMessageException {
-    model.addAttribute("project", project);
-    User usersession = (User) session.getAttribute("session");//jens
-    user.setUserId(usersession.getUserId());
-    projectService.createProject(project, user);
-    return "redirect:/show/" + usersession.getUserId();
-  }//før ændert Jens kl.14:33 03-12-2021
-/* @PostMapping("/create-project")
-  public String createProject(@ModelAttribute Project project, User user, Model model) throws ErrorMessageException {
-    model.addAttribute("project", project);
-    user.setUserId(UserControllerImpl.session.getUserId());
-    projectService.createProject(project, user);
-    return "redirect:/show/" + UserControllerImpl.session.getUserId();
   }
 
- */
-//ny ændert alex kl.15:03 02-12-2021 HttpSession session POST
+
   @PostMapping("/create-project")
   public String createProject(@ModelAttribute Project project, User user, Model model, HttpSession session) throws ProjectErrorMessageException {
     model.addAttribute("project", project);
-    User usersession = (User) session.getAttribute("session");//jens
+
+    User usersession = (User) session.getAttribute("session");
     user.setUserId(usersession.getUserId());
+
     projectServiceImpl.createProject(project, user);
     return "redirect:/show/" + usersession.getUserId();
   }
@@ -100,14 +75,10 @@ public class ProjectControllerImpl implements ProjectController {
   public String showProjects(@PathVariable("id") int id, Model model, User user) throws ProjectErrorMessageException, SubProjectErrorMessageException {
 
     List<Project> projects = projectServiceImpl.showAllProjects(id);
-    //hvorfor sender den til subprojectRepository unden servise Jens??
-
-
     List<Subproject> gettingAllSubprojects = subprojectServiceImpl.gettingAllSubprojects();
 
     projectServiceImpl.calprojecthours(gettingAllSubprojects, projects);
     projectServiceImpl.calprojectprices(gettingAllSubprojects, projects);
-
 
     model.addAttribute("projects", projects);
     model.addAttribute("user", user);
