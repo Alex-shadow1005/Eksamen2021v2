@@ -52,7 +52,7 @@ public class SubprojectControllerImpl implements SubprojectController {
     Subproject subproject = subprojectServiceImpl.findSubprojectID(subprojectId);
     System.out.println("Efter service i UPDATE: id = " + subprojectId);
     model.addAttribute("subproject", subproject);
-    return "update";
+    return "update-subproject";
   }
 
   //Post

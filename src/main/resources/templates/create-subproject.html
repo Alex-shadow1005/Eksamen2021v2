@@ -11,7 +11,7 @@
 
 <body>
 
-<div class="container content center padding-64" style="max-width:1000px" id="band">
+<div class="container content center padding-64" style="max-width:1000px">
     <h2 class="wide">ADD SUBPROJECT</h2>
     <p class="opacity"><i>Add a new subproject to your subproject-list</i></p>
 </div>
@@ -26,21 +26,19 @@
 
                 </div>
 
-            <table>
-                <tr>
-                    <th>Subproject name</th>
-                    <th>Description</th>
-                    <th>Senior developer hours</th>
-                    <th>Developer hours</th>
-                    <th>Graphic designer hours</th>
-                </tr>
+                <table>
+                    <tr>
+                        <th>Subproject name</th>
+                        <th>Description</th>
+                        <th>Senior developer hours</th>
+                        <th>Developer hours</th>
+                        <th>Graphic designer hours</th>
+                    </tr>
 
 
-
-
-<tr>
+                    <tr>
                         <td hidden><input type="text" th:field="*{subprojectId}"
-                                   placeholder="Subproject ID"></td>
+                                          placeholder="Subproject ID"></td>
 
                         <td hidden><input type="text" th:value="*{projectId}"
                                           placeholder="Project ID"></td>
@@ -66,23 +64,20 @@
 
                         <!--Vil gerne have lavet description input feltet om, så det kan være større (en boks)-->
 
-                        <!-- skal ikke have pris, vel?
-                        <input type="text" th:field="*{project_price}"
-                               placeholder="Price">-->
-</tr>
+                    </tr>
 
 
-
-
-            </table>
+                </table>
                 <br>
                 <br>
-            <button type="reset" class="cancel-button">Clear form</button>
+                <button type="reset" class="cancel-button">Clear form</button>
+
                 <!-- til senere implementering, hvis der er tid
                 <a th:href="|/show-subprojects/${userId}|">
                     <button type="button" class="start-button">Go back</button>
                 </a> -->
-            <button type="submit" class="start-button">Add Project</button>
+
+                <button type="submit" class="start-button">Add subproject</button>
             </form>
 
             <br>
@@ -91,7 +86,7 @@
         </article>
         <br>
         <br>
-        <!-- Virker ikke endnu
+        <!-- Til senere implementering
         <a href="/show/">
         <button type="button" class="cancel-button">Go Back</button>
         </a>-->
@@ -104,7 +99,7 @@
 <footer>
     <div class="row">
         <div class="column">
-            <h3> </h3>
+            <h3></h3>
             <br>
             <br>
             <br>
@@ -130,27 +125,3 @@
 </body>
 </html>
 
-
-<!-- FOOTER START
-
-<footer>
-    <div class="row">
-        <div class="column">
-            <h3>Contact Us</h3>
-            <p> <a href="mailto:kea@kea.dk">Email Us Here</a> </p>
-        </div>
-
-        <div class="column">
-            <h3>About Us</h3>
-            <p>Just three classmates who have fun when working on a project together! :)</p>
-        </div>
-
-        <div class="column">
-            <h3>KEA</h3>
-            <p> <a href="https://www.kea.dk" target="_blank">Go visit KEA's website</a> </p>
-        </div>
-    </div>
-
-</footer>
-
-FOOTER END-->
