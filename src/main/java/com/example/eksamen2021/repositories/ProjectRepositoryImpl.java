@@ -154,7 +154,7 @@ public class ProjectRepositoryImpl implements ProjectRepository {
   }
 
 
-  //@Author: Kristian
+  //@Author: Kristian + Alex
   public void deleteProject(int projectId) throws ProjectErrorMessageException {
 
     String mySql;

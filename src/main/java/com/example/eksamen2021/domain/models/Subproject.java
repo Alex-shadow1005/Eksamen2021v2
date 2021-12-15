@@ -82,6 +82,7 @@ public class Subproject {
   }
 
   //information expert jens
+  //@Author: Alex + jens
   public void calsubhours() throws SubProjectErrorMessageException {
     int subprojecttotalhours = 0;
     subprojecttotalhours += getSubprojectSeniordeveloperHours() + getSubprojectDeveloperHours() + getSubprojectGraphicHours();
@@ -91,6 +92,7 @@ public class Subproject {
   }
 
   //information expert jens
+  //@Author: Alex + jens
   public void calsubprice() throws SubProjectErrorMessageException {
     try {
       //seniorDeveloper = 1500;

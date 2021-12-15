@@ -172,7 +172,7 @@ public class SubprojectRepositoryImpl implements SubprojectRepository {
 
   }
 
-  //@Author: Kristian
+  //@Author: Kristian + Alex
   //Sletter et subProject
   public void deleteSubproject(int subprojectId) throws SubProjectErrorMessageException {
     String mySql;
