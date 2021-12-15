@@ -21,7 +21,7 @@ public class UserRepositoryImplTest {
 
   @Test
   public void createUser_GivenCorrectUserInfo() throws UserErrorMessageException {
-
+    //Arrange/DK:Arranger
     User user = new User("someone@AlphaSolutions.dk", "1234", "Yes");
     //Act/DK:Handling
     User newUser = userRepository.createUser(user);
@@ -36,7 +36,7 @@ public class UserRepositoryImplTest {
   @Test
   public void createUser_UserEmailAlreadyExisting_ShouldThrowUserErrorMessageException() throws UserErrorMessageException {
 
-    //Arrange
+    //Arrange/DK:Arranger
     User user = new User("EmailAlreadyExisting@AlphaSolutions.dk", "1234", "Yes");
     //Act/DK:Handling
     // userRepository.createUser(user);
@@ -47,8 +47,11 @@ public class UserRepositoryImplTest {
 
   @Test
   public void validateUser_GivenCorrectUserInfo() throws UserErrorMessageException {
+    //Arrange/DK:Arranger
     User user = new User("validateUser@AlphaSolutions.dk", "1234", "Yes Test");
+    //Act/DK:Handling
     User newUser = userRepository.validateUser(user);
+    //Assert/DK:Påstå
     assertNotNull(user);
     assertEquals("validateUser@AlphaSolutions.dk", newUser.getUserEmail());
     assertEquals("1234", newUser.getUserPassword());
@@ -56,8 +59,9 @@ public class UserRepositoryImplTest {
 
   @Test
   public void validateUser_EmailDoesNotExisting_ShouldThrowUserErrorMessageException() throws UserErrorMessageException {
+    //Arrange/DK:Arranger
     User user = new User("validateUser@EmailDoesNotExisting.dk", "1234", "Yes Test");
-
+    //OBS   Assert/DK:Påstå og Act/DK:Handling liger på sammen line
     assertThrows(UserErrorMessageException.class, () -> userRepository.validateUser(user), "UserEmail & UserPassword is Not validate login OBS  vedr. UserRepositoryImpl i metode = public User validateUser(User user) ");
   }
 
