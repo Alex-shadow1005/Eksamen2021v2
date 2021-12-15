@@ -12,8 +12,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ProjectRepositoryImpl implements ProjectRepository {
-  private Project project;
 
+
+  //@Author: Silke + Jens (Exception)
   //TILFØJER ET PROJEKT TIL BRUGERENS PROJEKTLISTE
   public int createProject(Project project, User user) throws ProjectErrorMessageException {
     String mySql;
@@ -46,6 +47,7 @@ public class ProjectRepositoryImpl implements ProjectRepository {
     return createProjectSuccess; //returnerer brugeren til Service
   }
 
+  //@Author: Jens
   @Override
   public Project findProjectID(int projectId) throws ProjectErrorMessageException {
 
@@ -97,6 +99,7 @@ public class ProjectRepositoryImpl implements ProjectRepository {
   }
 
 
+  //@Author: Jens
   @Override
   public void updateProject(Project project) throws ProjectErrorMessageException {
     String mysql;
@@ -150,6 +153,7 @@ public class ProjectRepositoryImpl implements ProjectRepository {
   }
 
 
+  //@Author: Kristian + Alex
   public void deleteProject(int projectId) throws ProjectErrorMessageException {
 
     String mySql;
@@ -181,6 +185,7 @@ public class ProjectRepositoryImpl implements ProjectRepository {
     }
   }
 
+  //@Author: Silke
   //VISER ALLE PROJEKTERNE PÅ BRUGERENS PROJEKTLISTE
   public List<Project> showAllProjects(int id) throws ProjectErrorMessageException {
     ArrayList<Project> projects = new ArrayList<>();

@@ -13,8 +13,8 @@
 <body>
 
 
-<div class="container content center padding-64" style="max-width:800px" id="band"> <!--<p th:object="${user}">-->
-    <h2 class="wide">Welcome </h2><!--<h2 class="wide" th:text="${user.getUserUsername()}"></h2>-->
+<div class="container content center padding-64" style="max-width:800px"> <!--<h2 th:object="${user}"></h2>-->
+    <h2 class="wide">Welcome </h2> <!--<h2 class="wide" th:text="${user.userUsername}"></h2>-->
     <h2 class="wide">YOUR PROJECTS</h2>
     <p class="opacity"><i>An overview of your projects</i></p>
     <p>Here you can see, edit and delete your current projects.</p><br>
@@ -252,7 +252,7 @@
         let array = window.location.pathname.split("/")
         console.log(array[0])
         if (confirm("Are you sure you wan't to delete this project?")) {
-            location.assign("http://localhost:8080/testkald/" + projectId)
+            location.assign("http://localhost:8080/show/" + projectId)
         }
     }
 </script>

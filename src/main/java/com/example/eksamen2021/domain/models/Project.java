@@ -47,6 +47,7 @@ public class Project {
   }
 
   //information expert jens
+  //@Author: Alex + jens
   public void calprojecthours(List<Subproject> gettingAllSubprojects, List<Project> projects) {
 
     for (Project project : projects) {
@@ -61,7 +62,7 @@ public class Project {
       }
     }
   }
-
+  //@Author: Alex + jens
   public void calprojectprice(List<Subproject> gettingAllSubprojects, List<Project> projects) {
     for (Project project : projects) {
       int projectID = project.getProjectId();
