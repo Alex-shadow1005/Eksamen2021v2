@@ -14,6 +14,7 @@ import java.util.List;
 
 public class SubprojectRepositoryImpl implements SubprojectRepository {
 
+  //@Author: Silke + Jens (Exception)
   //TILFØJER ET SUBPROJEKT TIL BRUGERENS SUBPROJEKTLISTE
   public int createSubproject(Project project, Subproject subproject) throws SubProjectErrorMessageException {
     String mySql;
@@ -51,8 +52,8 @@ public class SubprojectRepositoryImpl implements SubprojectRepository {
     return createSubprojectSuccess; //returnerer brugeren til Service
   }
 
+  //@Author: Jens
   public Subproject findSubprojectID(int subprojectId) throws SubProjectErrorMessageException {
-
 
     String mysql;
     PreparedStatement ps;
@@ -105,6 +106,7 @@ public class SubprojectRepositoryImpl implements SubprojectRepository {
   }
 
 
+  //@Author: Jens
   public void updateSubproject(Subproject subproject) throws SubProjectErrorMessageException {
 
     String mysql;
@@ -170,6 +172,7 @@ public class SubprojectRepositoryImpl implements SubprojectRepository {
 
   }
 
+  //@Author: Kristian
   //Sletter et subProject
   public void deleteSubproject(int subprojectId) throws SubProjectErrorMessageException {
     String mySql;
@@ -202,6 +205,7 @@ public class SubprojectRepositoryImpl implements SubprojectRepository {
 
   }
 
+  //@Author: Silke
   //VISER ALLE SUBPROJEKTER DER HØRER TIL PROJEKT-ID'EN
   public List<Subproject> showAllSubprojects(int id) throws SubProjectErrorMessageException {
     PreparedStatement ps;
@@ -236,6 +240,7 @@ public class SubprojectRepositoryImpl implements SubprojectRepository {
 
   }
 
+  //@Author: Jens
   //VISER ALLE SUBPROJEKTER DER HØRER TIL PROJEKT-ID'EN
   public List<Subproject> gettingAllSubprojects() throws SubProjectErrorMessageException {
     PreparedStatement ps;
