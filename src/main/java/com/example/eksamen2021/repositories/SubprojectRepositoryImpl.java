@@ -1,7 +1,6 @@
 package com.example.eksamen2021.repositories;
 
 import com.example.eksamen2021.domain.SubProjectErrorMessageException;
-import com.example.eksamen2021.domain.UserErrorMessageException;
 import com.example.eksamen2021.domain.models.Project;
 import com.example.eksamen2021.domain.models.Subproject;
 
@@ -22,7 +21,7 @@ public class SubprojectRepositoryImpl implements SubprojectRepository {
 
     try {
       //1. Get a connection to database
-      Connection con = DBManager.getConnection();
+      Connection con = DBManager.getInstanceConnection();
       //2. Prepare statement
       mySql = "INSERT INTO subprojects (project_id, subproject_name, subproject_description, subproject_seniordeveloper_hours, subproject_developer_hours, subproject_graphic_hours, subproject_price, subproject_total_hours) VALUES (?, ?, ?, ?, ?, ?,?,?)";
 
@@ -39,7 +38,7 @@ public class SubprojectRepositoryImpl implements SubprojectRepository {
 
       //4. Execute SQL query
       createSubprojectSuccess = ps.executeUpdate();
-      if (createSubprojectSuccess > 0) {
+      if (createSubprojectSuccess == 0) {
         System.out.println("Subproject added");
       } else {
         throw new SubProjectErrorMessageException("OBS cant not create Subproject  vedr.SubprojectRepositoryImpl metode: = public int createSubproject(Project project, Subproject subproject)  ");
@@ -59,7 +58,7 @@ public class SubprojectRepositoryImpl implements SubprojectRepository {
     Subproject findSubproject = null;
     try {
       //1. Get a connection to database
-      Connection con = DBManager.getConnection();
+      Connection con = DBManager.getInstanceConnection();
 
       //2. Prepare statement
       mysql = "SELECT * FROM subprojects WHERE subproject_id = ?";
@@ -113,7 +112,7 @@ public class SubprojectRepositoryImpl implements SubprojectRepository {
 
     try {
       //1. Get a connection to database
-      Connection con = DBManager.getConnection();
+      Connection con = DBManager.getInstanceConnection();
 
       //2. Prepare statement
 
@@ -156,7 +155,7 @@ public class SubprojectRepositoryImpl implements SubprojectRepository {
       upateSubprojectSuccess = ps.executeUpdate();
 
 
-      if (upateSubprojectSuccess > 0) {
+      if (upateSubprojectSuccess == 0) {
 
         System.out.println("Udate Subproject is Successfully.");
       } else {
@@ -178,7 +177,7 @@ public class SubprojectRepositoryImpl implements SubprojectRepository {
 
     try {
       //1. Get a connection to database
-      Connection con = DBManager.getConnection();
+      Connection con = DBManager.getInstanceConnection();
       //2. Prepare statement
       mySql = "DELETE FROM subprojects where subproject_id=?";
 
@@ -188,7 +187,7 @@ public class SubprojectRepositoryImpl implements SubprojectRepository {
 
       //4. Execute SQL query
       deleteSubprojectSuccess = ps.executeUpdate();
-      if (deleteSubprojectSuccess > 0) {
+      if (deleteSubprojectSuccess == 0) {
 
         System.out.println("Delete Subproject is Successfull.");
       } else {
@@ -207,7 +206,7 @@ public class SubprojectRepositoryImpl implements SubprojectRepository {
     PreparedStatement ps;
     ArrayList<Subproject> subprojects = new ArrayList<>();
     try {
-      Connection con = DBManager.getConnection();
+      Connection con = DBManager.getInstanceConnection();
       String SQL = "SELECT * FROM subprojects WHERE project_id = ?";
 
       System.out.println("test i repo: + id =" + id);
@@ -241,7 +240,7 @@ public class SubprojectRepositoryImpl implements SubprojectRepository {
     PreparedStatement ps;
     ArrayList<Subproject> subprojects = new ArrayList<>();
     try {
-      Connection con = DBManager.getConnection();
+      Connection con = DBManager.getInstanceConnection();
       String SQL = "SELECT * FROM subprojects";
 
       ps = con.prepareStatement(SQL);

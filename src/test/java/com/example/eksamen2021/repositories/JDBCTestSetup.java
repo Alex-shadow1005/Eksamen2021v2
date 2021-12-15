@@ -14,7 +14,7 @@ public class JDBCTestSetup {
   //DELETE FROM `heroku_dd9ca97e9e588ce`.`users` WHERE (`user_email` = 'someone@AlphaSolutions.dk');
   public void setUpJDBCT() {
     try {
-      Connection connection = DBManager.getConnection();
+      Connection connection = DBManager.getInstanceConnection();
       Statement SQLstatementTest = connection.createStatement();
       // start transaction
       connection.setAutoCommit(false);
