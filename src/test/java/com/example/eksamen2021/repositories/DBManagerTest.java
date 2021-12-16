@@ -8,7 +8,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class DBManagerTest {
 
-
   @Test
   public void test_getConnectionToDatebase() {
     Connection connection_test = DBManager.getInstanceConnection();

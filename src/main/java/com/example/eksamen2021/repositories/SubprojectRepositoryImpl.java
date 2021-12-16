@@ -39,7 +39,7 @@ public class SubprojectRepositoryImpl implements SubprojectRepository {
 
       //4. Execute SQL query
       createSubprojectSuccess = ps.executeUpdate();
-      if (createSubprojectSuccess == 0) {
+      if (createSubprojectSuccess == 1) {
         System.out.println("Subproject added");
       } else {
         throw new SubProjectErrorMessageException("OBS cant not create Subproject  vedr.SubprojectRepositoryImpl metode: = public int createSubproject(Project project, Subproject subproject)  ");
@@ -157,7 +157,7 @@ public class SubprojectRepositoryImpl implements SubprojectRepository {
       upateSubprojectSuccess = ps.executeUpdate();
 
 
-      if (upateSubprojectSuccess == 0) {
+      if (upateSubprojectSuccess == 1) {
 
         System.out.println("Udate Subproject is Successfully.");
       } else {
@@ -190,7 +190,7 @@ public class SubprojectRepositoryImpl implements SubprojectRepository {
 
       //4. Execute SQL query
       deleteSubprojectSuccess = ps.executeUpdate();
-      if (deleteSubprojectSuccess == 0) {
+      if (deleteSubprojectSuccess == 1) {
 
         System.out.println("Delete Subproject is Successfull.");
       } else {

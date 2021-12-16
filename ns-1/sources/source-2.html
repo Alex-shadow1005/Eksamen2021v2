@@ -76,20 +76,20 @@ Current scope:     <a href="../../index.html">all classes</a>
 <div class="sourceCode" id="sourceCode"><i class="no-highlight">1</i>&nbsp;package com.example.eksamen2021.repositories;
 <i class="no-highlight">2</i>&nbsp;
 <i class="no-highlight">3</i>&nbsp;import com.example.eksamen2021.domain.ProjectErrorMessageException;
-<i class="no-highlight">4</i>&nbsp;import com.example.eksamen2021.domain.SubProjectErrorMessageException;
-<i class="no-highlight">5</i>&nbsp;import com.example.eksamen2021.domain.models.Project;
-<i class="no-highlight">6</i>&nbsp;import com.example.eksamen2021.domain.models.User;
-<i class="no-highlight">7</i>&nbsp;
-<i class="no-highlight">8</i>&nbsp;import java.sql.Connection;
-<i class="no-highlight">9</i>&nbsp;import java.sql.PreparedStatement;
-<i class="no-highlight">10</i>&nbsp;import java.sql.ResultSet;
-<i class="no-highlight">11</i>&nbsp;import java.sql.SQLException;
-<i class="no-highlight">12</i>&nbsp;import java.util.ArrayList;
-<i class="no-highlight">13</i>&nbsp;import java.util.List;
-<i class="no-highlight">14</i>&nbsp;
-<b class="nc"><i class="no-highlight">15</i>&nbsp;public class ProjectRepositoryImpl implements ProjectRepository {</b>
-<i class="no-highlight">16</i>&nbsp;  private Project project;
-<i class="no-highlight">17</i>&nbsp;
+<i class="no-highlight">4</i>&nbsp;import com.example.eksamen2021.domain.models.Project;
+<i class="no-highlight">5</i>&nbsp;import com.example.eksamen2021.domain.models.User;
+<i class="no-highlight">6</i>&nbsp;
+<i class="no-highlight">7</i>&nbsp;import java.sql.Connection;
+<i class="no-highlight">8</i>&nbsp;import java.sql.PreparedStatement;
+<i class="no-highlight">9</i>&nbsp;import java.sql.ResultSet;
+<i class="no-highlight">10</i>&nbsp;import java.sql.SQLException;
+<i class="no-highlight">11</i>&nbsp;import java.util.ArrayList;
+<i class="no-highlight">12</i>&nbsp;import java.util.List;
+<i class="no-highlight">13</i>&nbsp;
+<b class="nc"><i class="no-highlight">14</i>&nbsp;public class ProjectRepositoryImpl implements ProjectRepository {</b>
+<i class="no-highlight">15</i>&nbsp;
+<i class="no-highlight">16</i>&nbsp;
+<i class="no-highlight">17</i>&nbsp;  //@Author: Silke + Jens (Exception)
 <i class="no-highlight">18</i>&nbsp;  //TILFØJER ET PROJEKT TIL BRUGERENS PROJEKTLISTE
 <i class="no-highlight">19</i>&nbsp;  public int createProject(Project project, User user) throws ProjectErrorMessageException {
 <i class="no-highlight">20</i>&nbsp;    String mySql;
@@ -98,7 +98,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 <i class="no-highlight">23</i>&nbsp;
 <i class="no-highlight">24</i>&nbsp;    try {
 <i class="no-highlight">25</i>&nbsp;      //1. Get a connection to database
-<b class="nc"><i class="no-highlight">26</i>&nbsp;      Connection con = DBManager.getConnection();</b>
+<b class="nc"><i class="no-highlight">26</i>&nbsp;      Connection con = DBManager.getInstanceConnection();</b>
 <i class="no-highlight">27</i>&nbsp;      //2. Prepare statement
 <b class="nc"><i class="no-highlight">28</i>&nbsp;      mySql = &quot;INSERT INTO projects (user_id, project_name, project_description) VALUES (?, ?, ?)&quot;;</b>
 <i class="no-highlight">29</i>&nbsp;
@@ -122,7 +122,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 <b class="nc"><i class="no-highlight">47</i>&nbsp;    return createProjectSuccess; //returnerer brugeren til Service</b>
 <i class="no-highlight">48</i>&nbsp;  }
 <i class="no-highlight">49</i>&nbsp;
-<i class="no-highlight">50</i>&nbsp;  @Override
+<i class="no-highlight">50</i>&nbsp;  //@Author: Jens
 <i class="no-highlight">51</i>&nbsp;  public Project findProjectID(int projectId) throws ProjectErrorMessageException {
 <i class="no-highlight">52</i>&nbsp;
 <i class="no-highlight">53</i>&nbsp;    String mysql;
@@ -130,7 +130,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 <b class="nc"><i class="no-highlight">55</i>&nbsp;    Project findProject = null;</b>
 <i class="no-highlight">56</i>&nbsp;    try {
 <i class="no-highlight">57</i>&nbsp;      //1. Get a connection to database
-<b class="nc"><i class="no-highlight">58</i>&nbsp;      Connection con = DBManager.getConnection();</b>
+<b class="nc"><i class="no-highlight">58</i>&nbsp;      Connection con = DBManager.getInstanceConnection();</b>
 <i class="no-highlight">59</i>&nbsp;
 <i class="no-highlight">60</i>&nbsp;      //2. Prepare statement
 <b class="nc"><i class="no-highlight">61</i>&nbsp;      mysql = &quot;SELECT * FROM projects WHERE project_id = ?&quot;;</b>
@@ -173,117 +173,120 @@ Current scope:     <a href="../../index.html">all classes</a>
 <i class="no-highlight">98</i>&nbsp;  }
 <i class="no-highlight">99</i>&nbsp;
 <i class="no-highlight">100</i>&nbsp;
-<i class="no-highlight">101</i>&nbsp;  @Override
-<i class="no-highlight">102</i>&nbsp;  public void updateProject(Project project) throws ProjectErrorMessageException {
-<i class="no-highlight">103</i>&nbsp;    String mysql;
-<i class="no-highlight">104</i>&nbsp;    PreparedStatement ps;
-<b class="nc"><i class="no-highlight">105</i>&nbsp;    int upateProjectSuccess = 0;</b>
-<i class="no-highlight">106</i>&nbsp;    try {
-<i class="no-highlight">107</i>&nbsp;      //1. Get a connection to database
-<b class="nc"><i class="no-highlight">108</i>&nbsp;      Connection con = DBManager.getConnection();</b>
-<i class="no-highlight">109</i>&nbsp;
-<i class="no-highlight">110</i>&nbsp;      //2. Prepare statement
-<i class="no-highlight">111</i>&nbsp;
+<i class="no-highlight">101</i>&nbsp;  //@Author: Jens
+<i class="no-highlight">102</i>&nbsp;
+<i class="no-highlight">103</i>&nbsp;  public void updateProject(Project project) throws ProjectErrorMessageException {
+<i class="no-highlight">104</i>&nbsp;    String mysql;
+<i class="no-highlight">105</i>&nbsp;    PreparedStatement ps;
+<b class="nc"><i class="no-highlight">106</i>&nbsp;    int upateProjectSuccess = 0;</b>
+<i class="no-highlight">107</i>&nbsp;    try {
+<i class="no-highlight">108</i>&nbsp;      //1. Get a connection to database
+<b class="nc"><i class="no-highlight">109</i>&nbsp;      Connection con = DBManager.getInstanceConnection();</b>
+<i class="no-highlight">110</i>&nbsp;
+<i class="no-highlight">111</i>&nbsp;      //2. Prepare statement
 <i class="no-highlight">112</i>&nbsp;
-<b class="nc"><i class="no-highlight">113</i>&nbsp;      mysql = &quot;UPDATE projects SET\n&quot; +</b>
-<i class="no-highlight">114</i>&nbsp;          &quot; project_name = ?,\n&quot; +
-<i class="no-highlight">115</i>&nbsp;          &quot; project_description = ?,\n&quot; +
-<i class="no-highlight">116</i>&nbsp;          &quot; project_hours = ?\n,&quot; +
-<i class="no-highlight">117</i>&nbsp;          &quot; project_price = ?\n&quot; +
-<i class="no-highlight">118</i>&nbsp;          &quot;WHERE project_id = ?;\n&quot;;
-<i class="no-highlight">119</i>&nbsp;
-<i class="no-highlight">120</i>&nbsp;      //&quot;WHERE subproject_id = &quot; + subproject.getSubprojectId(); // 8*
-<i class="no-highlight">121</i>&nbsp;
+<i class="no-highlight">113</i>&nbsp;
+<b class="nc"><i class="no-highlight">114</i>&nbsp;      mysql = &quot;UPDATE projects SET\n&quot; +</b>
+<i class="no-highlight">115</i>&nbsp;          &quot; project_name = ?,\n&quot; +
+<i class="no-highlight">116</i>&nbsp;          &quot; project_description = ?,\n&quot; +
+<i class="no-highlight">117</i>&nbsp;          &quot; project_hours = ?\n,&quot; +
+<i class="no-highlight">118</i>&nbsp;          &quot; project_price = ?\n&quot; +
+<i class="no-highlight">119</i>&nbsp;          &quot;WHERE project_id = ?;\n&quot;;
+<i class="no-highlight">120</i>&nbsp;
+<i class="no-highlight">121</i>&nbsp;      //&quot;WHERE subproject_id = &quot; + subproject.getSubprojectId(); // 8*
 <i class="no-highlight">122</i>&nbsp;
-<b class="nc"><i class="no-highlight">123</i>&nbsp;      ps = con.prepareStatement(mysql);</b>
-<i class="no-highlight">124</i>&nbsp;
-<i class="no-highlight">125</i>&nbsp;      //3. Set the parameters
-<i class="no-highlight">126</i>&nbsp;      // 1 project_name = ?
-<b class="nc"><i class="no-highlight">127</i>&nbsp;      ps.setString(1, project.getProjectName());</b>
-<i class="no-highlight">128</i>&nbsp;      // 2 project_description = ?
-<b class="nc"><i class="no-highlight">129</i>&nbsp;      ps.setString(2, project.getProjectDescription());</b>
-<i class="no-highlight">130</i>&nbsp;      // 3 project_hours = ?
-<b class="nc"><i class="no-highlight">131</i>&nbsp;      ps.setInt(3, project.getProjectHours());</b>
-<i class="no-highlight">132</i>&nbsp;      // 4 project_price = ?
-<b class="nc"><i class="no-highlight">133</i>&nbsp;      ps.setInt(4, project.getProjectPrice());</b>
-<i class="no-highlight">134</i>&nbsp;      // 5 WHERE project_id = ?
-<b class="nc"><i class="no-highlight">135</i>&nbsp;      ps.setInt(5, project.getProjectId());</b>
-<i class="no-highlight">136</i>&nbsp;
-<i class="no-highlight">137</i>&nbsp;      //4. Execute SQL query
-<b class="nc"><i class="no-highlight">138</i>&nbsp;      upateProjectSuccess = ps.executeUpdate();</b>
-<i class="no-highlight">139</i>&nbsp;
+<i class="no-highlight">123</i>&nbsp;
+<b class="nc"><i class="no-highlight">124</i>&nbsp;      ps = con.prepareStatement(mysql);</b>
+<i class="no-highlight">125</i>&nbsp;
+<i class="no-highlight">126</i>&nbsp;      //3. Set the parameters
+<i class="no-highlight">127</i>&nbsp;      // 1 project_name = ?
+<b class="nc"><i class="no-highlight">128</i>&nbsp;      ps.setString(1, project.getProjectName());</b>
+<i class="no-highlight">129</i>&nbsp;      // 2 project_description = ?
+<b class="nc"><i class="no-highlight">130</i>&nbsp;      ps.setString(2, project.getProjectDescription());</b>
+<i class="no-highlight">131</i>&nbsp;      // 3 project_hours = ?
+<b class="nc"><i class="no-highlight">132</i>&nbsp;      ps.setInt(3, project.getProjectHours());</b>
+<i class="no-highlight">133</i>&nbsp;      // 4 project_price = ?
+<b class="nc"><i class="no-highlight">134</i>&nbsp;      ps.setInt(4, project.getProjectPrice());</b>
+<i class="no-highlight">135</i>&nbsp;      // 5 WHERE project_id = ?
+<b class="nc"><i class="no-highlight">136</i>&nbsp;      ps.setInt(5, project.getProjectId());</b>
+<i class="no-highlight">137</i>&nbsp;
+<i class="no-highlight">138</i>&nbsp;      //4. Execute SQL query
+<b class="nc"><i class="no-highlight">139</i>&nbsp;      upateProjectSuccess = ps.executeUpdate();</b>
 <i class="no-highlight">140</i>&nbsp;
-<b class="nc"><i class="no-highlight">141</i>&nbsp;      if (upateProjectSuccess &gt; 0) {</b>
-<b class="nc"><i class="no-highlight">142</i>&nbsp;        System.out.println(&quot;Udate Subproject is Successfully.&quot;);</b>
-<i class="no-highlight">143</i>&nbsp;      } else {
-<b class="nc"><i class="no-highlight">144</i>&nbsp;        throw new ProjectErrorMessageException(&quot;Cannot updates project whit project id vedr.ProjectRepositoryImpl i metode: public void updateProject (Project project)&quot;);</b>
-<i class="no-highlight">145</i>&nbsp;      }
-<i class="no-highlight">146</i>&nbsp;
-<i class="no-highlight">147</i>&nbsp;      //5. Display the result set
-<b class="nc"><i class="no-highlight">148</i>&nbsp;    } catch (SQLException err) {</b>
-<b class="nc"><i class="no-highlight">149</i>&nbsp;      throw new ProjectErrorMessageException(err.getMessage());</b>
-<b class="nc"><i class="no-highlight">150</i>&nbsp;    }</b>
-<i class="no-highlight">151</i>&nbsp;  }
-<i class="no-highlight">152</i>&nbsp;
+<i class="no-highlight">141</i>&nbsp;
+<b class="nc"><i class="no-highlight">142</i>&nbsp;      if (upateProjectSuccess == 1) {</b>
+<b class="nc"><i class="no-highlight">143</i>&nbsp;        System.out.println(&quot;Udate Subproject is Successfully.&quot;);</b>
+<i class="no-highlight">144</i>&nbsp;      } else {
+<b class="nc"><i class="no-highlight">145</i>&nbsp;        throw new ProjectErrorMessageException(&quot;Cannot updates project whit project id vedr.ProjectRepositoryImpl i metode: public void updateProject (Project project)&quot;);</b>
+<i class="no-highlight">146</i>&nbsp;      }
+<i class="no-highlight">147</i>&nbsp;
+<i class="no-highlight">148</i>&nbsp;      //5. Display the result set
+<b class="nc"><i class="no-highlight">149</i>&nbsp;    } catch (SQLException err) {</b>
+<b class="nc"><i class="no-highlight">150</i>&nbsp;      throw new ProjectErrorMessageException(err.getMessage());</b>
+<b class="nc"><i class="no-highlight">151</i>&nbsp;    }</b>
+<i class="no-highlight">152</i>&nbsp;  }
 <i class="no-highlight">153</i>&nbsp;
-<i class="no-highlight">154</i>&nbsp;  public void deleteProject(int projectId) throws ProjectErrorMessageException {
-<i class="no-highlight">155</i>&nbsp;
-<i class="no-highlight">156</i>&nbsp;    String mySql;
-<i class="no-highlight">157</i>&nbsp;    PreparedStatement ps;
-<b class="nc"><i class="no-highlight">158</i>&nbsp;    int deleteProjectSuccess = 0;</b>
-<i class="no-highlight">159</i>&nbsp;    try {
-<i class="no-highlight">160</i>&nbsp;
-<i class="no-highlight">161</i>&nbsp;      //1. Get a connection to database
-<b class="nc"><i class="no-highlight">162</i>&nbsp;      Connection con = DBManager.getConnection();</b>
-<i class="no-highlight">163</i>&nbsp;
-<i class="no-highlight">164</i>&nbsp;      //2. Prepare statement
-<b class="nc"><i class="no-highlight">165</i>&nbsp;      mySql = &quot;DELETE FROM projects WHERE project_id=?&quot;; //Vent slut</b>
-<i class="no-highlight">166</i>&nbsp;
-<i class="no-highlight">167</i>&nbsp;
-<b class="nc"><i class="no-highlight">168</i>&nbsp;      ps = con.prepareStatement(mySql);</b>
-<i class="no-highlight">169</i>&nbsp;      //3. Set the parameters
-<b class="nc"><i class="no-highlight">170</i>&nbsp;      ps.setInt(1, projectId);</b>
-<i class="no-highlight">171</i>&nbsp;      //4. Execute SQL query
-<b class="nc"><i class="no-highlight">172</i>&nbsp;       deleteProjectSuccess = ps.executeUpdate();</b>
-<b class="nc"><i class="no-highlight">173</i>&nbsp;       if(deleteProjectSuccess &gt; 0){</b>
-<b class="nc"><i class="no-highlight">174</i>&nbsp;         System.out.println(&quot;Delete Project is Successfully.&quot;);</b>
-<i class="no-highlight">175</i>&nbsp;       }else {
-<b class="nc"><i class="no-highlight">176</i>&nbsp;         throw new ProjectErrorMessageException(&quot;Cannot delete project whit project id vedr.ProjectRepositoryImpl i metode:  public void deleteProject ( int ProjectId)&quot;);</b>
-<i class="no-highlight">177</i>&nbsp;       }
-<i class="no-highlight">178</i>&nbsp;      //5. Display the result set
-<b class="nc"><i class="no-highlight">179</i>&nbsp;    } catch (SQLException err) {</b>
-<b class="nc"><i class="no-highlight">180</i>&nbsp;      throw new ProjectErrorMessageException(err.getMessage());</b>
-<i class="no-highlight">181</i>&nbsp;     // System.out.println(&quot;Cannot delete project with subproject. Please delete any subprojects before deleting project.&quot; + err.getMessage());
-<b class="nc"><i class="no-highlight">182</i>&nbsp;    }</b>
-<i class="no-highlight">183</i>&nbsp;  }
-<i class="no-highlight">184</i>&nbsp;
-<i class="no-highlight">185</i>&nbsp;  //VISER ALLE PROJEKTERNE PÅ BRUGERENS PROJEKTLISTE
-<i class="no-highlight">186</i>&nbsp;  public List&lt;Project&gt; showAllProjects(int id) throws ProjectErrorMessageException {
-<b class="nc"><i class="no-highlight">187</i>&nbsp;    ArrayList&lt;Project&gt; projects = new ArrayList&lt;&gt;();</b>
-<i class="no-highlight">188</i>&nbsp;    try {
-<b class="nc"><i class="no-highlight">189</i>&nbsp;      Connection con = DBManager.getConnection();</b>
-<b class="nc"><i class="no-highlight">190</i>&nbsp;      String SQL = &quot;SELECT * FROM projects WHERE user_id = ?&quot;; // Do this line when we know database name and stuff</b>
-<i class="no-highlight">191</i>&nbsp;
-<b class="nc"><i class="no-highlight">192</i>&nbsp;      PreparedStatement ps = con.prepareStatement(SQL);</b>
-<b class="nc"><i class="no-highlight">193</i>&nbsp;      ps.setInt(1, id);</b>
-<b class="nc"><i class="no-highlight">194</i>&nbsp;      ResultSet rs = ps.executeQuery();</b>
-<i class="no-highlight">195</i>&nbsp;
-<b class="nc"><i class="no-highlight">196</i>&nbsp;      while (rs.next()) {</b>
-<b class="nc"><i class="no-highlight">197</i>&nbsp;        projects.add(new Project(</b>
-<b class="nc"><i class="no-highlight">198</i>&nbsp;            rs.getInt(2),</b>
-<b class="nc"><i class="no-highlight">199</i>&nbsp;            rs.getString(3),</b>
-<b class="nc"><i class="no-highlight">200</i>&nbsp;            rs.getString(4),</b>
-<b class="nc"><i class="no-highlight">201</i>&nbsp;            rs.getInt(5),</b>
-<b class="nc"><i class="no-highlight">202</i>&nbsp;            rs.getInt(6)</b>
-<i class="no-highlight">203</i>&nbsp;        ));
-<i class="no-highlight">204</i>&nbsp;      }
-<b class="nc"><i class="no-highlight">205</i>&nbsp;    } catch (SQLException err) {</b>
-<b class="nc"><i class="no-highlight">206</i>&nbsp;      throw new ProjectErrorMessageException(&quot;OBS cant not show all project id  vedr.projectRepositoryImpl i metode:public List&lt;Project&gt; showAllProjects ( int id)&quot; + err.getMessage());</b>
-<b class="nc"><i class="no-highlight">207</i>&nbsp;    }</b>
-<b class="nc"><i class="no-highlight">208</i>&nbsp;    return projects;</b>
-<i class="no-highlight">209</i>&nbsp;  }
-<i class="no-highlight">210</i>&nbsp;
-<i class="no-highlight">211</i>&nbsp;}
+<i class="no-highlight">154</i>&nbsp;
+<i class="no-highlight">155</i>&nbsp;  //@Author: Kristian + Alex
+<i class="no-highlight">156</i>&nbsp;  public void deleteProject(int projectId) throws ProjectErrorMessageException {
+<i class="no-highlight">157</i>&nbsp;
+<i class="no-highlight">158</i>&nbsp;    String mySql;
+<i class="no-highlight">159</i>&nbsp;    PreparedStatement ps;
+<b class="nc"><i class="no-highlight">160</i>&nbsp;    int deleteProjectSuccess = 0;</b>
+<i class="no-highlight">161</i>&nbsp;    try {
+<i class="no-highlight">162</i>&nbsp;
+<i class="no-highlight">163</i>&nbsp;      //1. Get a connection to database
+<b class="nc"><i class="no-highlight">164</i>&nbsp;      Connection con = DBManager.getInstanceConnection();</b>
+<i class="no-highlight">165</i>&nbsp;
+<i class="no-highlight">166</i>&nbsp;      //2. Prepare statement
+<b class="nc"><i class="no-highlight">167</i>&nbsp;      mySql = &quot;DELETE FROM projects WHERE project_id=?&quot;; //Vent slut</b>
+<i class="no-highlight">168</i>&nbsp;
+<i class="no-highlight">169</i>&nbsp;
+<b class="nc"><i class="no-highlight">170</i>&nbsp;      ps = con.prepareStatement(mySql);</b>
+<i class="no-highlight">171</i>&nbsp;      //3. Set the parameters
+<b class="nc"><i class="no-highlight">172</i>&nbsp;      ps.setInt(1, projectId);</b>
+<i class="no-highlight">173</i>&nbsp;      //4. Execute SQL query
+<b class="nc"><i class="no-highlight">174</i>&nbsp;       deleteProjectSuccess = ps.executeUpdate();</b>
+<b class="nc"><i class="no-highlight">175</i>&nbsp;       if(deleteProjectSuccess == 1){</b>
+<b class="nc"><i class="no-highlight">176</i>&nbsp;         System.out.println(&quot;Delete Project is Successfully.&quot;);</b>
+<i class="no-highlight">177</i>&nbsp;       }else {
+<b class="nc"><i class="no-highlight">178</i>&nbsp;         throw new ProjectErrorMessageException(&quot;Cannot delete project whit project id vedr.ProjectRepositoryImpl i metode:  public void deleteProject ( int ProjectId)&quot;);</b>
+<i class="no-highlight">179</i>&nbsp;       }
+<i class="no-highlight">180</i>&nbsp;      //5. Display the result set
+<b class="nc"><i class="no-highlight">181</i>&nbsp;    } catch (SQLException err) {</b>
+<b class="nc"><i class="no-highlight">182</i>&nbsp;      throw new ProjectErrorMessageException(err.getMessage());</b>
+<i class="no-highlight">183</i>&nbsp;     // System.out.println(&quot;Cannot delete project with subproject. Please delete any subprojects before deleting project.&quot; + err.getMessage());
+<b class="nc"><i class="no-highlight">184</i>&nbsp;    }</b>
+<i class="no-highlight">185</i>&nbsp;  }
+<i class="no-highlight">186</i>&nbsp;
+<i class="no-highlight">187</i>&nbsp;  //@Author: Silke
+<i class="no-highlight">188</i>&nbsp;  //VISER ALLE PROJEKTERNE PÅ BRUGERENS PROJEKTLISTE
+<i class="no-highlight">189</i>&nbsp;  public List&lt;Project&gt; showAllProjects(int id) throws ProjectErrorMessageException {
+<b class="nc"><i class="no-highlight">190</i>&nbsp;    ArrayList&lt;Project&gt; projects = new ArrayList&lt;&gt;();</b>
+<i class="no-highlight">191</i>&nbsp;    try {
+<b class="nc"><i class="no-highlight">192</i>&nbsp;      Connection con = DBManager.getInstanceConnection();</b>
+<b class="nc"><i class="no-highlight">193</i>&nbsp;      String SQL = &quot;SELECT * FROM projects WHERE user_id = ?&quot;; // Do this line when we know database name and stuff</b>
+<i class="no-highlight">194</i>&nbsp;
+<b class="nc"><i class="no-highlight">195</i>&nbsp;      PreparedStatement ps = con.prepareStatement(SQL);</b>
+<b class="nc"><i class="no-highlight">196</i>&nbsp;      ps.setInt(1, id);</b>
+<b class="nc"><i class="no-highlight">197</i>&nbsp;      ResultSet rs = ps.executeQuery();</b>
+<i class="no-highlight">198</i>&nbsp;
+<b class="nc"><i class="no-highlight">199</i>&nbsp;      while (rs.next()) {</b>
+<b class="nc"><i class="no-highlight">200</i>&nbsp;        projects.add(new Project(</b>
+<b class="nc"><i class="no-highlight">201</i>&nbsp;            rs.getInt(2),</b>
+<b class="nc"><i class="no-highlight">202</i>&nbsp;            rs.getString(3),</b>
+<b class="nc"><i class="no-highlight">203</i>&nbsp;            rs.getString(4),</b>
+<b class="nc"><i class="no-highlight">204</i>&nbsp;            rs.getInt(5),</b>
+<b class="nc"><i class="no-highlight">205</i>&nbsp;            rs.getInt(6)</b>
+<i class="no-highlight">206</i>&nbsp;        ));
+<i class="no-highlight">207</i>&nbsp;      }
+<b class="nc"><i class="no-highlight">208</i>&nbsp;    } catch (SQLException err) {</b>
+<b class="nc"><i class="no-highlight">209</i>&nbsp;      throw new ProjectErrorMessageException(&quot;OBS cant not show all project id  vedr.projectRepositoryImpl i metode:public List&lt;Project&gt; showAllProjects ( int id)&quot; + err.getMessage());</b>
+<b class="nc"><i class="no-highlight">210</i>&nbsp;    }</b>
+<b class="nc"><i class="no-highlight">211</i>&nbsp;    return projects;</b>
+<i class="no-highlight">212</i>&nbsp;  }
+<i class="no-highlight">213</i>&nbsp;
+<i class="no-highlight">214</i>&nbsp;}
 </div>
 </pre>
 </div>
@@ -310,7 +313,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 
 <div class="footer">
     
-    <div style="float:right;">generated on 2021-12-14 15:05</div>
+    <div style="float:right;">generated on 2021-12-15 23:50</div>
 </div>
 </body>
 </html>

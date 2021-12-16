@@ -48,7 +48,6 @@ public class ProjectRepositoryImpl implements ProjectRepository {
   }
 
   //@Author: Jens
-  @Override
   public Project findProjectID(int projectId) throws ProjectErrorMessageException {
 
     String mysql;
@@ -100,7 +99,7 @@ public class ProjectRepositoryImpl implements ProjectRepository {
 
 
   //@Author: Jens
-  @Override
+
   public void updateProject(Project project) throws ProjectErrorMessageException {
     String mysql;
     PreparedStatement ps;

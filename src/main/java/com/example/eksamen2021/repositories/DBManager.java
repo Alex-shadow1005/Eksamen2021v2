@@ -17,7 +17,7 @@ public class DBManager {
   public static Connection getInstanceConnection() {
 
     if (connection != null) {
-      return connection;
+     return connection;
     }
 
                                                                                                       //Via dette læser den fra run->edit config->environment variables i stedet for fra application.properties
