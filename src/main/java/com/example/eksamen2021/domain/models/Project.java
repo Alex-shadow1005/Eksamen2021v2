@@ -5,7 +5,7 @@ import com.example.eksamen2021.domain.ProjectErrorMessageException;
 
 import java.util.ArrayList;
 import java.util.List;
-
+//@Author: Silke, Kristian, Alexander, Jens
 public class Project {
   private int userId;
   private int projectId;

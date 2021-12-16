@@ -79,7 +79,7 @@ public class SubprojectControllerImpl implements SubprojectController {
   }
 
 
-  //@Author: Silke (show) & Alexander (calculate)
+  //@Author: Silke (show) Alexander (calculate) og Jens (calculate)
   @GetMapping("/show-subprojects/{projectId}")
   public String showSubprojects2(@PathVariable("projectId") int projectId, Model model, HttpSession session) throws SubProjectErrorMessageException { //ModelAttribute gemmer parametre i User ved at lave det til et objekt
     List<Subproject> subprojects = subprojectServiceImpl.showAllSubprojects(projectId);

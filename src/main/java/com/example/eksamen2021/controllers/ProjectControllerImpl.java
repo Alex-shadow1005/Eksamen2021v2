@@ -74,7 +74,7 @@ public class ProjectControllerImpl implements ProjectController {
   //@DeleteMapping
 
 
-  //@Author: Silke (show) og Alexander (calculate)
+  //@Author: Silke (show) Alexander (calculate) og Jens (calculate)
   @GetMapping("/show/{id}")
   public String showProjects(@PathVariable("id") int id, Model model, User user) throws ProjectErrorMessageException, SubProjectErrorMessageException {
 

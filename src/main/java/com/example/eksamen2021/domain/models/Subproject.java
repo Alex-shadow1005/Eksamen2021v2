@@ -4,7 +4,7 @@ import com.example.eksamen2021.domain.SubProjectErrorMessageException;
 
 public class Subproject {
 
-
+  //@Author: Silke, Kristian, Alexander, Jens
   private int subprojectId;
   private int projectId;
   private String subprojectName;

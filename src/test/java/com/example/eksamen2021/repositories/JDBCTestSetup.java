@@ -2,9 +2,9 @@ package com.example.eksamen2021.repositories;
 
 import java.sql.Connection;
 import java.sql.Statement;
-
+  //@Author: Jens
 public class JDBCTestSetup {
-
+  //@Author: Jens
   public void setUpJDBCT() {
     try {
       Connection connection = DBManagerImpl.getInstanceConnection();

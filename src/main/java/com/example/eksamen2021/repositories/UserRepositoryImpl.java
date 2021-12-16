@@ -42,7 +42,7 @@ public class UserRepositoryImpl implements UserRepository{
 
   }
 
-  //@Author: Silke
+  //@Author: Silke og Jens
   //TJEKKER I DATABASE AT EMAIL OG PASSWORD MATCHER, NÅR BRUGEREN LOGGER IND
   public User validateUser(User user) throws UserErrorMessageException { //modtager user fra PostService -> loginpage hvis failed, wishlist hvis successfuldt login
     String sqlStr;
