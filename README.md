@@ -15,8 +15,7 @@
 <h2>Using TSA</h2>
 
 <p>To use TSA, follow these steps:</p>
-<code>Insert guide link here</code>
-<p><code>DELETE THIS</code>Add run commands and examples you think users will find useful. Provide an options reference for bonus points!<code>DELETE THIS</code></p>
+<code><a href="https://docs.google.com/document/d/1sOOdJJMvna0ZqZAvsa9Pl8sGAPmxOtOe73CAjSY1hkQ/edit">Guide Link</a></code>
 
 <h2>Contributing to TSA</h2>
 <p>To contribute to TSA, follow these steps:</p>
