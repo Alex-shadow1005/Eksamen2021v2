@@ -54,8 +54,3 @@
   <li>alex688u@stud.kea.dk</li>
   <li>kris135f@stud.kea.dk</li>
 </ul>
-
-
-# v2
-eksamen2021v2
-alias graph="git log --all --decorate --oneline --graph" til at se en visuel graf over vores git commits
