@@ -15,7 +15,7 @@ public class UserRepositoryImpl implements UserRepository{
 
     try {
       //1. Get a connection to database
-      Connection con = DBManager.getInstanceConnection();
+      Connection con = DBManagerImpl.getInstanceConnection();
       //2. Prepare statement
       mySql = "INSERT INTO users (user_username, user_email, user_password) VALUES (?, ?, ?)"; //Opretter streng i SQL
 
@@ -85,7 +85,7 @@ public class UserRepositoryImpl implements UserRepository{
     ResultSet rs;
     User tempUser = null;
     try {
-      Connection con = DBManager.getInstanceConnection();
+      Connection con = DBManagerImpl.getInstanceConnection();
       sqlStr = "SELECT * FROM users WHERE user_email = ? AND user_password = ?"; //leder efter en user med den email og password de har tastet ind
 
       ps = con.prepareStatement(sqlStr);
