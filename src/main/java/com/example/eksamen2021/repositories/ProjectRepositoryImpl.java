@@ -23,7 +23,7 @@ public class ProjectRepositoryImpl implements ProjectRepository {
 
     try {
       //1. Get a connection to database
-      Connection con = DBManager.getInstanceConnection();
+      Connection con = DBManagerImpl.getInstanceConnection();
       //2. Prepare statement
       mySql = "INSERT INTO projects (user_id, project_name, project_description) VALUES (?, ?, ?)";
 
@@ -55,7 +55,7 @@ public class ProjectRepositoryImpl implements ProjectRepository {
     Project findProject = null;
     try {
       //1. Get a connection to database
-      Connection con = DBManager.getInstanceConnection();
+      Connection con = DBManagerImpl.getInstanceConnection();
 
       //2. Prepare statement
       mysql = "SELECT * FROM projects WHERE project_id = ?";
@@ -106,7 +106,7 @@ public class ProjectRepositoryImpl implements ProjectRepository {
     int upateProjectSuccess = 0;
     try {
       //1. Get a connection to database
-      Connection con = DBManager.getInstanceConnection();
+      Connection con = DBManagerImpl.getInstanceConnection();
 
       //2. Prepare statement
 
@@ -161,7 +161,7 @@ public class ProjectRepositoryImpl implements ProjectRepository {
     try {
 
       //1. Get a connection to database
-      Connection con = DBManager.getInstanceConnection();
+      Connection con = DBManagerImpl.getInstanceConnection();
 
       //2. Prepare statement
       mySql = "DELETE FROM projects WHERE project_id=?"; //Vent slut
@@ -188,7 +188,7 @@ public class ProjectRepositoryImpl implements ProjectRepository {
   public List<Project> showAllProjects(int id) throws ProjectErrorMessageException {
     ArrayList<Project> projects = new ArrayList<>();
     try {
-      Connection con = DBManager.getInstanceConnection();
+      Connection con = DBManagerImpl.getInstanceConnection();
       String SQL = "SELECT * FROM projects WHERE user_id = ?"; // Do this line when we know database name and stuff
 
       PreparedStatement ps = con.prepareStatement(SQL);

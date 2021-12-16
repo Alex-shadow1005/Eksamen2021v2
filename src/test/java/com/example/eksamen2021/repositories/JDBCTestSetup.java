@@ -7,7 +7,7 @@ public class JDBCTestSetup {
 
   public void setUpJDBCT() {
     try {
-      Connection connection = DBManager.getInstanceConnection();
+      Connection connection = DBManagerImpl.getInstanceConnection();
       Statement SQLstatementTest = connection.createStatement();
       // start transaction
       connection.setAutoCommit(false);

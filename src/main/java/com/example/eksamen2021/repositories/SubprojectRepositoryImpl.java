@@ -22,7 +22,7 @@ public class SubprojectRepositoryImpl implements SubprojectRepository {
 
     try {
       //1. Get a connection to database
-      Connection con = DBManager.getInstanceConnection();
+      Connection con = DBManagerImpl.getInstanceConnection();
       //2. Prepare statement
       mySql = "INSERT INTO subprojects (project_id, subproject_name, subproject_description, subproject_seniordeveloper_hours, subproject_developer_hours, subproject_graphic_hours, subproject_price, subproject_total_hours) VALUES (?, ?, ?, ?, ?, ?,?,?)";
 
@@ -59,7 +59,7 @@ public class SubprojectRepositoryImpl implements SubprojectRepository {
     Subproject findSubproject = null;
     try {
       //1. Get a connection to database
-      Connection con = DBManager.getInstanceConnection();
+      Connection con = DBManagerImpl.getInstanceConnection();
 
       //2. Prepare statement
       mysql = "SELECT * FROM subprojects WHERE subproject_id = ?";
@@ -114,7 +114,7 @@ public class SubprojectRepositoryImpl implements SubprojectRepository {
 
     try {
       //1. Get a connection to database
-      Connection con = DBManager.getInstanceConnection();
+      Connection con = DBManagerImpl.getInstanceConnection();
 
       //2. Prepare statement
 
@@ -179,7 +179,7 @@ public class SubprojectRepositoryImpl implements SubprojectRepository {
 
     try {
       //1. Get a connection to database
-      Connection con = DBManager.getInstanceConnection();
+      Connection con = DBManagerImpl.getInstanceConnection();
       //2. Prepare statement
       mySql = "DELETE FROM subprojects where subproject_id=?";
 
@@ -209,7 +209,7 @@ public class SubprojectRepositoryImpl implements SubprojectRepository {
     PreparedStatement ps;
     ArrayList<Subproject> subprojects = new ArrayList<>();
     try {
-      Connection con = DBManager.getInstanceConnection();
+      Connection con = DBManagerImpl.getInstanceConnection();
       String SQL = "SELECT * FROM subprojects WHERE project_id = ?";
 
       System.out.println("test i repo: + id =" + id);
@@ -244,7 +244,7 @@ public class SubprojectRepositoryImpl implements SubprojectRepository {
     PreparedStatement ps;
     ArrayList<Subproject> subprojects = new ArrayList<>();
     try {
-      Connection con = DBManager.getInstanceConnection();
+      Connection con = DBManagerImpl.getInstanceConnection();
       String SQL = "SELECT * FROM subprojects";
 
       ps = con.prepareStatement(SQL);
