@@ -15,7 +15,8 @@
 <h2>Using TSA</h2>
 
 <p>To use TSA, follow these steps:</p>
-<code><a href="https://docs.google.com/document/d/1sOOdJJMvna0ZqZAvsa9Pl8sGAPmxOtOe73CAjSY1hkQ/edit?usp=sharing">Guide Link</a></code>
+<p><code><a href="https://docs.google.com/document/d/1sOOdJJMvna0ZqZAvsa9Pl8sGAPmxOtOe73CAjSY1hkQ/edit?usp=sharing">Database & Heroku Setup</a></code></p>
+<p><code><a href="https://docs.google.com/document/d/1pwjN5rNZBX0U1bGeGEQGh3WQ1MuyCTzmhx5YNqM1F8A/edit?usp=sharing">User Navigation Guide</a></code></p>
 
 <h2>Contributing to TSA</h2>
 <p>To contribute to TSA, follow these steps:</p>
