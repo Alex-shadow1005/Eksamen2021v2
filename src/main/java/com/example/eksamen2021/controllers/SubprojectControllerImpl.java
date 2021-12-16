@@ -55,6 +55,8 @@ public class SubprojectControllerImpl implements SubprojectController {
   @PostMapping("/new-update-subproject")
   public String updateSubproject(@ModelAttribute Subproject subproject) throws SubProjectErrorMessageException {
     System.out.println("Test af new-update-subproject");
+    subprojectServiceImpl.calsubhours(subproject);
+    subprojectServiceImpl.calsubprice(subproject);
     subprojectServiceImpl.updateSubproject(subproject);
     System.out.println("test 2 af new-update-subproject");
     return "redirect:/show-subprojects/" + currentProject.getProjectId();
