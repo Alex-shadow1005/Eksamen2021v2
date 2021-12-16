@@ -5,9 +5,8 @@ import com.example.eksamen2021.domain.models.User;
 
 import java.sql.*;
 
-public class UserRepositoryImpl implements UserRepository {
+public class UserRepositoryImpl implements UserRepository{
 
-  //OBS! Ænder id workbasse til createUser 04-12-2021 kl.20:53
   public User createUser(User user) throws UserErrorMessageException {
     String mySql;
     PreparedStatement ps;
@@ -15,7 +14,7 @@ public class UserRepositoryImpl implements UserRepository {
 
     try {
       //1. Get a connection to database
-      Connection con = DBManager.getConnection();
+      Connection con = DBManager.getInstanceConnection();
       //2. Prepare statement
       mySql = "INSERT INTO users (user_username, user_email, user_password) VALUES (?, ?, ?)"; //Opretter streng i SQL
 
@@ -26,7 +25,7 @@ public class UserRepositoryImpl implements UserRepository {
       ps.setString(3, user.getUserPassword()); //sætter brugerens password ind i det næste ?
       //4. Execute SQL query
       createUserSuccess = ps.executeUpdate();
-      if (createUserSuccess > 0) {
+      if (createUserSuccess == 1) {
         ResultSet userID = ps.getGeneratedKeys();
         userID.next();
         int id = userID.getInt(1);
@@ -49,7 +48,7 @@ public class UserRepositoryImpl implements UserRepository {
     ResultSet rs;
     User tempUser = null;
     try {
-      Connection con = DBManager.getConnection();
+      Connection con = DBManager.getInstanceConnection();
       sqlStr = "SELECT * FROM users WHERE user_email = ? AND user_password = ?"; //leder efter en user med den email og password de har tastet ind
 
       ps = con.prepareStatement(sqlStr);
@@ -61,16 +60,12 @@ public class UserRepositoryImpl implements UserRepository {
       if (rs.next()) { //kører resultaterne igennem (så længe der er flere resultatsæt)
         tempUser = new User(rs.getInt(1), rs.getString(2), rs.getString(3)); //sætter String ind i resultSet
 
-
       } else {
         throw new UserErrorMessageException("OBS cannot verify user. User might not exist or the passwords might not match. Error occured in: UserRepositoryImpl class. Method: validateUser");
       }
 
-      //Hvis den email og password matcher -> wishlist (forside for brugere der er logget ind). Ellers: prøv igen (på login-siden)
     } catch (SQLException err) {
       throw new UserErrorMessageException(err.getMessage());
-
-      // System.out.println("Fejl i count err=" + err.getMessage()); //-> gå til login-side på forkert login-besked
 
     }
     return tempUser;

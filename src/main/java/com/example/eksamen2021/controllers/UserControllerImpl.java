@@ -54,38 +54,9 @@ public class UserControllerImpl implements UserController {
   @Override
   public String handleUserError(Model model, Exception exception) {
     model.addAttribute("message", exception.getMessage());
-    return "errorMessageExceptions/";
+    return "errorMessageExceptions/user-error-message-exception";
   }
 
 }
-
-
-  /*@PostMapping("/new-user")
-  public String createUser(@ModelAttribute User user, Model model) throws ErrorMessageException { //Jens' version af createUser
-    model.addAttribute("user", user);
-    int createUserSuccess = userService.createUser(user);
-    if(createUserSuccess == 1) {
-      System.out.println("User added");
-      return "redirect:/login-page";
-    }else {
-      throw new ErrorMessageException("Fejl i count createUser  err=");
-    }
-
-  }
-
-   */
-
-
-//OBS figur1#
-//før ændert Jens kl.15:03 02-12-2021
-   /* model.addAttribute("user", user);
-    System.out.println("user WWaazzaaa" + user);
-    session = userService.loginUser(user);
-    if (session == null) {
-      return "login-page";
-    }
-    return "redirect:/show/" + session.getUserId();
-    */
-//OBS figur1#
 
 

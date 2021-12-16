@@ -1,7 +1,6 @@
 package com.example.eksamen2021.repositories;
 
 import com.example.eksamen2021.domain.SubProjectErrorMessageException;
-import com.example.eksamen2021.domain.UserErrorMessageException;
 import com.example.eksamen2021.domain.models.Project;
 import com.example.eksamen2021.domain.models.Subproject;
 
@@ -14,6 +13,7 @@ import java.util.List;
 
 public class SubprojectRepositoryImpl implements SubprojectRepository {
 
+  //@Author: Silke + Jens (Exception)
   //TILFØJER ET SUBPROJEKT TIL BRUGERENS SUBPROJEKTLISTE
   public int createSubproject(Project project, Subproject subproject) throws SubProjectErrorMessageException {
     String mySql;
@@ -22,7 +22,7 @@ public class SubprojectRepositoryImpl implements SubprojectRepository {
 
     try {
       //1. Get a connection to database
-      Connection con = DBManager.getConnection();
+      Connection con = DBManager.getInstanceConnection();
       //2. Prepare statement
       mySql = "INSERT INTO subprojects (project_id, subproject_name, subproject_description, subproject_seniordeveloper_hours, subproject_developer_hours, subproject_graphic_hours, subproject_price, subproject_total_hours) VALUES (?, ?, ?, ?, ?, ?,?,?)";
 
@@ -39,10 +39,10 @@ public class SubprojectRepositoryImpl implements SubprojectRepository {
 
       //4. Execute SQL query
       createSubprojectSuccess = ps.executeUpdate();
-      if (createSubprojectSuccess > 0) {
-        System.out.println("Subproject added");
+      if (createSubprojectSuccess == 1) {
+        System.out.println("Subproject succesfully added");
       } else {
-        throw new SubProjectErrorMessageException("OBS cant not create Subproject  vedr.SubprojectRepositoryImpl metode: = public int createSubproject(Project project, Subproject subproject)  ");
+        throw new SubProjectErrorMessageException("OBS cannot find subproject ID. Error occured in: SubprojectRepositoryImpl class. Method: createSubproject.");
       }
       //5. Display the result set
     } catch (SQLException err) {
@@ -51,15 +51,15 @@ public class SubprojectRepositoryImpl implements SubprojectRepository {
     return createSubprojectSuccess; //returnerer brugeren til Service
   }
 
+  //@Author: Jens
   public Subproject findSubprojectID(int subprojectId) throws SubProjectErrorMessageException {
-
 
     String mysql;
     PreparedStatement ps;
     Subproject findSubproject = null;
     try {
       //1. Get a connection to database
-      Connection con = DBManager.getConnection();
+      Connection con = DBManager.getInstanceConnection();
 
       //2. Prepare statement
       mysql = "SELECT * FROM subprojects WHERE subproject_id = ?";
@@ -93,10 +93,10 @@ public class SubprojectRepositoryImpl implements SubprojectRepository {
         ));
       }
       if (subprojectId == findSubproject.getSubprojectId()) {
-        System.out.println("finder ID YESSS");
+        System.out.println("Succesfully found subproject ID.");
         return findSubproject;
       } else {
-        throw new SubProjectErrorMessageException("OBS cant not find Subproject id vedr.SubprojectRepositoryImpl i metode: public Subproject findSubprojectID(int subprojectId)");
+        throw new SubProjectErrorMessageException("OBS cannot find subproject ID. Error occured in: SubprojectRepositoryImpl class. Method: findSubprojectID.");
 
       }
     } catch (SQLException err) {
@@ -105,6 +105,7 @@ public class SubprojectRepositoryImpl implements SubprojectRepository {
   }
 
 
+  //@Author: Jens
   public void updateSubproject(Subproject subproject) throws SubProjectErrorMessageException {
 
     String mysql;
@@ -113,7 +114,7 @@ public class SubprojectRepositoryImpl implements SubprojectRepository {
 
     try {
       //1. Get a connection to database
-      Connection con = DBManager.getConnection();
+      Connection con = DBManager.getInstanceConnection();
 
       //2. Prepare statement
 
@@ -156,11 +157,11 @@ public class SubprojectRepositoryImpl implements SubprojectRepository {
       upateSubprojectSuccess = ps.executeUpdate();
 
 
-      if (upateSubprojectSuccess > 0) {
+      if (upateSubprojectSuccess == 1) {
 
-        System.out.println("Udate Subproject is Successfully.");
+        System.out.println("Succesfully updated subproject.");
       } else {
-        throw new SubProjectErrorMessageException("Cannot updates Subproject whit Subproject id vedr.SubprojectRepositoryImpl i metode: public void updateSubproject (Subproject subproject)");
+        throw new SubProjectErrorMessageException("OBS cannot update subproject. Error occured in: SubprojectRepositoryImpl class. Method: updateProject.");
       }
 
       //5. Display the result set
@@ -170,7 +171,7 @@ public class SubprojectRepositoryImpl implements SubprojectRepository {
 
   }
 
-  //Sletter et subProject
+  //@Author: Kristian + Alex
   public void deleteSubproject(int subprojectId) throws SubProjectErrorMessageException {
     String mySql;
     PreparedStatement ps;
@@ -178,7 +179,7 @@ public class SubprojectRepositoryImpl implements SubprojectRepository {
 
     try {
       //1. Get a connection to database
-      Connection con = DBManager.getConnection();
+      Connection con = DBManager.getInstanceConnection();
       //2. Prepare statement
       mySql = "DELETE FROM subprojects where subproject_id=?";
 
@@ -188,11 +189,11 @@ public class SubprojectRepositoryImpl implements SubprojectRepository {
 
       //4. Execute SQL query
       deleteSubprojectSuccess = ps.executeUpdate();
-      if (deleteSubprojectSuccess > 0) {
+      if (deleteSubprojectSuccess == 1) {
 
         System.out.println("Succesfully deleted subproject.");
       } else {
-        throw new SubProjectErrorMessageException("Cannot delete Subproject whit Subproject id vedr.SubprojectRepositoryImpl i metode:  public void deleteSubproject ( int subprojectId)");
+        throw new SubProjectErrorMessageException("OBS cannot delete subprojects. Error occured in: SubprojectRepositoryImpl class. Method: deleteSubprojects.");
       }
 
       //5. Display the result set
@@ -202,12 +203,13 @@ public class SubprojectRepositoryImpl implements SubprojectRepository {
 
   }
 
+  //@Author: Silke
   //VISER ALLE SUBPROJEKTER DER HØRER TIL PROJEKT-ID'EN
   public List<Subproject> showAllSubprojects(int id) throws SubProjectErrorMessageException {
     PreparedStatement ps;
     ArrayList<Subproject> subprojects = new ArrayList<>();
     try {
-      Connection con = DBManager.getConnection();
+      Connection con = DBManager.getInstanceConnection();
       String SQL = "SELECT * FROM subprojects WHERE project_id = ?";
 
       System.out.println("test i repo: + id =" + id);
@@ -230,18 +232,19 @@ public class SubprojectRepositoryImpl implements SubprojectRepository {
       }
 
     } catch (SQLException err) {
-      throw new SubProjectErrorMessageException("OBS cant not show all Subproject id  vedr.SubprojectRepositoryImpl i metode:public List<Subproject> showAllSubprojects ( int id)" + err.getMessage());
+      throw new SubProjectErrorMessageException("OBS cannot find subprojects. Error occured in: SubprojectRepositoryImpl class. Method: showAllSubprojects. " + err.getMessage());
     }
     return subprojects;
 
   }
 
+  //@Author: Jens
   //VISER ALLE SUBPROJEKTER DER HØRER TIL PROJEKT-ID'EN
   public List<Subproject> gettingAllSubprojects() throws SubProjectErrorMessageException {
     PreparedStatement ps;
     ArrayList<Subproject> subprojects = new ArrayList<>();
     try {
-      Connection con = DBManager.getConnection();
+      Connection con = DBManager.getInstanceConnection();
       String SQL = "SELECT * FROM subprojects";
 
       ps = con.prepareStatement(SQL);
