@@ -52,7 +52,7 @@
 <ul>
   <li>silk2918@stud.kea.dk</li>
   <li>jens8592@stud.kea.dk</li>
-  <li></li>
+  <li>alex688u@stud.kea.dk</li>
   <li>kris135f@stud.kea.dk</li>
 </ul>
 
