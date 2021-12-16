@@ -34,49 +34,13 @@ public class UserRepositoryImpl implements UserRepository {
         //5. Display the result set
         return user; //returnerer brugeren til Service
       } else {
-        throw new UserErrorMessageException("OBS cant not create User  vedr.UserRepositoryImpl i metode = public User createUser(User user) ");
+        throw new UserErrorMessageException("OBS cannot create user. User might already exist. Error occured in: UserRepositoryImpl class. Method: createUser");
       }
     } catch (SQLException err) {
       throw new UserErrorMessageException(err.getMessage());
     }
 
   }
-
- /*
-  //OPRETTER NY BRUGER
-  //OBS! Ænder newUser til createUser 23-11-2021 kl.10:26
-  public int createUser(User user)throws ErrorMessageException {
-    String mySql;
-    PreparedStatement ps;
-    int createUserSuccess = 0;
-
-    try {
-      //1. Get a connection to database
-      Connection con = DBManager.getConnection();
-      //2. Prepare statement
-      mySql = "INSERT INTO users (user_username, user_email, user_password) VALUES (?, ?, ?)"; //Opretter streng i SQL
-
-      ps = con.prepareStatement(mySql);
-      //3. Set the parameters
-      ps.setString(1, user.getUserUsername()); //sætter brugerens username ind i det næste ?
-      ps.setString(2, user.getUserEmail()); //sætter brugerens email ind i det første ?
-      ps.setString(3, user.getUserPassword()); //sætter brugerens password ind i det næste ?
-      //4. Execute SQL query
-      createUserSuccess = ps.executeUpdate();
-      if(createUserSuccess == 1) {
-        System.out.println("User added");
-      }else {
-        throw new ErrorMessageException("Fejl i count createUser  err=");
-      }
-      //5. Display the result set
-    } catch (SQLException err) {
-      System.out.println(err.getMessage());
-    }
-    return createUserSuccess; //returnerer brugeren til Service
-  }
-
-*/
-
 
   //TJEKKER I DATABASE AT EMAIL OG PASSWORD MATCHER, NÅR BRUGEREN LOGGER IND
   public User validateUser(User user) throws UserErrorMessageException { //modtager user fra PostService -> loginpage hvis failed, wishlist hvis successfuldt login
@@ -99,7 +63,7 @@ public class UserRepositoryImpl implements UserRepository {
 
 
       } else {
-        throw new UserErrorMessageException("UserEmail & UserPassword is Not validate login OBS  vedr. UserRepositoryImpl i metode = public User validateUser(User user)  ");
+        throw new UserErrorMessageException("OBS cannot verify user. User might not exist or the passwords might not match. Error occured in: UserRepositoryImpl class. Method: validateUser");
       }
 
       //Hvis den email og password matcher -> wishlist (forside for brugere der er logget ind). Ellers: prøv igen (på login-siden)
@@ -111,9 +75,4 @@ public class UserRepositoryImpl implements UserRepository {
     }
     return tempUser;
   }
-
-
-
-  //SELECT * FROM projects
-  //JOIN users ON projects.userId = users.userId
 }

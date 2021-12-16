@@ -190,7 +190,7 @@ public class SubprojectRepositoryImpl implements SubprojectRepository {
       deleteSubprojectSuccess = ps.executeUpdate();
       if (deleteSubprojectSuccess > 0) {
 
-        System.out.println("Delete Subproject is Successfull.");
+        System.out.println("Succesfully deleted subproject.");
       } else {
         throw new SubProjectErrorMessageException("Cannot delete Subproject whit Subproject id vedr.SubprojectRepositoryImpl i metode:  public void deleteSubproject ( int subprojectId)");
       }
@@ -262,7 +262,8 @@ public class SubprojectRepositoryImpl implements SubprojectRepository {
       }
 
     } catch (SQLException err) {
-      throw new SubProjectErrorMessageException("OBS cant not show all Subproject id  vedr.SubprojectRepositoryImpl i metode:public List<Subproject> showAllSubprojects ( int id)" + err.getMessage());
+
+      throw new SubProjectErrorMessageException("OBS cannot find subprojects. Error occured in: SubprojectRepositoryImpl class. Method: gettingAllSubprojects. " + err.getMessage());
     }
     return subprojects;
 
