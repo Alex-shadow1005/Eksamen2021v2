@@ -1,7 +1,6 @@
 package com.example.eksamen2021.repositories;
 
 import com.example.eksamen2021.domain.ProjectErrorMessageException;
-import com.example.eksamen2021.domain.SubProjectErrorMessageException;
 import com.example.eksamen2021.domain.models.Project;
 import com.example.eksamen2021.domain.models.User;
 
@@ -13,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ProjectRepositoryImpl implements ProjectRepository {
-  private Project project;
+
 
   //@Author: Silke + Jens (Exception)
   //TILFØJER ET PROJEKT TIL BRUGERENS PROJEKTLISTE
@@ -24,7 +23,7 @@ public class ProjectRepositoryImpl implements ProjectRepository {
 
     try {
       //1. Get a connection to database
-      Connection con = DBManager.getConnection();
+      Connection con = DBManager.getInstanceConnection();
       //2. Prepare statement
       mySql = "INSERT INTO projects (user_id, project_name, project_description) VALUES (?, ?, ?)";
 
@@ -49,7 +48,6 @@ public class ProjectRepositoryImpl implements ProjectRepository {
   }
 
   //@Author: Jens
-  @Override
   public Project findProjectID(int projectId) throws ProjectErrorMessageException {
 
     String mysql;
@@ -57,7 +55,7 @@ public class ProjectRepositoryImpl implements ProjectRepository {
     Project findProject = null;
     try {
       //1. Get a connection to database
-      Connection con = DBManager.getConnection();
+      Connection con = DBManager.getInstanceConnection();
 
       //2. Prepare statement
       mysql = "SELECT * FROM projects WHERE project_id = ?";
@@ -101,14 +99,14 @@ public class ProjectRepositoryImpl implements ProjectRepository {
 
 
   //@Author: Jens
-  @Override
+
   public void updateProject(Project project) throws ProjectErrorMessageException {
     String mysql;
     PreparedStatement ps;
     int upateProjectSuccess = 0;
     try {
       //1. Get a connection to database
-      Connection con = DBManager.getConnection();
+      Connection con = DBManager.getInstanceConnection();
 
       //2. Prepare statement
 
@@ -141,7 +139,7 @@ public class ProjectRepositoryImpl implements ProjectRepository {
       upateProjectSuccess = ps.executeUpdate();
 
 
-      if (upateProjectSuccess > 0) {
+      if (upateProjectSuccess == 1) {
         System.out.println("Udate Subproject is Successfully.");
       } else {
         throw new ProjectErrorMessageException("Cannot updates project whit project id vedr.ProjectRepositoryImpl i metode: public void updateProject (Project project)");
@@ -154,7 +152,7 @@ public class ProjectRepositoryImpl implements ProjectRepository {
   }
 
 
-  //@Author: Kristian
+  //@Author: Kristian + Alex
   public void deleteProject(int projectId) throws ProjectErrorMessageException {
 
     String mySql;
@@ -163,7 +161,7 @@ public class ProjectRepositoryImpl implements ProjectRepository {
     try {
 
       //1. Get a connection to database
-      Connection con = DBManager.getConnection();
+      Connection con = DBManager.getInstanceConnection();
 
       //2. Prepare statement
       mySql = "DELETE FROM projects WHERE project_id=?"; //Vent slut
@@ -173,7 +171,7 @@ public class ProjectRepositoryImpl implements ProjectRepository {
       ps.setInt(1, projectId);
       //4. Execute SQL query
        deleteProjectSuccess = ps.executeUpdate();
-       if(deleteProjectSuccess > 0){
+       if(deleteProjectSuccess == 1){
          System.out.println("Delete Project is Successfully.");
        }else {
          throw new ProjectErrorMessageException("Cannot delete project whit project id vedr.ProjectRepositoryImpl i metode:  public void deleteProject ( int ProjectId)");
@@ -190,7 +188,7 @@ public class ProjectRepositoryImpl implements ProjectRepository {
   public List<Project> showAllProjects(int id) throws ProjectErrorMessageException {
     ArrayList<Project> projects = new ArrayList<>();
     try {
-      Connection con = DBManager.getConnection();
+      Connection con = DBManager.getInstanceConnection();
       String SQL = "SELECT * FROM projects WHERE user_id = ?"; // Do this line when we know database name and stuff
 
       PreparedStatement ps = con.prepareStatement(SQL);

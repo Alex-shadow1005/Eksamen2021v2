@@ -10,16 +10,17 @@ public class DBManager {
   private static String user;
   private static String password;
   private static String url;
+
+
   private static Connection connection = null;
 
-  //metode
-  public static Connection getConnection() {
+  public static Connection getInstanceConnection() {
 
     if (connection != null) {
-      return connection;
+     return connection;
     }
 
-    //Via dette læser den fra run->edit config->environment variables i stedet for fra application.properties
+                                                                                                      //Via dette læser den fra run->edit config->environment variables i stedet for fra application.properties
     url = System.getenv("url"); //properties.getProperty("url");
     user = System.getenv("tsa_user"); //properties.getProperty("user");
     password = System.getenv("tsa_password"); //properties.getProperty("password");

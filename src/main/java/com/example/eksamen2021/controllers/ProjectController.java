@@ -12,7 +12,6 @@ import javax.servlet.http.HttpSession;
 public interface ProjectController {
   @GetMapping("/create-project")
   public String addProject(@ModelAttribute Project project, Model model, HttpSession session) throws ProjectErrorMessageException;
-
   @PostMapping("/create-project")
   public String createProject(@ModelAttribute Project project, User user, Model model, HttpSession session) throws ProjectErrorMessageException;
 
