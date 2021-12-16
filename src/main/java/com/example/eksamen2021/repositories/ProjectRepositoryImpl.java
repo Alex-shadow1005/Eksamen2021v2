@@ -166,7 +166,6 @@ public class ProjectRepositoryImpl implements ProjectRepository {
       //2. Prepare statement
       mySql = "DELETE FROM projects WHERE project_id=?"; //Vent slut
 
-
       ps = con.prepareStatement(mySql);
       //3. Set the parameters
       ps.setInt(1, projectId);
