@@ -7,15 +7,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Project {
-  private Subproject subproject;
   private int userId;
   private int projectId;
   private String projectName;
   private String projectDescription;
   private int projectHours;
   private int projectPrice;
-  //LISTsubproje
-
 
   public Project(String projectName, String projectDescription, int projectHours, int projectPrice) {
     this.projectName = projectName;

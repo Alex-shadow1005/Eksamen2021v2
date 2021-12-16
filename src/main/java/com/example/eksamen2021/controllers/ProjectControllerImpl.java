@@ -21,7 +21,7 @@ public class ProjectControllerImpl implements ProjectController {
   private SubprojectServiceImpl subprojectServiceImpl = new SubprojectServiceImpl();
 
 
-
+  //@Author: Jens, Kristian, Silke
   @GetMapping("/create-project")
   public String addProject(@ModelAttribute Project project, Model model, HttpSession session) throws ProjectErrorMessageException {
     model.addAttribute("project", project);
@@ -30,7 +30,7 @@ public class ProjectControllerImpl implements ProjectController {
     return "create-project";
   }
 
-
+  //@Author: Jens, Kristian, Silke
   @PostMapping("/create-project")
   public String createProject(@ModelAttribute Project project, User user, Model model, HttpSession session) throws ProjectErrorMessageException {
     model.addAttribute("project", project);
@@ -42,6 +42,7 @@ public class ProjectControllerImpl implements ProjectController {
     return "redirect:/show/" + usersession.getUserId();
   }
 
+  //@Author: Jens
   //sender projct id til projectservice (@Path tager id,et fra urlen og gemmer det??)
   @GetMapping("/update-project/{projectId}")
   public String updateproject(@PathVariable("projectId") int projectId, Model model) throws ProjectErrorMessageException {
@@ -50,6 +51,7 @@ public class ProjectControllerImpl implements ProjectController {
     return "update-project";
   }
 
+  //@Author: Jens
   //Post
   @PostMapping("/new-update-project")
   public String updateProject(@ModelAttribute Project project, User user, HttpSession session) throws ProjectErrorMessageException {
@@ -59,6 +61,7 @@ public class ProjectControllerImpl implements ProjectController {
     return "redirect:/show/" + usersession.getUserId();
   }
 
+  //@Author: Kristian
   //sender projct id til projectservice (@Path tager id,et fra urlen og gemmer det??)
   @GetMapping("/delete-project/{projectId}")
   public String deleteProject(@PathVariable int projectId, User user, HttpSession session) throws ProjectErrorMessageException {
@@ -86,7 +89,7 @@ public class ProjectControllerImpl implements ProjectController {
     return "show-projects";
   }
 
-
+  //@Author: Jens
   public String handleProjectError(Model model, Exception exception) {
     model.addAttribute("message", exception.getMessage());
     return "errorMessageExceptions/project-error-message-exception";

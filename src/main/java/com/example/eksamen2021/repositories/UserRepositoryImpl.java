@@ -7,6 +7,7 @@ import java.sql.*;
 
 public class UserRepositoryImpl implements UserRepository{
 
+  //@Author: Jens, Kristian
   public User createUser(User user) throws UserErrorMessageException {
     String mySql;
     PreparedStatement ps;
@@ -41,6 +42,7 @@ public class UserRepositoryImpl implements UserRepository{
 
   }
 
+  //@Author: Silke
   //TJEKKER I DATABASE AT EMAIL OG PASSWORD MATCHER, NÅR BRUGEREN LOGGER IND
   public User validateUser(User user) throws UserErrorMessageException { //modtager user fra PostService -> loginpage hvis failed, wishlist hvis successfuldt login
     String sqlStr;

@@ -14,7 +14,7 @@ import java.util.List;
 public class ProjectRepositoryImpl implements ProjectRepository {
 
 
-  //@Author: Silke + Jens (Exception)
+  //@Author: Silke, Jens (Exception)
   //TILFØJER ET PROJEKT TIL BRUGERENS PROJEKTLISTE
   public int createProject(Project project, User user) throws ProjectErrorMessageException {
     String mySql;
@@ -99,7 +99,6 @@ public class ProjectRepositoryImpl implements ProjectRepository {
 
 
   //@Author: Jens
-
   public void updateProject(Project project) throws ProjectErrorMessageException {
     String mysql;
     PreparedStatement ps;
@@ -170,16 +169,16 @@ public class ProjectRepositoryImpl implements ProjectRepository {
       //3. Set the parameters
       ps.setInt(1, projectId);
       //4. Execute SQL query
-       deleteProjectSuccess = ps.executeUpdate();
-       if(deleteProjectSuccess == 1){
-         System.out.println("Succesfully deleted project.");
-       }else {
-         throw new ProjectErrorMessageException("OBS cannot delete project. Error occured in: ProjectRepositoryImpl class. Method: deleteProject.");
-       }
+      deleteProjectSuccess = ps.executeUpdate();
+      if (deleteProjectSuccess == 1) {
+        System.out.println("Succesfully deleted project.");
+      } else {
+        throw new ProjectErrorMessageException("OBS cannot delete project. Error occured in: ProjectRepositoryImpl class. Method: deleteProject.");
+      }
       //5. Display the result set
     } catch (SQLException err) {
       throw new ProjectErrorMessageException(err.getMessage());
-     // System.out.println("Cannot delete project with subproject. Please delete any subprojects before deleting project." + err.getMessage());
+      // System.out.println("Cannot delete project with subproject. Please delete any subprojects before deleting project." + err.getMessage());
     }
   }
 

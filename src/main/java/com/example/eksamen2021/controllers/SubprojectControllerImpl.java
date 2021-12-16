@@ -19,7 +19,7 @@ public class SubprojectControllerImpl implements SubprojectController {
   private SubprojectServiceImpl subprojectServiceImpl = new SubprojectServiceImpl();
   public static Project currentProject = new Project();
 
-
+  //@Author: Jens, Kristian, Silke
   @GetMapping("/create-subproject")
   public String addSubproject(@ModelAttribute Subproject subproject, Model model) throws SubProjectErrorMessageException {
     model.addAttribute("subproject", subproject);
@@ -27,6 +27,7 @@ public class SubprojectControllerImpl implements SubprojectController {
     return "create-subproject";
   }
 
+  //@Author: Jens, Kristian, Silke
   @PostMapping("/create-subproject")
   public String createSubproject(@ModelAttribute Subproject subproject, Project project, Model model) throws SubProjectErrorMessageException {
     subprojectServiceImpl.calsubhours(subproject);
@@ -38,6 +39,7 @@ public class SubprojectControllerImpl implements SubprojectController {
   }
 
 
+  //@Author: Jens
   //sender projct id til projectservice (@Path tager id,et fra urlen og gemmer det??)
   @GetMapping("/update-subproject/{subprojectId}")
   public String updateSubproject(@PathVariable("subprojectId") int subprojectId, Model model) throws SubProjectErrorMessageException {
@@ -49,6 +51,7 @@ public class SubprojectControllerImpl implements SubprojectController {
   }
 
   //Post
+  //@Author: Jens
   @PostMapping("/new-update-subproject")
   public String updateSubproject(@ModelAttribute Subproject subproject) throws SubProjectErrorMessageException {
     System.out.println("Test af new-update-subproject");
@@ -57,6 +60,7 @@ public class SubprojectControllerImpl implements SubprojectController {
     return "redirect:/show-subprojects/" + currentProject.getProjectId();
   }
 
+  //@Author: Kristian, Alexander
   @GetMapping("/delete-subproject/{subprojectId}")
   public String deleteSubproject(@PathVariable int subprojectId) throws SubProjectErrorMessageException {
     int projectId = subprojectServiceImpl.findSubprojectID(subprojectId).getProjectId();
@@ -85,6 +89,7 @@ public class SubprojectControllerImpl implements SubprojectController {
     return "show-subprojects";
   }
 
+  //@Author: Jens
   public String handleSubProjectError(Model model, Exception exception) {
     model.addAttribute("message", exception.getMessage());
     return "errorMessageExceptions/subproject-error-message-exception";

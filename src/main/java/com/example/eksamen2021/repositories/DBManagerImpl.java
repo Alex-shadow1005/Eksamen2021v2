@@ -4,7 +4,8 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-public class DBManagerImpl  implements DBManager{
+//@Author: Jens, Silke
+public class DBManagerImpl implements DBManager {
 
   //variabler
   private static String user;
@@ -17,10 +18,10 @@ public class DBManagerImpl  implements DBManager{
   public static Connection getInstanceConnection() {
 
     if (connection != null) {
-     return connection;
+      return connection;
     }
 
-                                                                                                      //Via dette læser den fra run->edit config->environment variables i stedet for fra application.properties
+    //Via dette læser den fra run->edit config->environment variables i stedet for fra application.properties
     url = System.getenv("url"); //properties.getProperty("url");
     user = System.getenv("tsa_user"); //properties.getProperty("user");
     password = System.getenv("tsa_password"); //properties.getProperty("password");

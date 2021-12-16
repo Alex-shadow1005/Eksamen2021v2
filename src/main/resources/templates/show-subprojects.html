@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
+<!-- @Author: Silke-->
 
 <head>
 
@@ -63,12 +64,14 @@
 
                         <td>
 
+                            <!-- @Author: Silke-->
                                 <a th:href="@{/update-subproject/{subprojectId}(subprojectId=${subproject.subprojectId})}">
                                 <button class="smaller-button">Edit</button>
                                 </a>
                              </td>
 
 
+                        <!-- @Author: Silke-->
                         <td>
                             <a th:href="@{/show/${subprojectId}}" class="btn btn-danger"></a>
                             <button th:onclick="'deleteSubproject(\'' + ${subproject.subprojectId} + '\');'"
@@ -85,12 +88,12 @@
                 <br>
                 <br>
 
-
+                <!-- @Author: Silke-->
                 <a th:href="|/show/${userId}|">
                     <button class="start-button" type="submit">Go back</button>
                 </a>
 
-
+                <!-- @Author: Silke-->
                 <a th:href="@{/create-subproject}">
 
                     <button type="button" class="start-button">Add subproject</button>

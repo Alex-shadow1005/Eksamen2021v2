@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class SiteController {
 
 
-
+    //@Author: Kristian
     @GetMapping("/terms")
     public String terms(){
         return "terms";
