@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.RestController;
 @Controller
 public class SiteController {
 
+
+
     @GetMapping("/terms")
     public String terms(){
         return "terms";
