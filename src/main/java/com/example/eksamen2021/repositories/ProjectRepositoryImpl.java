@@ -14,7 +14,7 @@ import java.util.List;
 public class ProjectRepositoryImpl implements ProjectRepository {
 
 
-  //@Author: Silke + Jens (Exception)
+  //@Author: Silke, Jens (Exception)
   //TILFØJER ET PROJEKT TIL BRUGERENS PROJEKTLISTE
   public int createProject(Project project, User user) throws ProjectErrorMessageException {
     String mySql;
@@ -23,7 +23,7 @@ public class ProjectRepositoryImpl implements ProjectRepository {
 
     try {
       //1. Get a connection to database
-      Connection con = DBManager.getInstanceConnection();
+      Connection con = DBManagerImpl.getInstanceConnection();
       //2. Prepare statement
       mySql = "INSERT INTO projects (user_id, project_name, project_description) VALUES (?, ?, ?)";
 
@@ -36,9 +36,9 @@ public class ProjectRepositoryImpl implements ProjectRepository {
       //4. Execute SQL query
       createProjectSuccess = ps.executeUpdate();
       if (createProjectSuccess == 1) {
-        System.out.println("Project add");
+        System.out.println("Project succesfully added.");
       } else {
-        throw new ProjectErrorMessageException("OBS cant not create project vedr.ProjectRepositoryImpl metode: = public int createProject(Project project, User user)");
+        throw new ProjectErrorMessageException("OBS cannot create project. Error occured in: ProjectRepositoryImpl class. Method: createProject.");
       }
       //5. Display the result set
     } catch (SQLException err) {
@@ -55,7 +55,7 @@ public class ProjectRepositoryImpl implements ProjectRepository {
     Project findProject = null;
     try {
       //1. Get a connection to database
-      Connection con = DBManager.getInstanceConnection();
+      Connection con = DBManagerImpl.getInstanceConnection();
 
       //2. Prepare statement
       mysql = "SELECT * FROM projects WHERE project_id = ?";
@@ -87,10 +87,10 @@ public class ProjectRepositoryImpl implements ProjectRepository {
         ));
       }
       if (projectId == findProject.getProjectId()) {
-        System.out.println("finder ID YESSS");
+        System.out.println("Succesfully found project ID");
         return findProject;
       } else {
-        throw new ProjectErrorMessageException("OBS cant not find project id vedr.ProjectRepositoryImpl i metode: public Project findProjectID(int projectId)");
+        throw new ProjectErrorMessageException("OBS cannot find project ID. Error occured in: ProjectRepositoryImpl class. Method: findProjectID.");
       }
     } catch (SQLException err) {
       throw new ProjectErrorMessageException(err.getMessage());
@@ -99,14 +99,13 @@ public class ProjectRepositoryImpl implements ProjectRepository {
 
 
   //@Author: Jens
-
   public void updateProject(Project project) throws ProjectErrorMessageException {
     String mysql;
     PreparedStatement ps;
     int upateProjectSuccess = 0;
     try {
       //1. Get a connection to database
-      Connection con = DBManager.getInstanceConnection();
+      Connection con = DBManagerImpl.getInstanceConnection();
 
       //2. Prepare statement
 
@@ -140,9 +139,9 @@ public class ProjectRepositoryImpl implements ProjectRepository {
 
 
       if (upateProjectSuccess == 1) {
-        System.out.println("Udate Subproject is Successfully.");
+        System.out.println("Succesfully updated project.");
       } else {
-        throw new ProjectErrorMessageException("Cannot updates project whit project id vedr.ProjectRepositoryImpl i metode: public void updateProject (Project project)");
+        throw new ProjectErrorMessageException("OBS cannot update project. Error occured in: ProjectRepositoryImpl class. Method: updateProject.");
       }
 
       //5. Display the result set
@@ -161,26 +160,25 @@ public class ProjectRepositoryImpl implements ProjectRepository {
     try {
 
       //1. Get a connection to database
-      Connection con = DBManager.getInstanceConnection();
+      Connection con = DBManagerImpl.getInstanceConnection();
 
       //2. Prepare statement
       mySql = "DELETE FROM projects WHERE project_id=?"; //Vent slut
-
 
       ps = con.prepareStatement(mySql);
       //3. Set the parameters
       ps.setInt(1, projectId);
       //4. Execute SQL query
-       deleteProjectSuccess = ps.executeUpdate();
-       if(deleteProjectSuccess == 1){
-         System.out.println("Delete Project is Successfully.");
-       }else {
-         throw new ProjectErrorMessageException("Cannot delete project whit project id vedr.ProjectRepositoryImpl i metode:  public void deleteProject ( int ProjectId)");
-       }
+      deleteProjectSuccess = ps.executeUpdate();
+      if (deleteProjectSuccess == 1) {
+        System.out.println("Succesfully deleted project.");
+      } else {
+        throw new ProjectErrorMessageException("OBS cannot delete project. Error occured in: ProjectRepositoryImpl class. Method: deleteProject.");
+      }
       //5. Display the result set
     } catch (SQLException err) {
       throw new ProjectErrorMessageException(err.getMessage());
-     // System.out.println("Cannot delete project with subproject. Please delete any subprojects before deleting project." + err.getMessage());
+      // System.out.println("Cannot delete project with subproject. Please delete any subprojects before deleting project." + err.getMessage());
     }
   }
 
@@ -189,7 +187,7 @@ public class ProjectRepositoryImpl implements ProjectRepository {
   public List<Project> showAllProjects(int id) throws ProjectErrorMessageException {
     ArrayList<Project> projects = new ArrayList<>();
     try {
-      Connection con = DBManager.getInstanceConnection();
+      Connection con = DBManagerImpl.getInstanceConnection();
       String SQL = "SELECT * FROM projects WHERE user_id = ?"; // Do this line when we know database name and stuff
 
       PreparedStatement ps = con.prepareStatement(SQL);
@@ -206,7 +204,7 @@ public class ProjectRepositoryImpl implements ProjectRepository {
         ));
       }
     } catch (SQLException err) {
-      throw new ProjectErrorMessageException("OBS cant not show all project id  vedr.projectRepositoryImpl i metode:public List<Project> showAllProjects ( int id)" + err.getMessage());
+      throw new ProjectErrorMessageException("OBS cannot show projects. Error occured in: ProjectRepositoryImpl class. Method: showAllProjects." + err.getMessage());
     }
     return projects;
   }

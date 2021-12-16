@@ -1,5 +1,5 @@
 package com.example.eksamen2021.domain.models;
-
+//@Author: Silke, Kristian, Alexander, Jens
 public class User {
   private int userId;
   private String userEmail;

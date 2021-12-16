@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.servlet.http.HttpSession;
-
+//@Author: Jens
 public interface UserController{
   @GetMapping("/")
   public String index() throws UserErrorMessageException;

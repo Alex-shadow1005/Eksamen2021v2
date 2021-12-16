@@ -2,12 +2,12 @@ package com.example.eksamen2021.repositories;
 
 import java.sql.Connection;
 import java.sql.Statement;
-
+  //@Author: Jens
 public class JDBCTestSetup {
-
+  //@Author: Jens
   public void setUpJDBCT() {
     try {
-      Connection connection = DBManager.getInstanceConnection();
+      Connection connection = DBManagerImpl.getInstanceConnection();
       Statement SQLstatementTest = connection.createStatement();
       // start transaction
       connection.setAutoCommit(false);

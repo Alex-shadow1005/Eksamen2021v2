@@ -5,7 +5,7 @@ import com.example.eksamen2021.domain.models.Project;
 import com.example.eksamen2021.domain.models.User;
 
 import java.util.List;
-
+//@Author:Jens
 public interface ProjectRepository {
 
   public int createProject(Project project, User user) throws ProjectErrorMessageException;

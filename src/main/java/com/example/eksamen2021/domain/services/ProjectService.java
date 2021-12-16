@@ -6,7 +6,7 @@ import com.example.eksamen2021.domain.models.Subproject;
 import com.example.eksamen2021.domain.models.User;
 
 import java.util.List;
-
+//@Author: Kristian
 public interface ProjectService {
     public int createProject(Project project, User user) throws ProjectErrorMessageException;
 

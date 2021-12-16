@@ -1,7 +1,8 @@
 package com.example.eksamen2021.domain;
 
-public class ProjectErrorMessageException extends Exception{
+//@Author: Jens
 //ProjectErrorMessageException = peme
+public class ProjectErrorMessageException extends Exception{
   public ProjectErrorMessageException(String peme) {
     super(peme);
   }

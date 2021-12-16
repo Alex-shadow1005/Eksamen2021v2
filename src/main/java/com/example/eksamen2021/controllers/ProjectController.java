@@ -8,7 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
-
+//@Author:Jens
 public interface ProjectController {
   @GetMapping("/create-project")
   public String addProject(@ModelAttribute Project project, Model model, HttpSession session) throws ProjectErrorMessageException;

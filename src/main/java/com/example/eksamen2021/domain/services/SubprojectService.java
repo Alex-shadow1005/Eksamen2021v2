@@ -5,7 +5,7 @@ import com.example.eksamen2021.domain.models.Project;
 import com.example.eksamen2021.domain.models.Subproject;
 
 import java.util.List;
-
+//@Author:Silke
 public interface SubprojectService {
 
     public String createSubproject(Project project, Subproject subproject) throws SubProjectErrorMessageException;

@@ -13,32 +13,36 @@ public class ProjectServiceImpl implements ProjectService{
 
   private ProjectRepositoryImpl projectRepositoryImpl = new ProjectRepositoryImpl();
   private Project project = new Project();
-
+  //@Author: Silke, Kristian, Alexander, Jens
   public int createProject(Project project, User user) throws ProjectErrorMessageException {
     return projectRepositoryImpl.createProject(project, user);
   }
 
-
+  //@Author: Silke, Kristian, Alexander, Jens
   public Project findProjectID(int projectId) throws ProjectErrorMessageException {
     return projectRepositoryImpl.findProjectID(projectId);
   }
 
   //updater subprojecter ud fra sub_ID
+  //@Author: Silke, Kristian, Alexander, Jens
   public void updateProject(Project project) throws ProjectErrorMessageException {
     projectRepositoryImpl.updateProject(project);
   }
 
 
   //deleter projectet ud fra dens ID
+  //@Author: Silke, Kristian, Alexander, Jens
   public void deleteProject(int projectId) throws ProjectErrorMessageException {
     projectRepositoryImpl.deleteProject(projectId);
   }
 
-
+  //@Author: Silke, Kristian, Alexander, Jens
   public List<Project> showAllProjects(int id) throws ProjectErrorMessageException {
     return projectRepositoryImpl.showAllProjects(id);
   }
 
+
+  //Author: Alexander + Jens
   public void calprojecthours(List<Subproject> gettingAllSubprojects,List<Project> projects) throws ProjectErrorMessageException {
 
     project.calprojecthours(gettingAllSubprojects,projects);
@@ -49,25 +53,4 @@ public class ProjectServiceImpl implements ProjectService{
   //  project.calprojectprices(subprojects,projects);
 
   }
-
-/*
-  public List<Subproject> showAllSubprojects(int projectid2) throws ProjectErrorMessageException, SubProjectErrorMessageException {
-    System.out.println("projectid in service here: " + projectid2);
-    return subprojectRepository.showAllSubprojects(projectid2);
-  }
-
- */
-
-
-  //før ændert Jens kl.10:38 03-12-2021
-    /*int addProjectSuccess = projectRepositoryImpl.addProject(project, user);
-    if (addProjectSuccess == 1) {
-      return "redirect:/show";
-    } else {
-      System.out.println("sut :c");
-      return "redirect:/addProject";
-    }
-
-     */
-
 }

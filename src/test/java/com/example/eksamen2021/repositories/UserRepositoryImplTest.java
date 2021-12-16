@@ -6,11 +6,11 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
-
+//@Author: Jens
 public class UserRepositoryImplTest {
   UserRepositoryImpl userRepository;
   JDBCTestSetup jdbcTestSetup;
-
+  //@Author: Jens
   @BeforeEach
   public void setUp() throws Exception {
 
@@ -18,7 +18,7 @@ public class UserRepositoryImplTest {
     jdbcTestSetup.setUpJDBCT();
     userRepository = new UserRepositoryImpl();
   }
-
+  //@Author: Jens
   @Test
   public void createUser_GivenCorrectUserInfo() throws UserErrorMessageException {
     //Arrange/DK:Arranger
@@ -32,7 +32,7 @@ public class UserRepositoryImplTest {
     assertEquals("Yes", newUser.getUserUsername());
 
   }
-
+  //@Author: Jens
   @Test
   public void createUser_UserEmailAlreadyExisting_ShouldThrowUserErrorMessageException() throws UserErrorMessageException {
 
@@ -44,7 +44,7 @@ public class UserRepositoryImplTest {
     assertThrows(UserErrorMessageException.class, () -> userRepository.createUser(user), "OBS cant not create User  vedr.UserRepositoryImpl i metode = public User createUser(User user)");
 
   }
-
+  //@Author: Jens
   @Test
   public void validateUser_GivenCorrectUserInfo() throws UserErrorMessageException {
     //Arrange/DK:Arranger
@@ -56,7 +56,7 @@ public class UserRepositoryImplTest {
     assertEquals("validateUser@AlphaSolutions.dk", newUser.getUserEmail());
     assertEquals("1234", newUser.getUserPassword());
   }
-
+  //@Author: Jens
   @Test
   public void validateUser_EmailDoesNotExisting_ShouldThrowUserErrorMessageException() throws UserErrorMessageException {
     //Arrange/DK:Arranger
@@ -64,15 +64,4 @@ public class UserRepositoryImplTest {
     //OBS   Assert/DK:Påstå og Act/DK:Handling liger på sammen line
     assertThrows(UserErrorMessageException.class, () -> userRepository.validateUser(user), "UserEmail & UserPassword is Not validate login OBS  vedr. UserRepositoryImpl i metode = public User validateUser(User user) ");
   }
-
-
-
-
-
-/*
-  @Test
-  public void validateUser() {
-  }
-
- */
 }

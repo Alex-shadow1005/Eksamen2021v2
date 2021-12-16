@@ -7,7 +7,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
-
+//@Author:Jens
 public interface SubprojectController {
   @GetMapping("/create-subproject")
   public String addSubproject(@ModelAttribute Subproject subproject, Model model) throws SubProjectErrorMessageException;

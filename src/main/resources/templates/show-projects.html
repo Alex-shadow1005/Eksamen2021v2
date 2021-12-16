@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
+<!-- @Author: Silke-->
 
 <head>
     <link rel="stylesheet" href="indexStylesheet.css">
@@ -58,12 +59,14 @@
                         <td th:text="${project.projectPrice}"></td>
 
 
+                        <!-- @Author: Silke-->
                         <td>
                             <a th:href="|/show-subprojects/${project.projectId}|">
                                 <button type="submit" class="button smaller-button">View Subprojects</button>
                             </a>
                         </td>
 
+                        <!-- @Author: Silke-->
                         <td>
                             <a th:href="@{/update-project/{projectId}(projectId=${project.projectId})}">
                                 <button class="smaller-button">Edit</button>
@@ -71,6 +74,7 @@
                         </td>
                         </td>
 
+                        <!-- @Author: Kristian-->
                         <td>
                             <a th:href="|/delete-project/${project.projectId}|" class="btn btn-danger">
                             <button th:onclick="'deleteProject(\'' + ${project.projectId} + '\');'"
@@ -84,6 +88,7 @@
                 <br>
                 <br>
 
+                <!-- @Author: Silke-->
                 <a th:href="@{/create-project}">
                     <button type="button" class="start-button">Add project</button>
                 </a>
