@@ -39,6 +39,8 @@ public class ProjectServiceImpl implements ProjectService{
     return projectRepositoryImpl.showAllProjects(id);
   }
 
+
+  //Author: Alexander + Jens
   public void calprojecthours(List<Subproject> gettingAllSubprojects,List<Project> projects) throws ProjectErrorMessageException {
 
     project.calprojecthours(gettingAllSubprojects,projects);
@@ -49,25 +51,5 @@ public class ProjectServiceImpl implements ProjectService{
   //  project.calprojectprices(subprojects,projects);
 
   }
-
-/*
-  public List<Subproject> showAllSubprojects(int projectid2) throws ProjectErrorMessageException, SubProjectErrorMessageException {
-    System.out.println("projectid in service here: " + projectid2);
-    return subprojectRepository.showAllSubprojects(projectid2);
-  }
-
- */
-
-
-  //før ændert Jens kl.10:38 03-12-2021
-    /*int addProjectSuccess = projectRepositoryImpl.addProject(project, user);
-    if (addProjectSuccess == 1) {
-      return "redirect:/show";
-    } else {
-      System.out.println("sut :c");
-      return "redirect:/addProject";
-    }
-
-     */
 
 }
