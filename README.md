@@ -7,7 +7,7 @@
 <h2>Prerequisites</h2>
 <p>Before you begin, ensure you have met the following requirements:</p>
 <ul>
-  <li>You have installed the latest version of <code>IntelliJ v 11</code></li>
+  <li>You have installed the latest version of <code>IntelliJ version 11, MySQL. Workbench version 8.0.  </code></li>
   <li>You have a <code>Windows/Linux/Mac</code> machine. State which OS is supported/which is not.</li>
   <li>You have read <code>Insert link here</code></li>
 </ul>
